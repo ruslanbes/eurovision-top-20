@@ -11,7 +11,6 @@ export function StatsExplorer() {
   const [periods, setPeriods] = useState<string[]>([]);
   const [period, setPeriod] = useState<string>("");
   const [rows, setRows] = useState<VideoStatsRow[]>([]);
-  const [generatedAt, setGeneratedAt] = useState<string>("");
   const [sorting, setSorting] = useState<SortingState>(DEFAULT_VIDEO_SORT);
   const [userSorted, setUserSorted] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -58,7 +57,6 @@ export function StatsExplorer() {
           return;
         }
         setRows(snapshot.rows);
-        setGeneratedAt(snapshot.generated_at);
       } catch (err) {
         if (!cancelled) {
           setError(err instanceof Error ? err.message : "Failed to load stats");
@@ -111,7 +109,7 @@ export function StatsExplorer() {
       <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-zinc-600 dark:text-zinc-400">
         <p>
           {rows.length} videos
-          {generatedAt ? ` · data through ${generatedAt}` : ""}
+          {period ? ` · data through ${period}` : ""}
         </p>
         {loading ? <p>Loading…</p> : null}
       </div>

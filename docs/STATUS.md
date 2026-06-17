@@ -1,10 +1,10 @@
 # Status
 
-Last updated: 2026-06-15
+Last updated: 2026-06-17
 
 ## Current focus
 
-Published prep: task-doc cleanup done. Site Slice 1 live; deploy on push to `main`.
+Removed `generated_at` from processed/packaged snapshots; site uses period for footer.
 
 ## Active task
 
@@ -16,10 +16,11 @@ _None._
 
 ## Next action
 
-1. Push to `main` for GitHub Pages deploy (if not already).
+1. Commit `generated_at` removal + regenerated data when ready.
 2. Or pick a backlog item: `site-theming`, song grain on site, etc.
 
 ## Session notes
 
+- Dropped `generated_at` from aggregate/package/song payloads; regenerated ~690 JSON files; site footer shows selected period.
 - `cleanup-task-docs` done — 17 completed task specs removed from `docs/tasks/`.
 - Durable docs: ADRs, `AGENTS.md`, `data/README.md`, `site/README.md`, `docs/faq/`, [`CHANGELOG.md`](../CHANGELOG.md).

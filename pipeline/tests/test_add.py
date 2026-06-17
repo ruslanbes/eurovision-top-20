@@ -106,7 +106,7 @@ def _write_corpus(repo_root: Path) -> None:
     path = processed_alltime_stats_latest_path(repo_root)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
-        json.dumps({"generated_at": "2026-06-10", "rows": _corpus_rows()}, indent=2)
+        json.dumps({"rows": _corpus_rows()}, indent=2)
         + "\n",
         encoding="utf-8",
     )
@@ -191,7 +191,7 @@ def test_run_add_ambiguous_go_a_shum_suggests_all_close(repo_root: Path) -> None
     path = processed_alltime_stats_latest_path(repo_root)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
-        json.dumps({"generated_at": "2026-06-10", "rows": rows}, indent=2) + "\n",
+        json.dumps({"rows": rows}, indent=2) + "\n",
         encoding="utf-8",
     )
     _write_episode(repo_root, "2023-02.json", _episode(year=2023, month=2))
@@ -329,7 +329,6 @@ def test_cli_add_fuzzy_mode_1944_not_prev(repo_root: Path) -> None:
     path.write_text(
         json.dumps(
             {
-                "generated_at": "2022-06-10",
                 "rows": [
                     {
                         "video_title": jamala,

@@ -140,7 +140,6 @@ def package_song_stats_payload(
         )
 
     payload = {
-        "generated_at": packaged_video_payload.get("generated_at"),
         "source": source,
         "rows": song_rows,
     }

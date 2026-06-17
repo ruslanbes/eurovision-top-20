@@ -32,3 +32,5 @@ Slice 1: video grain, alltime variant only. Site follow-ups in [`BACKLOG.md`](..
 GitHub Pages at `https://ruslanbes.github.io/eurovision-top-20/` (`base: '/eurovision-top-20/'`).
 
 CI: `.github/workflows/deploy.yml` — validate → process → package → build → deploy.
+
+**One-time repo setup:** In GitHub → **Settings** → **Pages** → **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”). The site is Astro, not Jekyll; branch deploy runs `jekyll-build-pages` on the repo root and fails on `site/src/pages/index.astro`. After switching source, run the **Deploy site** workflow (or push to `main`).

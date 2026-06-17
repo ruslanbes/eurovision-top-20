@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-from datetime import date
 from pathlib import Path
 
 import pytest
@@ -67,9 +66,7 @@ def _write_episode(repo_root: Path, name: str, data: dict) -> Path:
 
 
 def _aggregate_rows(repo_root: Path) -> list[dict]:
-    payload, _ = aggregate_video_stats(
-        repo_root, generated_at=date(2026, 6, 9)
-    )
+    payload, _ = aggregate_video_stats(repo_root)
     return payload["rows"]
 
 
@@ -309,7 +306,7 @@ def test_output_sort_uses_title_as_final_tiebreaker(repo_root: Path) -> None:
     assert [row["video_title"] for row in rows] == ["Alpha", "Beta", "Zebra"]
 
 
-def test_aggregate_writes_json_with_generated_at(repo_root: Path) -> None:
+def test_aggregate_writes_json_snapshot(repo_root: Path) -> None:
     _write_episode(
         repo_root,
         "2026-01.json",
@@ -319,10 +316,10 @@ def test_aggregate_writes_json_with_generated_at(repo_root: Path) -> None:
             entries_by_rank={1: {"video_title": "Song E", "youtube_video_id": ""}},
         ),
     )
-    run_aggregate(repo_root, generated_at=date(2026, 6, 9))
+    run_aggregate(repo_root)
     path = processed_alltime_stats_latest_path(repo_root)
     data = json.loads(path.read_text(encoding="utf-8"))
-    assert data["generated_at"] == "2026-06-09"
+    assert "generated_at" not in data
     assert data["rows"][0]["video_title"] == "Song E"
 
 
@@ -384,7 +381,7 @@ def test_partial_snapshots_grow_with_each_episode(repo_root: Path) -> None:
                 },
             ),
         )
-    run_aggregate(repo_root, generated_at=date(2026, 6, 9))
+    run_aggregate(repo_root)
 
     assert len(_read_snapshot(repo_root, 2022, 1)["rows"]) == 1
     assert len(_read_snapshot(repo_root, 2022, 2)["rows"]) == 2
@@ -415,9 +412,9 @@ def test_partial_gap_month_writes_no_snapshot(repo_root: Path) -> None:
     # Stale gap-month file from an older generate run.
     gap_path = processed_alltime_stats_period_path(repo_root, 2022, 2)
     gap_path.parent.mkdir(parents=True, exist_ok=True)
-    gap_path.write_text('{"generated_at": "old", "rows": []}\n', encoding="utf-8")
+    gap_path.write_text('{"rows": []}\n', encoding="utf-8")
 
-    run_aggregate(repo_root, generated_at=date(2026, 6, 9))
+    run_aggregate(repo_root)
 
     assert processed_alltime_stats_period_path(repo_root, 2022, 2).is_file() is False
     assert len(_read_snapshot(repo_root, 2022, 3)["rows"]) == 2
@@ -442,7 +439,7 @@ def test_latest_matches_final_period_snapshot(repo_root: Path) -> None:
             entries_by_rank={2: {"video_title": "Other", "youtube_video_id": ""}},
         ),
     )
-    run_aggregate(repo_root, generated_at=date(2026, 6, 9))
+    run_aggregate(repo_root)
 
     final = _read_snapshot(repo_root, 2022, 3)
     latest = json.loads(
@@ -470,7 +467,7 @@ def test_partial_snapshots_only_for_episode_months(repo_root: Path) -> None:
             entries_by_rank={2: {"video_title": "Other", "youtube_video_id": ""}},
         ),
     )
-    result = run_aggregate(repo_root, generated_at=date(2026, 6, 9))
+    result = run_aggregate(repo_root)
     assert result.snapshot_count == 2
     assert processed_alltime_stats_period_path(repo_root, 2022, 1).is_file()
     assert processed_alltime_stats_period_path(repo_root, 2026, 1).is_file()
@@ -480,7 +477,6 @@ def test_partial_snapshots_only_for_episode_months(repo_root: Path) -> None:
 
 def test_validate_stats_payload_accepts_monotonic_tiers() -> None:
     payload = {
-        "generated_at": "2026-06-09",
         "rows": [
             {
                 "video_title": "Song",
@@ -498,7 +494,6 @@ def test_validate_stats_payload_accepts_monotonic_tiers() -> None:
 
 def test_validate_stats_payload_rejects_inverted_tiers() -> None:
     payload = {
-        "generated_at": "2026-06-09",
         "rows": [
             {
                 "video_title": "Broken",
@@ -523,7 +518,6 @@ def test_run_aggregate_rejects_invalid_tier_order(
     from evtop20.aggregate import StatsAccumulator
 
     bad_payload = {
-        "generated_at": "2026-06-09",
         "rows": [
             {
                 "video_title": "Song",
@@ -538,7 +532,7 @@ def test_run_aggregate_rejects_invalid_tier_order(
     }
 
     def fake_snapshots(
-        episodes: list, *, generated_at: date
+        episodes: list,
     ) -> tuple[list, StatsAccumulator]:
         return [((2022, 1), bad_payload)], StatsAccumulator()
 
@@ -556,7 +550,7 @@ def test_run_aggregate_rejects_invalid_tier_order(
     )
 
     with pytest.raises(ValueError, match="stats validation failed"):
-        run_aggregate(repo_root, generated_at=date(2026, 6, 9))
+        run_aggregate(repo_root)
 
 
 def test_recent_cutoff_is_strict_after_five_years() -> None:
@@ -597,7 +591,7 @@ def test_recent_window_excludes_episode_at_cutoff_month(repo_root: Path) -> None
             },
         ),
     )
-    run_aggregate(repo_root, generated_at=date(2026, 6, 9))
+    run_aggregate(repo_root)
     recent = json.loads(
         processed_recent_stats_period_path(repo_root, 2026, 5).read_text(
             encoding="utf-8"
@@ -654,7 +648,7 @@ def test_recent_youtube_id_refresh_after_eviction(repo_root: Path) -> None:
             },
         ),
     )
-    run_aggregate(repo_root, generated_at=date(2026, 6, 9))
+    run_aggregate(repo_root)
 
     before = json.loads(
         processed_recent_stats_period_path(repo_root, 2024, 6).read_text(
@@ -690,7 +684,7 @@ def test_recent_writes_matching_snapshot_count(repo_root: Path) -> None:
             entries_by_rank={1: {"video_title": "B", "youtube_video_id": ""}},
         ),
     )
-    result = run_aggregate(repo_root, generated_at=date(2026, 6, 9))
+    result = run_aggregate(repo_root)
     assert result.snapshot_count == 2
     assert processed_recent_stats_period_path(repo_root, 2022, 1).is_file()
     assert processed_recent_stats_period_path(repo_root, 2026, 1).is_file()

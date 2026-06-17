@@ -39,10 +39,7 @@ def _processed_row(**overrides: object) -> dict:
 
 
 def _processed_payload(*rows: dict) -> dict:
-    return {
-        "generated_at": "2026-06-15",
-        "rows": list(rows),
-    }
+    return {"rows": list(rows)}
 
 
 def test_augment_stats_row_adds_metadata_and_watch_url() -> None:
@@ -78,12 +75,12 @@ def test_augment_stats_row_leaves_null_metadata_when_unparsed() -> None:
     assert packaged["youtube_watch_url"] is None
 
 
-def test_package_alltime_payload_preserves_generated_at() -> None:
+def test_package_alltime_payload_sets_source() -> None:
     payload, parsed_count, unparsed_titles = package_alltime_payload(
         _processed_payload(_processed_row())
     )
 
-    assert payload["generated_at"] == "2026-06-15"
+    assert "generated_at" not in payload
     assert payload["source"] == "processed/alltime"
     assert len(payload["rows"]) == 1
     assert parsed_count == 1
@@ -93,7 +90,6 @@ def test_package_alltime_payload_preserves_generated_at() -> None:
 def test_package_recent_payload_preserves_window() -> None:
     payload, parsed_count, unparsed_titles = package_recent_payload(
         {
-            "generated_at": "2026-06-15",
             "window": {
                 "years": 5,
                 "anchor_period": "2026-05",
@@ -183,7 +179,7 @@ def test_run_package_writes_recent_snapshots(repo_root: Path) -> None:
         "first_period": "2026-05",
         "last_period": "2026-05",
     }
-    recent_payload = {"generated_at": "2026-06-15", "window": window, "rows": [row]}
+    recent_payload = {"window": window, "rows": [row]}
     _write_processed_snapshot(
         repo_root,
         "eurovision-top-20-alltime-latest.json",

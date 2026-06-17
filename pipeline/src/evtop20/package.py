@@ -119,7 +119,6 @@ def package_video_payload(
                 unparsed_titles.add(title)
 
     packaged_payload = {
-        "generated_at": processed_payload.get("generated_at"),
         "source": source,
         "rows": packaged_rows,
     }

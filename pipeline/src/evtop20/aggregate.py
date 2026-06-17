@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
-from datetime import date
 from pathlib import Path
 
 from evtop20.models import youtube_id_is_set
@@ -239,15 +238,11 @@ class StatsAccumulator:
             for row in rows
         ]
 
-    def to_payload(self, generated_at: date) -> dict:
-        return {
-            "generated_at": generated_at.isoformat(),
-            "rows": self.to_rows(),
-        }
+    def to_payload(self) -> dict:
+        return {"rows": self.to_rows()}
 
     def to_recent_payload(
         self,
-        generated_at: date,
         *,
         anchor: Period,
         years: int,
@@ -259,7 +254,6 @@ class StatsAccumulator:
             first_period = _format_period(episode_period(window_episodes[0][1]))
             last_period = _format_period(episode_period(window_episodes[-1][1]))
         return {
-            "generated_at": generated_at.isoformat(),
             "window": {
                 "years": years,
                 "anchor_period": _format_period(anchor),
@@ -273,8 +267,6 @@ class StatsAccumulator:
 
 def build_period_snapshots(
     episodes: list[tuple[Path, dict]],
-    *,
-    generated_at: date,
 ) -> tuple[list[tuple[Period, dict]], StatsAccumulator]:
     sorted_episodes = sorted(episodes, key=lambda item: episode_period(item[1]))
     snapshot_periods = episode_periods_in_order(episodes)
@@ -290,7 +282,7 @@ def build_period_snapshots(
                 episode_index += 1
             else:
                 break
-        snapshots.append((snapshot_period, accumulator.to_payload(generated_at)))
+        snapshots.append((snapshot_period, accumulator.to_payload()))
 
     return snapshots, accumulator
 
@@ -298,7 +290,6 @@ def build_period_snapshots(
 def build_recent_period_snapshots(
     episodes: list[tuple[Path, dict]],
     *,
-    generated_at: date,
     years: int = RECENT_WINDOW_YEARS,
 ) -> tuple[list[tuple[Period, dict]], StatsAccumulator]:
     sorted_episodes = sorted(episodes, key=lambda item: episode_period(item[1]))
@@ -339,7 +330,6 @@ def build_recent_period_snapshots(
             (
                 anchor,
                 accumulator.to_recent_payload(
-                    generated_at,
                     anchor=anchor,
                     years=years,
                     window_episodes=window_episodes,
@@ -386,15 +376,10 @@ def _remove_stale_recent_period_snapshots(
             path.unlink()
 
 
-def aggregate_video_stats(
-    repo_root: Path,
-    *,
-    generated_at: date | None = None,
-) -> tuple[dict, AggregateResult]:
+def aggregate_video_stats(repo_root: Path) -> tuple[dict, AggregateResult]:
     """Aggregate all episodes (final snapshot only; for tests and direct use)."""
     episodes = load_episodes(repo_root)
-    generated = generated_at or date.today()
-    snapshots, accumulator = build_period_snapshots(episodes, generated_at=generated)
+    snapshots, accumulator = build_period_snapshots(episodes)
     if not snapshots:
         msg = "no period snapshots produced"
         raise ValueError(msg)
@@ -451,17 +436,10 @@ def write_stats_payload(path: Path, payload: dict) -> None:
     write_episode_file(path, payload)
 
 
-def run_aggregate(
-    repo_root: Path,
-    *,
-    generated_at: date | None = None,
-) -> AggregateResult:
+def run_aggregate(repo_root: Path) -> AggregateResult:
     episodes = load_episodes(repo_root)
-    generated = generated_at or date.today()
-    snapshots, accumulator = build_period_snapshots(episodes, generated_at=generated)
-    recent_snapshots, recent_accumulator = build_recent_period_snapshots(
-        episodes, generated_at=generated
-    )
+    snapshots, accumulator = build_period_snapshots(episodes)
+    recent_snapshots, recent_accumulator = build_recent_period_snapshots(episodes)
 
     if not snapshots:
         msg = "no period snapshots produced"

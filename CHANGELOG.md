@@ -2,6 +2,12 @@
 
 All notable changes to this project. Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased]
+
+### Changed
+
+- Removed `generated_at` from processed and packaged snapshot JSON (was pipeline run date on every file, causing noisy git diffs on no-op reruns). Site footer uses the selected period instead.
+
 ## [0.0.1] - 2026-06-15
 
 First pre-release. Pipeline, packaged data layer, and site Slice 1.

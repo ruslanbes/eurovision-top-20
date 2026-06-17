@@ -23,7 +23,6 @@ export type VideoStatsRow = {
 };
 
 export type VideoStatsSnapshot = {
-  generated_at: string;
   source: string;
   rows: VideoStatsRow[];
 };

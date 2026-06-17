@@ -9,7 +9,6 @@ from evtop20.aggregate import chart_points_from_tiers
 from evtop20.package import run_package
 from evtop20.paths import (
     packaged_per_song_alltime_stats_latest_path,
-    packaged_per_video_alltime_stats_latest_path,
     processed_alltime_dir,
 )
 from evtop20.song_stats import (
@@ -45,7 +44,6 @@ def _video_row(**overrides: object) -> dict:
 
 def _packaged_payload(*rows: dict) -> dict:
     return {
-        "generated_at": "2026-06-15",
         "source": "processed/alltime",
         "rows": list(rows),
     }
@@ -63,7 +61,6 @@ def test_video_stats_basename_to_song_stats_basename_accepts_recent() -> None:
 def test_package_song_stats_preserves_window() -> None:
     payload, warnings = package_song_stats_payload(
         {
-            "generated_at": "2026-06-15",
             "window": {"years": 5, "anchor_period": "2026-05"},
             "rows": [_video_row()],
         },
@@ -118,7 +115,6 @@ def test_package_song_stats_sums_tiers_for_shared_key() -> None:
     assert song["top20"] == 11
     assert song["chart_points"] == 85
     assert payload["source"] == "packaged/per-video/alltime"
-    assert payload["generated_at"] == "2026-06-15"
 
 
 def test_package_song_stats_merges_case_insensitive_artist_and_song() -> None:
@@ -274,7 +270,7 @@ def test_run_package_writes_song_stats_snapshots(repo_root: Path) -> None:
     _write_processed_snapshot(
         repo_root,
         "eurovision-top-20-alltime-latest.json",
-        {"generated_at": "2026-06-15", "rows": [processed_row]},
+        {"rows": [processed_row]},
     )
 
     message = run_package(repo_root)
@@ -284,13 +280,8 @@ def test_run_package_writes_song_stats_snapshots(repo_root: Path) -> None:
             encoding="utf-8"
         )
     )
-    alltime_latest = json.loads(
-        packaged_per_video_alltime_stats_latest_path(repo_root).read_text(
-            encoding="utf-8"
-        )
-    )
 
     assert len(song_latest["rows"]) == 1
     assert song_latest["rows"][0]["song"] == "Espresso Macchiato"
-    assert song_latest["generated_at"] == alltime_latest["generated_at"]
+    assert "generated_at" not in song_latest
     assert "Wrote alltime song stats" in message
