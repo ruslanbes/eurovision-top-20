@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Astro build
+dist/
+.astro/
+
+# Copied from data/packaged at predev/prebuild — never commit
+public/data/
+
+# Env (if added later)
+.env
+.env.*
+!.env.example

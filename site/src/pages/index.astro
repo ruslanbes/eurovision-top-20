@@ -1,0 +1,29 @@
+---
+import "../styles/global.css";
+import { StatsExplorer } from "../components/stats/StatsExplorer";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Eurovision Top 20 — cumulative YouTube channel chart statistics"
+    />
+    <title>Eurovision Top 20 Stats</title>
+  </head>
+  <body class="min-h-screen">
+    <main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <header class="mb-8 space-y-2">
+        <h1 class="text-3xl font-bold tracking-tight">Eurovision Top 20</h1>
+        <p class="max-w-2xl text-zinc-600 dark:text-zinc-400">
+          Cumulative statistics for the Eurovision Song Contest YouTube channel
+          Most Watched chart — one row per official upload, alltime view.
+        </p>
+      </header>
+
+      <StatsExplorer client:visible />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ruslanbes/eurovision-top-20/schemas/episode.schema.json",
+  "title": "Eurovision Top 20 episode",
+  "description": "Raw ranking data for one monthly Top 20 episode on the Eurovision YouTube channel.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "episode_title",
+    "period",
+    "youtube_video_id",
+    "entries"
+  ],
+  "properties": {
+    "episode_title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Full YouTube title.",
+      "examples": ["Eurovision Top 20 Most Watched: March 2022"]
+    },
+    "period": {
+      "type": "object",
+      "description": "Calendar month this episode covers (episodes are published monthly).",
+      "additionalProperties": false,
+      "required": ["year", "month"],
+      "properties": {
+        "year": {
+          "type": "integer",
+          "minimum": 2000,
+          "maximum": 2100
+        },
+        "month": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12,
+          "description": "1 = January … 12 = December"
+        }
+      }
+    },
+    "youtube_video_id": {
+      "type": ["string", "null"],
+      "pattern": "^$|^[A-Za-z0-9_-]{11}$",
+      "description": "YouTube video id of this Top 20 episode (the monthly roundup video, not the ranked song videos). Use \"\" until known."
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "description": "Exactly 20 ranked videos, highest rank first.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rank", "video_title"],
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "video_title": {
+            "type": "string",
+            "description": "Title as shown on the Eurovision YouTube channel for this video."
+          },
+          "youtube_video_id": {
+            "type": ["string", "null"],
+            "pattern": "^$|^[A-Za-z0-9_-]{11}$",
+            "description": "Optional. YouTube video id for this ranked entry. Use \"\" until known."
+          }
+        }
+      }
+    }
+  }
+}

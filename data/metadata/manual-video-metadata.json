@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "youtube_video_id": "-hu6R3ZnOdY",
+      "video_title": "Remember Monday - What The Hell Just Happened? | United Kingdom 🇬🇧 | Official Music Video",
+      "artist": "Remember Monday",
+      "song": "What The Hell Just Happened?",
+      "flag": "🇬🇧",
+      "country": "United Kingdom",
+      "performance_type": "Official Music Video",
+      "year": 2025,
+      "notes": "Title has no contest year segment."
+    },
+    {
+      "youtube_video_id": "-Nx6iVCaix0",
+      "video_title": "Hadise - Düm Tek Tek (Turkey)",
+      "artist": "Hadise",
+      "song": "Düm Tek Tek",
+      "flag": "🇹🇷",
+      "country": "Turkey",
+      "performance_type": "Official Preview Video",
+      "year": 2009,
+      "notes": "Legacy short title; country in parentheses, no year or performance type."
+    },
+    {
+      "youtube_video_id": "0td62XxnjBk",
+      "video_title": "Salvador Sobral - Amar Pelos Dois (Portugal) LIVE at the first Semi-Final",
+      "artist": "Salvador Sobral",
+      "song": "Amar Pelos Dois",
+      "flag": "🇵🇹",
+      "country": "Portugal",
+      "performance_type": "First Semi-Final (LIVE)",
+      "year": 2017,
+      "notes": "Semi-final clip; year not in title."
+    },
+    {
+      "youtube_video_id": "2EG_Jtw4OyU",
+      "video_title": "Dami Im - Sound Of Silence (Australia) 2016 Eurovision Song Contest",
+      "artist": "Dami Im",
+      "song": "Sound Of Silence",
+      "flag": "🇦🇺",
+      "country": "Australia",
+      "performance_type": "Official Music Video",
+      "year": 2016,
+      "notes": "Single-segment title; no performance type field."
+    },
+    {
+      "youtube_video_id": "9bfwNIYb96Q",
+      "video_title": "Linda Lampenius x Pete Parkkonen - Liekinheitin | Finland 🇫🇮 | Official Music Video | #Eurovision",
+      "artist": "Linda Lampenius x Pete Parkkonen",
+      "song": "Liekinheitin",
+      "flag": "🇫🇮",
+      "country": "Finland",
+      "performance_type": "Official Music Video",
+      "year": 2026,
+      "notes": "Hashtag year stub (#Eurovision) without digits."
+    },
+    {
+      "youtube_video_id": "CXiQr2ew3lQ",
+      "video_title": "Valentina Monetta & Jimmie Wilson - Spirit Of The Night (San Marino) - Official Music Video",
+      "artist": "Valentina Monetta & Jimmie Wilson",
+      "song": "Spirit Of The Night",
+      "flag": "🇸🇲",
+      "country": "San Marino",
+      "performance_type": "Official Music Video",
+      "year": 2017,
+      "notes": "Country in parentheses; no contest year in title."
+    },
+    {
+      "youtube_video_id": "DGsL8hA-1rE",
+      "video_title": "Käärijä & Baby Lasagna - #eurodab - Winners Of Our Hearts at Eurovision 2025 | #UnitedByMusic ​​🇨🇭",
+      "artist": "Käärijä & Baby Lasagna",
+      "song": "#eurodab",
+      "flag": "🇨🇭",
+      "country": "Switzerland",
+      "performance_type": "Special",
+      "year": 2025,
+      "notes": "Promo mashup; non-standard performance title."
+    },
+    {
+      "youtube_video_id": "ehH0_UXtQlY",
+      "video_title": "Eurovision Song Contest 2017 - Grand Final - Live",
+      "artist": "Various Artists",
+      "song": "Grand Final",
+      "flag": "🇺🇦",
+      "country": "Ukraine",
+      "performance_type": "Special",
+      "year": 2017,
+      "notes": "Full-show broadcast, not a single competing song."
+    },
+    {
+      "youtube_video_id": "FDga57mNny4",
+      "video_title": "Alfred and Amaia - Tu Canción - Spain - National Final Performance",
+      "artist": "Alfred and Amaia",
+      "song": "Tu Canción",
+      "flag": "🇪🇸",
+      "country": "Spain",
+      "performance_type": "National Final Performance",
+      "year": 2018,
+      "notes": "National final performance; year not in title."
+    },
+    {
+      "youtube_video_id": "jDXQm5JPEJc",
+      "video_title": "Kristian Kostov - Beautiful Mess (Bulgaria) LIVE at the second Semi-Final",
+      "artist": "Kristian Kostov",
+      "song": "Beautiful Mess",
+      "flag": "🇧🇬",
+      "country": "Bulgaria",
+      "performance_type": "Second Semi-Final (LIVE)",
+      "year": 2017,
+      "notes": "Semi-final clip; year not in title."
+    },
+    {
+      "youtube_video_id": "k5x086J5umo",
+      "video_title": "Marija Šerifović - Molitva - Eurovision: Europe Shine A Light",
+      "artist": "Marija Šerifović",
+      "song": "Molitva",
+      "flag": "🇷🇸",
+      "country": "Serbia",
+      "performance_type": "Special",
+      "year": 2020,
+      "notes": "Europe Shine A Light replacement show performance."
+    },
+    {
+      "youtube_video_id": "M1cjEuT_uvg",
+      "video_title": "Switch Song (with Conchita Wurst, Måns Zelmerlöw, Eleni Foureira, Verka Serduchka) - Eurovision 2019",
+      "artist": "Conchita Wurst, Måns Zelmerlöw, Eleni Foureira & Verka Serduchka",
+      "song": "Switch Song",
+      "flag": "🇮🇱",
+      "country": "Israel",
+      "performance_type": "Special",
+      "year": 2019,
+      "notes": "Interval-act style special."
+    },
+    {
+      "youtube_video_id": "Mj6tVGKzfhU",
+      "video_title": "Francesco Gabbani - Occidentali's Karma (Eurovision version) (Italy) - Official Music Video",
+      "artist": "Francesco Gabbani",
+      "song": "Occidentali's Karma",
+      "flag": "🇮🇹",
+      "country": "Italy",
+      "performance_type": "Official Music Video",
+      "year": 2017,
+      "notes": "Alternate Eurovision version; no contest year in title."
+    },
+    {
+      "youtube_video_id": "R_xmJcg1iBU",
+      "video_title": "Love Shine A Light performed by the artists of Eurovision 2020 - Eurovision: Europe Shine A Light",
+      "artist": "Various Artists",
+      "song": "Love Shine A Light",
+      "flag": "🇳🇱",
+      "country": "Netherlands",
+      "performance_type": "Special",
+      "year": 2020,
+      "notes": "Europe Shine A Light group performance."
+    },
+    {
+      "youtube_video_id": "r_G7vrg-0uY",
+      "video_title": "Marina Satti - ZARI (Unplugged) | Greece 🇬🇷 | #EurovisionALBM",
+      "artist": "Marina Satti",
+      "song": "ZARI",
+      "flag": "🇬🇷",
+      "country": "Greece",
+      "performance_type": "Official Music Video",
+      "year": 2024,
+      "notes": "Album promo hashtag (#EurovisionALBM); no parseable year."
+    },
+    {
+      "youtube_video_id": "RSMMU2wX0Bk",
+      "video_title": "5MIINUST x Puuluup - (nendest) narkootikumidest ei tea me (küll) midagi | Estonia 🇪🇪 | Grand Final",
+      "artist": "5MIINUST x Puuluup",
+      "song": "(nendest) narkootikumidest ei tea me (küll) midagi",
+      "flag": "🇪🇪",
+      "country": "Estonia",
+      "performance_type": "Grand Final",
+      "year": 2024,
+      "notes": "Grand final performance; year not in title."
+    },
+    {
+      "youtube_video_id": "VLCV0GV4g9A",
+      "video_title": "Kant - Miriana Conte | MESC 2025",
+      "artist": "Kant",
+      "song": "Miriana Conte",
+      "flag": "🇲🇹",
+      "country": "Malta",
+      "performance_type": "National Final Performance",
+      "year": 2025,
+      "notes": "MESC national final; non-standard pipe-separated title."
+    }
+  ]
+}

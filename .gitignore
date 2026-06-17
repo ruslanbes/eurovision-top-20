@@ -1,0 +1,12 @@
+# Local agent / editor tooling (not shipped)
+/.agents/
+/.cursor/
+/skills-lock.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor swap files
+*.swp
+*~
