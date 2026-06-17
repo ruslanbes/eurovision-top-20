@@ -6,7 +6,7 @@ Stats explorer for the [Eurovision Song Contest YouTube channel](https://www.you
 
 ## Local setup
 
-Requires [uv](https://docs.astral.sh/uv/) (Python 3.12+) and Node.js.
+Requires [uv](https://docs.astral.sh/uv/) (Python 3.14+) and Node.js.
 
 ```bash
 cd pipeline && uv sync --all-groups

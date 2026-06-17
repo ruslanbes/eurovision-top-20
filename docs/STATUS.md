@@ -4,7 +4,7 @@ Last updated: 2026-06-17
 
 ## Current focus
 
-Removed `generated_at` from processed/packaged snapshots; site uses period for footer.
+Python 3.14 upgrade done (pipeline pin, CI test job). `eurovision-final-place` task spec ready for implementation.
 
 ## Active task
 
@@ -21,6 +21,7 @@ _None._
 
 ## Session notes
 
+- Upgraded pipeline to **Python 3.14** (`pipeline/.python-version`, `requires-python`, lockfile, deploy + new `ci.yml` on push/PR).
 - Dropped `generated_at` from aggregate/package/song payloads; regenerated ~690 JSON files; site footer shows selected period.
 - `cleanup-task-docs` done — 17 completed task specs removed from `docs/tasks/`.
 - Durable docs: ADRs, `AGENTS.md`, `data/README.md`, `site/README.md`, `docs/faq/`, [`CHANGELOG.md`](../CHANGELOG.md).

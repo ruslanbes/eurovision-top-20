@@ -23,7 +23,7 @@ Data volume is small (dozens of episodes, ~20 entries each). Priorities are git-
 
 | Area              | Choice                                                        |
 | ----------------- | ------------------------------------------------------------- |
-| Language          | **Python 3.12**                                               |
+| Language          | **Python 3.14**                                               |
 | Package manager   | **uv**                                                        |
 | Build backend     | **hatchling** (PEP 621 `pyproject.toml`)                      |
 | CLI               | **typer** (or stdlib `argparse` if a single command suffices) |

@@ -48,6 +48,7 @@ flowchart TB
 | `processed/alltime/`, `processed/recent/`   | Generated stats (do not edit). Cumulative and sliding-window variants.            | `uv run evtop20 process`             | `evtop20 process` | `add` (alltime corpus), notebooks, **input to packaged** |
 | `packaged/per-video/`, `packaged/per-song/` | UI-ready JSON (not hand-edited). `per-{video,song}/{alltime,recent}`.             | `uv run evtop20 package`             | `evtop20 package` | Astro / React islands only                               |
 | `metadata/`                                 | Hand-maintained lookup tables (e.g. manual video metadata by `youtube_video_id`). | —                                    | Editors           | `package`                                                |
+| `external/esc-results/`                     | Vendored ESC results join table (flattened from pinned [EurovisionAPI/dataset](https://github.com/EurovisionAPI/dataset) release). Not hand-edited. | — (flatten script TBD)               | Maintainers       | `package`                                                |
 | `schemas/`                                  | JSON Schema for raw episode files.                                                | —                                    | Editors           | `validate`                                               |
 
 
@@ -138,6 +139,14 @@ Layout: see diagram above. **Future (not shipped):** `insights/`, `charts/` unde
 **Shipped:** all four `per-video` / `per-song` × `alltime` / `recent` table snapshots. Insights/charts folders still future.
 
 Processed row shape remains unchanged when packaged ships. External joins (e.g. ESC final place) land in packaged only — `[eurovision-final-place.md](../docs/tasks/eurovision-final-place.md)`.
+
+---
+
+## External data (`external/`)
+
+Third-party snapshots vendored in git for reproducible `package` runs — **no network fetch in CI**.
+
+**ESC results (planned):** `external/esc-results/` — `MANIFEST.json` (pinned EurovisionAPI release tag) + `entries.json` (flat rows: `artist`, `contest_year`, `country_code`, `esc_final_place`, `song`). `esc_final_place` is a grand-final rank (`1`…) or special code (`DNQ`, `DQ`, `CANCELLED`, `PENDING`, `NON_ENTRY`); see `[eurovision-final-place.md](../docs/tasks/eurovision-final-place.md#placement-dictionary)`. `NON_ENTRY` is set in package for interval acts and the live-stream entry, not in the vendor file.
 
 ---
 
