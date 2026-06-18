@@ -26,6 +26,17 @@ Used by `lookup_table_v1` in the title-parse extractor chain (after all title-pa
 
 The extractor sets `metadata_extractor` to `lookup_table_v1` on match.
 
+### Virtual `World` country
+
+For non-national clips (interval acts, full-show live streams, multi-artist specials):
+
+| Field | Value |
+|-------|-------|
+| `country` | `World` |
+| `flag` | `🌍` |
+
+`World` lives in `title_parse/countries.py` only — **not** an ESC vendor country. Use `esc-placement-overrides.json` (`NON_ENTRY`) when the clip is not a competing entry. Do not auto-assign from `performance_type` alone.
+
 ## Format rules
 
 - **JSON** — one object with `schema_version` and an `entries` array.
@@ -41,8 +52,8 @@ The extractor sets `metadata_extractor` to `lookup_table_v1` on match.
   "video_title": "Käärijä & Baby Lasagna - #eurodab - …",
   "artist": "Käärijä & Baby Lasagna",
   "song": "#eurodab",
-  "flag": "🇨🇭",
-  "country": "Switzerland",
+  "flag": "🌍",
+  "country": "World",
   "performance_type": "Special",
   "year": 2025
 }

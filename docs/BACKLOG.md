@@ -24,6 +24,13 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 
 ---
 
+## virtual-world-country
+- status: done
+- parent: eurovision-final-place
+- goal: Virtual `World` country for non-national ESC videos (interval acts, live streams) instead of host-nation placeholders
+- done_when: Per `docs/tasks/virtual-world-country.md` — `World`/`🌍` in title-parse map, manual rows updated, join guard, repackaged
+- notes: Display-only; not in ESC vendor `country_to_code`
+
 ## unlikely-events-warnings
 - status: ready
 - parent: generate-song-stats

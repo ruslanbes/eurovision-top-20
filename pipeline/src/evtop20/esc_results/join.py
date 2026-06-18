@@ -8,6 +8,7 @@ from evtop20.esc_results.countries import country_to_code
 from evtop20.esc_results.normalize import normalize_join_artist, normalize_join_text
 from evtop20.esc_results.paths import esc_results_entries_path, esc_results_manifest_path
 from evtop20.paths import esc_join_overrides_path, esc_placement_overrides_path
+from evtop20.title_parse.countries import VIRTUAL_WORLD_COUNTRY
 
 
 class EscResultsJoinError(Exception):
@@ -99,6 +100,9 @@ class EscResultsJoiner:
         if not isinstance(country, str) or not isinstance(artist, str):
             return None
         if not isinstance(song, str):
+            return None
+
+        if country == VIRTUAL_WORLD_COUNTRY:
             return None
 
         if year > self.last_completed_contest_year:

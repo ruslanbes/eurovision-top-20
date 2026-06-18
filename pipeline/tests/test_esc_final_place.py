@@ -325,6 +325,32 @@ def test_joiner_placement_override() -> None:
     assert place == "NON_ENTRY"
 
 
+def test_joiner_skips_vendor_join_for_world_country() -> None:
+    joiner = EscResultsJoiner(
+        last_completed_contest_year=2026,
+        entries=[
+            {
+                "artist": "Nemo",
+                "contest_year": 2026,
+                "country_code": "CH",
+                "esc_final_place": 1,
+                "song": "The Code",
+            },
+        ],
+    )
+    place = joiner.lookup(
+        {
+            "year": 2026,
+            "country": "World",
+            "artist": "Various Artists",
+            "song": "Grand Final",
+            "video_title": "Eurovision Song Contest 2026 - Grand Final - Live",
+            "youtube_video_id": "not-in-overrides",
+        }
+    )
+    assert place is None
+
+
 def test_package_writes_esc_final_place() -> None:
     repo_root = find_repo_root(Path(__file__))
     load_esc_results_joiner(repo_root)
@@ -375,6 +401,13 @@ def test_package_writes_esc_final_place() -> None:
         row for row in rows if row.get("youtube_video_id") == "Qu5kSWkZqOI"
     )
     assert samoylova["esc_final_place"] == "WITHDRAWN"
+
+    eurodab = next(
+        row for row in rows if row.get("youtube_video_id") == "DGsL8hA-1rE"
+    )
+    assert eurodab["country"] == "World"
+    assert eurodab["flag"] == "🌍"
+    assert eurodab["esc_final_place"] == "NON_ENTRY"
 
 
 def test_augment_stats_row_without_joiner_sets_null_esc_final_place() -> None:

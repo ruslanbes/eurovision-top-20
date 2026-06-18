@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+VIRTUAL_WORLD_COUNTRY = "World"
+
 # Canonical country name -> flag emoji for Eurovision entrants in this corpus.
 COUNTRY_TO_FLAG: dict[str, str] = {
     "Albania": "🇦🇱",
@@ -45,6 +47,7 @@ COUNTRY_TO_FLAG: dict[str, str] = {
     "Turkey": "🇹🇷",
     "Ukraine": "🇺🇦",
     "United Kingdom": "🇬🇧",
+    VIRTUAL_WORLD_COUNTRY: "🌍",
 }
 
 # Alternate spellings seen in video titles -> canonical country name.

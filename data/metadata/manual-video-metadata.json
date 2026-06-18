@@ -72,19 +72,19 @@
       "video_title": "Käärijä & Baby Lasagna - #eurodab - Winners Of Our Hearts at Eurovision 2025 | #UnitedByMusic ​​🇨🇭",
       "artist": "Käärijä & Baby Lasagna",
       "song": "#eurodab",
-      "flag": "🇨🇭",
-      "country": "Switzerland",
+      "flag": "🌍",
+      "country": "World",
       "performance_type": "Special",
       "year": 2025,
-      "notes": "Promo mashup; non-standard performance title."
+      "notes": "Promo mashup; non-standard performance title; virtual World country."
     },
     {
       "youtube_video_id": "ehH0_UXtQlY",
       "video_title": "Eurovision Song Contest 2017 - Grand Final - Live",
       "artist": "Various Artists",
       "song": "Grand Final",
-      "flag": "🇺🇦",
-      "country": "Ukraine",
+      "flag": "🌍",
+      "country": "World",
       "performance_type": "Special",
       "year": 2017,
       "notes": "Full-show broadcast, not a single competing song."
@@ -116,8 +116,8 @@
       "video_title": "Marija Šerifović - Molitva - Eurovision: Europe Shine A Light",
       "artist": "Marija Šerifović",
       "song": "Molitva",
-      "flag": "🇷🇸",
-      "country": "Serbia",
+      "flag": "🌍",
+      "country": "World",
       "performance_type": "Special",
       "year": 2020,
       "notes": "Europe Shine A Light replacement show performance."
@@ -127,8 +127,8 @@
       "video_title": "Switch Song (with Conchita Wurst, Måns Zelmerlöw, Eleni Foureira, Verka Serduchka) - Eurovision 2019",
       "artist": "Conchita Wurst, Måns Zelmerlöw, Eleni Foureira & Verka Serduchka",
       "song": "Switch Song",
-      "flag": "🇮🇱",
-      "country": "Israel",
+      "flag": "🌍",
+      "country": "World",
       "performance_type": "Special",
       "year": 2019,
       "notes": "Interval-act style special."
@@ -149,8 +149,8 @@
       "video_title": "Love Shine A Light performed by the artists of Eurovision 2020 - Eurovision: Europe Shine A Light",
       "artist": "Various Artists",
       "song": "Love Shine A Light",
-      "flag": "🇳🇱",
-      "country": "Netherlands",
+      "flag": "🌍",
+      "country": "World",
       "performance_type": "Special",
       "year": 2020,
       "notes": "Europe Shine A Light group performance."

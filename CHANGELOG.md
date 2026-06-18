@@ -15,8 +15,8 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 ### Changed
 
 - ESC placement overrides moved out of `manual-video-metadata.json` into `esc-placement-overrides.json` (title-parse file is parse fields only).
+- Virtual **`World`** country (`🌍`) for non-national ESC clips; five manual-metadata rows updated.
 - Vendored ESC results include **2026** from [EurovisionAPI/dataset PR #1](https://github.com/EurovisionAPI/dataset/pull/1) (`release_tag` `2026.4+pr1` until upstream merge); `last_completed_contest_year` **2026**.
-
 - Pipeline requires **Python 3.14** (`pipeline/.python-version`, CI test job on push/PR).
 - Removed `generated_at` from processed and packaged snapshot JSON (was pipeline run date on every file, causing noisy git diffs on no-op reruns). Site footer uses the selected period instead.
 
