@@ -54,29 +54,6 @@ export function PeriodControls({
           aria-label="Select episode month"
         />
       </Slider.Root>
-
-      <div className="flex max-h-32 flex-wrap gap-1.5 overflow-y-auto">
-        {periods.map((item) => {
-          const active = item === period;
-          return (
-            <button
-              key={item}
-              type="button"
-              disabled={disabled}
-              onClick={() => onPeriodChange(item)}
-              className={[
-                "rounded-full px-2.5 py-1 text-xs font-medium transition-colors",
-                active
-                  ? "bg-blue-600 text-white dark:bg-blue-500"
-                  : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800",
-                disabled ? "cursor-not-allowed opacity-50" : "",
-              ].join(" ")}
-            >
-              {formatPeriodLabel(item)}
-            </button>
-          );
-        })}
-      </div>
     </div>
   );
 }
