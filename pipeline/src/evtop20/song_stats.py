@@ -82,12 +82,22 @@ def _merge_song_group(members: list[dict]) -> tuple[dict, list[str]]:
             f'"{artist} — {song}" ({year_labels}); using {canonical["year"]}'
         )
 
+    places = {row.get("esc_final_place") for row in members}
+    places.discard(None)
+    if len(places) > 1:
+        warnings.append(
+            "Warning: song roll-up esc_final_place mismatch for "
+            f'"{artist} — {song}" ({", ".join(map(str, sorted(places, key=str)))}); '
+            f"using {canonical.get('esc_final_place')!r}"
+        )
+
     merged = {
         "artist": artist,
         "song": song,
         "flag": canonical["flag"],
         "country": canonical["country"],
         "year": canonical["year"],
+        "esc_final_place": canonical.get("esc_final_place"),
     }
     for field in TIER_COUNT_FIELDS:
         merged[field] = sum(row[field] for row in members)

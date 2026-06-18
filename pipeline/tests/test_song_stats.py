@@ -17,6 +17,7 @@ from evtop20.song_stats import (
     song_group_key,
     video_stats_basename_to_song_stats_basename,
 )
+from conftest import write_vendored_esc_results
 
 
 def _video_row(**overrides: object) -> dict:
@@ -244,6 +245,7 @@ def repo_root(tmp_path: Path) -> Path:
     schema_dst = tmp_path / "data" / "schemas" / "episode.schema.json"
     schema_dst.parent.mkdir(parents=True)
     schema_dst.write_text(schema_src.read_text(encoding="utf-8"), encoding="utf-8")
+    write_vendored_esc_results(tmp_path)
     return tmp_path
 
 

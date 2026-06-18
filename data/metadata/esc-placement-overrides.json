@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "esc_final_place": "NON_ENTRY",
+      "notes": "Promo mashup; not a competing song entry.",
+      "youtube_video_id": "DGsL8hA-1rE"
+    },
+    {
+      "esc_final_place": "NON_ENTRY",
+      "notes": "Full grand-final live stream, not a single competing song.",
+      "youtube_video_id": "ehH0_UXtQlY"
+    },
+    {
+      "esc_final_place": "NON_ENTRY",
+      "notes": "Europe Shine A Light replacement show performance.",
+      "youtube_video_id": "k5x086J5umo"
+    },
+    {
+      "esc_final_place": "NON_ENTRY",
+      "notes": "Interval-act style special.",
+      "youtube_video_id": "M1cjEuT_uvg"
+    },
+    {
+      "esc_final_place": "WITHDRAWN",
+      "notes": "Russia withdrew before ESC 2017; EurovisionAPI has no vendor row.",
+      "youtube_video_id": "Qu5kSWkZqOI"
+    },
+    {
+      "esc_final_place": "NON_ENTRY",
+      "notes": "Europe Shine A Light group performance.",
+      "youtube_video_id": "R_xmJcg1iBU"
+    }
+  ]
+}

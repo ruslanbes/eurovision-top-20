@@ -18,6 +18,8 @@ from evtop20.package import PackageError, run_package
 from evtop20.process import ProcessError, run_process
 from evtop20.new_episode import NewEpisodeError, run_new_episode
 from evtop20.paths import find_repo_root
+from evtop20.esc_results.flatten import FlattenError
+from evtop20.vendor_esc import run_vendor_esc_flatten
 from evtop20.validate import (
     format_validation_report,
     has_validation_errors,
@@ -233,6 +235,52 @@ def package_cmd(
     try:
         message = run_package(root)
     except PackageError as exc:
+        echo_cli_error(str(exc))
+        raise typer.Exit(code=1)
+    typer.echo(message)
+
+
+vendor_esc_app = typer.Typer(
+    name="vendor-esc",
+    help="Vendor external ESC results for package joins.",
+    no_args_is_help=True,
+)
+app.add_typer(vendor_esc_app, name="vendor-esc")
+
+
+@vendor_esc_app.command("flatten")
+def vendor_esc_flatten(
+    dataset_dir: Path = typer.Option(
+        ...,
+        "--dataset-dir",
+        help="Path to a EurovisionAPI/dataset checkout.",
+        file_okay=False,
+        dir_okay=True,
+        resolve_path=True,
+    ),
+    release_tag: str = typer.Option(
+        "2026.4",
+        "--release-tag",
+        help="Pinned EurovisionAPI release tag written to MANIFEST.json.",
+    ),
+    repo_root: Path | None = typer.Option(
+        None,
+        "--repo-root",
+        help="Repository root (auto-detected if omitted).",
+        file_okay=False,
+        dir_okay=True,
+        resolve_path=True,
+    ),
+) -> None:
+    """Flatten EurovisionAPI senior data into data/external/esc-results/."""
+    root = _repo_root_option(repo_root)
+    try:
+        message = run_vendor_esc_flatten(
+            root,
+            dataset_dir=dataset_dir,
+            release_tag=release_tag,
+        )
+    except FlattenError as exc:
         echo_cli_error(str(exc))
         raise typer.Exit(code=1)
     typer.echo(message)

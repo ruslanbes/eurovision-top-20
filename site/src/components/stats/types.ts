@@ -11,6 +11,7 @@ export type VideoStatsRow = {
   top10: number;
   top20: number;
   chart_points: number;
+  esc_final_place: number | string | null;
   youtube_video_id: string;
   youtube_watch_url: string | null;
   artist: string | null;

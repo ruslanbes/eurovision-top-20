@@ -17,7 +17,8 @@
       "country": "Russia",
       "performance_type": "Grand Final",
       "year": 2016,
-      "metadata_extractor": "dash_four_flag_in_song_v1"
+      "metadata_extractor": "dash_four_flag_in_song_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Jessy Matador - Allez Ola Olé (France) - Eurovision Song Contest 2010 - Music Video",
@@ -35,7 +36,8 @@
       "country": "France",
       "performance_type": "Music Video",
       "year": 2010,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 12
     },
     {
       "video_title": "Sunstroke Project - Hey Mamma (LIVE feat. Epic Sax Guy) | Moldova 🇲🇩 | Grand Final | Eurovision 2017",
@@ -53,7 +55,8 @@
       "country": "Moldova",
       "performance_type": "Grand Final",
       "year": 2017,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Kristina - Horehronie - Slovakia 🇸🇰 - Official Music Video - Eurovision 2010",
@@ -71,7 +74,8 @@
       "country": "Slovakia",
       "performance_type": "Official Music Video",
       "year": 2010,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Lordi - Hard Rock Hallelujah (LIVE) | Finland 🇫🇮 | Grand Final | Winner of Eurovision 2006",
@@ -89,7 +93,8 @@
       "country": "Finland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2006,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Francesco Gabbani - Occidentali's Karma (Italy) Eurovision 2017 - National Final Performance",
@@ -107,7 +112,8 @@
       "country": "Italy",
       "performance_type": "National Final Performance",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "Amir - J'ai cherché - 🇫🇷 France - Official Music Video - Eurovision 2016",
@@ -125,7 +131,8 @@
       "country": "France",
       "performance_type": "Official Music Video",
       "year": 2016,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "Robin Bengtsson - I Can't Go On (Sweden) Eurovision 2017 - Official Music Video",
@@ -143,7 +150,8 @@
       "country": "Sweden",
       "performance_type": "Official Music Video",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 5
     },
     {
       "video_title": "Måns Zelmerlöw - Heroes (LIVE) | Sweden 🇸🇪 | Grand Final | Winner of Eurovision 2015",
@@ -161,7 +169,8 @@
       "country": "Sweden",
       "performance_type": "Grand Final (LIVE)",
       "year": 2015,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Blanche - City Lights (Belgium) Eurovision 2017 - Official Music Video",
@@ -179,7 +188,8 @@
       "country": "Belgium",
       "performance_type": "Official Music Video",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Salvador Sobral - Amar Pelos Dois (Portugal) Eurovision 2017 - Official Music Video",
@@ -197,7 +207,8 @@
       "country": "Portugal",
       "performance_type": "Official Music Video",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Sunstroke Project - Hey Mamma (Moldova) Eurovision 2017 - Official Music Video",
@@ -215,7 +226,8 @@
       "country": "Moldova",
       "performance_type": "Official Music Video",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Jamala - 1944 (LIVE) | Ukraine 🇺🇦 | Grand Final | Winner of Eurovision 2016",
@@ -233,7 +245,8 @@
       "country": "Ukraine",
       "performance_type": "Grand Final (LIVE)",
       "year": 2016,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Hadise - Düm Tek Tek - Türkiye 🇹🇷 - Grand Final - Eurovision 2009",
@@ -251,7 +264,8 @@
       "country": "Turkey",
       "performance_type": "Grand Final",
       "year": 2009,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Salvador Sobral - Amar Pelos Dois (LIVE) | Portugal 🇵🇹 | Grand Final | Winner of Eurovision 2017",
@@ -269,7 +283,8 @@
       "country": "Portugal",
       "performance_type": "Grand Final (LIVE)",
       "year": 2017,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Hadise - Düm Tek Tek (Turkey)",
@@ -287,7 +302,8 @@
       "country": "Turkey",
       "performance_type": "Official Preview Video",
       "year": 2009,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Dami Im - Sound Of Silence (Australia) 2016 Eurovision Song Contest",
@@ -305,7 +321,8 @@
       "country": "Australia",
       "performance_type": "Official Music Video",
       "year": 2016,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Loreen - Euphoria (LIVE) | Sweden 🇸🇪 | Grand Final | Winner of Eurovision 2012",
@@ -323,7 +340,8 @@
       "country": "Sweden",
       "performance_type": "Grand Final (LIVE)",
       "year": 2012,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Blanche - City Lights (LIVE) | Belgium 🇧🇪 | Grand Final | Eurovision 2017",
@@ -341,7 +359,8 @@
       "country": "Belgium",
       "performance_type": "Grand Final (LIVE)",
       "year": 2017,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Eurovision Song Contest 2017 - Grand Final - Live",
@@ -359,7 +378,8 @@
       "country": "Ukraine",
       "performance_type": "Special",
       "year": 2017,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": "NON_ENTRY"
     },
     {
       "video_title": "Levina - Perfect Life (Germany) Eurovision 2017 - National Final Performance",
@@ -377,7 +397,8 @@
       "country": "Germany",
       "performance_type": "National Final Performance",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 25
     },
     {
       "video_title": "Alma - Requiem (France) Eurovision 2017 - Official Music Video",
@@ -395,7 +416,8 @@
       "country": "France",
       "performance_type": "Official Music Video",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 12
     },
     {
       "video_title": "Julia Samoylova - Flame Is Burning (Russia) Eurovision 2017 - Official Video",
@@ -413,7 +435,8 @@
       "country": "Russia",
       "performance_type": "Official Video",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": "WITHDRAWN"
     },
     {
       "video_title": "Kristian Kostov - Beautiful Mess (Bulgaria) Eurovision 2017 - Official Lyric Video",
@@ -431,7 +454,8 @@
       "country": "Bulgaria",
       "performance_type": "Official Lyric Video",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Poli Genova - If Love Was A Crime - 🇧🇬 Bulgaria - Official Music Video - Eurovision 2016",
@@ -449,7 +473,8 @@
       "country": "Bulgaria",
       "performance_type": "Official Music Video",
       "year": 2016,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Sunstroke Project & Olia Tira - Run Away | Moldova 🇲🇩 (Epic Sax Guy) | Grand Final | Eurovision 2010",
@@ -467,7 +492,8 @@
       "country": "Moldova",
       "performance_type": "Grand Final",
       "year": 2010,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 22
     },
     {
       "video_title": "Lena - Satellite - Germany 🇩🇪 Official Music Video - Eurovision 2010",
@@ -485,7 +511,8 @@
       "country": "Germany",
       "performance_type": "Official Music Video",
       "year": 2010,
-      "metadata_extractor": "dash_four_flag_glued_type_v1"
+      "metadata_extractor": "dash_four_flag_glued_type_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Robin Bengtsson - I Can't Go On (LIVE) | Sweden 🇸🇪 | Grand Final | Eurovision 2017",
@@ -503,7 +530,8 @@
       "country": "Sweden",
       "performance_type": "Grand Final (LIVE)",
       "year": 2017,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 5
     },
     {
       "video_title": "Manel Navarro - Do It For Your Lover (Spain) Eurovision 2017 -National Final Performance",
@@ -521,7 +549,8 @@
       "country": "Spain",
       "performance_type": "National Final Performance",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 26
     },
     {
       "video_title": "maNga - We Could Be The Same - Turkey 🇹🇷 - Grand Final - Eurovision 2010",
@@ -539,7 +568,8 @@
       "country": "Turkey",
       "performance_type": "Grand Final",
       "year": 2010,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Salvador Sobral - Amar Pelos Dois (Portugal) LIVE at the first Semi-Final",
@@ -557,7 +587,8 @@
       "country": "Portugal",
       "performance_type": "First Semi-Final (LIVE)",
       "year": 2017,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Emmelie de Forest - Only Teardrops - Denmark 🇩🇰 - Official Music Video - Eurovision 2013",
@@ -575,7 +606,8 @@
       "country": "Denmark",
       "performance_type": "Official Music Video",
       "year": 2013,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Ilinca ft. Alex Florea - Yodel It! (Romania) LIVE at the 2017 Eurovision Song Contest",
@@ -593,7 +625,8 @@
       "country": "Romania",
       "performance_type": "LIVE at the Eurovision Song Contest (LIVE)",
       "year": 2017,
-      "metadata_extractor": "dash_live_at_eurovision_v1"
+      "metadata_extractor": "dash_live_at_eurovision_v1",
+      "esc_final_place": 7
     },
     {
       "video_title": "Isaiah - Don't Come Easy (Australia) Eurovision 2017 - Official Music Video",
@@ -611,7 +644,8 @@
       "country": "Australia",
       "performance_type": "Official Music Video",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 9
     },
     {
       "video_title": "Lena - Satellite (LIVE) | Germany 🇩🇪 | Grand Final | Winner of Eurovision 2010",
@@ -629,7 +663,8 @@
       "country": "Germany",
       "performance_type": "Grand Final (LIVE)",
       "year": 2010,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Valentina Monetta & Jimmie Wilson - Spirit Of The Night (San Marino) - Official Music Video",
@@ -647,7 +682,8 @@
       "country": "San Marino",
       "performance_type": "Official Music Video",
       "year": 2017,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "AySel & Arash - Always - 🇦🇿 Azerbaijan - Official Music Video - Eurovision 2009",
@@ -665,7 +701,8 @@
       "country": "Azerbaijan",
       "performance_type": "Official Music Video",
       "year": 2009,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Conchita Wurst - Rise Like a Phoenix (LIVE) | Austria 🇦🇹 | Grand Final | Winner of Eurovision 2014",
@@ -683,7 +720,8 @@
       "country": "Austria",
       "performance_type": "Grand Final (LIVE)",
       "year": 2014,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Francesco Gabbani - Occidentali's Karma (Eurovision version) (Italy) - Official Music Video",
@@ -701,7 +739,8 @@
       "country": "Italy",
       "performance_type": "Official Music Video",
       "year": 2017,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "Francesco Gabbani - Occidentali's Karma (LIVE) | Italy 🇮🇹 | Grand Final | Eurovision 2017",
@@ -719,7 +758,8 @@
       "country": "Italy",
       "performance_type": "Grand Final (LIVE)",
       "year": 2017,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "Jana Burčeska - Dance Alone (F.Y.R. Macedonia) Eurovision 2017 - Official Music Video",
@@ -737,7 +777,8 @@
       "country": "North Macedonia",
       "performance_type": "Official Music Video",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Kristian Kostov - Beautiful Mess (Bulgaria) LIVE at the second Semi-Final",
@@ -755,7 +796,8 @@
       "country": "Bulgaria",
       "performance_type": "Second Semi-Final (LIVE)",
       "year": 2017,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Levina - Perfect Life (Germany) Eurovision 2017 - Official Music Video",
@@ -773,7 +815,8 @@
       "country": "Germany",
       "performance_type": "Official Music Video",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": 25
     },
     {
       "video_title": "Michał Szpak - Color Of Your Life (LIVE) | Poland 🇵🇱 | Grand Final | Eurovision 2016",
@@ -791,7 +834,8 @@
       "country": "Poland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2016,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 8
     },
     {
       "video_title": "Ruslana - Wild Dances (LIVE) | Ukraine 🇺🇦 | Grand Final | Winner of Eurovision 2004",
@@ -809,7 +853,8 @@
       "country": "Ukraine",
       "performance_type": "Grand Final (LIVE)",
       "year": 2004,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Sergey Lazarev - You Are The Only One - 🇷🇺 Russia - Official Music Video - Eurovision 2016",
@@ -827,7 +872,8 @@
       "country": "Russia",
       "performance_type": "Official Music Video",
       "year": 2016,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Tijana Bogićević - In Too Deep (Serbia) Eurovision 2017 - Official Music Video",
@@ -845,7 +891,8 @@
       "country": "Serbia",
       "performance_type": "Official Music Video",
       "year": 2017,
-      "metadata_extractor": "dash_paren_country_year_v1"
+      "metadata_extractor": "dash_paren_country_year_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Verka Serduchka - Dancing Lasha Tumbai (LIVE) | Ukraine 🇺🇦 | Grand Final | Eurovision 2007",
@@ -863,7 +910,8 @@
       "country": "Ukraine",
       "performance_type": "Grand Final (LIVE)",
       "year": 2007,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 2
     }
   ]
 }

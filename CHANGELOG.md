@@ -4,7 +4,18 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+### Added
+
+- ESC final placement on packaged rows — vendored [EurovisionAPI/dataset](https://github.com/EurovisionAPI/dataset) release `2026.4`, join in `package`, `evtop20 vendor-esc flatten` CLI.
+- **Place** column on per-video stats table (`esc_final_place` labels + custom sort; tooltip distinguishes from chart points).
+- ESC join artist normalization — `and`/`y`/`x`/`feat.`/`ft.` equivalents, sorted duet parts for alias matching.
+- `data/metadata/esc-join-overrides.json` — map `youtube_video_id` → contest edition when title parse cannot match vendor (e.g. MESC NF titles).
+- `data/metadata/esc-placement-overrides.json` — direct `youtube_video_id` → `esc_final_place` for non-entry clips, withdrawn entries, and other cases vendor join cannot resolve.
+
 ### Changed
+
+- ESC placement overrides moved out of `manual-video-metadata.json` into `esc-placement-overrides.json` (title-parse file is parse fields only).
+- Vendored ESC results include **2026** from [EurovisionAPI/dataset PR #1](https://github.com/EurovisionAPI/dataset/pull/1) (`release_tag` `2026.4+pr1` until upstream merge); `last_completed_contest_year` **2026**.
 
 - Pipeline requires **Python 3.14** (`pipeline/.python-version`, CI test job on push/PR).
 - Removed `generated_at` from processed and packaged snapshot JSON (was pipeline run date on every file, causing noisy git diffs on no-op reruns). Site footer uses the selected period instead.

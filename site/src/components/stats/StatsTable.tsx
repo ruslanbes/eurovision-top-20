@@ -8,6 +8,11 @@ import {
   type SortingState,
 } from "@tanstack/react-table";
 import { useMemo } from "react";
+import {
+  ESC_FINAL_PLACE_COLUMN_TITLE,
+  escFinalPlaceSortKey,
+  formatEscFinalPlace,
+} from "./escFinalPlace";
 import { DEFAULT_VIDEO_SORT } from "./sort";
 import type { VideoStatsRow } from "./types";
 
@@ -67,6 +72,15 @@ export function StatsTable({ rows, sorting, onSortingChange }: StatsTableProps) 
       {
         accessorKey: "chart_points",
         header: "Points",
+      },
+      {
+        accessorKey: "esc_final_place",
+        header: "Place",
+        meta: { title: ESC_FINAL_PLACE_COLUMN_TITLE },
+        sortingFn: (rowA, rowB, columnId) =>
+          escFinalPlaceSortKey(rowA.getValue(columnId)) -
+          escFinalPlaceSortKey(rowB.getValue(columnId)),
+        cell: ({ getValue }) => formatEscFinalPlace(getValue()),
       },
       {
         accessorKey: "top1",
@@ -132,6 +146,13 @@ export function StatsTable({ rows, sorting, onSortingChange }: StatsTableProps) 
                       <button
                         type="button"
                         className="inline-flex items-center gap-1 hover:text-zinc-900 dark:hover:text-zinc-100"
+                        title={
+                          typeof header.column.columnDef.meta === "object" &&
+                          header.column.columnDef.meta !== null &&
+                          "title" in header.column.columnDef.meta
+                            ? String(header.column.columnDef.meta.title)
+                            : undefined
+                        }
                         onClick={header.column.getToggleSortingHandler()}
                       >
                         <SortLabel
@@ -165,6 +186,9 @@ export function StatsTable({ rows, sorting, onSortingChange }: StatsTableProps) 
                     cell.column.id === "video_title"
                       ? "min-w-[16rem] max-w-xl whitespace-normal"
                       : "whitespace-nowrap",
+                    cell.column.id === "esc_final_place"
+                      ? "text-right tabular-nums"
+                      : "",
                   ].join(" ")}
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}

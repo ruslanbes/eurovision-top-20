@@ -5,6 +5,11 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
+from evtop20.esc_results.join import (
+    EscResultsJoinError,
+    EscResultsJoiner,
+    load_esc_results_joiner,
+)
 from evtop20.models import youtube_id_is_set
 from evtop20.normalize import write_episode_file
 from evtop20.paths import (
@@ -58,7 +63,11 @@ def youtube_watch_url(video_id: object) -> str | None:
     return f"https://www.youtube.com/watch?v={video_id}"
 
 
-def augment_stats_row(row: dict) -> dict:
+def augment_stats_row(
+    row: dict,
+    *,
+    esc_joiner: EscResultsJoiner | None = None,
+) -> dict:
     packaged = dict(row)
     video_id = row.get("youtube_video_id")
     packaged["youtube_watch_url"] = youtube_watch_url(video_id)
@@ -66,16 +75,22 @@ def augment_stats_row(row: dict) -> dict:
     video_title = row.get("video_title")
     if not isinstance(video_title, str):
         packaged.update(_empty_metadata())
+        packaged["esc_final_place"] = None
         return packaged
 
     video_id_str = video_id.strip() if isinstance(video_id, str) else ""
     parsed = parse_video_title(video_title, video_id_str)
     if parsed is None:
         packaged.update(_empty_metadata())
+        packaged["esc_final_place"] = None
         return packaged
 
     packaged.update(parsed.as_dict())
     packaged["metadata_extractor"] = parsed.extractor
+    if esc_joiner is not None:
+        packaged["esc_final_place"] = esc_joiner.lookup(packaged)
+    else:
+        packaged["esc_final_place"] = None
     return packaged
 
 
@@ -95,6 +110,7 @@ def package_video_payload(
     processed_payload: dict,
     *,
     source: str,
+    esc_joiner: EscResultsJoiner | None = None,
 ) -> tuple[dict, int, set[str]]:
     rows = processed_payload.get("rows")
     if not isinstance(rows, list):
@@ -109,7 +125,7 @@ def package_video_payload(
         if not isinstance(row, dict):
             msg = "processed row must be an object"
             raise PackageError(msg)
-        packaged_row = augment_stats_row(row)
+        packaged_row = augment_stats_row(row, esc_joiner=esc_joiner)
         packaged_rows.append(packaged_row)
         if packaged_row.get("artist") is not None:
             parsed_count += 1
@@ -127,12 +143,28 @@ def package_video_payload(
     return packaged_payload, parsed_count, unparsed_titles
 
 
-def package_alltime_payload(processed_payload: dict) -> tuple[dict, int, set[str]]:
-    return package_video_payload(processed_payload, source="processed/alltime")
+def package_alltime_payload(
+    processed_payload: dict,
+    *,
+    esc_joiner: EscResultsJoiner | None = None,
+) -> tuple[dict, int, set[str]]:
+    return package_video_payload(
+        processed_payload,
+        source="processed/alltime",
+        esc_joiner=esc_joiner,
+    )
 
 
-def package_recent_payload(processed_payload: dict) -> tuple[dict, int, set[str]]:
-    return package_video_payload(processed_payload, source="processed/recent")
+def package_recent_payload(
+    processed_payload: dict,
+    *,
+    esc_joiner: EscResultsJoiner | None = None,
+) -> tuple[dict, int, set[str]]:
+    return package_video_payload(
+        processed_payload,
+        source="processed/recent",
+        esc_joiner=esc_joiner,
+    )
 
 
 def list_processed_snapshot_paths(repo_root: Path, stats_basename: str) -> list[Path]:
@@ -174,6 +206,7 @@ def _package_variant(
     song_out_dir: Path,
     song_stats_path: Callable[[Path, str], Path],
     song_latest_path: Callable[[Path], Path],
+    esc_joiner: EscResultsJoiner | None = None,
 ) -> PackageVariantResult | None:
     source_paths = list_processed_snapshot_paths(repo_root, stats_basename)
     if not source_paths:
@@ -195,6 +228,7 @@ def _package_variant(
         packaged_payload, parsed_count, unparsed_titles = package_video_payload(
             processed_payload,
             source=processed_source,
+            esc_joiner=esc_joiner,
         )
 
         write_episode_file(video_stats_path(repo_root, source_path.name), packaged_payload)
@@ -268,6 +302,11 @@ def _format_variant_summary(result: PackageVariantResult) -> str:
 
 
 def run_package(repo_root: Path) -> str:
+    try:
+        esc_joiner = load_esc_results_joiner(repo_root)
+    except EscResultsJoinError as exc:
+        raise PackageError(str(exc)) from exc
+
     alltime = _package_variant(
         repo_root,
         label="alltime",
@@ -280,6 +319,7 @@ def run_package(repo_root: Path) -> str:
         song_out_dir=packaged_per_song_alltime_dir(repo_root),
         song_stats_path=packaged_per_song_alltime_stats_path,
         song_latest_path=packaged_per_song_alltime_stats_latest_path,
+        esc_joiner=esc_joiner,
     )
     if alltime is None:
         msg = (
@@ -301,13 +341,14 @@ def run_package(repo_root: Path) -> str:
         song_out_dir=packaged_per_song_recent_dir(repo_root),
         song_stats_path=packaged_per_song_recent_stats_path,
         song_latest_path=packaged_per_song_recent_stats_latest_path,
+        esc_joiner=esc_joiner,
     )
 
     message_parts = [_format_variant_summary(alltime)]
     if recent is not None:
         message_parts.append(_format_variant_summary(recent))
 
-    warnings = dict.fromkeys(alltime.warnings)
+    warnings = dict.fromkeys([*alltime.warnings, *esc_joiner.warnings])
     if recent is not None:
         warnings.update(dict.fromkeys(recent.warnings))
 

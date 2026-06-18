@@ -17,7 +17,8 @@
       "country": "Russia",
       "performance_type": "Official Music Video",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "Netta - Toy (LIVE) | Israel 🇮🇱 | Grand Final | Winner of Eurovision 2018",
@@ -35,7 +36,8 @@
       "country": "Israel",
       "performance_type": "Grand Final (LIVE)",
       "year": 2018,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Alexander Rybak - Fairytale (LIVE) | Norway 🇳🇴 | Grand Final | Winner of Eurovision 2009",
@@ -53,7 +55,8 @@
       "country": "Norway",
       "performance_type": "Grand Final (LIVE)",
       "year": 2009,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Hadise - Düm Tek Tek - Türkiye 🇹🇷 - Grand Final - Eurovision 2009",
@@ -71,7 +74,8 @@
       "country": "Turkey",
       "performance_type": "Grand Final",
       "year": 2009,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Duncan Laurence - Arcade (LIVE) | Netherlands 🇳🇱 | Grand Final | Winner of Eurovision 2019",
@@ -89,7 +93,8 @@
       "country": "Netherlands",
       "performance_type": "Grand Final (LIVE)",
       "year": 2019,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Måneskin - Zitti E Buoni (LIVE) | Italy 🇮🇹 | Grand Final | Winner of Eurovision 2021",
@@ -107,7 +112,8 @@
       "country": "Italy",
       "performance_type": "Grand Final (LIVE)",
       "year": 2021,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Eleni Foureira - Fuego (LIVE) | Cyprus 🇨🇾 | Grand Final | Eurovision 2018",
@@ -125,7 +131,8 @@
       "country": "Cyprus",
       "performance_type": "Grand Final (LIVE)",
       "year": 2018,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Chanel - SloMo (LIVE) | Spain 🇪🇸 | Grand Final | Eurovision 2022",
@@ -143,7 +150,8 @@
       "country": "Spain",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Mahmood - Soldi (LIVE) | Italy 🇮🇹 | Grand Final | Eurovision 2019",
@@ -161,7 +169,8 @@
       "country": "Italy",
       "performance_type": "Grand Final (LIVE)",
       "year": 2019,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "maNga - We Could Be The Same - Turkey 🇹🇷 - Grand Final - Eurovision 2010",
@@ -179,7 +188,8 @@
       "country": "Turkey",
       "performance_type": "Grand Final",
       "year": 2010,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Käärijä - Cha Cha Cha (LIVE) | Finland 🇫🇮 | Grand Final | Eurovision 2023",
@@ -197,7 +207,8 @@
       "country": "Finland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Go_A - Shum (LIVE) | Ukraine 🇺🇦 | Grand Final | Eurovision 2021",
@@ -215,7 +226,8 @@
       "country": "Ukraine",
       "performance_type": "Grand Final (LIVE)",
       "year": 2021,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 5
     },
     {
       "video_title": "Kalush Orchestra - Stefania (LIVE) | Ukraine 🇺🇦 | Grand Final | Winner of Eurovision 2022",
@@ -233,7 +245,8 @@
       "country": "Ukraine",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Verka Serduchka - Dancing Lasha Tumbai (LIVE) | Ukraine 🇺🇦 | Grand Final | Eurovision 2007",
@@ -251,7 +264,8 @@
       "country": "Ukraine",
       "performance_type": "Grand Final (LIVE)",
       "year": 2007,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Loreen - Tattoo (LIVE) | Sweden 🇸🇪 | Grand Final | Winner of Eurovision 2023",
@@ -269,7 +283,8 @@
       "country": "Sweden",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Aysel and Arash - Always - 🇦🇿 Azerbaijan - Grand Final - Eurovision 2009",
@@ -287,7 +302,8 @@
       "country": "Azerbaijan",
       "performance_type": "Grand Final",
       "year": 2009,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Netta - TOY - Israel - Official Music Video - Eurovision 2018",
@@ -305,7 +321,8 @@
       "country": "Israel",
       "performance_type": "Official Music Video",
       "year": 2018,
-      "metadata_extractor": "dash_five_country_name_v1"
+      "metadata_extractor": "dash_five_country_name_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Go_A - SHUM - Ukraine 🇺🇦 Official Music Video - Eurovision 2021",
@@ -323,7 +340,8 @@
       "country": "Ukraine",
       "performance_type": "Official Music Video",
       "year": 2021,
-      "metadata_extractor": "dash_four_flag_glued_type_v1"
+      "metadata_extractor": "dash_four_flag_glued_type_v1",
+      "esc_final_place": 5
     },
     {
       "video_title": "Efendi - Mata Hari - LIVE - Azerbaijan 🇦🇿 - Grand Final - Eurovision 2021",
@@ -341,7 +359,8 @@
       "country": "Azerbaijan",
       "performance_type": "Grand Final (LIVE)",
       "year": 2021,
-      "metadata_extractor": "dash_six_live_before_country_v1"
+      "metadata_extractor": "dash_six_live_before_country_v1",
+      "esc_final_place": 20
     },
     {
       "video_title": "Lena - Satellite (LIVE) | Germany 🇩🇪 | Grand Final | Winner of Eurovision 2010",
@@ -359,7 +378,8 @@
       "country": "Germany",
       "performance_type": "Grand Final (LIVE)",
       "year": 2010,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Noa Kirel - Unicorn (LIVE) | Israel 🇮🇱 | Grand Final | Eurovision 2023",
@@ -377,7 +397,8 @@
       "country": "Israel",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Rosa Linn - Snap - Armenia 🇦🇲 - Official Music Video - Eurovision 2022",
@@ -395,7 +416,8 @@
       "country": "Armenia",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 20
     },
     {
       "video_title": "Sergey Lazarev - You Are The Only One 🇷🇺 Russia - Grand Final - Eurovision 2016",
@@ -413,7 +435,8 @@
       "country": "Russia",
       "performance_type": "Grand Final",
       "year": 2016,
-      "metadata_extractor": "dash_four_flag_in_song_v1"
+      "metadata_extractor": "dash_four_flag_in_song_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Luca Hänni - She Got Me (LIVE) | Switzerland 🇨🇭 | Grand Final | Eurovision 2019",
@@ -431,7 +454,8 @@
       "country": "Switzerland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2019,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "The Roop - On Fire - Lithuania 🇱🇹 - Official Music Video - Eurovision 2020",
@@ -449,7 +473,8 @@
       "country": "Lithuania",
       "performance_type": "Official Music Video",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "Daði og Gagnamagnið - Think About Things - Iceland 🇮🇸 - Official Video - Eurovision 2020",
@@ -467,7 +492,8 @@
       "country": "Iceland",
       "performance_type": "Official Video",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "Brunette - Future Lover | Armenia 🇦🇲 | Official Music Video | Eurovision 2023",
@@ -485,7 +511,8 @@
       "country": "Armenia",
       "performance_type": "Official Music Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 14
     },
     {
       "video_title": "Loreen - Euphoria (LIVE) | Sweden 🇸🇪 | Grand Final | Winner of Eurovision 2012",
@@ -503,7 +530,8 @@
       "country": "Sweden",
       "performance_type": "Grand Final (LIVE)",
       "year": 2012,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Alessandra - Queen Of Kings | Norway 🇳🇴 | National Final Performance | Eurovision 2023",
@@ -521,7 +549,8 @@
       "country": "Norway",
       "performance_type": "National Final Performance",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 5
     },
     {
       "video_title": "Mikolas Josef - Lie To Me (LIVE) | Czechia 🇨🇿 | Grand Final | Eurovision 2018",
@@ -539,7 +568,8 @@
       "country": "Czechia",
       "performance_type": "Grand Final (LIVE)",
       "year": 2018,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "Hurricane - Loco Loco (LIVE) | Serbia 🇷🇸 | Grand Final | Eurovision 2021",
@@ -557,7 +587,8 @@
       "country": "Serbia",
       "performance_type": "Grand Final (LIVE)",
       "year": 2021,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 15
     },
     {
       "video_title": "KEiiNO - Spirit In The Sky (LIVE) | Norway 🇳🇴 | Grand Final | Eurovision 2019",
@@ -575,7 +606,8 @@
       "country": "Norway",
       "performance_type": "Grand Final (LIVE)",
       "year": 2019,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "Kalush Orchestra - Stefania - Ukraine 🇺🇦 - Official Music Video - Eurovision 2022",
@@ -593,7 +625,8 @@
       "country": "Ukraine",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Loreen - Tattoo | Sweden 🇸🇪 | Official Music Video | Eurovision 2023",
@@ -611,7 +644,8 @@
       "country": "Sweden",
       "performance_type": "Official Music Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Lordi - Hard Rock Hallelujah (LIVE) | Finland 🇫🇮 | Grand Final | Winner of Eurovision 2006",
@@ -629,7 +663,8 @@
       "country": "Finland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2006,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Manizha - Russian Woman - LIVE - Russia 🇷🇺 - Grand Final - Eurovision 2021",
@@ -647,7 +682,8 @@
       "country": "Russia",
       "performance_type": "Grand Final (LIVE)",
       "year": 2021,
-      "metadata_extractor": "dash_six_live_before_country_v1"
+      "metadata_extractor": "dash_six_live_before_country_v1",
+      "esc_final_place": 9
     },
     {
       "video_title": "WRS - Llámame - LIVE - Romania 🇷🇴 - Grand Final - Eurovision 2022",
@@ -665,7 +701,8 @@
       "country": "Romania",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "dash_six_live_before_country_v1"
+      "metadata_extractor": "dash_six_live_before_country_v1",
+      "esc_final_place": 18
     },
     {
       "video_title": "Hurricane - LOCO LOCO - Serbia 🇷🇸 - Official Music Video - Eurovision 2021",
@@ -683,7 +720,8 @@
       "country": "Serbia",
       "performance_type": "Official Music Video",
       "year": 2021,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 15
     },
     {
       "video_title": "Alessandra - Queen of Kings (LIVE) | Norway 🇳🇴 | Grand Final | Eurovision 2023",
@@ -701,7 +739,8 @@
       "country": "Norway",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 5
     },
     {
       "video_title": "Manizha - Russian Woman - Russia 🇷🇺 - Official Video - Eurovision 2021",
@@ -719,7 +758,8 @@
       "country": "Russia",
       "performance_type": "Official Video",
       "year": 2021,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 9
     },
     {
       "video_title": "Miki - La Venda - Spain - National Final Performance - Eurovision Song Contest 2019",
@@ -737,7 +777,8 @@
       "country": "Spain",
       "performance_type": "National Final Performance",
       "year": 2019,
-      "metadata_extractor": "dash_five_country_name_v1"
+      "metadata_extractor": "dash_five_country_name_v1",
+      "esc_final_place": 22
     },
     {
       "video_title": "Käärijä - Cha Cha Cha | Finland 🇫🇮 | National Final Performance | Eurovision 2023",
@@ -755,7 +796,8 @@
       "country": "Finland",
       "performance_type": "National Final Performance",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Chanel - SloMo - Spain 🇪🇸 - National Final Performance - Eurovision 2022",
@@ -773,7 +815,8 @@
       "country": "Spain",
       "performance_type": "National Final Performance",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Blanka - Solo (LIVE) | Poland 🇵🇱 | Grand Final | Eurovision 2023",
@@ -791,7 +834,8 @@
       "country": "Poland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 19
     },
     {
       "video_title": "Barbara Pravi - Voilà (LIVE) | France 🇫🇷 | Grand Final | Eurovision 2021",
@@ -809,7 +853,8 @@
       "country": "France",
       "performance_type": "Grand Final (LIVE)",
       "year": 2021,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Efendi - Mata Hari - Azerbaijan 🇦🇿 - Official Music Video - Eurovision 2021",
@@ -827,7 +872,8 @@
       "country": "Azerbaijan",
       "performance_type": "Official Music Video",
       "year": 2021,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 20
     },
     {
       "video_title": "Luiz Ejlli - Zjarr E Ftohtë | Albania 🇦🇱 | Semi-Final | Eurovision 2006",
@@ -845,7 +891,8 @@
       "country": "Albania",
       "performance_type": "Semi-Final",
       "year": 2006,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Efendi - Cleopatra - Azerbaijan 🇦🇿 - Official Music Video - Eurovision 2020",
@@ -863,7 +910,8 @@
       "country": "Azerbaijan",
       "performance_type": "Official Music Video",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "The Roop - On Fire - Lithuania 🇱🇹 - National Final Performance - Eurovision 2020",
@@ -881,7 +929,8 @@
       "country": "Lithuania",
       "performance_type": "National Final Performance",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "S10 - De Diepte - Netherlands 🇳🇱 - Official Music Video - Eurovision 2022",
@@ -899,7 +948,8 @@
       "country": "Netherlands",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 11
     },
     {
       "video_title": "Let 3 - Mama ŠČ! | Croatia 🇭🇷 | National Final Performance | Eurovision 2023",
@@ -917,7 +967,8 @@
       "country": "Croatia",
       "performance_type": "National Final Performance",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 13
     },
     {
       "video_title": "Sam Ryder - SPACE MAN (LIVE) | United Kingdom 🇬🇧 | Grand Final | Eurovision 2022",
@@ -935,7 +986,8 @@
       "country": "United Kingdom",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Subwoolfer - Give That Wolf A Banana (LIVE) (LIVE) | Norway 🇳🇴 | Grand Final | Eurovision 2022",
@@ -953,7 +1005,8 @@
       "country": "Norway",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 10
     },
     {
       "video_title": "Blanka - Solo | Poland 🇵🇱 | National Final Performance | Eurovision 2023",
@@ -971,7 +1024,8 @@
       "country": "Poland",
       "performance_type": "National Final Performance",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 19
     },
     {
       "video_title": "LUM!X feat. Pia Maria - Halo - Austria 🇦🇹 - Official Music Video - Eurovision 2022",
@@ -989,7 +1043,8 @@
       "country": "Austria",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Ronela Hajati - Sekret - Albania 🇦🇱 - National Final Performance - Eurovision 2022",
@@ -1007,7 +1062,8 @@
       "country": "Albania",
       "performance_type": "National Final Performance",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Subwoolfer - Give That Wolf A Banana - Norway 🇳🇴 - National Final Performance - Eurovision 2022",
@@ -1025,7 +1081,8 @@
       "country": "Norway",
       "performance_type": "National Final Performance",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 10
     },
     {
       "video_title": "Noa Kirel - Unicorn | Israel 🇮🇱 | Official Music Video | Eurovision 2023",
@@ -1043,7 +1100,8 @@
       "country": "Israel",
       "performance_type": "Official Music Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Tamta - Replay (LIVE) | Cyprus 🇨🇾 | Grand Final | Eurovision 2019",
@@ -1061,7 +1119,8 @@
       "country": "Cyprus",
       "performance_type": "Grand Final (LIVE)",
       "year": 2019,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 13
     },
     {
       "video_title": "Zdob şi Zdub & Advahov Brothers - Trenulețul (LIVE) | Moldova 🇲🇩 | Grand Final | Eurovision 2022",
@@ -1079,7 +1138,8 @@
       "country": "Moldova",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 7
     },
     {
       "video_title": "Albina - Tick-Tock - Croatia 🇭🇷 - National Final Performance - Eurovision 2021",
@@ -1097,7 +1157,8 @@
       "country": "Croatia",
       "performance_type": "National Final Performance",
       "year": 2021,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Alicja Szemplińska - Empires - Poland 🇵🇱 - National Final Performance - Eurovision 2020",
@@ -1115,7 +1176,8 @@
       "country": "Poland",
       "performance_type": "National Final Performance",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "Sergey Lazarev - Scream - Russia 🇷🇺 - Grand Final - Eurovision 2019",
@@ -1133,7 +1195,8 @@
       "country": "Russia",
       "performance_type": "Grand Final",
       "year": 2019,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Athena Manoukian - Chains On You - Armenia 🇦🇲 - Official Music Video - Eurovision 2020",
@@ -1151,7 +1214,8 @@
       "country": "Armenia",
       "performance_type": "Official Music Video",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "Ronela Hajati - Sekret - Albania 🇦🇱 - Official Music Video - Eurovision 2022",
@@ -1169,7 +1233,8 @@
       "country": "Albania",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Blind Channel - Dark Side (LIVE) | Finland 🇫🇮 | Grand Final | Eurovision 2021",
@@ -1187,7 +1252,8 @@
       "country": "Finland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2021,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "La Zarra - Évidemment | France 🇫🇷 | Official Music Video | Eurovision 2023",
@@ -1205,7 +1271,8 @@
       "country": "France",
       "performance_type": "Official Music Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 16
     },
     {
       "video_title": "Michela - Chameleon (LIVE) | Malta 🇲🇹 | Grand Final | Eurovision 2019",
@@ -1223,7 +1290,8 @@
       "country": "Malta",
       "performance_type": "Grand Final (LIVE)",
       "year": 2019,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 14
     },
     {
       "video_title": "Miki - La Venda (LIVE) | Spain 🇪🇸 | Grand Final | Eurovision 2019",
@@ -1241,7 +1309,8 @@
       "country": "Spain",
       "performance_type": "Grand Final (LIVE)",
       "year": 2019,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 22
     },
     {
       "video_title": "Mahmood & BLANCO - Brividi - Italy 🇮🇹 - National Final Performance - Eurovision 2022",
@@ -1259,7 +1328,8 @@
       "country": "Italy",
       "performance_type": "National Final Performance",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "Sam Ryder - SPACE MAN - United Kingdom 🇬🇧 - Official Music Video - Eurovision 2022",
@@ -1277,7 +1347,8 @@
       "country": "United Kingdom",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Konstrakta - In Corpore Sano (LIVE) | Serbia 🇷🇸 | Grand Final | Eurovision 2022",
@@ -1295,7 +1366,8 @@
       "country": "Serbia",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 5
     },
     {
       "video_title": "Blanca Paloma - Eaea | Spain 🇪🇸 | National Final Performance | Eurovision 2023",
@@ -1313,7 +1385,8 @@
       "country": "Spain",
       "performance_type": "National Final Performance",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 17
     },
     {
       "video_title": "Diodato - Fai Rumore - Italy 🇮🇹 - Performance in Arena di Verona - Eurovision 2020",
@@ -1331,7 +1404,8 @@
       "country": "Italy",
       "performance_type": "Performance in Arena di Verona",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "James Newman - My Last Breath - Official Music Video - United Kingdom 🇬🇧 - Eurovision 2020",
@@ -1349,7 +1423,8 @@
       "country": "United Kingdom",
       "performance_type": "Official Music Video",
       "year": 2020,
-      "metadata_extractor": "dash_five_type_country_v1"
+      "metadata_extractor": "dash_five_type_country_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "Konstrakta - In Corpore Sano - Serbia 🇷🇸 - National Final Performance - Eurovision 2022",
@@ -1367,7 +1442,8 @@
       "country": "Serbia",
       "performance_type": "National Final Performance",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 5
     },
     {
       "video_title": "Albina & Familja Kelmendi - Duje | Albania 🇦🇱 | National Final Performance | Eurovision 2023",
@@ -1385,7 +1461,8 @@
       "country": "Albania",
       "performance_type": "National Final Performance",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 22
     },
     {
       "video_title": "Bilal Hassani - Roi (LIVE) | France 🇫🇷 | Grand Final | Eurovision 2019",
@@ -1403,7 +1480,8 @@
       "country": "France",
       "performance_type": "Grand Final (LIVE)",
       "year": 2019,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 16
     },
     {
       "video_title": "Conchita Wurst - Rise Like a Phoenix (LIVE) | Austria 🇦🇹 | Grand Final | Winner of Eurovision 2014",
@@ -1421,7 +1499,8 @@
       "country": "Austria",
       "performance_type": "Grand Final (LIVE)",
       "year": 2014,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Daði og Gagnamagnið - 10 Years (LIVE) | Iceland 🇮🇸 | Grand Final | Eurovision 2021",
@@ -1439,7 +1518,8 @@
       "country": "Iceland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2021,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Destiny - Je Me Casse - Malta 🇲🇹 - Official Music Video - Eurovision 2021",
@@ -1457,7 +1537,8 @@
       "country": "Malta",
       "performance_type": "Official Music Video",
       "year": 2021,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 7
     },
     {
       "video_title": "Elena Tsagrinou - El Diablo (LIVE) | Cyprus 🇨🇾 | Grand Final | Eurovision 2021",
@@ -1475,7 +1556,8 @@
       "country": "Cyprus",
       "performance_type": "Grand Final (LIVE)",
       "year": 2021,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 16
     },
     {
       "video_title": "Go_A - Solovey - Ukraine 🇺🇦 - Official Video - Eurovision 2020",
@@ -1493,7 +1575,8 @@
       "country": "Ukraine",
       "performance_type": "Official Video",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "Marco Mengoni - Due Vite (LIVE) | Italy 🇮🇹 | Grand Final | Eurovision 2023",
@@ -1511,7 +1594,8 @@
       "country": "Italy",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Pasha Parfeni - Soarele şi Luna (LIVE) | Moldova 🇲🇩 | Grand Final | Eurovision 2023",
@@ -1529,7 +1613,8 @@
       "country": "Moldova",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 18
     },
     {
       "video_title": "Teya & Salena - Who The Hell Is Edgar? (LIVE) | Austria 🇦🇹 | Grand Final | Eurovision 2023",
@@ -1547,7 +1632,8 @@
       "country": "Austria",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 15
     },
     {
       "video_title": "Alvan & Ahez - Fulenn - France 🇫🇷 - Official Music Video - Eurovision 2022",
@@ -1565,7 +1651,8 @@
       "country": "France",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 24
     },
     {
       "video_title": "Gustaph - Because Of You | Belgium 🇧🇪 | National Final Performance | Eurovision 2023",
@@ -1583,7 +1670,8 @@
       "country": "Belgium",
       "performance_type": "National Final Performance",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 7
     },
     {
       "video_title": "Konstrakta - In Corpore Sano - Serbia 🇷🇸 - Official Music Video - Eurovision 2022",
@@ -1601,7 +1689,8 @@
       "country": "Serbia",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 5
     },
     {
       "video_title": "Let 3 - Mama ŠČ! (LIVE) | Croatia 🇭🇷 | Grand Final | Eurovision 2023",
@@ -1619,7 +1708,8 @@
       "country": "Croatia",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 13
     },
     {
       "video_title": "Mae Muller - I Wrote A Song | United Kingdom 🇬🇧 | Official Music Video | Eurovision 2023",
@@ -1637,7 +1727,8 @@
       "country": "United Kingdom",
       "performance_type": "Official Music Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 25
     },
     {
       "video_title": "Ronela Hajati - Sekret - LIVE - Albania 🇦🇱 - First Semi-Final - Eurovision 2022",
@@ -1655,7 +1746,8 @@
       "country": "Albania",
       "performance_type": "First Semi-Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "dash_six_live_before_country_v1"
+      "metadata_extractor": "dash_six_live_before_country_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Teya & Salena - Who The Hell Is Edgar? | Austria 🇦🇹 | Official Music Video | Eurovision 2023",
@@ -1673,7 +1765,8 @@
       "country": "Austria",
       "performance_type": "Official Music Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 15
     },
     {
       "video_title": "Albina - Tick-Tock - Croatia 🇭🇷 - Official Music Video - Eurovision 2021",
@@ -1691,7 +1784,8 @@
       "country": "Croatia",
       "performance_type": "Official Music Video",
       "year": 2021,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Barbara Pravi - Voilà - France 🇫🇷 - Official Music Video - Eurovision 2021",
@@ -1709,7 +1803,8 @@
       "country": "France",
       "performance_type": "Official Music Video",
       "year": 2021,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Can Bonomo - Love Me Back - Turkey - Live - Grand Final - 2012 Eurovision Song Contest",
@@ -1727,7 +1822,8 @@
       "country": "Turkey",
       "performance_type": "Grand Final (LIVE)",
       "year": 2012,
-      "metadata_extractor": "dash_six_live_after_country_v1"
+      "metadata_extractor": "dash_six_live_after_country_v1",
+      "esc_final_place": 7
     },
     {
       "video_title": "Citi Zēni - Eat Your Salad - Latvia 🇱🇻 - National Final Performance - Eurovision 2022",
@@ -1745,7 +1841,8 @@
       "country": "Latvia",
       "performance_type": "National Final Performance",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Gjon's Tears - Répondez-moi - Switzerland 🇨🇭 - Official Music Video - Eurovision 2020",
@@ -1763,7 +1860,8 @@
       "country": "Switzerland",
       "performance_type": "Official Music Video",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "Gjon's Tears - Tout l'Univers (LIVE) | Switzerland 🇨🇭 | Grand Final | Eurovision 2021",
@@ -1781,7 +1879,8 @@
       "country": "Switzerland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2021,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Gjon's Tears - Tout l’Univers - Switzerland 🇨🇭 - Official Music Video - Eurovision 2021",
@@ -1799,7 +1898,8 @@
       "country": "Switzerland",
       "performance_type": "Official Music Video",
       "year": 2021,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Hatari - Hatrið Mun Sigra (LIVE) | Iceland 🇮🇸 | Grand Final | Eurovision 2019",
@@ -1817,7 +1917,8 @@
       "country": "Iceland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2019,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 10
     },
     {
       "video_title": "Joker Out - Carpe Diem | Slovenia 🇸🇮 | Showcase Performance | Eurovision 2023",
@@ -1835,7 +1936,8 @@
       "country": "Slovenia",
       "performance_type": "Showcase Performance",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 21
     },
     {
       "video_title": "Kate Miller-Heidke - Zero Gravity - Australia 🇦🇺 - Official Video - Eurovision 2019",
@@ -1853,7 +1955,8 @@
       "country": "Australia",
       "performance_type": "Official Video",
       "year": 2019,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 9
     },
     {
       "video_title": "Love Shine A Light performed by the artists of Eurovision 2020 - Eurovision: Europe Shine A Light",
@@ -1871,7 +1974,8 @@
       "country": "Netherlands",
       "performance_type": "Special",
       "year": 2020,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": "NON_ENTRY"
     },
     {
       "video_title": "Marija Šerifović - Molitva - Eurovision: Europe Shine A Light",
@@ -1889,7 +1993,8 @@
       "country": "Serbia",
       "performance_type": "Special",
       "year": 2020,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": "NON_ENTRY"
     },
     {
       "video_title": "Montaigne - Don't Break Me - Australia 🇦🇺 - Official Video - Eurovision 2020",
@@ -1907,7 +2012,8 @@
       "country": "Australia",
       "performance_type": "Official Video",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "Måns Zelmerlöw - Heroes (LIVE) | Sweden 🇸🇪 | Grand Final | Winner of Eurovision 2015",
@@ -1925,7 +2031,8 @@
       "country": "Sweden",
       "performance_type": "Grand Final (LIVE)",
       "year": 2015,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Ochman - River - Poland 🇵🇱 - National Final Performance - Eurovision 2022",
@@ -1943,7 +2050,8 @@
       "country": "Poland",
       "performance_type": "National Final Performance",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 12
     },
     {
       "video_title": "Ruslana - Wild Dances (LIVE) | Ukraine 🇺🇦 | Grand Final | Winner of Eurovision 2004",
@@ -1961,7 +2069,8 @@
       "country": "Ukraine",
       "performance_type": "Grand Final (LIVE)",
       "year": 2004,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "S!sters - Sister - Germany 🇩🇪 - Official Video - Eurovision 2019",
@@ -1979,7 +2088,8 @@
       "country": "Germany",
       "performance_type": "Official Video",
       "year": 2019,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 25
     },
     {
       "video_title": "Switch Song (with Conchita Wurst, Måns Zelmerlöw, Eleni Foureira, Verka Serduchka) - Eurovision 2019",
@@ -1997,7 +2107,8 @@
       "country": "Israel",
       "performance_type": "Special",
       "year": 2019,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": "NON_ENTRY"
     },
     {
       "video_title": "The Mamas - Move - Sweden 🇸🇪 - Official Video - Eurovision 2020",
@@ -2015,7 +2126,8 @@
       "country": "Sweden",
       "performance_type": "Official Video",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "The Roop - Discoteque - Lithuania 🇱🇹 - Official Video - Eurovision 2021",
@@ -2033,7 +2145,8 @@
       "country": "Lithuania",
       "performance_type": "Official Video",
       "year": 2021,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 8
     },
     {
       "video_title": "TIX - Fallen Angel - Norway 🇳🇴 - Official Video - Eurovision 2021",
@@ -2051,7 +2164,8 @@
       "country": "Norway",
       "performance_type": "Official Video",
       "year": 2021,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 18
     },
     {
       "video_title": "Ulrikke - Attention - Norway 🇳🇴- Official Video - Eurovision 2020",
@@ -2069,7 +2183,8 @@
       "country": "Norway",
       "performance_type": "Official Video",
       "year": 2020,
-      "metadata_extractor": "dash_four_flag_glued_type_v1"
+      "metadata_extractor": "dash_four_flag_glued_type_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "Victoria - Tears Getting Sober - Bulgaria 🇧🇬 - Official Music Video - Eurovision 2020",
@@ -2087,7 +2202,8 @@
       "country": "Bulgaria",
       "performance_type": "Official Music Video",
       "year": 2020,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "CANCELLED"
     },
     {
       "video_title": "Cornelia Jakobs - Hold Me Closer (LIVE) | Sweden 🇸🇪 | Grand Final | Eurovision 2022",
@@ -2105,7 +2221,8 @@
       "country": "Sweden",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Vesna - My Sister's Crown | Czechia 🇨🇿 | Official Video | Eurovision 2023",
@@ -2123,7 +2240,8 @@
       "country": "Czechia",
       "performance_type": "Official Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 10
     },
     {
       "video_title": "Chanel - SloMo - Spain 🇪🇸 - Official Music Video - Eurovision 2022",
@@ -2141,7 +2259,8 @@
       "country": "Spain",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Cornelia Jakobs - Hold Me Closer - Sweden 🇸🇪 - Official Music Video - Eurovision 2022",
@@ -2159,7 +2278,8 @@
       "country": "Sweden",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Hadise - Düm Tek Tek (Turkey)",
@@ -2177,7 +2297,8 @@
       "country": "Turkey",
       "performance_type": "Official Preview Video",
       "year": 2009,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "La Zarra - Évidemment (LIVE) | France 🇫🇷 | Grand Final | Eurovision 2023",
@@ -2195,7 +2316,8 @@
       "country": "France",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 16
     },
     {
       "video_title": "Let 3 - Mama ŠČ! | Croatia 🇭🇷 | Official Music Video | Eurovision 2023",
@@ -2213,7 +2335,8 @@
       "country": "Croatia",
       "performance_type": "Official Music Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 13
     },
     {
       "video_title": "Luke Black - Samo Mi Se Spava | Serbia 🇷🇸 | Official Music Video | Eurovision 2023",
@@ -2231,7 +2354,8 @@
       "country": "Serbia",
       "performance_type": "Official Music Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 24
     },
     {
       "video_title": "Marco Mengoni - Due Vite | Italy 🇮🇹 | National Final Performance | Eurovision 2023",
@@ -2249,7 +2373,8 @@
       "country": "Italy",
       "performance_type": "National Final Performance",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Mia Nicolai & Dion Cooper - Burning Daylight | Netherlands 🇳🇱 | Official Video | Eurovision 2023",
@@ -2267,7 +2392,8 @@
       "country": "Netherlands",
       "performance_type": "Official Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Rosa Linn - Snap - LIVE - Armenia 🇦🇲 - Grand Final - Eurovision 2022",
@@ -2285,7 +2411,8 @@
       "country": "Armenia",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "dash_six_live_before_country_v1"
+      "metadata_extractor": "dash_six_live_before_country_v1",
+      "esc_final_place": 20
     },
     {
       "video_title": "TVORCHI - Heart Of Steel | Ukraine 🇺🇦 | National Final Performance | Eurovision 2023",
@@ -2303,7 +2430,8 @@
       "country": "Ukraine",
       "performance_type": "National Final Performance",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "Vesna - My Sister's Crown (LIVE) | Czechia 🇨🇿 | Grand Final | Eurovision 2023",
@@ -2321,7 +2449,8 @@
       "country": "Czechia",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 10
     },
     {
       "video_title": "WRS - Llámame - Romania 🇷🇴 - National Final Performance - Eurovision 2022",
@@ -2339,7 +2468,8 @@
       "country": "Romania",
       "performance_type": "National Final Performance",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 18
     },
     {
       "video_title": "Alvan & Ahez - Fulenn (LIVE) | France 🇫🇷 | Grand Final | Eurovision 2022",
@@ -2357,7 +2487,8 @@
       "country": "France",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 24
     },
     {
       "video_title": "Amanda Georgiadi Tenfjord - Die Together - LIVE - Greece 🇬🇷 - Grand Final - Eurovision 2022",
@@ -2375,7 +2506,8 @@
       "country": "Greece",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "dash_six_live_before_country_v1"
+      "metadata_extractor": "dash_six_live_before_country_v1",
+      "esc_final_place": 8
     },
     {
       "video_title": "Andromache - Ela - Cyprus 🇨🇾 - Official Music Video - Eurovision 2022",
@@ -2393,7 +2525,8 @@
       "country": "Cyprus",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Blanca Paloma - Eaea (LIVE) | Spain 🇪🇸 | Grand Final | Eurovision 2023",
@@ -2411,7 +2544,8 @@
       "country": "Spain",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 17
     },
     {
       "video_title": "Helena Paparizou - My Number One - Greece 🇬🇷 - Grand Final - Eurovision 2005",
@@ -2429,7 +2563,8 @@
       "country": "Greece",
       "performance_type": "Grand Final",
       "year": 2005,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Jamala - 1944 (LIVE) | Ukraine 🇺🇦 | Grand Final | Winner of Eurovision 2016",
@@ -2447,7 +2582,8 @@
       "country": "Ukraine",
       "performance_type": "Grand Final (LIVE)",
       "year": 2016,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Joker Out - Carpe Diem (LIVE) | Slovenia 🇸🇮 | Grand Final | Eurovision 2023",
@@ -2465,7 +2601,8 @@
       "country": "Slovenia",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 21
     },
     {
       "video_title": "Joker Out - Carpe Diem | Slovenia 🇸🇮 | Official Video | Eurovision 2023",
@@ -2483,7 +2620,8 @@
       "country": "Slovenia",
       "performance_type": "Official Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 21
     },
     {
       "video_title": "Käärijä - Cha Cha Cha | Finland 🇫🇮 | Official Music Video | Eurovision 2023",
@@ -2501,7 +2639,8 @@
       "country": "Finland",
       "performance_type": "Official Music Video",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Lord Of The Lost - Blood & Glitter (LIVE) | Germany 🇩🇪 | Grand Final | Eurovision 2023",
@@ -2519,7 +2658,8 @@
       "country": "Germany",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 26
     },
     {
       "video_title": "Luke Black - Samo Mi Se Spava (LIVE) | Serbia 🇷🇸 | Grand Final | Eurovision 2023",
@@ -2537,7 +2677,8 @@
       "country": "Serbia",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 24
     },
     {
       "video_title": "Mahmood & Blanco - Brividi (LIVE) | Italy 🇮🇹 | Grand Final | Eurovision 2022",
@@ -2555,7 +2696,8 @@
       "country": "Italy",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "Mahmood & BLANCO - Brividi - Italy 🇮🇹 - Official Music Video - Eurovision 2022",
@@ -2573,7 +2715,8 @@
       "country": "Italy",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "Malik Harris - Rockstars (LIVE) | Germany 🇩🇪 | Grand Final | Eurovision 2022",
@@ -2591,7 +2734,8 @@
       "country": "Germany",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 25
     },
     {
       "video_title": "Manizha - Russian Woman - LIVE - Russia 🇷🇺 - First Semi-Final - Eurovision 2021",
@@ -2609,7 +2753,8 @@
       "country": "Russia",
       "performance_type": "First Semi-Final (LIVE)",
       "year": 2021,
-      "metadata_extractor": "dash_six_live_before_country_v1"
+      "metadata_extractor": "dash_six_live_before_country_v1",
+      "esc_final_place": 9
     },
     {
       "video_title": "MFÖ - Didai Didai Dai - Türkiye 🇹🇷 - Grand Final - Eurovision 1985",
@@ -2627,7 +2772,8 @@
       "country": "Turkey",
       "performance_type": "Grand Final",
       "year": 1985,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 14
     },
     {
       "video_title": "Monika Liu - Sentimentai - Lithuania 🇱🇹 - National Final Performance - Eurovision 2022",
@@ -2645,7 +2791,8 @@
       "country": "Lithuania",
       "performance_type": "National Final Performance",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 14
     },
     {
       "video_title": "Monika Liu - Sentimentai - Lithuania 🇱🇹 - Official Music Video - Eurovision 2022",
@@ -2663,7 +2810,8 @@
       "country": "Lithuania",
       "performance_type": "Official Music Video",
       "year": 2022,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 14
     },
     {
       "video_title": "Mor ve Ötesi - Deli - Türkiye 🇹🇷 - Grand Final - Eurovision 2008",
@@ -2681,7 +2829,8 @@
       "country": "Turkey",
       "performance_type": "Grand Final",
       "year": 2008,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 7
     },
     {
       "video_title": "Ochman - River (LIVE) | Poland 🇵🇱 | Grand Final | Eurovision 2022",
@@ -2699,7 +2848,8 @@
       "country": "Poland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2022,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 12
     },
     {
       "video_title": "Olivia Newton-John - Long Live Love - United Kingdom 🇬🇧 - Grand Final - Eurovision 1974",
@@ -2717,7 +2867,8 @@
       "country": "United Kingdom",
       "performance_type": "Grand Final",
       "year": 1974,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Sudden Lights - Aijā | Latvia 🇱🇻 | National Final Performance | Eurovision 2023",
@@ -2735,7 +2886,8 @@
       "country": "Latvia",
       "performance_type": "National Final Performance",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Sunstroke Project & Olia Tira - Run Away | Moldova 🇲🇩 (Epic Sax Guy) | Grand Final | Eurovision 2010",
@@ -2753,7 +2905,8 @@
       "country": "Moldova",
       "performance_type": "Grand Final",
       "year": 2010,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 22
     },
     {
       "video_title": "TVORCHI - Heart Of Steel (LIVE) | Ukraine 🇺🇦 | Grand Final | Eurovision 2023",
@@ -2771,7 +2924,8 @@
       "country": "Ukraine",
       "performance_type": "Grand Final (LIVE)",
       "year": 2023,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 6
     }
   ],
   "window": {

@@ -138,7 +138,7 @@ Layout: see diagram above. **Future (not shipped):** `insights/`, `charts/` unde
 
 **Shipped:** all four `per-video` / `per-song` × `alltime` / `recent` table snapshots. Insights/charts folders still future.
 
-Processed row shape remains unchanged when packaged ships. External joins (e.g. ESC final place) land in packaged only — `[eurovision-final-place.md](../docs/tasks/eurovision-final-place.md)`.
+Processed row shape remains unchanged. ESC final place is joined in `package` — `[eurovision-final-place.md](../docs/tasks/eurovision-final-place.md)`.
 
 ---
 
@@ -146,7 +146,7 @@ Processed row shape remains unchanged when packaged ships. External joins (e.g. 
 
 Third-party snapshots vendored in git for reproducible `package` runs — **no network fetch in CI**.
 
-**ESC results (planned):** `external/esc-results/` — `MANIFEST.json` (pinned EurovisionAPI release tag) + `entries.json` (flat rows: `artist`, `contest_year`, `country_code`, `esc_final_place`, `song`). `esc_final_place` is a grand-final rank (`1`…) or special code (`DNQ`, `DQ`, `CANCELLED`, `PENDING`, `NON_ENTRY`); see `[eurovision-final-place.md](../docs/tasks/eurovision-final-place.md#placement-dictionary)`. `NON_ENTRY` is set in package for interval acts and the live-stream entry, not in the vendor file.
+**ESC results:** `external/esc-results/` — `MANIFEST.json` (pinned EurovisionAPI release tag `2026.4`) + `entries.json` (1795 flat rows). Regenerate with `uv run evtop20 vendor-esc flatten`. `esc_final_place` on packaged rows comes from join in `package` (vendor + `metadata/esc-placement-overrides.json` + `metadata/esc-join-overrides.json`). Codes: numeric rank, `DNQ`, `DQ`, `CANCELLED`, `WITHDRAWN`, `PENDING`, `NON_ENTRY`, `null`. See `[eurovision-final-place.md](../docs/tasks/eurovision-final-place.md#placement-dictionary)`.
 
 ---
 

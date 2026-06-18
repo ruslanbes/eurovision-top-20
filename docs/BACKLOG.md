@@ -39,11 +39,11 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - notes: Follow-up only; exact keys ship first
 
 ## eurovision-final-place
-- status: backlog
+- status: done
 - parent: package
-- goal: Add ESC **final placement** column to packaged table rows via external dataset join
-- done_when: Per `docs/tasks/eurovision-final-place.md` — vendored `data/external/esc-results/`, join in `package`, tests, docs
-- notes: Pin [EurovisionAPI/dataset](https://github.com/EurovisionAPI/dataset) release → flattened `entries.json`; no live scrape; packaged only per ADR-003
+- goal: ESC **final placement** on packaged rows and per-video site table
+- done_when: Per `docs/tasks/eurovision-final-place.md` — vendored data, package join, Place column on site
+- notes: Per-song site table deferred to Beta
 
 ## site-theming
 - status: ready

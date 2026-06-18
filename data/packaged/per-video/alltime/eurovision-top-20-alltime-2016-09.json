@@ -17,7 +17,8 @@
       "country": "Russia",
       "performance_type": "Grand Final",
       "year": 2016,
-      "metadata_extractor": "dash_four_flag_in_song_v1"
+      "metadata_extractor": "dash_four_flag_in_song_v1",
+      "esc_final_place": 3
     },
     {
       "video_title": "Amir - J'ai cherché - 🇫🇷 France - Official Music Video - Eurovision 2016",
@@ -35,7 +36,8 @@
       "country": "France",
       "performance_type": "Official Music Video",
       "year": 2016,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 6
     },
     {
       "video_title": "Dami Im - Sound Of Silence (Australia) 2016 Eurovision Song Contest",
@@ -53,7 +55,8 @@
       "country": "Australia",
       "performance_type": "Official Music Video",
       "year": 2016,
-      "metadata_extractor": "lookup_table_v1"
+      "metadata_extractor": "lookup_table_v1",
+      "esc_final_place": 2
     },
     {
       "video_title": "Kristina - Horehronie - Slovakia 🇸🇰 - Official Music Video - Eurovision 2010",
@@ -71,7 +74,8 @@
       "country": "Slovakia",
       "performance_type": "Official Music Video",
       "year": 2010,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": "DNQ"
     },
     {
       "video_title": "Poli Genova - If Love Was A Crime - 🇧🇬 Bulgaria - Official Music Video - Eurovision 2016",
@@ -89,7 +93,8 @@
       "country": "Bulgaria",
       "performance_type": "Official Music Video",
       "year": 2016,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 4
     },
     {
       "video_title": "Jamala - 1944 (LIVE) | Ukraine 🇺🇦 | Grand Final | Winner of Eurovision 2016",
@@ -107,7 +112,8 @@
       "country": "Ukraine",
       "performance_type": "Grand Final (LIVE)",
       "year": 2016,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Lordi - Hard Rock Hallelujah (LIVE) | Finland 🇫🇮 | Grand Final | Winner of Eurovision 2006",
@@ -125,7 +131,8 @@
       "country": "Finland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2006,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Michał Szpak - Color Of Your Life (LIVE) | Poland 🇵🇱 | Grand Final | Eurovision 2016",
@@ -143,7 +150,8 @@
       "country": "Poland",
       "performance_type": "Grand Final (LIVE)",
       "year": 2016,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 8
     },
     {
       "video_title": "Måns Zelmerlöw - Heroes (LIVE) | Sweden 🇸🇪 | Grand Final | Winner of Eurovision 2015",
@@ -161,7 +169,8 @@
       "country": "Sweden",
       "performance_type": "Grand Final (LIVE)",
       "year": 2015,
-      "metadata_extractor": "pipe_four_segment_v1"
+      "metadata_extractor": "pipe_four_segment_v1",
+      "esc_final_place": 1
     },
     {
       "video_title": "Sergey Lazarev - You Are The Only One - 🇷🇺 Russia - Official Music Video - Eurovision 2016",
@@ -179,7 +188,8 @@
       "country": "Russia",
       "performance_type": "Official Music Video",
       "year": 2016,
-      "metadata_extractor": "dash_five_segment_v1"
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 3
     }
   ]
 }

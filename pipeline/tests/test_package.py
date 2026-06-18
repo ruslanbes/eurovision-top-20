@@ -18,6 +18,7 @@ from evtop20.paths import (
     processed_alltime_dir,
     processed_recent_dir,
 )
+from conftest import write_vendored_esc_results
 
 
 def _processed_row(**overrides: object) -> dict:
@@ -73,6 +74,7 @@ def test_augment_stats_row_leaves_null_metadata_when_unparsed() -> None:
     assert packaged["year"] is None
     assert packaged["metadata_extractor"] is None
     assert packaged["youtube_watch_url"] is None
+    assert packaged["esc_final_place"] is None
 
 
 def test_package_alltime_payload_sets_source() -> None:
@@ -118,6 +120,7 @@ def repo_root(tmp_path: Path) -> Path:
     schema_dst = tmp_path / "data" / "schemas" / "episode.schema.json"
     schema_dst.parent.mkdir(parents=True)
     schema_dst.write_text(schema_src.read_text(encoding="utf-8"), encoding="utf-8")
+    write_vendored_esc_results(tmp_path)
     return tmp_path
 
 

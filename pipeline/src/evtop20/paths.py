@@ -140,3 +140,11 @@ def metadata_dir(repo_root: Path) -> Path:
 
 def manual_video_metadata_path(repo_root: Path) -> Path:
     return metadata_dir(repo_root) / "manual-video-metadata.json"
+
+
+def esc_join_overrides_path(repo_root: Path) -> Path:
+    return metadata_dir(repo_root) / "esc-join-overrides.json"
+
+
+def esc_placement_overrides_path(repo_root: Path) -> Path:
+    return metadata_dir(repo_root) / "esc-placement-overrides.json"
