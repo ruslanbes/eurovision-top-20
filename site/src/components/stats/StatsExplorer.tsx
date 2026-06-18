@@ -1,17 +1,39 @@
 import type { SortingState } from "@tanstack/react-table";
 import type { Dispatch, SetStateAction } from "react";
 import { useCallback, useEffect, useState } from "react";
-import { loadPeriodManifest, loadVideoSnapshot } from "./data";
+import { loadPeriodManifest, loadSongSnapshot, loadVideoSnapshot } from "./data";
 import { PeriodControls } from "./PeriodControls";
-import { DEFAULT_VIDEO_SORT } from "./sort";
+import { DEFAULT_SONG_SORT, DEFAULT_VIDEO_SORT, formatPeriodRange } from "./sort";
 import { StatsTable } from "./StatsTable";
-import type { VideoStatsRow } from "./types";
+import type {
+  RecentWindow,
+  SongStatsRow,
+  StatsGrain,
+  StatsVariant,
+  VideoStatsRow,
+} from "./types";
 
-export function StatsExplorer() {
+type StatsExplorerProps = {
+  grain: StatsGrain;
+  variant: StatsVariant;
+};
+
+const GRAIN_LABEL: Record<StatsGrain, string> = {
+  video: "videos",
+  song: "songs",
+};
+
+export function StatsExplorer({ grain, variant }: StatsExplorerProps) {
+  const defaultSort = grain === "video" ? DEFAULT_VIDEO_SORT : DEFAULT_SONG_SORT;
+
   const [periods, setPeriods] = useState<string[]>([]);
   const [period, setPeriod] = useState<string>("");
-  const [rows, setRows] = useState<VideoStatsRow[]>([]);
-  const [sorting, setSorting] = useState<SortingState>(DEFAULT_VIDEO_SORT);
+  const [windowsByPeriod, setWindowsByPeriod] = useState<
+    Record<string, RecentWindow>
+  >({});
+  const [window, setWindow] = useState<RecentWindow | null>(null);
+  const [rows, setRows] = useState<VideoStatsRow[] | SongStatsRow[]>([]);
+  const [sorting, setSorting] = useState<SortingState>(defaultSort);
   const [userSorted, setUserSorted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -21,12 +43,14 @@ export function StatsExplorer() {
 
     async function init() {
       try {
-        const manifest = await loadPeriodManifest();
+        const manifest = await loadPeriodManifest(variant);
         if (cancelled) {
           return;
         }
         setPeriods(manifest.periods);
         setPeriod(manifest.latest);
+        setWindowsByPeriod(manifest.windows ?? {});
+        setWindow(manifest.windows?.[manifest.latest] ?? null);
       } catch (err) {
         if (!cancelled) {
           setError(err instanceof Error ? err.message : "Failed to load periods");
@@ -39,7 +63,7 @@ export function StatsExplorer() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [variant]);
 
   useEffect(() => {
     if (!period) {
@@ -52,11 +76,17 @@ export function StatsExplorer() {
       setLoading(true);
       setError(null);
       try {
-        const snapshot = await loadVideoSnapshot(period);
+        const snapshot =
+          grain === "video"
+            ? await loadVideoSnapshot(variant, period)
+            : await loadSongSnapshot(variant, period);
         if (cancelled) {
           return;
         }
         setRows(snapshot.rows);
+        if (snapshot.window) {
+          setWindow(snapshot.window);
+        }
       } catch (err) {
         if (!cancelled) {
           setError(err instanceof Error ? err.message : "Failed to load stats");
@@ -72,22 +102,31 @@ export function StatsExplorer() {
     return () => {
       cancelled = true;
     };
-  }, [period]);
+  }, [grain, period, variant]);
 
-  const handleSortingChange = useCallback<Dispatch<SetStateAction<SortingState>>>((updater) => {
-    setUserSorted(true);
-    setSorting(updater);
-  }, []);
+  const handleSortingChange = useCallback<Dispatch<SetStateAction<SortingState>>>(
+    (updater) => {
+      setUserSorted(true);
+      setSorting(updater);
+    },
+    [],
+  );
 
   const handlePeriodChange = useCallback(
     (nextPeriod: string) => {
       setPeriod(nextPeriod);
+      setWindow(windowsByPeriod[nextPeriod] ?? null);
       if (!userSorted) {
-        setSorting(DEFAULT_VIDEO_SORT);
+        setSorting(defaultSort);
       }
     },
-    [userSorted],
+    [defaultSort, userSorted, windowsByPeriod],
   );
+
+  const periodSummary =
+    variant === "recent" && window
+      ? formatPeriodRange(window.first_period, window.last_period)
+      : period;
 
   if (error && periods.length === 0) {
     return (
@@ -100,16 +139,23 @@ export function StatsExplorer() {
   return (
     <div className="space-y-6">
       <PeriodControls
+        variant={variant}
         periods={periods}
         period={period}
+        window={window}
+        windowsByPeriod={windowsByPeriod}
         onPeriodChange={handlePeriodChange}
         disabled={loading}
       />
 
       <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-zinc-600 dark:text-zinc-400">
         <p>
-          {rows.length} videos
-          {period ? ` · data through ${period}` : ""}
+          {rows.length} {GRAIN_LABEL[grain]}
+          {periodSummary
+            ? variant === "recent"
+              ? ` · window ${periodSummary}`
+              : ` · data through ${period}`
+            : ""}
         </p>
         {loading ? <p>Loading…</p> : null}
       </div>
@@ -122,6 +168,7 @@ export function StatsExplorer() {
 
       {!loading && rows.length > 0 ? (
         <StatsTable
+          grain={grain}
           rows={rows}
           sorting={sorting}
           onSortingChange={handleSortingChange}

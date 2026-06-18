@@ -1,0 +1,13 @@
+---
+import { StatsExplorer } from "../../../components/stats/StatsExplorer";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  current="songs"
+  variant="recent"
+  title="Songs (recent)"
+  description="Five-year sliding-window statistics rolled up by artist and song — one row per ESC entry, anchored at each episode month."
+>
+  <StatsExplorer client:visible grain="song" variant="recent" />
+</BaseLayout>

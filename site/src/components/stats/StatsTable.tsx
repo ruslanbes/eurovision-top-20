@@ -13,11 +13,17 @@ import {
   escFinalPlaceSortKey,
   formatEscFinalPlace,
 } from "./escFinalPlace";
-import { DEFAULT_VIDEO_SORT } from "./sort";
-import type { VideoStatsRow } from "./types";
+import type {
+  SongStatsRow,
+  StatsGrain,
+  StatsRow,
+  VideoStatsRow,
+} from "./types";
+import { statsRowKey } from "./types";
 
 type StatsTableProps = {
-  rows: VideoStatsRow[];
+  grain: StatsGrain;
+  rows: StatsRow[];
   sorting: SortingState;
   onSortingChange: OnChangeFn<SortingState>;
 };
@@ -39,85 +45,116 @@ function SortLabel({
   );
 }
 
-export function StatsTable({ rows, sorting, onSortingChange }: StatsTableProps) {
-  const columns = useMemo<ColumnDef<VideoStatsRow>[]>(
-    () => [
+function sharedStatColumns<T extends StatsRow>(): ColumnDef<T>[] {
+  return [
+    {
+      accessorKey: "chart_points",
+      header: "Points",
+    },
+    {
+      accessorKey: "esc_final_place",
+      header: "Place",
+      meta: { title: ESC_FINAL_PLACE_COLUMN_TITLE },
+      sortingFn: (rowA, rowB, columnId) =>
+        escFinalPlaceSortKey(rowA.getValue(columnId)) -
+        escFinalPlaceSortKey(rowB.getValue(columnId)),
+      cell: ({ getValue }) => formatEscFinalPlace(getValue()),
+    },
+    {
+      accessorKey: "top1",
+      header: "Top 1",
+    },
+    {
+      accessorKey: "top3",
+      header: "Top 3",
+    },
+    {
+      accessorKey: "top5",
+      header: "Top 5",
+    },
+    {
+      accessorKey: "top10",
+      header: "Top 10",
+    },
+    {
+      accessorKey: "top20",
+      header: "Top 20",
+    },
+    {
+      accessorKey: "flag",
+      header: "Flag",
+      enableSorting: false,
+    },
+    {
+      accessorKey: "country",
+      header: "Country",
+    },
+    {
+      accessorKey: "year",
+      header: "Year",
+    },
+  ];
+}
+
+export function StatsTable({
+  grain,
+  rows,
+  sorting,
+  onSortingChange,
+}: StatsTableProps) {
+  const columns = useMemo<ColumnDef<StatsRow>[]>(() => {
+    const rankColumn: ColumnDef<StatsRow> = {
+      id: "rank",
+      header: "#",
+      enableSorting: false,
+      cell: ({ row }) => row.index + 1,
+    };
+
+    if (grain === "video") {
+      const videoColumns: ColumnDef<VideoStatsRow>[] = [
+        {
+          accessorKey: "video_title",
+          header: "Video",
+          cell: ({ row }) => {
+            const title = row.original.video_title;
+            const url = row.original.youtube_watch_url;
+            if (url) {
+              return (
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:underline dark:text-blue-400"
+                >
+                  {title}
+                </a>
+              );
+            }
+            return title;
+          },
+        },
+        ...sharedStatColumns<VideoStatsRow>(),
+      ];
+      return [rankColumn, ...(videoColumns as ColumnDef<StatsRow>[])];
+    }
+
+    const songColumns: ColumnDef<SongStatsRow>[] = [
       {
-        id: "rank",
-        header: "#",
-        enableSorting: false,
-        cell: ({ row }) => row.index + 1,
-      },
-      {
-        accessorKey: "video_title",
-        header: "Video",
-        cell: ({ row }) => {
-          const title = row.original.video_title;
-          const url = row.original.youtube_watch_url;
-          if (url) {
-            return (
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-700 hover:underline dark:text-blue-400"
-              >
-                {title}
-              </a>
-            );
+        id: "song_label",
+        header: "Song",
+        accessorFn: (row) => `${row.artist} — ${row.song}`,
+        sortingFn: (rowA, rowB) => {
+          const artistCmp = rowA.original.artist.localeCompare(rowB.original.artist);
+          if (artistCmp !== 0) {
+            return artistCmp;
           }
-          return title;
+          return rowA.original.song.localeCompare(rowB.original.song);
         },
       },
-      {
-        accessorKey: "chart_points",
-        header: "Points",
-      },
-      {
-        accessorKey: "esc_final_place",
-        header: "Place",
-        meta: { title: ESC_FINAL_PLACE_COLUMN_TITLE },
-        sortingFn: (rowA, rowB, columnId) =>
-          escFinalPlaceSortKey(rowA.getValue(columnId)) -
-          escFinalPlaceSortKey(rowB.getValue(columnId)),
-        cell: ({ getValue }) => formatEscFinalPlace(getValue()),
-      },
-      {
-        accessorKey: "top1",
-        header: "Top 1",
-      },
-      {
-        accessorKey: "top3",
-        header: "Top 3",
-      },
-      {
-        accessorKey: "top5",
-        header: "Top 5",
-      },
-      {
-        accessorKey: "top10",
-        header: "Top 10",
-      },
-      {
-        accessorKey: "top20",
-        header: "Top 20",
-      },
-      {
-        accessorKey: "flag",
-        header: "Flag",
-        enableSorting: false,
-      },
-      {
-        accessorKey: "country",
-        header: "Country",
-      },
-      {
-        accessorKey: "year",
-        header: "Year",
-      },
-    ],
-    [],
-  );
+      ...sharedStatColumns<SongStatsRow>(),
+    ];
+    return [rankColumn, ...(songColumns as ColumnDef<StatsRow>[])];
+  }, [grain]);
 
   const table = useReactTable({
     data: rows,
@@ -128,6 +165,8 @@ export function StatsTable({ rows, sorting, onSortingChange }: StatsTableProps) 
     getSortedRowModel: getSortedRowModel(),
     enableMultiSort: true,
   });
+
+  const titleColumnId = grain === "video" ? "video_title" : "song_label";
 
   return (
     <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
@@ -175,7 +214,7 @@ export function StatsTable({ rows, sorting, onSortingChange }: StatsTableProps) 
         <tbody className="divide-y divide-zinc-100 bg-white dark:divide-zinc-900 dark:bg-zinc-950">
           {table.getRowModel().rows.map((row) => (
             <tr
-              key={row.original.video_title}
+              key={statsRowKey(row.original, grain)}
               className="hover:bg-zinc-50 dark:hover:bg-zinc-900/60"
             >
               {row.getVisibleCells().map((cell) => (
@@ -183,7 +222,7 @@ export function StatsTable({ rows, sorting, onSortingChange }: StatsTableProps) 
                   key={cell.id}
                   className={[
                     "px-3 py-2 text-zinc-800 dark:text-zinc-200",
-                    cell.column.id === "video_title"
+                    cell.column.id === titleColumnId
                       ? "min-w-[16rem] max-w-xl whitespace-normal"
                       : "whitespace-nowrap",
                     cell.column.id === "esc_final_place"

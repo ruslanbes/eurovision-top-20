@@ -16,7 +16,7 @@ npm run preview  # preview production build
 `predev` / `prebuild` run `scripts/copy-packaged.mjs`, which:
 
 1. Copies `../data/packaged/` → `public/data/packaged/`
-2. Writes `public/data/periods-alltime.json` from alltime snapshot filenames
+2. Writes `public/data/periods-alltime.json` and `periods-recent.json` (recent includes per-period `window` metadata for the slider)
 
 ## Stack
 
@@ -25,7 +25,7 @@ npm run preview  # preview production build
 - TanStack Table v8
 - Radix Slider (period scrubber)
 
-Slice 1: video grain, alltime variant only. Site follow-ups in [`BACKLOG.md`](../docs/BACKLOG.md).
+Slice 1: video + song grain on separate pages (`/` and `/songs/` all-time; `/recent/` and `/songs/recent/` five-year window), each with its own period slider. Site follow-ups in [`BACKLOG.md`](../docs/BACKLOG.md).
 
 ## Deploy
 
