@@ -14,6 +14,7 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ### Changed
 
+- Removed fixed **5-year recent** stat variant from pipeline, packaged data, and site (all-time only until [`flexible-period-window`](docs/tasks/flexible-period-window.md) ships).
 - ESC placement overrides moved out of `manual-video-metadata.json` into `esc-placement-overrides.json` (title-parse file is parse fields only).
 - Virtual **`World`** country (`🌍`) for non-national ESC clips; five manual-metadata rows updated.
 - Vendored ESC results include **2026** from [EurovisionAPI/dataset PR #1](https://github.com/EurovisionAPI/dataset/pull/1) (`release_tag` `2026.4+pr1` until upstream merge); `last_completed_contest_year` **2026**.

@@ -8,7 +8,6 @@ import pytest
 from evtop20.aggregate import (
     aggregate_video_stats,
     chart_points_from_tiers,
-    recent_window_cutoff,
     run_aggregate,
     tiers_for_rank,
     validate_stats_payload,
@@ -17,8 +16,6 @@ from evtop20.process import ProcessError, run_process
 from evtop20.paths import (
     processed_alltime_stats_latest_path,
     processed_alltime_stats_period_path,
-    processed_recent_stats_latest_path,
-    processed_recent_stats_period_path,
 )
 
 
@@ -551,144 +548,6 @@ def test_run_aggregate_rejects_invalid_tier_order(
 
     with pytest.raises(ValueError, match="stats validation failed"):
         run_aggregate(repo_root)
-
-
-def test_recent_cutoff_is_strict_after_five_years() -> None:
-    assert recent_window_cutoff((2026, 5)) == (2021, 5)
-
-
-def test_recent_window_excludes_episode_at_cutoff_month(repo_root: Path) -> None:
-    _write_episode(
-        repo_root,
-        "2021-05.json",
-        _episode(
-            year=2021,
-            month=5,
-            entries_by_rank={
-                1: {"video_title": "At cutoff", "youtube_video_id": ""},
-            },
-        ),
-    )
-    _write_episode(
-        repo_root,
-        "2021-06.json",
-        _episode(
-            year=2021,
-            month=6,
-            entries_by_rank={
-                1: {"video_title": "Inside window", "youtube_video_id": ""},
-            },
-        ),
-    )
-    _write_episode(
-        repo_root,
-        "2026-05.json",
-        _episode(
-            year=2026,
-            month=5,
-            entries_by_rank={
-                1: {"video_title": "Anchor month", "youtube_video_id": ""},
-            },
-        ),
-    )
-    run_aggregate(repo_root)
-    recent = json.loads(
-        processed_recent_stats_period_path(repo_root, 2026, 5).read_text(
-            encoding="utf-8"
-        )
-    )
-    titles = {row["video_title"] for row in recent["rows"]}
-    assert titles == {"Inside window", "Anchor month"}
-    assert recent["window"] == {
-        "years": 5,
-        "anchor_period": "2026-05",
-        "episode_count": 2,
-        "first_period": "2021-06",
-        "last_period": "2026-05",
-    }
-
-
-def test_recent_youtube_id_refresh_after_eviction(repo_root: Path) -> None:
-    _write_episode(
-        repo_root,
-        "2021-06.json",
-        _episode(
-            year=2021,
-            month=6,
-            entries_by_rank={
-                1: {
-                    "video_title": "Song X",
-                    "youtube_video_id": "olderidvid1",
-                },
-            },
-        ),
-    )
-    _write_episode(
-        repo_root,
-        "2024-06.json",
-        _episode(
-            year=2024,
-            month=6,
-            entries_by_rank={
-                2: {"video_title": "Filler", "youtube_video_id": ""},
-            },
-        ),
-    )
-    _write_episode(
-        repo_root,
-        "2026-06.json",
-        _episode(
-            year=2026,
-            month=6,
-            entries_by_rank={
-                1: {
-                    "video_title": "Song X",
-                    "youtube_video_id": "neweridvid2",
-                },
-            },
-        ),
-    )
-    run_aggregate(repo_root)
-
-    before = json.loads(
-        processed_recent_stats_period_path(repo_root, 2024, 6).read_text(
-            encoding="utf-8"
-        )
-    )
-    assert _row_by_title(before["rows"], "Song X")["youtube_video_id"] == "olderidvid1"
-
-    after = json.loads(
-        processed_recent_stats_period_path(repo_root, 2026, 6).read_text(
-            encoding="utf-8"
-        )
-    )
-    assert _row_by_title(after["rows"], "Song X")["youtube_video_id"] == "neweridvid2"
-
-
-def test_recent_writes_matching_snapshot_count(repo_root: Path) -> None:
-    _write_episode(
-        repo_root,
-        "2022-01.json",
-        _episode(
-            year=2022,
-            month=1,
-            entries_by_rank={1: {"video_title": "A", "youtube_video_id": ""}},
-        ),
-    )
-    _write_episode(
-        repo_root,
-        "2026-01.json",
-        _episode(
-            year=2026,
-            month=1,
-            entries_by_rank={1: {"video_title": "B", "youtube_video_id": ""}},
-        ),
-    )
-    result = run_aggregate(repo_root)
-    assert result.snapshot_count == 2
-    assert processed_recent_stats_period_path(repo_root, 2022, 1).is_file()
-    assert processed_recent_stats_period_path(repo_root, 2026, 1).is_file()
-    assert processed_recent_stats_latest_path(repo_root).is_file()
 
 
 def test_run_process_wraps_stats_validation_error(

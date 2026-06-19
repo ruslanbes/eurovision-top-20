@@ -50,27 +50,13 @@ def _packaged_payload(*rows: dict) -> dict:
     }
 
 
-def test_video_stats_basename_to_song_stats_basename_accepts_recent() -> None:
+def test_video_stats_basename_to_song_stats_basename_accepts_alltime() -> None:
     assert (
         video_stats_basename_to_song_stats_basename(
-            "eurovision-top-20-recent-2026-05.json"
+            "eurovision-top-20-alltime-2026-05.json"
         )
         == "eurovision-top-20-song-stats-2026-05.json"
     )
-
-
-def test_package_song_stats_preserves_window() -> None:
-    payload, warnings = package_song_stats_payload(
-        {
-            "window": {"years": 5, "anchor_period": "2026-05"},
-            "rows": [_video_row()],
-        },
-        source="packaged/per-video/recent",
-    )
-
-    assert warnings == []
-    assert payload["source"] == "packaged/per-video/recent"
-    assert payload["window"]["anchor_period"] == "2026-05"
 
 
 def test_is_eligible_requires_all_metadata_fields() -> None:

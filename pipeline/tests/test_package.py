@@ -9,14 +9,11 @@ from evtop20.package import (
     PackageError,
     augment_stats_row,
     package_alltime_payload,
-    package_recent_payload,
     run_package,
 )
 from evtop20.paths import (
     packaged_per_video_alltime_stats_latest_path,
-    packaged_per_video_recent_stats_latest_path,
     processed_alltime_dir,
-    processed_recent_dir,
 )
 from conftest import write_vendored_esc_results
 
@@ -89,26 +86,6 @@ def test_package_alltime_payload_sets_source() -> None:
     assert unparsed_titles == set()
 
 
-def test_package_recent_payload_preserves_window() -> None:
-    payload, parsed_count, unparsed_titles = package_recent_payload(
-        {
-            "window": {
-                "years": 5,
-                "anchor_period": "2026-05",
-                "episode_count": 59,
-                "first_period": "2021-06",
-                "last_period": "2026-05",
-            },
-            "rows": [_processed_row()],
-        }
-    )
-
-    assert payload["source"] == "processed/recent"
-    assert payload["window"]["anchor_period"] == "2026-05"
-    assert parsed_count == 1
-    assert unparsed_titles == set()
-
-
 @pytest.fixture
 def repo_root(tmp_path: Path) -> Path:
     schema_src = (
@@ -124,15 +101,8 @@ def repo_root(tmp_path: Path) -> Path:
     return tmp_path
 
 
-def _write_processed_snapshot(
-    repo_root: Path, name: str, payload: dict, *, variant: str = "alltime"
-) -> Path:
-    processed_dir = (
-        processed_alltime_dir(repo_root)
-        if variant == "alltime"
-        else processed_recent_dir(repo_root)
-    )
-    path = processed_dir / name
+def _write_processed_snapshot(repo_root: Path, name: str, payload: dict) -> Path:
+    path = processed_alltime_dir(repo_root) / name
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     return path
@@ -171,42 +141,6 @@ def test_run_package_writes_alltime_snapshots(repo_root: Path) -> None:
     assert period["rows"][0]["performance_type"] == "Official Music Video"
     assert not stale_period.exists()
     assert "Title metadata (alltime latest): 1/1 rows parsed" in message
-
-
-def test_run_package_writes_recent_snapshots(repo_root: Path) -> None:
-    row = _processed_row()
-    window = {
-        "years": 5,
-        "anchor_period": "2026-05",
-        "episode_count": 1,
-        "first_period": "2026-05",
-        "last_period": "2026-05",
-    }
-    recent_payload = {"window": window, "rows": [row]}
-    _write_processed_snapshot(
-        repo_root,
-        "eurovision-top-20-alltime-latest.json",
-        _processed_payload(row),
-    )
-    _write_processed_snapshot(
-        repo_root,
-        "eurovision-top-20-recent-latest.json",
-        recent_payload,
-        variant="recent",
-    )
-
-    message = run_package(repo_root)
-
-    recent_latest = json.loads(
-        packaged_per_video_recent_stats_latest_path(repo_root).read_text(
-            encoding="utf-8"
-        )
-    )
-
-    assert recent_latest["source"] == "processed/recent"
-    assert recent_latest["window"] == window
-    assert recent_latest["rows"][0]["artist"] == "Tommy Cash"
-    assert "recent snapshots" in message
 
 
 def test_run_package_requires_processed_alltime(repo_root: Path) -> None:

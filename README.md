@@ -53,7 +53,7 @@ Then rebuild or refresh the site (`cd site && npm run dev` or `npm run build`).
 | Step | What it does |
 |------|----------------|
 | `validate` | Check episodes against schema and identity rules |
-| `process` | Write video stats to `data/processed/alltime/` and `data/processed/recent/` |
+| `process` | Write video stats to `data/processed/alltime/` |
 | `package` | Write UI-ready JSON to `data/packaged/` (what the site reads) |
 
 Manual title overrides for odd videos: `data/metadata/manual-video-metadata.json`.

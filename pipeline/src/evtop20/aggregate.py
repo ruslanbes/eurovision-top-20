@@ -8,13 +8,9 @@ from evtop20.models import youtube_id_is_set
 from evtop20.normalize import write_episode_file
 from evtop20.paths import (
     ALLTIME_STATS_BASENAME,
-    RECENT_STATS_BASENAME,
     processed_alltime_dir,
     processed_alltime_stats_latest_path,
     processed_alltime_stats_period_path,
-    processed_recent_dir,
-    processed_recent_stats_latest_path,
-    processed_recent_stats_period_path,
     raw_episodes_dir,
 )
 from evtop20.validate import list_episode_files, load_episode_file
@@ -31,8 +27,6 @@ CHART_POINT_WEIGHTS: dict[str, int] = {
 }
 Period = tuple[int, int]
 
-RECENT_WINDOW_YEARS = 5
-
 
 @dataclass
 class AggregateResult:
@@ -41,7 +35,6 @@ class AggregateResult:
     episode_count: int
     start_period: Period
     end_period: Period
-    recent_window_episode_count: int = 0
     warnings: list[str] = field(default_factory=list)
 
 
@@ -82,18 +75,6 @@ def _empty_row() -> dict[str, int]:
 _STATS_PERIOD_RE = re.compile(
     rf"^{re.escape(ALLTIME_STATS_BASENAME)}-(\d{{4}})-(\d{{2}})\.json$"
 )
-_RECENT_PERIOD_RE = re.compile(
-    rf"^{re.escape(RECENT_STATS_BASENAME)}-(\d{{4}})-(\d{{2}})\.json$"
-)
-
-
-def recent_window_cutoff(anchor: Period, years: int = RECENT_WINDOW_YEARS) -> Period:
-    year, month = anchor
-    return year - years, month
-
-
-def _format_period(period: Period) -> str:
-    return f"{period[0]:04d}-{period[1]:02d}"
 
 
 def episode_periods_in_order(episodes: list[tuple[Path, dict]]) -> list[Period]:
@@ -168,59 +149,6 @@ class StatsAccumulator:
             if youtube_id_is_set(video_id):
                 self.stats[title]["youtube_video_id"] = video_id
 
-    def unapply_episode(self, path: Path, data: dict) -> set[str]:
-        affected: set[str] = set()
-        entries = data.get("entries", [])
-        if not isinstance(entries, list):
-            return affected
-        for entry in entries:
-            if not isinstance(entry, dict):
-                continue
-            rank = entry.get("rank")
-            if not isinstance(rank, int):
-                continue
-
-            raw_title = entry.get("video_title", "")
-            title = raw_title.strip() if isinstance(raw_title, str) else ""
-            if not title or title not in self.stats:
-                continue
-
-            for tier_field in tiers_for_rank(rank):
-                self.stats[title][tier_field] -= 1
-
-            affected.add(title)
-            if all(self.stats[title][field] == 0 for field in TIER_FIELDS.values()):
-                del self.stats[title]
-
-        return affected
-
-    def refresh_youtube_ids(
-        self,
-        titles: set[str],
-        window_episodes: list[tuple[Path, dict]],
-    ) -> None:
-        for title in titles:
-            if title not in self.stats:
-                continue
-            self.stats[title]["youtube_video_id"] = ""
-
-        for _, data in window_episodes:
-            entries = data.get("entries", [])
-            if not isinstance(entries, list):
-                continue
-            for entry in entries:
-                if not isinstance(entry, dict):
-                    continue
-                raw_title = entry.get("video_title", "")
-                title = raw_title.strip() if isinstance(raw_title, str) else ""
-                video_id = entry.get("youtube_video_id")
-                if (
-                    title in titles
-                    and title in self.stats
-                    and youtube_id_is_set(video_id)
-                ):
-                    self.stats[title]["youtube_video_id"] = video_id
-
     def to_rows(self) -> list[dict]:
         rows = list(self.stats.values())
         rows.sort(key=stats_row_sort_key)
@@ -240,29 +168,6 @@ class StatsAccumulator:
 
     def to_payload(self) -> dict:
         return {"rows": self.to_rows()}
-
-    def to_recent_payload(
-        self,
-        *,
-        anchor: Period,
-        years: int,
-        window_episodes: list[tuple[Path, dict]],
-    ) -> dict:
-        first_period = ""
-        last_period = ""
-        if window_episodes:
-            first_period = _format_period(episode_period(window_episodes[0][1]))
-            last_period = _format_period(episode_period(window_episodes[-1][1]))
-        return {
-            "window": {
-                "years": years,
-                "anchor_period": _format_period(anchor),
-                "episode_count": len(window_episodes),
-                "first_period": first_period,
-                "last_period": last_period,
-            },
-            "rows": self.to_rows(),
-        }
 
 
 def build_period_snapshots(
@@ -287,68 +192,8 @@ def build_period_snapshots(
     return snapshots, accumulator
 
 
-def build_recent_period_snapshots(
-    episodes: list[tuple[Path, dict]],
-    *,
-    years: int = RECENT_WINDOW_YEARS,
-) -> tuple[list[tuple[Period, dict]], StatsAccumulator]:
-    sorted_episodes = sorted(episodes, key=lambda item: episode_period(item[1]))
-    snapshot_periods = episode_periods_in_order(episodes)
-    accumulator = StatsAccumulator()
-    snapshots: list[tuple[Period, dict]] = []
-    left = 0
-    right = 0
-
-    for anchor in snapshot_periods:
-        cutoff = recent_window_cutoff(anchor, years)
-
-        while right < len(sorted_episodes):
-            path, data = sorted_episodes[right]
-            if episode_period(data) <= anchor:
-                accumulator.apply_episode(path, data)
-                right += 1
-            else:
-                break
-
-        evicted_titles: set[str] = set()
-        while left < right:
-            path, data = sorted_episodes[left]
-            if episode_period(data) <= cutoff:
-                evicted_titles |= accumulator.unapply_episode(path, data)
-                left += 1
-            else:
-                break
-
-        window_episodes = sorted_episodes[left:right]
-        if evicted_titles:
-            accumulator.refresh_youtube_ids(
-                {title for title in evicted_titles if title in accumulator.stats},
-                window_episodes,
-            )
-
-        snapshots.append(
-            (
-                anchor,
-                accumulator.to_recent_payload(
-                    anchor=anchor,
-                    years=years,
-                    window_episodes=window_episodes,
-                ),
-            )
-        )
-
-    return snapshots, accumulator
-
-
 def _period_from_stats_filename(name: str) -> Period | None:
     match = _STATS_PERIOD_RE.match(name)
-    if match is None:
-        return None
-    return int(match.group(1)), int(match.group(2))
-
-
-def _period_from_recent_filename(name: str) -> Period | None:
-    match = _RECENT_PERIOD_RE.match(name)
     if match is None:
         return None
     return int(match.group(1)), int(match.group(2))
@@ -361,17 +206,6 @@ def _remove_stale_period_snapshots(
         f"{ALLTIME_STATS_BASENAME}-*.json"
     ):
         period = _period_from_stats_filename(path.name)
-        if period is not None and period not in kept_periods:
-            path.unlink()
-
-
-def _remove_stale_recent_period_snapshots(
-    repo_root: Path, kept_periods: set[Period]
-) -> None:
-    for path in processed_recent_dir(repo_root).glob(
-        f"{RECENT_STATS_BASENAME}-*.json"
-    ):
-        period = _period_from_recent_filename(path.name)
         if period is not None and period not in kept_periods:
             path.unlink()
 
@@ -439,14 +273,12 @@ def write_stats_payload(path: Path, payload: dict) -> None:
 def run_aggregate(repo_root: Path) -> AggregateResult:
     episodes = load_episodes(repo_root)
     snapshots, accumulator = build_period_snapshots(episodes)
-    recent_snapshots, recent_accumulator = build_recent_period_snapshots(episodes)
 
     if not snapshots:
         msg = "no period snapshots produced"
         raise ValueError(msg)
 
     processed_alltime_dir(repo_root).mkdir(parents=True, exist_ok=True)
-    processed_recent_dir(repo_root).mkdir(parents=True, exist_ok=True)
 
     kept_periods: set[Period] = set()
     for period, payload in snapshots:
@@ -468,34 +300,11 @@ def run_aggregate(repo_root: Path) -> AggregateResult:
         processed_alltime_stats_latest_path(repo_root), final_payload
     )
 
-    recent_kept_periods: set[Period] = set()
-    for period, payload in recent_snapshots:
-        period_label = f"{period[0]:04d}-{period[1]:02d}"
-        issues = validate_stats_payload(payload, context=f"recent {period_label}")
-        if issues:
-            detail = "\n".join(f"  {issue}" for issue in issues)
-            msg = f"recent stats validation failed:\n{detail}"
-            raise ValueError(msg)
-        write_stats_payload(
-            processed_recent_stats_period_path(repo_root, *period), payload
-        )
-        recent_kept_periods.add(period)
-
-    _remove_stale_recent_period_snapshots(repo_root, recent_kept_periods)
-
-    _, final_recent_payload = recent_snapshots[-1]
-    write_stats_payload(
-        processed_recent_stats_latest_path(repo_root), final_recent_payload
-    )
-
-    warnings = list(dict.fromkeys(accumulator.warnings + recent_accumulator.warnings))
-
     return AggregateResult(
         snapshot_count=len(snapshots),
         video_count=len(final_payload["rows"]),
         episode_count=len(episodes),
         start_period=snapshots[0][0],
         end_period=snapshots[-1][0],
-        recent_window_episode_count=final_recent_payload["window"]["episode_count"],
-        warnings=warnings,
+        warnings=list(dict.fromkeys(accumulator.warnings)),
     )

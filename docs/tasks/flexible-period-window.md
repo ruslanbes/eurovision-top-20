@@ -40,10 +40,10 @@ Delete the fixed 5-year **recent** path from pipeline, packaged data, and site *
 
 **Step 0 done when:**
 
-- [ ] `evtop20 process` writes only `processed/alltime/`
-- [ ] `evtop20 package` writes only `per-{video,song}/alltime/` (no recent trees)
-- [ ] Site builds with two routes; all-time period slider only
-- [ ] CI green; no references to `processed/recent` or `packaged/*/recent` in pipeline/site
+- [x] `evtop20 process` writes only `processed/alltime/`
+- [x] `evtop20 package` writes only `per-{video,song}/alltime/` (no recent trees)
+- [x] Site builds with two routes; all-time period slider only
+- [x] CI green; no references to `processed/recent` or `packaged/*/recent` in pipeline/site
 
 No replacement for the 5-year view until later steps ship the flexible range.
 
@@ -287,7 +287,7 @@ These should **not** recompute per range (v1):
 
 | ID | Goal |
 |----|------|
-| `remove-recent-variant` | drop `recent` from process/package/site/docs; all-time-only site |
+| `remove-recent-variant` | **Step 0** — per [`remove-recent-variant.md`](remove-recent-variant.md) |
 | `flexible-period-window-spike` | Prototype structures; size + correctness benchmarks; pick A/B/C/D/E |
 | `flexible-period-window-process` | Episode contribution export |
 | `flexible-period-window-package` | Query index + meta |
@@ -316,9 +316,9 @@ Implement children **in order**; epic closes when flexible range ships on top of
 
 **Step 0 (`remove-recent-variant`):**
 
-- [ ] `processed/recent` and `packaged/*/recent` gone; `evtop20 process` / `package` updated
-- [ ] Site: `/` + `/songs/` only; all-time period slider; no `/recent/` routes
-- [ ] CI green
+- [x] `processed/recent` and `packaged/*/recent` gone; `evtop20 process` / `package` updated
+- [x] Site: `/` + `/songs/` only; all-time period slider; no `/recent/` routes
+- [x] CI green
 
 **Epic complete (steps 1–5):**
 

@@ -3,19 +3,12 @@ import type { Dispatch, SetStateAction } from "react";
 import { useCallback, useEffect, useState } from "react";
 import { loadPeriodManifest, loadSongSnapshot, loadVideoSnapshot } from "./data";
 import { PeriodControls } from "./PeriodControls";
-import { DEFAULT_SONG_SORT, DEFAULT_VIDEO_SORT, formatPeriodRange } from "./sort";
+import { DEFAULT_SONG_SORT, DEFAULT_VIDEO_SORT } from "./sort";
 import { StatsTable } from "./StatsTable";
-import type {
-  RecentWindow,
-  SongStatsRow,
-  StatsGrain,
-  StatsVariant,
-  VideoStatsRow,
-} from "./types";
+import type { SongStatsRow, StatsGrain, VideoStatsRow } from "./types";
 
 type StatsExplorerProps = {
   grain: StatsGrain;
-  variant: StatsVariant;
 };
 
 const GRAIN_LABEL: Record<StatsGrain, string> = {
@@ -23,15 +16,11 @@ const GRAIN_LABEL: Record<StatsGrain, string> = {
   song: "songs",
 };
 
-export function StatsExplorer({ grain, variant }: StatsExplorerProps) {
+export function StatsExplorer({ grain }: StatsExplorerProps) {
   const defaultSort = grain === "video" ? DEFAULT_VIDEO_SORT : DEFAULT_SONG_SORT;
 
   const [periods, setPeriods] = useState<string[]>([]);
   const [period, setPeriod] = useState<string>("");
-  const [windowsByPeriod, setWindowsByPeriod] = useState<
-    Record<string, RecentWindow>
-  >({});
-  const [window, setWindow] = useState<RecentWindow | null>(null);
   const [rows, setRows] = useState<VideoStatsRow[] | SongStatsRow[]>([]);
   const [sorting, setSorting] = useState<SortingState>(defaultSort);
   const [userSorted, setUserSorted] = useState(false);
@@ -43,14 +32,12 @@ export function StatsExplorer({ grain, variant }: StatsExplorerProps) {
 
     async function init() {
       try {
-        const manifest = await loadPeriodManifest(variant);
+        const manifest = await loadPeriodManifest();
         if (cancelled) {
           return;
         }
         setPeriods(manifest.periods);
         setPeriod(manifest.latest);
-        setWindowsByPeriod(manifest.windows ?? {});
-        setWindow(manifest.windows?.[manifest.latest] ?? null);
       } catch (err) {
         if (!cancelled) {
           setError(err instanceof Error ? err.message : "Failed to load periods");
@@ -63,7 +50,7 @@ export function StatsExplorer({ grain, variant }: StatsExplorerProps) {
     return () => {
       cancelled = true;
     };
-  }, [variant]);
+  }, []);
 
   useEffect(() => {
     if (!period) {
@@ -78,15 +65,12 @@ export function StatsExplorer({ grain, variant }: StatsExplorerProps) {
       try {
         const snapshot =
           grain === "video"
-            ? await loadVideoSnapshot(variant, period)
-            : await loadSongSnapshot(variant, period);
+            ? await loadVideoSnapshot(period)
+            : await loadSongSnapshot(period);
         if (cancelled) {
           return;
         }
         setRows(snapshot.rows);
-        if (snapshot.window) {
-          setWindow(snapshot.window);
-        }
       } catch (err) {
         if (!cancelled) {
           setError(err instanceof Error ? err.message : "Failed to load stats");
@@ -102,7 +86,7 @@ export function StatsExplorer({ grain, variant }: StatsExplorerProps) {
     return () => {
       cancelled = true;
     };
-  }, [grain, period, variant]);
+  }, [grain, period]);
 
   const handleSortingChange = useCallback<Dispatch<SetStateAction<SortingState>>>(
     (updater) => {
@@ -115,18 +99,12 @@ export function StatsExplorer({ grain, variant }: StatsExplorerProps) {
   const handlePeriodChange = useCallback(
     (nextPeriod: string) => {
       setPeriod(nextPeriod);
-      setWindow(windowsByPeriod[nextPeriod] ?? null);
       if (!userSorted) {
         setSorting(defaultSort);
       }
     },
-    [defaultSort, userSorted, windowsByPeriod],
+    [defaultSort, userSorted],
   );
-
-  const periodSummary =
-    variant === "recent" && window
-      ? formatPeriodRange(window.first_period, window.last_period)
-      : period;
 
   if (error && periods.length === 0) {
     return (
@@ -139,11 +117,8 @@ export function StatsExplorer({ grain, variant }: StatsExplorerProps) {
   return (
     <div className="space-y-6">
       <PeriodControls
-        variant={variant}
         periods={periods}
         period={period}
-        window={window}
-        windowsByPeriod={windowsByPeriod}
         onPeriodChange={handlePeriodChange}
         disabled={loading}
       />
@@ -151,11 +126,7 @@ export function StatsExplorer({ grain, variant }: StatsExplorerProps) {
       <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-zinc-600 dark:text-zinc-400">
         <p>
           {rows.length} {GRAIN_LABEL[grain]}
-          {periodSummary
-            ? variant === "recent"
-              ? ` · window ${periodSummary}`
-              : ` · data through ${period}`
-            : ""}
+          {period ? ` · data through ${period}` : ""}
         </p>
         {loading ? <p>Loading…</p> : null}
       </div>

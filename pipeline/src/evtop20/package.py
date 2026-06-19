@@ -14,22 +14,14 @@ from evtop20.models import youtube_id_is_set
 from evtop20.normalize import write_episode_file
 from evtop20.paths import (
     ALLTIME_STATS_BASENAME,
-    RECENT_STATS_BASENAME,
     SONG_STATS_BASENAME,
     packaged_per_song_alltime_dir,
     packaged_per_song_alltime_stats_latest_path,
     packaged_per_song_alltime_stats_path,
-    packaged_per_song_recent_dir,
-    packaged_per_song_recent_stats_latest_path,
-    packaged_per_song_recent_stats_path,
     packaged_per_video_alltime_dir,
     packaged_per_video_alltime_stats_latest_path,
     packaged_per_video_alltime_stats_path,
-    packaged_per_video_recent_dir,
-    packaged_per_video_recent_stats_latest_path,
-    packaged_per_video_recent_stats_path,
     processed_alltime_dir,
-    processed_recent_dir,
 )
 from evtop20.song_stats import (
     package_song_stats_payload,
@@ -138,8 +130,6 @@ def package_video_payload(
         "source": source,
         "rows": packaged_rows,
     }
-    if "window" in processed_payload:
-        packaged_payload["window"] = processed_payload["window"]
     return packaged_payload, parsed_count, unparsed_titles
 
 
@@ -155,27 +145,10 @@ def package_alltime_payload(
     )
 
 
-def package_recent_payload(
-    processed_payload: dict,
-    *,
-    esc_joiner: EscResultsJoiner | None = None,
-) -> tuple[dict, int, set[str]]:
-    return package_video_payload(
-        processed_payload,
-        source="processed/recent",
-        esc_joiner=esc_joiner,
+def list_processed_snapshot_paths(repo_root: Path) -> list[Path]:
+    return sorted(
+        processed_alltime_dir(repo_root).glob(f"{ALLTIME_STATS_BASENAME}-*.json")
     )
-
-
-def list_processed_snapshot_paths(repo_root: Path, stats_basename: str) -> list[Path]:
-    if stats_basename == ALLTIME_STATS_BASENAME:
-        processed_dir = processed_alltime_dir(repo_root)
-    elif stats_basename == RECENT_STATS_BASENAME:
-        processed_dir = processed_recent_dir(repo_root)
-    else:
-        msg = f"unsupported stats basename: {stats_basename}"
-        raise ValueError(msg)
-    return sorted(processed_dir.glob(f"{stats_basename}-*.json"))
 
 
 def _remove_stale_snapshots(directory: Path, stats_basename: str, kept: set[str]) -> None:
@@ -208,7 +181,7 @@ def _package_variant(
     song_latest_path: Callable[[Path], Path],
     esc_joiner: EscResultsJoiner | None = None,
 ) -> PackageVariantResult | None:
-    source_paths = list_processed_snapshot_paths(repo_root, stats_basename)
+    source_paths = list_processed_snapshot_paths(repo_root)
     if not source_paths:
         return None
 
@@ -329,30 +302,9 @@ def run_package(repo_root: Path) -> str:
         )
         raise PackageError(msg)
 
-    recent = _package_variant(
-        repo_root,
-        label="recent",
-        stats_basename=RECENT_STATS_BASENAME,
-        processed_source="processed/recent",
-        song_source="packaged/per-video/recent",
-        video_out_dir=packaged_per_video_recent_dir(repo_root),
-        video_stats_path=packaged_per_video_recent_stats_path,
-        video_latest_path=packaged_per_video_recent_stats_latest_path,
-        song_out_dir=packaged_per_song_recent_dir(repo_root),
-        song_stats_path=packaged_per_song_recent_stats_path,
-        song_latest_path=packaged_per_song_recent_stats_latest_path,
-        esc_joiner=esc_joiner,
-    )
-
-    message_parts = [_format_variant_summary(alltime)]
-    if recent is not None:
-        message_parts.append(_format_variant_summary(recent))
-
     warnings = dict.fromkeys([*alltime.warnings, *esc_joiner.warnings])
-    if recent is not None:
-        warnings.update(dict.fromkeys(recent.warnings))
 
-    message = "\n".join(message_parts)
+    message = _format_variant_summary(alltime)
     for warning in warnings:
         message += f"\n{warning}"
     return message

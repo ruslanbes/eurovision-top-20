@@ -5,31 +5,11 @@ type Props = {
   title: string;
   description: string;
   current: "videos" | "songs";
-  variant: "alltime" | "recent";
 };
 
-const { title, description, current, variant } = Astro.props;
+const { title, description, current } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const pageTitle = `${title} · Eurovision Top 20`;
-
-const videosAlltimeHref = base;
-const videosRecentHref = `${base}recent/`;
-const songsAlltimeHref = `${base}songs/`;
-const songsRecentHref = `${base}songs/recent/`;
-
-const videosHref = variant === "recent" ? videosRecentHref : videosAlltimeHref;
-const songsHref = variant === "recent" ? songsRecentHref : songsAlltimeHref;
-
-const variantLinks =
-  current === "videos"
-    ? [
-        { href: videosAlltimeHref, label: "All-time", id: "alltime" as const },
-        { href: videosRecentHref, label: "Recent", id: "recent" as const },
-      ]
-    : [
-        { href: songsAlltimeHref, label: "All-time", id: "alltime" as const },
-        { href: songsRecentHref, label: "Recent", id: "recent" as const },
-      ];
 ---
 
 <html lang="en">
@@ -49,59 +29,35 @@ const variantLinks =
           </p>
         </div>
 
-        <div class="space-y-2">
-          <nav
-            aria-label="Stats views"
-            class="flex gap-1 rounded-lg border border-zinc-200 bg-zinc-50 p-1 dark:border-zinc-800 dark:bg-zinc-900"
+        <nav
+          aria-label="Stats views"
+          class="flex gap-1 rounded-lg border border-zinc-200 bg-zinc-50 p-1 dark:border-zinc-800 dark:bg-zinc-900"
+        >
+          <a
+            href={base}
+            aria-current={current === "videos" ? "page" : undefined}
+            class:list={[
+              "rounded-md px-4 py-2 text-sm font-medium transition-colors",
+              current === "videos"
+                ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-950 dark:text-zinc-100"
+                : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100",
+            ]}
           >
-            <a
-              href={videosHref}
-              aria-current={current === "videos" ? "page" : undefined}
-              class:list={[
-                "rounded-md px-4 py-2 text-sm font-medium transition-colors",
-                current === "videos"
-                  ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-950 dark:text-zinc-100"
-                  : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100",
-              ]}
-            >
-              Videos
-            </a>
-            <a
-              href={songsHref}
-              aria-current={current === "songs" ? "page" : undefined}
-              class:list={[
-                "rounded-md px-4 py-2 text-sm font-medium transition-colors",
-                current === "songs"
-                  ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-950 dark:text-zinc-100"
-                  : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100",
-              ]}
-            >
-              Songs
-            </a>
-          </nav>
-
-          <nav
-            aria-label="Time range"
-            class="flex gap-1 rounded-lg border border-zinc-200 bg-zinc-50 p-1 dark:border-zinc-800 dark:bg-zinc-900"
+            Videos
+          </a>
+          <a
+            href={`${base}songs/`}
+            aria-current={current === "songs" ? "page" : undefined}
+            class:list={[
+              "rounded-md px-4 py-2 text-sm font-medium transition-colors",
+              current === "songs"
+                ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-950 dark:text-zinc-100"
+                : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100",
+            ]}
           >
-            {
-              variantLinks.map((link) => (
-                <a
-                  href={link.href}
-                  aria-current={variant === link.id ? "page" : undefined}
-                  class:list={[
-                    "rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
-                    variant === link.id
-                      ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-950 dark:text-zinc-100"
-                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100",
-                  ]}
-                >
-                  {link.label}
-                </a>
-              ))
-            }
-          </nav>
-        </div>
+            Songs
+          </a>
+        </nav>
       </header>
 
       <slot />

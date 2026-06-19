@@ -26,44 +26,7 @@ export function formatPeriodLabel(period: string): string {
   return date.toLocaleString("en-US", { month: "short", year: "numeric" });
 }
 
-export function formatPeriodRange(firstPeriod: string, lastPeriod: string): string {
-  return `${formatPeriodLabel(firstPeriod)} – ${formatPeriodLabel(lastPeriod)}`;
-}
-
 export function periodIndex(period: string, periods: string[]): number {
   const index = periods.indexOf(period);
   return index >= 0 ? index : 0;
-}
-
-export function findAnchorForWindowStart(
-  startPeriod: string,
-  windowsByPeriod: Record<string, { first_period: string }>,
-  periods: string[],
-): string | undefined {
-  const exact = periods.find(
-    (anchor) => windowsByPeriod[anchor]?.first_period === startPeriod,
-  );
-  if (exact) {
-    return exact;
-  }
-
-  const targetIndex = periodIndex(startPeriod, periods);
-  let bestAnchor: string | undefined;
-  let bestDistance = Infinity;
-
-  for (const anchor of periods) {
-    const windowMeta = windowsByPeriod[anchor];
-    if (!windowMeta) {
-      continue;
-    }
-    const distance = Math.abs(
-      periodIndex(windowMeta.first_period, periods) - targetIndex,
-    );
-    if (distance < bestDistance) {
-      bestDistance = distance;
-      bestAnchor = anchor;
-    }
-  }
-
-  return bestAnchor;
 }

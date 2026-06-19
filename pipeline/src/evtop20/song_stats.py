@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 
 from evtop20.aggregate import TIER_COUNT_FIELDS, chart_points_from_tiers
-from evtop20.paths import ALLTIME_STATS_BASENAME, RECENT_STATS_BASENAME, SONG_STATS_BASENAME
+from evtop20.paths import ALLTIME_STATS_BASENAME, SONG_STATS_BASENAME
 
 SONG_METADATA_FIELDS = (
     "artist",
@@ -153,15 +153,13 @@ def package_song_stats_payload(
         "source": source,
         "rows": song_rows,
     }
-    if "window" in packaged_video_payload:
-        payload["window"] = packaged_video_payload["window"]
     return payload, warnings
 
 
 def video_stats_basename_to_song_stats_basename(video_basename: str) -> str:
-    for prefix in (ALLTIME_STATS_BASENAME, RECENT_STATS_BASENAME):
-        if video_basename.startswith(f"{prefix}-"):
-            return SONG_STATS_BASENAME + video_basename[len(prefix) :]
+    prefix = f"{ALLTIME_STATS_BASENAME}-"
+    if video_basename.startswith(prefix):
+        return SONG_STATS_BASENAME + video_basename[len(ALLTIME_STATS_BASENAME) :]
     msg = f"unexpected video stats basename: {video_basename}"
     raise ValueError(msg)
 

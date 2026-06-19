@@ -24,6 +24,13 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 
 ---
 
+## remove-recent-variant
+- status: done
+- parent: flexible-period-window
+- goal: Drop fixed 5-year `recent` variant from pipeline, packaged data, and site; all-time-only tables until flexible range ships
+- done_when: Per `docs/tasks/remove-recent-variant.md` — no recent paths in repo or living docs; CI green; site `/` + `/songs/` only
+- notes: Step 0 of `flexible-period-window` epic
+
 ## flexible-period-window
 - status: backlog
 - parent: scaffold-project

@@ -1,18 +1,7 @@
 export type PeriodManifest = {
   periods: string[];
   latest: string;
-  windows?: Record<string, RecentWindow>;
 };
-
-export type RecentWindow = {
-  anchor_period: string;
-  episode_count: number;
-  first_period: string;
-  last_period: string;
-  years: number;
-};
-
-export type StatsVariant = "alltime" | "recent";
 
 export type SongStatsRow = {
   artist: string;
@@ -32,7 +21,6 @@ export type SongStatsRow = {
 export type SongStatsSnapshot = {
   source: string;
   rows: SongStatsRow[];
-  window?: RecentWindow;
 };
 
 export type VideoStatsRow = {
@@ -58,7 +46,6 @@ export type VideoStatsRow = {
 export type VideoStatsSnapshot = {
   source: string;
   rows: VideoStatsRow[];
-  window?: RecentWindow;
 };
 
 export type StatsGrain = "video" | "song";

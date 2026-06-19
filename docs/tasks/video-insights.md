@@ -268,7 +268,7 @@ Use \(P_{k+1} = 0\) if \(k = n\) (only one video). Suggested default: **\(g = 0.
 
 **Song grain (defer):** when song stats exist (packaged song stats (`data/packaged/per-song/`)), same rule on rolled-up rows: eligible if summed `top1 == 0`, leader by summed `chart_points` across variants.
 
-**Open later:** recent 5y view (processed **recent** variant (`data/processed/recent/`)) instead of all-time; minimum `chart_points` floor to avoid noise; list top 5 eligible not only #1.
+**Open later:** flexible period range on site ([`flexible-period-window.md`](flexible-period-window.md)) instead of fixed 5y recent; minimum `chart_points` floor to avoid noise; list top 5 eligible not only #1.
 
 ---
 

@@ -20,7 +20,7 @@ Processed and packaged rows include cumulative tier counts per `video_title`:
 | `top20` | Episodes where the upload ranked **1–20** |
 
 
-Counts are **cumulative** over the snapshot window (alltime or recent variant).
+Counts are **cumulative** over all episodes through the selected snapshot month.
 
 ## Formula
 

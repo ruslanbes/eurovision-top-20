@@ -6,8 +6,6 @@ from evtop20.aggregate import run_aggregate
 from evtop20.paths import (
     processed_alltime_stats_latest_path,
     processed_alltime_stats_period_path,
-    processed_recent_stats_latest_path,
-    processed_recent_stats_period_path,
 )
 from evtop20.validate import (
     format_validation_report,
@@ -48,26 +46,11 @@ def run_process(repo_root: Path) -> str:
     latest_path = _display_path(
         processed_alltime_stats_latest_path(repo_root), repo_root
     )
-    recent_first_path = _display_path(
-        processed_recent_stats_period_path(repo_root, *result.start_period),
-        repo_root,
-    )
-    recent_last_path = _display_path(
-        processed_recent_stats_period_path(repo_root, *result.end_period),
-        repo_root,
-    )
-    recent_latest_path = _display_path(
-        processed_recent_stats_latest_path(repo_root), repo_root
-    )
 
     message = (
         f"Wrote {first_path} … {last_path} ({result.snapshot_count} snapshots)\n"
         f"Wrote {latest_path} ({result.video_count} videos from "
-        f"{result.episode_count} episodes)\n"
-        f"Wrote {recent_first_path} … {recent_last_path} "
-        f"({result.snapshot_count} recent snapshots)\n"
-        f"Wrote {recent_latest_path} ({result.video_count} videos from "
-        f"{result.recent_window_episode_count} episodes in window)"
+        f"{result.episode_count} episodes)"
     )
     if result.warnings:
         message += "\nWarnings:\n" + "\n".join(f"  {w}" for w in result.warnings)

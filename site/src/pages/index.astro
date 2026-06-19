@@ -5,9 +5,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout
   current="videos"
-  variant="alltime"
   title="Videos"
   description="Cumulative statistics for the Eurovision Song Contest YouTube channel Most Watched chart — one row per official upload, all-time view."
 >
-  <StatsExplorer client:visible grain="video" variant="alltime" />
+  <StatsExplorer client:visible grain="video" />
 </BaseLayout>

@@ -5,9 +5,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout
   current="songs"
-  variant="alltime"
   title="Songs"
   description="Cumulative statistics rolled up by artist and song — one row per ESC entry, all-time view."
 >
-  <StatsExplorer client:visible grain="song" variant="alltime" />
+  <StatsExplorer client:visible grain="song" />
 </BaseLayout>
