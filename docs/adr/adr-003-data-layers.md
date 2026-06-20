@@ -23,7 +23,6 @@ flowchart TB
 
   raw -->|"validate → process"| processed
   processed --> package["package"]
-  raw -.->|"optional inputs"| package
   package --> packaged
   packaged -->|"copy at build"| site
 ```
@@ -41,7 +40,7 @@ flowchart TB
 | | **processed** | **packaged** |
 |---|---------------|--------------|
 | **Inputs** | Raw episodes only | Any: processed, raw, parsers, manual overrides, external datasets |
-| **Purpose** | Portable stats, git-diffable exports | Render-ready fields for islands |
+| **Purpose** | Portable stats, git-diffable exports | UI-facing JSON; may be sparse (query index) or row-ready (tables) |
 | **Transforms** | Tier aggregation, canonical ids | URL building, title parsing, song roll-ups, external joins, UI flags |
 | **Site** | Not read by the site | Sole data source for the site |
 
@@ -52,12 +51,12 @@ Processed may include multiple **stat variants** (e.g. cumulative vs sliding win
 | Step | Command | Writes |
 |------|---------|--------|
 | Validate | `evtop20 validate` | Normalized raw |
-| Process | `evtop20 process` | Processed |
-| Package | `evtop20 package` | Packaged |
+| Process | `evtop20 process` | Processed (alltime snapshots + episode-index) |
+| Package | `evtop20 package` | Packaged (alltime tables + `query/` window index) |
 
 `process` must not write packaged output. `package` must not re-implement tier aggregation — reuse processed rows or shared library code also used by `process`.
 
-**Site contract:** render packaged fields as-is. Client state (sort, period, toggles) is fine; no pipeline transforms in the browser ([`site/README.md`](../../site/README.md)).
+**Site contract:** the site reads **packaged** data only (not processed or raw). Islands may compute derived fields on packaged payloads—window aggregation, tier counts, `chart_points`, sort/filter UI state. When client math mirrors pipeline semantics, cover it with tests against the pipeline reference ([`data/README.md`](../../data/README.md)).
 
 ### Versioning
 
@@ -71,8 +70,9 @@ Processed may include multiple **stat variants** (e.g. cumulative vs sliding win
 | Flat processed layout | No room for sibling stat variants |
 | Heavier rename (`derived` / `publish`) | Unnecessary for current scale |
 | Song roll-ups in processed | Needs parser and presentation rules; belongs in packaged |
+| Site reads processed or raw | Breaks layer boundary; site uses packaged only |
 | One monolithic JSON per widget | Prefer grouped files under packaged |
-| Site transforms processed in TypeScript | Violates data-model-first rule |
+| Precompute every query in packaged | Flexible ranges need client aggregation over sparse index at current scale |
 
 ## Consequences
 

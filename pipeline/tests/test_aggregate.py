@@ -12,11 +12,12 @@ from evtop20.aggregate import (
     tiers_for_rank,
     validate_stats_payload,
 )
-from evtop20.process import ProcessError, run_process
 from evtop20.paths import (
     processed_alltime_stats_latest_path,
     processed_alltime_stats_period_path,
+    processed_episode_index_dir,
 )
+from evtop20.process import ProcessError, run_process
 
 
 def _episode(
@@ -358,6 +359,63 @@ def test_process_writes_stats_after_validation(repo_root: Path) -> None:
     assert "1 snapshots" in message
     assert "1 videos from 1 episodes" in message
     assert processed_alltime_stats_latest_path(repo_root).is_file()
+
+
+def test_process_writes_episode_index(repo_root: Path) -> None:
+    _write_episode(
+        repo_root,
+        "2026-01.json",
+        _episode(
+            year=2026,
+            month=1,
+            entries_by_rank={
+                3: {"video_title": "Song G", "youtube_video_id": "abc123xyz01"},
+                10: {"video_title": "Song H", "youtube_video_id": ""},
+            },
+        ),
+    )
+    _write_episode(
+        repo_root,
+        "2026-02.json",
+        _episode(
+            year=2026,
+            month=2,
+            entries_by_rank={
+                1: {"video_title": "Song G", "youtube_video_id": "abc123xyz01"},
+            },
+        ),
+    )
+    message = run_process(repo_root)
+    assert "episode-index/2026-01.json" in message
+    assert "2 episode files" in message
+
+    jan = json.loads(
+        (processed_episode_index_dir(repo_root) / "2026-01.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    feb = json.loads(
+        (processed_episode_index_dir(repo_root) / "2026-02.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert jan == {
+        "period": "2026-01",
+        "rows": [
+            {
+                "rank": 3,
+                "video_title": "Song G",
+                "youtube_video_id": "abc123xyz01",
+            },
+            {"rank": 10, "video_title": "Song H", "youtube_video_id": ""},
+        ],
+    }
+    assert feb == {
+        "period": "2026-02",
+        "rows": [
+            {"rank": 1, "video_title": "Song G", "youtube_video_id": "abc123xyz01"},
+        ],
+    }
 
 
 def _read_snapshot(repo_root: Path, year: int, month: int) -> dict:

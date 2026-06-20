@@ -3,8 +3,9 @@ import { formatPeriodLabel } from "./sort";
 
 type PeriodControlsProps = {
   periods: string[];
-  period: string;
-  onPeriodChange: (period: string) => void;
+  begin: string;
+  end: string;
+  onRangeChange: (begin: string, end: string) => void;
   disabled?: boolean;
 };
 
@@ -13,25 +14,26 @@ const thumbClassName =
 
 export function PeriodControls({
   periods,
-  period,
-  onPeriodChange,
+  begin,
+  end,
+  onRangeChange,
   disabled = false,
 }: PeriodControlsProps) {
-  const anchorIndex = Math.max(0, periods.indexOf(period));
-  const sliderValue = periods.length > 1 ? [anchorIndex] : [0];
+  const beginIndex = Math.max(0, periods.indexOf(begin));
+  const endIndex = Math.max(beginIndex, periods.indexOf(end));
+  const sliderValue = periods.length > 0 ? [beginIndex, endIndex] : [0, 0];
   const sliderDisabled = disabled || periods.length <= 1;
 
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Episode month:{" "}
+          Episode range:{" "}
           <span className="font-medium text-zinc-900 dark:text-zinc-100">
-            {period ? formatPeriodLabel(period) : "—"}
+            {begin && end
+              ? `${formatPeriodLabel(begin)} – ${formatPeriodLabel(end)}`
+              : "—"}
           </span>
-        </p>
-        <p className="text-xs text-zinc-500 dark:text-zinc-500">
-          {anchorIndex + 1} / {periods.length}
         </p>
       </div>
 
@@ -41,22 +43,30 @@ export function PeriodControls({
           min={0}
           max={Math.max(0, periods.length - 1)}
           step={1}
+          minStepsBetweenThumbs={0}
           value={sliderValue}
           disabled={sliderDisabled}
           onValueChange={(value) => {
-            const next = periods[value[0] ?? 0];
-            if (next) {
-              onPeriodChange(next);
+            const leftIndex = Math.min(value[0] ?? 0, value[1] ?? 0);
+            const rightIndex = Math.max(value[0] ?? 0, value[1] ?? 0);
+            const nextBegin = periods[leftIndex];
+            const nextEnd = periods[rightIndex];
+            if (nextBegin && nextEnd) {
+              onRangeChange(nextBegin, nextEnd);
             }
           }}
-          aria-label="Episode month"
+          aria-label="Episode month range"
         >
           <Slider.Track className="relative h-1.5 grow rounded-full bg-zinc-200 dark:bg-zinc-800">
             <Slider.Range className="absolute h-full rounded-full bg-blue-600 dark:bg-blue-500" />
           </Slider.Track>
           <Slider.Thumb
             className={thumbClassName}
-            aria-label="Select episode month"
+            aria-label="Range begin"
+          />
+          <Slider.Thumb
+            className={thumbClassName}
+            aria-label="Range end"
           />
         </Slider.Root>
 

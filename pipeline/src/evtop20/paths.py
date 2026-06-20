@@ -31,6 +31,10 @@ def processed_alltime_dir(repo_root: Path) -> Path:
     return processed_dir(repo_root) / "alltime"
 
 
+def processed_episode_index_dir(repo_root: Path) -> Path:
+    return processed_dir(repo_root) / "episode-index"
+
+
 def processed_alltime_stats_latest_path(repo_root: Path) -> Path:
     return (
         processed_alltime_dir(repo_root) / f"{ALLTIME_STATS_BASENAME}-latest.json"
@@ -48,6 +52,10 @@ def processed_alltime_stats_period_path(
 
 def packaged_dir(repo_root: Path) -> Path:
     return repo_root / "data" / "packaged"
+
+
+def packaged_query_dir(repo_root: Path) -> Path:
+    return packaged_dir(repo_root) / "query"
 
 
 def packaged_per_video_dir(repo_root: Path) -> Path:

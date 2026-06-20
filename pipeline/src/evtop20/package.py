@@ -23,6 +23,7 @@ from evtop20.paths import (
     packaged_per_video_alltime_stats_path,
     processed_alltime_dir,
 )
+from evtop20.query_index import run_query_index
 from evtop20.song_stats import (
     package_song_stats_payload,
     video_stats_basename_to_song_stats_basename,
@@ -304,7 +305,23 @@ def run_package(repo_root: Path) -> str:
 
     warnings = dict.fromkeys([*alltime.warnings, *esc_joiner.warnings])
 
+    latest_video_payload = json.loads(
+        packaged_per_video_alltime_stats_latest_path(repo_root).read_text(
+            encoding="utf-8"
+        )
+    )
+    latest_rows = latest_video_payload.get("rows")
+    if not isinstance(latest_rows, list):
+        msg = "latest packaged video payload rows must be a list"
+        raise PackageError(msg)
+
+    try:
+        query_result = run_query_index(repo_root, latest_video_rows=latest_rows)
+    except FileNotFoundError as exc:
+        raise PackageError(str(exc)) from exc
+
     message = _format_variant_summary(alltime)
+    message += f"\n{query_result.summary}"
     for warning in warnings:
         message += f"\n{warning}"
     return message

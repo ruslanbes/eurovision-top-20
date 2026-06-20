@@ -4,8 +4,13 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-06-18
+
+Flexible period windows, ESC placement, and site query index. Replaces the fixed 5-year **recent** variant.
+
 ### Added
 
+- Flexible episode-month range on stats tables — `processed/episode-index/`, `packaged/query/` sparse hit index, client aggregation via `queryWindow.ts`; dual-thumb range slider defaults to full corpus.
 - ESC final placement on packaged rows — vendored [EurovisionAPI/dataset](https://github.com/EurovisionAPI/dataset) release `2026.4`, join in `package`, `evtop20 vendor-esc flatten` CLI.
 - **Place** column on per-video stats table (`esc_final_place` labels + custom sort; tooltip distinguishes from chart points).
 - ESC join artist normalization — `and`/`y`/`x`/`feat.`/`ft.` equivalents, sorted duet parts for alias matching.
@@ -14,12 +19,17 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ### Changed
 
-- Removed fixed **5-year recent** stat variant from pipeline, packaged data, and site (all-time only until [`flexible-period-window`](docs/tasks/flexible-period-window.md) ships).
+- Removed fixed **5-year recent** stat variant from pipeline, packaged data, and site; replaced by flexible `[begin, end]` episode-month windows on a single route per grain.
+- ADR-003 site contract — client may aggregate tiers and `chart_points` from packaged payloads (e.g. `queryWindow.ts` over `packaged/query/`).
 - ESC placement overrides moved out of `manual-video-metadata.json` into `esc-placement-overrides.json` (title-parse file is parse fields only).
 - Virtual **`World`** country (`🌍`) for non-national ESC clips; five manual-metadata rows updated.
 - Vendored ESC results include **2026** from [EurovisionAPI/dataset PR #1](https://github.com/EurovisionAPI/dataset/pull/1) (`release_tag` `2026.4+pr1` until upstream merge); `last_completed_contest_year` **2026**.
 - Pipeline requires **Python 3.14** (`pipeline/.python-version`, CI test job on push/PR).
 - Removed `generated_at` from processed and packaged snapshot JSON (was pipeline run date on every file, causing noisy git diffs on no-op reruns). Site footer uses the selected period instead.
+
+### Removed
+
+- Completed `flexible-period-window` task and spike specs (behavior documented in ADRs, FAQ, and `data/README.md`).
 
 ## [0.0.1] - 2026-06-15
 

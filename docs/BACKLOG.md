@@ -24,20 +24,6 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 
 ---
 
-## remove-recent-variant
-- status: done
-- parent: flexible-period-window
-- goal: Drop fixed 5-year `recent` variant from pipeline, packaged data, and site; all-time-only tables until flexible range ships
-- done_when: Per `docs/tasks/remove-recent-variant.md` — no recent paths in repo or living docs; CI green; site `/` + `/songs/` only
-- notes: Step 0 of `flexible-period-window` epic
-
-## flexible-period-window
-- status: backlog
-- parent: scaffold-project
-- goal: One table per grain with flexible begin/end episode-month slider; queryable packaged data replaces alltime/recent snapshot split
-- done_when: Per `docs/tasks/flexible-period-window.md` — spike chosen, recent variant removed, site unified, any valid range queryable
-- notes: Epic; children: spike → process → package → site → cleanup
-
 ## virtual-world-country
 - status: done
 - parent: eurovision-final-place

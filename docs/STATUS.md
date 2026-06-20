@@ -4,7 +4,7 @@ Last updated: 2026-06-18
 
 ## Current focus
 
-`remove-recent-variant` done. Next: `flexible-period-window` spike or `site-theming`.
+**0.1.0** released. Next: `site-theming` or backlog items.
 
 ## Active task
 
@@ -16,10 +16,9 @@ _None._
 
 ## Next action
 
-Start `flexible-period-window-spike` or pick `site-theming`.
+Pick [`site-theming`](docs/tasks/site-theming.md) or another ready task from [`BACKLOG.md`](BACKLOG.md).
 
 ## Session notes
 
-- **`remove-recent-variant` done** — dropped `processed/recent` and `packaged/*/recent`; site is all-time only (`/` + `/songs/`); 174 pipeline tests pass.
-- Drafted epic `docs/tasks/flexible-period-window.md` — flexible range slider, queryable packaged index.
-- Virtual `World` country (`🌍`) for five `NON_ENTRY` specials; join skips vendor for `World`.
+- **0.1.0** — flexible period windows, ESC placement, query index; changelog bumped; completed epic/spike task specs removed.
+- ADR-003 allows client-side aggregation on packaged data.

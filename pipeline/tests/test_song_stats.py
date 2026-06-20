@@ -17,7 +17,7 @@ from evtop20.song_stats import (
     song_group_key,
     video_stats_basename_to_song_stats_basename,
 )
-from conftest import write_vendored_esc_results
+from conftest import write_episode_index_snapshot, write_vendored_esc_results
 
 
 def _video_row(**overrides: object) -> dict:
@@ -259,6 +259,17 @@ def test_run_package_writes_song_stats_snapshots(repo_root: Path) -> None:
         repo_root,
         "eurovision-top-20-alltime-latest.json",
         {"rows": [processed_row]},
+    )
+    write_episode_index_snapshot(
+        repo_root,
+        "2026-05",
+        [
+            {
+                "rank": 1,
+                "video_title": processed_row["video_title"],
+                "youtube_video_id": processed_row["youtube_video_id"],
+            }
+        ],
     )
 
     message = run_package(repo_root)

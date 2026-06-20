@@ -13,9 +13,10 @@ from evtop20.package import (
 )
 from evtop20.paths import (
     packaged_per_video_alltime_stats_latest_path,
+    packaged_query_dir,
     processed_alltime_dir,
 )
-from conftest import write_vendored_esc_results
+from conftest import write_episode_index_snapshot, write_vendored_esc_results
 
 
 def _processed_row(**overrides: object) -> dict:
@@ -125,6 +126,17 @@ def test_run_package_writes_alltime_snapshots(repo_root: Path) -> None:
     stale_path.write_text('{"rows": []}\n', encoding="utf-8")
     stale_period = stale_path.with_name("eurovision-top-20-alltime-2025-12.json")
     stale_period.write_text('{"rows": []}\n', encoding="utf-8")
+    write_episode_index_snapshot(
+        repo_root,
+        "2026-05",
+        [
+            {
+                "rank": 1,
+                "video_title": row["video_title"],
+                "youtube_video_id": row["youtube_video_id"],
+            }
+        ],
+    )
 
     message = run_package(repo_root)
 
@@ -141,6 +153,46 @@ def test_run_package_writes_alltime_snapshots(repo_root: Path) -> None:
     assert period["rows"][0]["performance_type"] == "Official Music Video"
     assert not stale_period.exists()
     assert "Title metadata (alltime latest): 1/1 rows parsed" in message
+    assert "query/video-hits.json" in message
+
+
+def test_run_package_writes_query_index(repo_root: Path) -> None:
+    row = _processed_row()
+    _write_processed_snapshot(
+        repo_root,
+        "eurovision-top-20-alltime-2026-05.json",
+        _processed_payload(row),
+    )
+    _write_processed_snapshot(
+        repo_root,
+        "eurovision-top-20-alltime-latest.json",
+        _processed_payload(row),
+    )
+    write_episode_index_snapshot(
+        repo_root,
+        "2026-05",
+        [
+            {
+                "rank": 1,
+                "video_title": row["video_title"],
+                "youtube_video_id": row["youtube_video_id"],
+            }
+        ],
+    )
+
+    message = run_package(repo_root)
+
+    video_hits = json.loads(
+        (packaged_query_dir(repo_root) / "video-hits.json").read_text(encoding="utf-8")
+    )
+    song_hits = json.loads(
+        (packaged_query_dir(repo_root) / "song-hits.json").read_text(encoding="utf-8")
+    )
+
+    assert "query/song-meta.json" in message
+    assert video_hits["periods"] == ["2026-05"]
+    assert video_hits["hits"][0]["entries"] == [{"period": "2026-05", "rank": 1}]
+    assert song_hits["hits"][0]["entries"] == [{"period": "2026-05", "ranks": [1]}]
 
 
 def test_run_package_requires_processed_alltime(repo_root: Path) -> None:

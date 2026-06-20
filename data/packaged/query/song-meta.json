@@ -1,0 +1,1812 @@
+{
+  "rows": [
+    {
+      "artist": "5MIINUST x Puuluup",
+      "country": "Estonia",
+      "esc_final_place": 20,
+      "flag": "🇪🇪",
+      "song": "(nendest) narkootikumidest ei tea me (küll) midagi",
+      "year": 2024
+    },
+    {
+      "artist": "Abor & Tynna",
+      "country": "Germany",
+      "esc_final_place": 15,
+      "flag": "🇩🇪",
+      "song": "Baller",
+      "year": 2025
+    },
+    {
+      "artist": "ADONXS",
+      "country": "Czechia",
+      "esc_final_place": "DNQ",
+      "flag": "🇨🇿",
+      "song": "Kiss Kiss Goodbye",
+      "year": 2025
+    },
+    {
+      "artist": "AIDAN",
+      "country": "Malta",
+      "esc_final_place": 18,
+      "flag": "🇲🇹",
+      "song": "Bella",
+      "year": 2026
+    },
+    {
+      "artist": "Akylas",
+      "country": "Greece",
+      "esc_final_place": 10,
+      "flag": "🇬🇷",
+      "song": "Ferto",
+      "year": 2026
+    },
+    {
+      "artist": "Albina",
+      "country": "Croatia",
+      "esc_final_place": "DNQ",
+      "flag": "🇭🇷",
+      "song": "Tick-Tock",
+      "year": 2021
+    },
+    {
+      "artist": "Albina & Familja Kelmendi",
+      "country": "Albania",
+      "esc_final_place": 22,
+      "flag": "🇦🇱",
+      "song": "Duje",
+      "year": 2023
+    },
+    {
+      "artist": "Alessandra",
+      "country": "Norway",
+      "esc_final_place": 5,
+      "flag": "🇳🇴",
+      "song": "Queen of Kings",
+      "year": 2023
+    },
+    {
+      "artist": "Alexander Rybak",
+      "country": "Norway",
+      "esc_final_place": 1,
+      "flag": "🇳🇴",
+      "song": "Fairytale",
+      "year": 2009
+    },
+    {
+      "artist": "Alexander Rybak",
+      "country": "Norway",
+      "esc_final_place": 15,
+      "flag": "🇳🇴",
+      "song": "That's How You Write A Song",
+      "year": 2018
+    },
+    {
+      "artist": "Alexander Rybak",
+      "country": "Norway",
+      "esc_final_place": 15,
+      "flag": "🇳🇴",
+      "song": "That’s How You Write A Song",
+      "year": 2018
+    },
+    {
+      "artist": "Alexandra Căpitănescu",
+      "country": "Romania",
+      "esc_final_place": 3,
+      "flag": "🇷🇴",
+      "song": "Choke Me",
+      "year": 2026
+    },
+    {
+      "artist": "Alfred and Amaia",
+      "country": "Spain",
+      "esc_final_place": 23,
+      "flag": "🇪🇸",
+      "song": "Tu Canción",
+      "year": 2018
+    },
+    {
+      "artist": "ALICJA",
+      "country": "Poland",
+      "esc_final_place": 12,
+      "flag": "🇵🇱",
+      "song": "Pray",
+      "year": 2026
+    },
+    {
+      "artist": "Alicja Szemplińska",
+      "country": "Poland",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇵🇱",
+      "song": "Empires",
+      "year": 2020
+    },
+    {
+      "artist": "Alis",
+      "country": "Albania",
+      "esc_final_place": 13,
+      "flag": "🇦🇱",
+      "song": "Nân",
+      "year": 2026
+    },
+    {
+      "artist": "Alma",
+      "country": "France",
+      "esc_final_place": 12,
+      "flag": "🇫🇷",
+      "song": "Requiem",
+      "year": 2017
+    },
+    {
+      "artist": "Alvan & Ahez",
+      "country": "France",
+      "esc_final_place": 24,
+      "flag": "🇫🇷",
+      "song": "Fulenn",
+      "year": 2022
+    },
+    {
+      "artist": "alyona alyona & Jerry Heil",
+      "country": "Ukraine",
+      "esc_final_place": 3,
+      "flag": "🇺🇦",
+      "song": "Teresa & Maria",
+      "year": 2024
+    },
+    {
+      "artist": "Amaia y Alfred",
+      "country": "Spain",
+      "esc_final_place": 23,
+      "flag": "🇪🇸",
+      "song": "Tu Canción",
+      "year": 2018
+    },
+    {
+      "artist": "Amanda Georgiadi Tenfjord",
+      "country": "Greece",
+      "esc_final_place": 8,
+      "flag": "🇬🇷",
+      "song": "Die Together",
+      "year": 2022
+    },
+    {
+      "artist": "Amir",
+      "country": "France",
+      "esc_final_place": 6,
+      "flag": "🇫🇷",
+      "song": "J'ai cherché",
+      "year": 2016
+    },
+    {
+      "artist": "Andromache",
+      "country": "Cyprus",
+      "esc_final_place": "DNQ",
+      "flag": "🇨🇾",
+      "song": "Ela",
+      "year": 2022
+    },
+    {
+      "artist": "Angelina Mango",
+      "country": "Italy",
+      "esc_final_place": 7,
+      "flag": "🇮🇹",
+      "song": "La noia",
+      "year": 2024
+    },
+    {
+      "artist": "Antigoni",
+      "country": "Cyprus",
+      "esc_final_place": 19,
+      "flag": "🇨🇾",
+      "song": "JALLA",
+      "year": 2026
+    },
+    {
+      "artist": "Athena Manoukian",
+      "country": "Armenia",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇦🇲",
+      "song": "Chains On You",
+      "year": 2020
+    },
+    {
+      "artist": "AySel & Arash",
+      "country": "Azerbaijan",
+      "esc_final_place": 3,
+      "flag": "🇦🇿",
+      "song": "Always",
+      "year": 2009
+    },
+    {
+      "artist": "Aysel and Arash",
+      "country": "Azerbaijan",
+      "esc_final_place": 3,
+      "flag": "🇦🇿",
+      "song": "Always",
+      "year": 2009
+    },
+    {
+      "artist": "Azúcar Moreno",
+      "country": "Spain",
+      "esc_final_place": 5,
+      "flag": "🇪🇸",
+      "song": "Bandido",
+      "year": 1990
+    },
+    {
+      "artist": "Baby Lasagna",
+      "country": "Croatia",
+      "esc_final_place": 2,
+      "flag": "🇭🇷",
+      "song": "Rim Tim Tagi Dim",
+      "year": 2024
+    },
+    {
+      "artist": "Bambie Thug",
+      "country": "Ireland",
+      "esc_final_place": 6,
+      "flag": "🇮🇪",
+      "song": "Doomsday Blue",
+      "year": 2024
+    },
+    {
+      "artist": "Barbara Pravi",
+      "country": "France",
+      "esc_final_place": 2,
+      "flag": "🇫🇷",
+      "song": "Voilà",
+      "year": 2021
+    },
+    {
+      "artist": "Benjamin Ingrosso",
+      "country": "Sweden",
+      "esc_final_place": 7,
+      "flag": "🇸🇪",
+      "song": "Dance You Off",
+      "year": 2018
+    },
+    {
+      "artist": "Bilal Hassani",
+      "country": "France",
+      "esc_final_place": 16,
+      "flag": "🇫🇷",
+      "song": "Roi",
+      "year": 2019
+    },
+    {
+      "artist": "Blanca Paloma",
+      "country": "Spain",
+      "esc_final_place": 17,
+      "flag": "🇪🇸",
+      "song": "Eaea",
+      "year": 2023
+    },
+    {
+      "artist": "Blanche",
+      "country": "Belgium",
+      "esc_final_place": 4,
+      "flag": "🇧🇪",
+      "song": "City Lights",
+      "year": 2017
+    },
+    {
+      "artist": "Blanka",
+      "country": "Poland",
+      "esc_final_place": 19,
+      "flag": "🇵🇱",
+      "song": "Solo",
+      "year": 2023
+    },
+    {
+      "artist": "Blind Channel",
+      "country": "Finland",
+      "esc_final_place": 6,
+      "flag": "🇫🇮",
+      "song": "Dark Side",
+      "year": 2021
+    },
+    {
+      "artist": "Brunette",
+      "country": "Armenia",
+      "esc_final_place": 14,
+      "flag": "🇦🇲",
+      "song": "Future Lover",
+      "year": 2023
+    },
+    {
+      "artist": "Bzikebi",
+      "country": "Georgia",
+      "esc_final_place": "DNQ",
+      "flag": "🇬🇪",
+      "song": "On Replay",
+      "year": 2026
+    },
+    {
+      "artist": "Can Bonomo",
+      "country": "Turkey",
+      "esc_final_place": 7,
+      "flag": "🇹🇷",
+      "song": "Love Me Back",
+      "year": 2012
+    },
+    {
+      "artist": "Cesár Sampson",
+      "country": "Austria",
+      "esc_final_place": 3,
+      "flag": "🇦🇹",
+      "song": "Nobody But You",
+      "year": 2018
+    },
+    {
+      "artist": "Chanel",
+      "country": "Spain",
+      "esc_final_place": 3,
+      "flag": "🇪🇸",
+      "song": "SloMo",
+      "year": 2022
+    },
+    {
+      "artist": "Citi Zēni",
+      "country": "Latvia",
+      "esc_final_place": "DNQ",
+      "flag": "🇱🇻",
+      "song": "Eat Your Salad",
+      "year": 2022
+    },
+    {
+      "artist": "Claude",
+      "country": "Netherlands",
+      "esc_final_place": 12,
+      "flag": "🇳🇱",
+      "song": "C'est La Vie",
+      "year": 2025
+    },
+    {
+      "artist": "Conchita Wurst",
+      "country": "Austria",
+      "esc_final_place": 1,
+      "flag": "🇦🇹",
+      "song": "Rise Like a Phoenix",
+      "year": 2014
+    },
+    {
+      "artist": "Conchita Wurst, Måns Zelmerlöw, Eleni Foureira & Verka Serduchka",
+      "country": "World",
+      "esc_final_place": "NON_ENTRY",
+      "flag": "🌍",
+      "song": "Switch Song",
+      "year": 2019
+    },
+    {
+      "artist": "Cornelia Jakobs",
+      "country": "Sweden",
+      "esc_final_place": 4,
+      "flag": "🇸🇪",
+      "song": "Hold Me Closer",
+      "year": 2022
+    },
+    {
+      "artist": "COSMÓ",
+      "country": "Austria",
+      "esc_final_place": 24,
+      "flag": "🇦🇹",
+      "song": "Tanzschein",
+      "year": 2026
+    },
+    {
+      "artist": "Dami Im",
+      "country": "Australia",
+      "esc_final_place": 2,
+      "flag": "🇦🇺",
+      "song": "Sound Of Silence",
+      "year": 2016
+    },
+    {
+      "artist": "DARA",
+      "country": "Bulgaria",
+      "esc_final_place": 1,
+      "flag": "🇧🇬",
+      "song": "Bangaranga",
+      "year": 2026
+    },
+    {
+      "artist": "Daði og Gagnamagnið",
+      "country": "Iceland",
+      "esc_final_place": 4,
+      "flag": "🇮🇸",
+      "song": "10 Years",
+      "year": 2021
+    },
+    {
+      "artist": "Daði og Gagnamagnið",
+      "country": "Iceland",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇮🇸",
+      "song": "Think About Things",
+      "year": 2020
+    },
+    {
+      "artist": "Delta Goodrem",
+      "country": "Australia",
+      "esc_final_place": 4,
+      "flag": "🇦🇺",
+      "song": "Eclipse",
+      "year": 2026
+    },
+    {
+      "artist": "Destiny",
+      "country": "Malta",
+      "esc_final_place": 7,
+      "flag": "🇲🇹",
+      "song": "Je Me Casse",
+      "year": 2021
+    },
+    {
+      "artist": "Diodato",
+      "country": "Italy",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇮🇹",
+      "song": "Fai Rumore",
+      "year": 2020
+    },
+    {
+      "artist": "Duncan Laurence",
+      "country": "Netherlands",
+      "esc_final_place": 1,
+      "flag": "🇳🇱",
+      "song": "Arcade",
+      "year": 2019
+    },
+    {
+      "artist": "Eden Golan",
+      "country": "Israel",
+      "esc_final_place": 5,
+      "flag": "🇮🇱",
+      "song": "Hurricane",
+      "year": 2024
+    },
+    {
+      "artist": "Efendi",
+      "country": "Azerbaijan",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇦🇿",
+      "song": "Cleopatra",
+      "year": 2020
+    },
+    {
+      "artist": "Efendi",
+      "country": "Azerbaijan",
+      "esc_final_place": 20,
+      "flag": "🇦🇿",
+      "song": "Mata Hari",
+      "year": 2021
+    },
+    {
+      "artist": "Elena Tsagrinou",
+      "country": "Cyprus",
+      "esc_final_place": 16,
+      "flag": "🇨🇾",
+      "song": "El Diablo",
+      "year": 2021
+    },
+    {
+      "artist": "Eleni Foureira",
+      "country": "Cyprus",
+      "esc_final_place": 2,
+      "flag": "🇨🇾",
+      "song": "Fuego",
+      "year": 2018
+    },
+    {
+      "artist": "Emmelie de Forest",
+      "country": "Denmark",
+      "esc_final_place": 1,
+      "flag": "🇩🇰",
+      "song": "Only Teardrops",
+      "year": 2013
+    },
+    {
+      "artist": "EQUINOX",
+      "country": "Bulgaria",
+      "esc_final_place": 14,
+      "flag": "🇧🇬",
+      "song": "Bones",
+      "year": 2018
+    },
+    {
+      "artist": "Erika Vikman",
+      "country": "Finland",
+      "esc_final_place": 11,
+      "flag": "🇫🇮",
+      "song": "ICH KOMME",
+      "year": 2025
+    },
+    {
+      "artist": "ESSYLA",
+      "country": "Belgium",
+      "esc_final_place": 21,
+      "flag": "🇧🇪",
+      "song": "Dancing on the Ice",
+      "year": 2026
+    },
+    {
+      "artist": "Eye Cue",
+      "country": "North Macedonia",
+      "esc_final_place": "DNQ",
+      "flag": "🇲🇰",
+      "song": "Lost And Found",
+      "year": 2018
+    },
+    {
+      "artist": "FAHREE feat. Ilkin Dovlatov",
+      "country": "Azerbaijan",
+      "esc_final_place": "DNQ",
+      "flag": "🇦🇿",
+      "song": "Özünlə Apar",
+      "year": 2024
+    },
+    {
+      "artist": "FELICIA",
+      "country": "Sweden",
+      "esc_final_place": 20,
+      "flag": "🇸🇪",
+      "song": "My System",
+      "year": 2026
+    },
+    {
+      "artist": "Francesco Gabbani",
+      "country": "Italy",
+      "esc_final_place": 6,
+      "flag": "🇮🇹",
+      "song": "Occidentali's Karma",
+      "year": 2017
+    },
+    {
+      "artist": "Gjon's Tears",
+      "country": "Switzerland",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇨🇭",
+      "song": "Répondez-moi",
+      "year": 2020
+    },
+    {
+      "artist": "Gjon's Tears",
+      "country": "Switzerland",
+      "esc_final_place": 3,
+      "flag": "🇨🇭",
+      "song": "Tout l'Univers",
+      "year": 2021
+    },
+    {
+      "artist": "Gjon's Tears",
+      "country": "Switzerland",
+      "esc_final_place": 3,
+      "flag": "🇨🇭",
+      "song": "Tout l’Univers",
+      "year": 2021
+    },
+    {
+      "artist": "Go_A",
+      "country": "Ukraine",
+      "esc_final_place": 5,
+      "flag": "🇺🇦",
+      "song": "Shum",
+      "year": 2021
+    },
+    {
+      "artist": "Go_A",
+      "country": "Ukraine",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇺🇦",
+      "song": "Solovey",
+      "year": 2020
+    },
+    {
+      "artist": "Gustaph",
+      "country": "Belgium",
+      "esc_final_place": 7,
+      "flag": "🇧🇪",
+      "song": "Because Of You",
+      "year": 2023
+    },
+    {
+      "artist": "Gåte",
+      "country": "Norway",
+      "esc_final_place": 25,
+      "flag": "🇳🇴",
+      "song": "Ulveham",
+      "year": 2024
+    },
+    {
+      "artist": "Hadise",
+      "country": "Turkey",
+      "esc_final_place": 4,
+      "flag": "🇹🇷",
+      "song": "Düm Tek Tek",
+      "year": 2009
+    },
+    {
+      "artist": "Hatari",
+      "country": "Iceland",
+      "esc_final_place": 10,
+      "flag": "🇮🇸",
+      "song": "Hatrið Mun Sigra",
+      "year": 2019
+    },
+    {
+      "artist": "Helena Paparizou",
+      "country": "Greece",
+      "esc_final_place": 1,
+      "flag": "🇬🇷",
+      "song": "My Number One",
+      "year": 2005
+    },
+    {
+      "artist": "Hurricane",
+      "country": "Serbia",
+      "esc_final_place": 15,
+      "flag": "🇷🇸",
+      "song": "Loco Loco",
+      "year": 2021
+    },
+    {
+      "artist": "Ilinca ft. Alex Florea",
+      "country": "Romania",
+      "esc_final_place": 7,
+      "flag": "🇷🇴",
+      "song": "Yodel It!",
+      "year": 2017
+    },
+    {
+      "artist": "Isaiah",
+      "country": "Australia",
+      "esc_final_place": 9,
+      "flag": "🇦🇺",
+      "song": "Don't Come Easy",
+      "year": 2017
+    },
+    {
+      "artist": "Jamala",
+      "country": "Ukraine",
+      "esc_final_place": 1,
+      "flag": "🇺🇦",
+      "song": "1944",
+      "year": 2016
+    },
+    {
+      "artist": "James Newman",
+      "country": "United Kingdom",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇬🇧",
+      "song": "My Last Breath",
+      "year": 2020
+    },
+    {
+      "artist": "Jana Burčeska",
+      "country": "North Macedonia",
+      "esc_final_place": "DNQ",
+      "flag": "🇲🇰",
+      "song": "Dance Alone",
+      "year": 2017
+    },
+    {
+      "artist": "Jessica Mauboy",
+      "country": "Australia",
+      "esc_final_place": 20,
+      "flag": "🇦🇺",
+      "song": "We Got Love",
+      "year": 2018
+    },
+    {
+      "artist": "Jessy Matador",
+      "country": "France",
+      "esc_final_place": 12,
+      "flag": "🇫🇷",
+      "song": "Allez Ola Olé",
+      "year": 2010
+    },
+    {
+      "artist": "JJ",
+      "country": "Austria",
+      "esc_final_place": 1,
+      "flag": "🇦🇹",
+      "song": "Wasted Love",
+      "year": 2025
+    },
+    {
+      "artist": "Joker Out",
+      "country": "Slovenia",
+      "esc_final_place": 21,
+      "flag": "🇸🇮",
+      "song": "Carpe Diem",
+      "year": 2023
+    },
+    {
+      "artist": "Joost Klein",
+      "country": "Netherlands",
+      "esc_final_place": "DQ",
+      "flag": "🇳🇱",
+      "song": "Europapa",
+      "year": 2024
+    },
+    {
+      "artist": "Julia Samoylova",
+      "country": "Russia",
+      "esc_final_place": "WITHDRAWN",
+      "flag": "🇷🇺",
+      "song": "Flame Is Burning",
+      "year": 2017
+    },
+    {
+      "artist": "Julia Samoylova",
+      "country": "Russia",
+      "esc_final_place": "DNQ",
+      "flag": "🇷🇺",
+      "song": "I Won't Break",
+      "year": 2018
+    },
+    {
+      "artist": "Julia Samoylova",
+      "country": "Russia",
+      "esc_final_place": "DNQ",
+      "flag": "🇷🇺",
+      "song": "I Won’t Break",
+      "year": 2018
+    },
+    {
+      "artist": "Justyna Steczkowska",
+      "country": "Poland",
+      "esc_final_place": 14,
+      "flag": "🇵🇱",
+      "song": "GAJA",
+      "year": 2025
+    },
+    {
+      "artist": "KAJ",
+      "country": "Sweden",
+      "esc_final_place": 4,
+      "flag": "🇸🇪",
+      "song": "Bara Bada Bastu",
+      "year": 2025
+    },
+    {
+      "artist": "Kaleen",
+      "country": "Austria",
+      "esc_final_place": 24,
+      "flag": "🇦🇹",
+      "song": "We Will Rave",
+      "year": 2024
+    },
+    {
+      "artist": "Kalush Orchestra",
+      "country": "Ukraine",
+      "esc_final_place": 1,
+      "flag": "🇺🇦",
+      "song": "Stefania",
+      "year": 2022
+    },
+    {
+      "artist": "Kant",
+      "country": "Malta",
+      "esc_final_place": 17,
+      "flag": "🇲🇹",
+      "song": "Miriana Conte",
+      "year": 2025
+    },
+    {
+      "artist": "Katarsis",
+      "country": "Lithuania",
+      "esc_final_place": 16,
+      "flag": "🇱🇹",
+      "song": "Tavo Akys",
+      "year": 2025
+    },
+    {
+      "artist": "Kate Miller-Heidke",
+      "country": "Australia",
+      "esc_final_place": 9,
+      "flag": "🇦🇺",
+      "song": "Zero Gravity",
+      "year": 2019
+    },
+    {
+      "artist": "KEiiNO",
+      "country": "Norway",
+      "esc_final_place": 6,
+      "flag": "🇳🇴",
+      "song": "Spirit In The Sky",
+      "year": 2019
+    },
+    {
+      "artist": "Klavdia",
+      "country": "Greece",
+      "esc_final_place": 6,
+      "flag": "🇬🇷",
+      "song": "Asteromáta",
+      "year": 2025
+    },
+    {
+      "artist": "Konstrakta",
+      "country": "Serbia",
+      "esc_final_place": 5,
+      "flag": "🇷🇸",
+      "song": "In Corpore Sano",
+      "year": 2022
+    },
+    {
+      "artist": "Kristian Kostov",
+      "country": "Bulgaria",
+      "esc_final_place": 2,
+      "flag": "🇧🇬",
+      "song": "Beautiful Mess",
+      "year": 2017
+    },
+    {
+      "artist": "Kristina",
+      "country": "Slovakia",
+      "esc_final_place": "DNQ",
+      "flag": "🇸🇰",
+      "song": "Horehronie",
+      "year": 2010
+    },
+    {
+      "artist": "Kyle Alessandro",
+      "country": "Norway",
+      "esc_final_place": 18,
+      "flag": "🇳🇴",
+      "song": "Lighter",
+      "year": 2025
+    },
+    {
+      "artist": "Käärijä",
+      "country": "Finland",
+      "esc_final_place": 2,
+      "flag": "🇫🇮",
+      "song": "Cha Cha Cha",
+      "year": 2023
+    },
+    {
+      "artist": "Käärijä & Baby Lasagna",
+      "country": "World",
+      "esc_final_place": "NON_ENTRY",
+      "flag": "🌍",
+      "song": "#eurodab",
+      "year": 2025
+    },
+    {
+      "artist": "La Zarra",
+      "country": "France",
+      "esc_final_place": 16,
+      "flag": "🇫🇷",
+      "song": "Évidemment",
+      "year": 2023
+    },
+    {
+      "artist": "LADANIVA",
+      "country": "Armenia",
+      "esc_final_place": 8,
+      "flag": "🇦🇲",
+      "song": "Jako",
+      "year": 2024
+    },
+    {
+      "artist": "Laura Thorn",
+      "country": "Luxembourg",
+      "esc_final_place": 22,
+      "flag": "🇱🇺",
+      "song": "La Poupée Monte Le Son",
+      "year": 2025
+    },
+    {
+      "artist": "LAVINA",
+      "country": "Serbia",
+      "esc_final_place": 17,
+      "flag": "🇷🇸",
+      "song": "Kraj Mene",
+      "year": 2026
+    },
+    {
+      "artist": "LELEK",
+      "country": "Croatia",
+      "esc_final_place": 15,
+      "flag": "🇭🇷",
+      "song": "Andromeda",
+      "year": 2026
+    },
+    {
+      "artist": "LELÉKA",
+      "country": "Ukraine",
+      "esc_final_place": 9,
+      "flag": "🇺🇦",
+      "song": "Ridnym",
+      "year": 2026
+    },
+    {
+      "artist": "Lena",
+      "country": "Germany",
+      "esc_final_place": 1,
+      "flag": "🇩🇪",
+      "song": "Satellite",
+      "year": 2010
+    },
+    {
+      "artist": "Let 3",
+      "country": "Croatia",
+      "esc_final_place": 13,
+      "flag": "🇭🇷",
+      "song": "Mama ŠČ!",
+      "year": 2023
+    },
+    {
+      "artist": "Levina",
+      "country": "Germany",
+      "esc_final_place": 25,
+      "flag": "🇩🇪",
+      "song": "Perfect Life",
+      "year": 2017
+    },
+    {
+      "artist": "Linda Lampenius x Pete Parkkonen",
+      "country": "Finland",
+      "esc_final_place": 6,
+      "flag": "🇫🇮",
+      "song": "Liekinheitin",
+      "year": 2026
+    },
+    {
+      "artist": "Little Big",
+      "country": "Russia",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇷🇺",
+      "song": "Uno",
+      "year": 2020
+    },
+    {
+      "artist": "LOOK MUM NO COMPUTER",
+      "country": "United Kingdom",
+      "esc_final_place": 25,
+      "flag": "🇬🇧",
+      "song": "Eins, Zwei, Drei",
+      "year": 2026
+    },
+    {
+      "artist": "Lord Of The Lost",
+      "country": "Germany",
+      "esc_final_place": 26,
+      "flag": "🇩🇪",
+      "song": "Blood & Glitter",
+      "year": 2023
+    },
+    {
+      "artist": "Lordi",
+      "country": "Finland",
+      "esc_final_place": 1,
+      "flag": "🇫🇮",
+      "song": "Hard Rock Hallelujah",
+      "year": 2006
+    },
+    {
+      "artist": "Loreen",
+      "country": "Sweden",
+      "esc_final_place": 1,
+      "flag": "🇸🇪",
+      "song": "Euphoria",
+      "year": 2012
+    },
+    {
+      "artist": "Loreen",
+      "country": "Sweden",
+      "esc_final_place": 1,
+      "flag": "🇸🇪",
+      "song": "Tattoo",
+      "year": 2023
+    },
+    {
+      "artist": "Louane",
+      "country": "France",
+      "esc_final_place": 7,
+      "flag": "🇫🇷",
+      "song": "maman",
+      "year": 2025
+    },
+    {
+      "artist": "Luca Hänni",
+      "country": "Switzerland",
+      "esc_final_place": 4,
+      "flag": "🇨🇭",
+      "song": "She Got Me",
+      "year": 2019
+    },
+    {
+      "artist": "Lucio Corsi",
+      "country": "Italy",
+      "esc_final_place": 5,
+      "flag": "🇮🇹",
+      "song": "Volevo Essere Un Duro",
+      "year": 2025
+    },
+    {
+      "artist": "Luiz Ejlli",
+      "country": "Albania",
+      "esc_final_place": "DNQ",
+      "flag": "🇦🇱",
+      "song": "Zjarr E Ftohtë",
+      "year": 2006
+    },
+    {
+      "artist": "Luke Black",
+      "country": "Serbia",
+      "esc_final_place": 24,
+      "flag": "🇷🇸",
+      "song": "Samo Mi Se Spava",
+      "year": 2023
+    },
+    {
+      "artist": "LUM!X feat. Pia Maria",
+      "country": "Austria",
+      "esc_final_place": "DNQ",
+      "flag": "🇦🇹",
+      "song": "Halo",
+      "year": 2022
+    },
+    {
+      "artist": "LUNA",
+      "country": "Poland",
+      "esc_final_place": "DNQ",
+      "flag": "🇵🇱",
+      "song": "The Tower",
+      "year": 2024
+    },
+    {
+      "artist": "Madame Monsieur",
+      "country": "France",
+      "esc_final_place": 13,
+      "flag": "🇫🇷",
+      "song": "Mercy",
+      "year": 2018
+    },
+    {
+      "artist": "Mae Muller",
+      "country": "United Kingdom",
+      "esc_final_place": 25,
+      "flag": "🇬🇧",
+      "song": "I Wrote A Song",
+      "year": 2023
+    },
+    {
+      "artist": "Mahmood",
+      "country": "Italy",
+      "esc_final_place": 2,
+      "flag": "🇮🇹",
+      "song": "Soldi",
+      "year": 2019
+    },
+    {
+      "artist": "Mahmood & BLANCO",
+      "country": "Italy",
+      "esc_final_place": 6,
+      "flag": "🇮🇹",
+      "song": "Brividi",
+      "year": 2022
+    },
+    {
+      "artist": "Malik Harris",
+      "country": "Germany",
+      "esc_final_place": 25,
+      "flag": "🇩🇪",
+      "song": "Rockstars",
+      "year": 2022
+    },
+    {
+      "artist": "Manel Navarro",
+      "country": "Spain",
+      "esc_final_place": 26,
+      "flag": "🇪🇸",
+      "song": "Do It For Your Lover",
+      "year": 2017
+    },
+    {
+      "artist": "maNga",
+      "country": "Turkey",
+      "esc_final_place": 2,
+      "flag": "🇹🇷",
+      "song": "We Could Be The Same",
+      "year": 2010
+    },
+    {
+      "artist": "Manizha",
+      "country": "Russia",
+      "esc_final_place": 9,
+      "flag": "🇷🇺",
+      "song": "Russian Woman",
+      "year": 2021
+    },
+    {
+      "artist": "Marco Mengoni",
+      "country": "Italy",
+      "esc_final_place": 4,
+      "flag": "🇮🇹",
+      "song": "Due Vite",
+      "year": 2023
+    },
+    {
+      "artist": "Marcus & Martinus",
+      "country": "Sweden",
+      "esc_final_place": 9,
+      "flag": "🇸🇪",
+      "song": "Unforgettable",
+      "year": 2024
+    },
+    {
+      "artist": "Marija Šerifović",
+      "country": "World",
+      "esc_final_place": "NON_ENTRY",
+      "flag": "🌍",
+      "song": "Molitva",
+      "year": 2020
+    },
+    {
+      "artist": "Marina Satti",
+      "country": "Greece",
+      "esc_final_place": 11,
+      "flag": "🇬🇷",
+      "song": "ZARI",
+      "year": 2024
+    },
+    {
+      "artist": "Melody",
+      "country": "Spain",
+      "esc_final_place": 24,
+      "flag": "🇪🇸",
+      "song": "ESA DIVA",
+      "year": 2025
+    },
+    {
+      "artist": "MELOVIN",
+      "country": "Ukraine",
+      "esc_final_place": 17,
+      "flag": "🇺🇦",
+      "song": "Under The Ladder",
+      "year": 2018
+    },
+    {
+      "artist": "MFÖ",
+      "country": "Turkey",
+      "esc_final_place": 14,
+      "flag": "🇹🇷",
+      "song": "Didai Didai Dai",
+      "year": 1985
+    },
+    {
+      "artist": "Mia Nicolai & Dion Cooper",
+      "country": "Netherlands",
+      "esc_final_place": "DNQ",
+      "flag": "🇳🇱",
+      "song": "Burning Daylight",
+      "year": 2023
+    },
+    {
+      "artist": "Michael Schulte",
+      "country": "Germany",
+      "esc_final_place": 4,
+      "flag": "🇩🇪",
+      "song": "You Let Me Walk Alone",
+      "year": 2018
+    },
+    {
+      "artist": "Michał Szpak",
+      "country": "Poland",
+      "esc_final_place": 8,
+      "flag": "🇵🇱",
+      "song": "Color Of Your Life",
+      "year": 2016
+    },
+    {
+      "artist": "Michela",
+      "country": "Malta",
+      "esc_final_place": 14,
+      "flag": "🇲🇹",
+      "song": "Chameleon",
+      "year": 2019
+    },
+    {
+      "artist": "Miki",
+      "country": "Spain",
+      "esc_final_place": 22,
+      "flag": "🇪🇸",
+      "song": "La Venda",
+      "year": 2019
+    },
+    {
+      "artist": "Mikolas Josef",
+      "country": "Czechia",
+      "esc_final_place": 6,
+      "flag": "🇨🇿",
+      "song": "Lie To Me",
+      "year": 2018
+    },
+    {
+      "artist": "Miriana Conte",
+      "country": "Malta",
+      "esc_final_place": 17,
+      "flag": "🇲🇹",
+      "song": "SERVING",
+      "year": 2025
+    },
+    {
+      "artist": "Monika Liu",
+      "country": "Lithuania",
+      "esc_final_place": 14,
+      "flag": "🇱🇹",
+      "song": "Sentimentai",
+      "year": 2022
+    },
+    {
+      "artist": "Monroe",
+      "country": "France",
+      "esc_final_place": 11,
+      "flag": "🇫🇷",
+      "song": "Regarde !",
+      "year": 2026
+    },
+    {
+      "artist": "Montaigne",
+      "country": "Australia",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇦🇺",
+      "song": "Don't Break Me",
+      "year": 2020
+    },
+    {
+      "artist": "Mor ve Ötesi",
+      "country": "Turkey",
+      "esc_final_place": 7,
+      "flag": "🇹🇷",
+      "song": "Deli",
+      "year": 2008
+    },
+    {
+      "artist": "Mustii",
+      "country": "Belgium",
+      "esc_final_place": "DNQ",
+      "flag": "🇧🇪",
+      "song": "Before the Party’s Over",
+      "year": 2024
+    },
+    {
+      "artist": "Måneskin",
+      "country": "Italy",
+      "esc_final_place": 1,
+      "flag": "🇮🇹",
+      "song": "Zitti E Buoni",
+      "year": 2021
+    },
+    {
+      "artist": "Måns Zelmerlöw",
+      "country": "Sweden",
+      "esc_final_place": 1,
+      "flag": "🇸🇪",
+      "song": "Heroes",
+      "year": 2015
+    },
+    {
+      "artist": "Nebulossa",
+      "country": "Spain",
+      "esc_final_place": 22,
+      "flag": "🇪🇸",
+      "song": "ZORRA",
+      "year": 2024
+    },
+    {
+      "artist": "Nemo",
+      "country": "Switzerland",
+      "esc_final_place": 1,
+      "flag": "🇨🇭",
+      "song": "The Code",
+      "year": 2024
+    },
+    {
+      "artist": "Netta",
+      "country": "Israel",
+      "esc_final_place": 1,
+      "flag": "🇮🇱",
+      "song": "Toy",
+      "year": 2018
+    },
+    {
+      "artist": "Noa Kirel",
+      "country": "Israel",
+      "esc_final_place": 3,
+      "flag": "🇮🇱",
+      "song": "Unicorn",
+      "year": 2023
+    },
+    {
+      "artist": "Noam Bettan",
+      "country": "Israel",
+      "esc_final_place": 2,
+      "flag": "🇮🇱",
+      "song": "Michelle",
+      "year": 2026
+    },
+    {
+      "artist": "Nutsa Buzaladze",
+      "country": "Georgia",
+      "esc_final_place": 21,
+      "flag": "🇬🇪",
+      "song": "Firefighter",
+      "year": 2024
+    },
+    {
+      "artist": "Ochman",
+      "country": "Poland",
+      "esc_final_place": 12,
+      "flag": "🇵🇱",
+      "song": "River",
+      "year": 2022
+    },
+    {
+      "artist": "Olivia Newton-John",
+      "country": "United Kingdom",
+      "esc_final_place": 4,
+      "flag": "🇬🇧",
+      "song": "Long Live Love",
+      "year": 1974
+    },
+    {
+      "artist": "Olly Alexander",
+      "country": "United Kingdom",
+      "esc_final_place": 18,
+      "flag": "🇬🇧",
+      "song": "Dizzy",
+      "year": 2024
+    },
+    {
+      "artist": "Pasha Parfeni",
+      "country": "Moldova",
+      "esc_final_place": 18,
+      "flag": "🇲🇩",
+      "song": "Soarele şi Luna",
+      "year": 2023
+    },
+    {
+      "artist": "Poli Genova",
+      "country": "Bulgaria",
+      "esc_final_place": 4,
+      "flag": "🇧🇬",
+      "song": "If Love Was A Crime",
+      "year": 2016
+    },
+    {
+      "artist": "Princ",
+      "country": "Serbia",
+      "esc_final_place": "DNQ",
+      "flag": "🇷🇸",
+      "song": "Mila",
+      "year": 2025
+    },
+    {
+      "artist": "Raiven",
+      "country": "Slovenia",
+      "esc_final_place": 23,
+      "flag": "🇸🇮",
+      "song": "Veronika",
+      "year": 2024
+    },
+    {
+      "artist": "Rasmussen",
+      "country": "Denmark",
+      "esc_final_place": 9,
+      "flag": "🇩🇰",
+      "song": "Higher Ground",
+      "year": 2018
+    },
+    {
+      "artist": "Red Sebastian",
+      "country": "Belgium",
+      "esc_final_place": "DNQ",
+      "flag": "🇧🇪",
+      "song": "Strobe Lights",
+      "year": 2025
+    },
+    {
+      "artist": "Remember Monday",
+      "country": "United Kingdom",
+      "esc_final_place": 19,
+      "flag": "🇬🇧",
+      "song": "What The Hell Just Happened?",
+      "year": 2025
+    },
+    {
+      "artist": "Robin Bengtsson",
+      "country": "Sweden",
+      "esc_final_place": 5,
+      "flag": "🇸🇪",
+      "song": "I Can't Go On",
+      "year": 2017
+    },
+    {
+      "artist": "Ronela Hajati",
+      "country": "Albania",
+      "esc_final_place": "DNQ",
+      "flag": "🇦🇱",
+      "song": "Sekret",
+      "year": 2022
+    },
+    {
+      "artist": "Rosa Linn",
+      "country": "Armenia",
+      "esc_final_place": 20,
+      "flag": "🇦🇲",
+      "song": "Snap",
+      "year": 2022
+    },
+    {
+      "artist": "Ruslana",
+      "country": "Ukraine",
+      "esc_final_place": 1,
+      "flag": "🇺🇦",
+      "song": "Wild Dances",
+      "year": 2004
+    },
+    {
+      "artist": "S!sters",
+      "country": "Germany",
+      "esc_final_place": 25,
+      "flag": "🇩🇪",
+      "song": "Sister",
+      "year": 2019
+    },
+    {
+      "artist": "S10",
+      "country": "Netherlands",
+      "esc_final_place": 11,
+      "flag": "🇳🇱",
+      "song": "De Diepte",
+      "year": 2022
+    },
+    {
+      "artist": "Sal Da Vinci",
+      "country": "Italy",
+      "esc_final_place": 5,
+      "flag": "🇮🇹",
+      "song": "Per Sempre Sì",
+      "year": 2026
+    },
+    {
+      "artist": "Salvador Sobral",
+      "country": "Portugal",
+      "esc_final_place": 1,
+      "flag": "🇵🇹",
+      "song": "Amar Pelos Dois",
+      "year": 2017
+    },
+    {
+      "artist": "Sam Ryder",
+      "country": "United Kingdom",
+      "esc_final_place": 2,
+      "flag": "🇬🇧",
+      "song": "SPACE MAN",
+      "year": 2022
+    },
+    {
+      "artist": "Sarah Engels",
+      "country": "Germany",
+      "esc_final_place": 23,
+      "flag": "🇩🇪",
+      "song": "Fire",
+      "year": 2026
+    },
+    {
+      "artist": "Satoshi",
+      "country": "Moldova",
+      "esc_final_place": 8,
+      "flag": "🇲🇩",
+      "song": "Viva, Moldova!",
+      "year": 2026
+    },
+    {
+      "artist": "Sennek",
+      "country": "Belgium",
+      "esc_final_place": "DNQ",
+      "flag": "🇧🇪",
+      "song": "A Matter Of Time",
+      "year": 2018
+    },
+    {
+      "artist": "Sergey Lazarev",
+      "country": "Russia",
+      "esc_final_place": 3,
+      "flag": "🇷🇺",
+      "song": "Scream",
+      "year": 2019
+    },
+    {
+      "artist": "Sergey Lazarev",
+      "country": "Russia",
+      "esc_final_place": 3,
+      "flag": "🇷🇺",
+      "song": "You Are The Only One",
+      "year": 2016
+    },
+    {
+      "artist": "Sertab Erener",
+      "country": "Turkey",
+      "esc_final_place": 1,
+      "flag": "🇹🇷",
+      "song": "Everyway That I Can",
+      "year": 2003
+    },
+    {
+      "artist": "Shkodra Elektronike",
+      "country": "Albania",
+      "esc_final_place": 8,
+      "flag": "🇦🇱",
+      "song": "Zjerm",
+      "year": 2025
+    },
+    {
+      "artist": "Silia Kapsis",
+      "country": "Cyprus",
+      "esc_final_place": 15,
+      "flag": "🇨🇾",
+      "song": "Liar",
+      "year": 2024
+    },
+    {
+      "artist": "Silvester Belt",
+      "country": "Lithuania",
+      "esc_final_place": 14,
+      "flag": "🇱🇹",
+      "song": "Luktelk",
+      "year": 2024
+    },
+    {
+      "artist": "SIMÓN",
+      "country": "Armenia",
+      "esc_final_place": "DNQ",
+      "flag": "🇦🇲",
+      "song": "Paloma Rumba",
+      "year": 2026
+    },
+    {
+      "artist": "Slimane",
+      "country": "France",
+      "esc_final_place": 4,
+      "flag": "🇫🇷",
+      "song": "Mon Amour",
+      "year": 2024
+    },
+    {
+      "artist": "Subwoolfer",
+      "country": "Norway",
+      "esc_final_place": 10,
+      "flag": "🇳🇴",
+      "song": "Give That Wolf A Banana",
+      "year": 2022
+    },
+    {
+      "artist": "Subwoolfer",
+      "country": "Norway",
+      "esc_final_place": 10,
+      "flag": "🇳🇴",
+      "song": "Give That Wolf A Banana (LIVE)",
+      "year": 2022
+    },
+    {
+      "artist": "Sudden Lights",
+      "country": "Latvia",
+      "esc_final_place": "DNQ",
+      "flag": "🇱🇻",
+      "song": "Aijā",
+      "year": 2023
+    },
+    {
+      "artist": "Sunstroke Project",
+      "country": "Moldova",
+      "esc_final_place": 3,
+      "flag": "🇲🇩",
+      "song": "Hey Mamma",
+      "year": 2017
+    },
+    {
+      "artist": "Sunstroke Project",
+      "country": "Moldova",
+      "esc_final_place": 3,
+      "flag": "🇲🇩",
+      "song": "Hey Mamma (LIVE feat. Epic Sax Guy)",
+      "year": 2017
+    },
+    {
+      "artist": "Sunstroke Project & Olia Tira",
+      "country": "Moldova",
+      "esc_final_place": 22,
+      "flag": "🇲🇩",
+      "song": "Run Away",
+      "year": 2010
+    },
+    {
+      "artist": "Søren Torpegaard Lund",
+      "country": "Denmark",
+      "esc_final_place": 7,
+      "flag": "🇩🇰",
+      "song": "Før Vi Går Hjem",
+      "year": 2026
+    },
+    {
+      "artist": "Tamta",
+      "country": "Cyprus",
+      "esc_final_place": 13,
+      "flag": "🇨🇾",
+      "song": "Replay",
+      "year": 2019
+    },
+    {
+      "artist": "Teya & Salena",
+      "country": "Austria",
+      "esc_final_place": 15,
+      "flag": "🇦🇹",
+      "song": "Who The Hell Is Edgar?",
+      "year": 2023
+    },
+    {
+      "artist": "The Mamas",
+      "country": "Sweden",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇸🇪",
+      "song": "Move",
+      "year": 2020
+    },
+    {
+      "artist": "The Roop",
+      "country": "Lithuania",
+      "esc_final_place": 8,
+      "flag": "🇱🇹",
+      "song": "Discoteque",
+      "year": 2021
+    },
+    {
+      "artist": "The Roop",
+      "country": "Lithuania",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇱🇹",
+      "song": "On Fire",
+      "year": 2020
+    },
+    {
+      "artist": "Tijana Bogićević",
+      "country": "Serbia",
+      "esc_final_place": "DNQ",
+      "flag": "🇷🇸",
+      "song": "In Too Deep",
+      "year": 2017
+    },
+    {
+      "artist": "TIX",
+      "country": "Norway",
+      "esc_final_place": 18,
+      "flag": "🇳🇴",
+      "song": "Fallen Angel",
+      "year": 2021
+    },
+    {
+      "artist": "Tommy Cash",
+      "country": "Estonia",
+      "esc_final_place": 3,
+      "flag": "🇪🇪",
+      "song": "Espresso Macchiato",
+      "year": 2025
+    },
+    {
+      "artist": "TVORCHI",
+      "country": "Ukraine",
+      "esc_final_place": 6,
+      "flag": "🇺🇦",
+      "song": "Heart Of Steel",
+      "year": 2023
+    },
+    {
+      "artist": "Ulrikke",
+      "country": "Norway",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇳🇴",
+      "song": "Attention",
+      "year": 2020
+    },
+    {
+      "artist": "Valentina Monetta & Jimmie Wilson",
+      "country": "San Marino",
+      "esc_final_place": "DNQ",
+      "flag": "🇸🇲",
+      "song": "Spirit Of The Night",
+      "year": 2017
+    },
+    {
+      "artist": "Various Artists",
+      "country": "World",
+      "esc_final_place": "NON_ENTRY",
+      "flag": "🌍",
+      "song": "Grand Final",
+      "year": 2017
+    },
+    {
+      "artist": "Various Artists",
+      "country": "World",
+      "esc_final_place": "NON_ENTRY",
+      "flag": "🌍",
+      "song": "Love Shine A Light",
+      "year": 2020
+    },
+    {
+      "artist": "Verka Serduchka",
+      "country": "Ukraine",
+      "esc_final_place": 2,
+      "flag": "🇺🇦",
+      "song": "Dancing Lasha Tumbai",
+      "year": 2007
+    },
+    {
+      "artist": "Vesna",
+      "country": "Czechia",
+      "esc_final_place": 10,
+      "flag": "🇨🇿",
+      "song": "My Sister's Crown",
+      "year": 2023
+    },
+    {
+      "artist": "Victoria",
+      "country": "Bulgaria",
+      "esc_final_place": "CANCELLED",
+      "flag": "🇧🇬",
+      "song": "Tears Getting Sober",
+      "year": 2020
+    },
+    {
+      "artist": "VÆB",
+      "country": "Iceland",
+      "esc_final_place": 25,
+      "flag": "🇮🇸",
+      "song": "RÓA",
+      "year": 2025
+    },
+    {
+      "artist": "Waylon",
+      "country": "Netherlands",
+      "esc_final_place": 18,
+      "flag": "🇳🇱",
+      "song": "Outlaw In 'Em",
+      "year": 2018
+    },
+    {
+      "artist": "Windows95man",
+      "country": "Finland",
+      "esc_final_place": 19,
+      "flag": "🇫🇮",
+      "song": "No Rules!",
+      "year": 2024
+    },
+    {
+      "artist": "WRS",
+      "country": "Romania",
+      "esc_final_place": 18,
+      "flag": "🇷🇴",
+      "song": "Llámame",
+      "year": 2022
+    },
+    {
+      "artist": "Yuval Raphael",
+      "country": "Israel",
+      "esc_final_place": 2,
+      "flag": "🇮🇱",
+      "song": "New Day Will Rise",
+      "year": 2025
+    },
+    {
+      "artist": "Zdob şi Zdub & Advahov Brothers",
+      "country": "Moldova",
+      "esc_final_place": 7,
+      "flag": "🇲🇩",
+      "song": "Trenulețul",
+      "year": 2022
+    }
+  ]
+}

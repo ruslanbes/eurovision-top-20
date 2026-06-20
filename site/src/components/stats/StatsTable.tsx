@@ -49,7 +49,7 @@ function sharedStatColumns<T extends StatsRow>(): ColumnDef<T>[] {
   return [
     {
       accessorKey: "chart_points",
-      header: "Points",
+      header: "Chart Points",
     },
     {
       accessorKey: "esc_final_place",

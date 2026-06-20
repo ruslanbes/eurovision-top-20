@@ -15,17 +15,17 @@ npm run preview  # preview production build
 
 `predev` / `prebuild` run `scripts/copy-packaged.mjs`, which:
 
-1. Copies `../data/packaged/` → `public/data/packaged/`
-2. Writes `public/data/periods-alltime.json` from alltime snapshot filenames
+1. Copies `../data/packaged/` → `public/data/packaged/` (includes `query/` index)
+2. Writes `public/data/periods-alltime.json` from `query/video-hits.json` periods (fallback: alltime snapshot filenames)
 
 ## Stack
 
 - Astro + React islands (`StatsExplorer`)
 - Tailwind CSS (minimal system light/dark)
 - TanStack Table v8
-- Radix Slider (period scrubber)
+- Radix Slider (dual-thumb episode range)
 
-Slice 1: video + song grain on separate pages (`/` and `/songs/`), alltime only. Flexible period range — [`flexible-period-window.md`](../docs/tasks/flexible-period-window.md). Site follow-ups in [`BACKLOG.md`](../docs/BACKLOG.md).
+Videos (`/`) and songs (`/songs/`) each load the sparse query index (`video-hits` + `video-meta` or `song-hits` + `song-meta`) and aggregate stats client-side for the selected `[begin, end]` episode-month window. Default range = full corpus.
 
 ## Deploy
 

@@ -1,35 +1,45 @@
-import type { PeriodManifest, SongStatsSnapshot, VideoStatsSnapshot } from "./types";
+import type {
+  SongHitsPayload,
+  SongMetaPayload,
+  VideoHitsPayload,
+  VideoMetaPayload,
+} from "./queryWindow";
+import type { StatsGrain } from "./types";
 
-const manifestUrl = `${import.meta.env.BASE_URL}data/periods-alltime.json`;
+const queryBase = `${import.meta.env.BASE_URL}data/packaged/query`;
 
-function videoSnapshotUrl(period: string): string {
-  return `${import.meta.env.BASE_URL}data/packaged/per-video/alltime/eurovision-top-20-alltime-${period}.json`;
-}
-
-function songSnapshotUrl(period: string): string {
-  return `${import.meta.env.BASE_URL}data/packaged/per-song/alltime/eurovision-top-20-song-stats-${period}.json`;
-}
-
-export async function loadPeriodManifest(): Promise<PeriodManifest> {
-  const response = await fetch(manifestUrl);
+async function fetchJson<T>(url: string): Promise<T> {
+  const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`Failed to load period manifest (${response.status})`);
+    throw new Error(`Failed to load ${url} (${response.status})`);
   }
-  return response.json() as Promise<PeriodManifest>;
+  return response.json() as Promise<T>;
 }
 
-export async function loadVideoSnapshot(period: string): Promise<VideoStatsSnapshot> {
-  const response = await fetch(videoSnapshotUrl(period));
-  if (!response.ok) {
-    throw new Error(`Failed to load video snapshot for ${period} (${response.status})`);
-  }
-  return response.json() as Promise<VideoStatsSnapshot>;
-}
+export type VideoQueryData = {
+  hits: VideoHitsPayload;
+  meta: VideoMetaPayload;
+};
 
-export async function loadSongSnapshot(period: string): Promise<SongStatsSnapshot> {
-  const response = await fetch(songSnapshotUrl(period));
-  if (!response.ok) {
-    throw new Error(`Failed to load song snapshot for ${period} (${response.status})`);
+export type SongQueryData = {
+  hits: SongHitsPayload;
+  meta: SongMetaPayload;
+};
+
+export type QueryData = VideoQueryData | SongQueryData;
+
+export async function loadQueryData(grain: StatsGrain): Promise<QueryData> {
+  if (grain === "video") {
+    const [hits, meta] = await Promise.all([
+      fetchJson<VideoHitsPayload>(`${queryBase}/video-hits.json`),
+      fetchJson<VideoMetaPayload>(`${queryBase}/video-meta.json`),
+    ]);
+    return { hits, meta };
   }
-  return response.json() as Promise<SongStatsSnapshot>;
+
+  const [hits, meta] = await Promise.all([
+    fetchJson<SongHitsPayload>(`${queryBase}/song-hits.json`),
+    fetchJson<SongMetaPayload>(`${queryBase}/song-meta.json`),
+  ]);
+  return { hits, meta };
 }
