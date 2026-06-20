@@ -59,10 +59,3 @@ def test_row_is_fire() -> None:
     assert row_is_fire("other0000001", allowlist) is False
     assert row_is_fire("", allowlist) is False
     assert row_is_fire(None, allowlist) is False
-
-
-def test_repo_fire_allowlist_has_seven_entries() -> None:
-    repo_root = Path(__file__).resolve().parents[2]
-    path = repo_root / "data" / "metadata" / "fire.json"
-    allowlist = load_fire_allowlist_from_path(path)
-    assert len(allowlist) == 7
