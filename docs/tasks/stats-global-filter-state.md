@@ -6,7 +6,7 @@ Parent: `stats-table-filters`
 Depends on: shipped filter framework + `PeriodControls` ([`stats-table-filters.md`](stats-table-filters.md))  
 Related: [`site/README.md`](../../site/README.md), [`performance-category.md`](performance-category.md)
 
-**Status:** Approved — implement when scheduled
+**Status:** Done
 
 ---
 
@@ -208,12 +208,12 @@ Chip row: unchanged for shared filters; Category remains `showChips: false`.
 
 ## Done when
 
-- [ ] Shared filters + range survive `/` ↔ `/songs/` navigation
-- [ ] Video Category selection survives a round-trip through the song page (via URL)
-- [ ] Query params reflect active state; bare URL = full range, no filters
-- [ ] Nav links preserve query string (with correct `BASE_URL` prefix)
-- [ ] `statsUiState` unit tests green, including navigation round-trip test; `npm test` + build green
-- [ ] `site/README.md` updated
+- [x] Shared filters + range survive `/` ↔ `/songs/` navigation
+- [x] Video Category selection survives a round-trip through the song page (via URL)
+- [x] Query params reflect active state; bare URL = full range, no filters
+- [x] Nav links preserve query string (with correct `BASE_URL` prefix)
+- [x] `statsUiState` unit tests green, including navigation round-trip test; `npm test` + build green
+- [x] `site/README.md` updated
 
 ## Out of scope
 

@@ -29,7 +29,20 @@ Videos (`/`) and songs (`/songs/`) each load the sparse query index (`video-hits
 
 Theme: **light**, **dark**, or **system** via the toggle (top-right). Choice persists in `localStorage`. Inline script in the layout avoids a flash of wrong theme on load.
 
-**Table filters:** client-side AND/OR filters on window-aggregated rows — country (searchable), year, ESC winner (segmented: All / Winners / Not winners), and on videos only Category (four toggle buttons).
+**Table filters:** client-side AND/OR filters on window-aggregated rows — country (searchable), year, ESC winner (segmented: All / Winners / Not winners), and on videos only Category (four toggle buttons). Filter and episode-range state persist in the **URL query string** and survive navigation between `/` and `/songs/` (shared filters + range synced; video-only Category preserved in the URL but hidden on the song page). Bare path = full corpus, no filters. Table sort stays local per page.
+
+### URL query params
+
+| Param | Example | Notes |
+|-------|---------|-------|
+| `begin` | `begin=2022-01` | Episode-month range start (`YYYY-MM`) |
+| `end` | `end=2024-12` | Episode-month range end |
+| `country` | `country=Sweden,Norway` | Comma-separated |
+| `year` | `year=2024,2023` | Comma-separated contest years |
+| `esc_winner` | `esc_winner=winners` | `winners` or `not_winners`; omit = All |
+| `performance_category` | `performance_category=final_live` | Video-only control; kept in URL on song page |
+
+Omitted params use defaults (full range, no filter). Filter edits update the URL via `history.replaceState` (range slider debounced ~200 ms).
 
 ## Deploy
 

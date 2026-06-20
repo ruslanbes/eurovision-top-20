@@ -4,6 +4,14 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+### Added
+
+- URL-persisted stats UI state — episode range + table filters sync across `/` and `/songs/` via query params.
+
+### Changed
+
+- Replaced `performance_type` with `performance_category`.
+
 ### Removed
 
 - `data/metadata/performance-category-overrides.json` and package-time category override loader; `performance_category` is set only at title parse (pattern rules or `manual-video-metadata.json`).

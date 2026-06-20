@@ -74,7 +74,7 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - notes: Stack in ADR-002; Slice 1 uses minimal system theming only
 
 ## stats-global-filter-state
-- status: ready
+- status: done
 - parent: stats-table-filters
 - goal: Persist episode range + filters across / and /songs/ — shared filters synced, grain-specific preserved, URL query params
 - done_when: Per `docs/tasks/stats-global-filter-state.md` — round-trip navigation, nav preserves query, tests green

@@ -158,7 +158,6 @@ Sort order for options: country A→Z; year descending (recent first).
 
 ## Out of scope (v1)
 
-- URL/query-string persistence
 - Packaged `facets.json`
 - Fire-title toggle ([`ui-filter-fire-titles.md`](ui-filter-fire-titles.md) — follow-up on same framework)
 - Slider / checkbox filter types (stub `type` only)
@@ -168,6 +167,6 @@ Sort order for options: country A→Z; year descending (recent first).
 
 | Task | Notes |
 |------|-------|
-| [`stats-global-filter-state.md`](stats-global-filter-state.md) | URL + global store; range + shared filters synced; grain-specific preserved |
+| [`stats-global-filter-state.md`](stats-global-filter-state.md) | **Done** — URL query params; cross-page sync |
 | `ui-filter-fire-titles` | `type: toggle` on packaged `matches_fire_filter` |
 | Future ADR | Freeze filter algebra + optional packaged facet contract |

@@ -4,7 +4,7 @@ Last updated: 2026-06-17
 
 ## Current focus
 
-`site-theming` in progress (chart token migration open). `performance-category` shipped.
+`site-theming` in progress (chart token migration open).
 
 ## Active task
 
@@ -20,6 +20,7 @@ Finish site-theming chart tokens or pick next backlog item.
 
 ## Session notes
 
+- **`stats-global-filter-state` done** — URL query params for range + filters; `StatsNav` preserves search across pages; `replaceState` with debounced range.
 - **Removed `performance-category-overrides.json`** — category comes only from title parse (or full manual row in `manual-video-metadata.json`).
 - **`parse-performance-category` done** — title parse emits `performance_category`; `performance_type` removed from pipeline.
 - **`drop-packaged-performance-type` done** — packaged JSON never had granular type strings.

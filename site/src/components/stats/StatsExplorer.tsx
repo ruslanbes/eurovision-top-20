@@ -5,13 +5,14 @@ import { loadQueryData, type QueryData } from "./data";
 import { applyFilters } from "./filters/applyFilters";
 import { filterDefsForGrain } from "./filters/defs";
 import { FilterBar } from "./filters/FilterBar";
-import type { FilterState, FilterValue } from "./filters/types";
+import type { FilterValue } from "./filters/types";
 import { hasActiveFilters } from "./filters/types";
 import { PeriodControls } from "./PeriodControls";
 import { querySongWindow, queryVideoWindow } from "./queryWindow";
 import { DEFAULT_SONG_SORT, DEFAULT_VIDEO_SORT, buildOriginalRanks, formatPeriodLabel } from "./sort";
 import { StatsTable } from "./StatsTable";
 import type { SongStatsRow, StatsGrain, VideoStatsRow } from "./types";
+import { useStatsUiState } from "./useStatsUiState";
 
 type StatsExplorerProps = {
   grain: StatsGrain;
@@ -26,14 +27,14 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
   const defaultSort = grain === "video" ? DEFAULT_VIDEO_SORT : DEFAULT_SONG_SORT;
 
   const [periods, setPeriods] = useState<string[]>([]);
-  const [begin, setBegin] = useState("");
-  const [end, setEnd] = useState("");
   const [queryData, setQueryData] = useState<QueryData | null>(null);
   const [sorting, setSorting] = useState<SortingState>(defaultSort);
   const [userSorted, setUserSorted] = useState(false);
-  const [filterState, setFilterState] = useState<FilterState>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const { window, filters, setWindow, updateFilters } = useStatsUiState(periods);
+  const { begin, end } = window;
 
   useEffect(() => {
     let cancelled = false;
@@ -52,8 +53,6 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
         }
         setQueryData(data);
         setPeriods(nextPeriods);
-        setBegin(nextPeriods[0]);
-        setEnd(nextPeriods[nextPeriods.length - 1]);
       } catch (err) {
         if (!cancelled) {
           setError(err instanceof Error ? err.message : "Failed to load query index");
@@ -96,12 +95,12 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
   const filteredRows = useMemo(() => {
     return applyFilters(
       baseRows,
-      filterState,
+      filters,
       filterDefs,
     ) as typeof baseRows;
-  }, [baseRows, filterState, filterDefs]);
+  }, [baseRows, filters, filterDefs]);
 
-  const filtersActive = hasActiveFilters(filterState);
+  const filtersActive = hasActiveFilters(filters);
 
   const originalRanks = useMemo(() => {
     if (!filtersActive) {
@@ -120,27 +119,26 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
 
   const handleRangeChange = useCallback(
     (nextBegin: string, nextEnd: string) => {
-      setBegin(nextBegin);
-      setEnd(nextEnd);
+      setWindow(nextBegin, nextEnd);
       if (!userSorted) {
         setSorting(defaultSort);
       }
     },
-    [defaultSort, userSorted],
+    [defaultSort, setWindow, userSorted],
   );
 
   const handleAddFilter = useCallback((filterId: string, value: FilterValue) => {
-    setFilterState((prev) => {
+    updateFilters((prev) => {
       const current = prev[filterId] ?? [];
       if (current.includes(value)) {
         return prev;
       }
       return { ...prev, [filterId]: [...current, value] };
     });
-  }, []);
+  }, [updateFilters]);
 
   const handleRemoveFilter = useCallback((filterId: string, value: FilterValue) => {
-    setFilterState((prev) => {
+    updateFilters((prev) => {
       const current = prev[filterId] ?? [];
       const next = current.filter((item) => item !== value);
       if (next.length === 0) {
@@ -149,11 +147,11 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
       }
       return { ...prev, [filterId]: next };
     });
-  }, []);
+  }, [updateFilters]);
 
   const handleSetExclusiveFilter = useCallback(
     (filterId: string, value: FilterValue | null) => {
-      setFilterState((prev) => {
+      updateFilters((prev) => {
         if (value === null) {
           const { [filterId]: _removed, ...rest } = prev;
           return rest;
@@ -161,7 +159,7 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
         return { ...prev, [filterId]: [value] };
       });
     },
-    [],
+    [updateFilters],
   );
 
   if (error && !queryData) {
@@ -195,7 +193,7 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
       <FilterBar
         grain={grain}
         rows={baseRows}
-        state={filterState}
+        state={filters}
         disabled={loading || baseRows.length === 0}
         onAdd={handleAddFilter}
         onRemove={handleRemoveFilter}

@@ -25,6 +25,15 @@ const PERFORMANCE_CATEGORY_ORDER = [
   "special",
 ] as const;
 
+export type FilterScope = "shared" | "video" | "song";
+
+export const FILTER_SCOPES: Record<string, FilterScope> = {
+  country: "shared",
+  year: "shared",
+  esc_winner: "shared",
+  performance_category: "video",
+};
+
 function countryOptions(rows: FilterableRow[]): FilterOption[] {
   const byCountry = new Map<string, FilterOption>();
   for (const row of rows) {
