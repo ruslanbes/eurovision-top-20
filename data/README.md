@@ -163,7 +163,7 @@ Built from `processed/episode-index/` plus latest packaged video rows for enrich
 
 Client aggregates a `[begin, end]` window from these files via `site/src/components/stats/queryWindow.ts` (golden-tested against pipeline).
 
-Processed row shape remains unchanged. ESC final place is joined in `package` — `[eurovision-final-place.md](../docs/tasks/eurovision-final-place.md)`.
+Processed row shape remains unchanged. ESC final place is joined in `package` — [`esc_final_place.md`](../docs/faq/esc_final_place.md).
 
 ---
 
@@ -171,7 +171,7 @@ Processed row shape remains unchanged. ESC final place is joined in `package` �
 
 Third-party snapshots vendored in git for reproducible `package` runs — **no network fetch in CI**.
 
-**ESC results:** `external/esc-results/` — `MANIFEST.json` (pinned EurovisionAPI release tag `2026.4`) + `entries.json` (1795 flat rows). Regenerate with `uv run evtop20 vendor-esc flatten`. `esc_final_place` on packaged rows comes from join in `package` (vendor + `metadata/esc-placement-overrides.json` + `metadata/esc-join-overrides.json`). Codes: numeric rank, `DNQ`, `DQ`, `CANCELLED`, `WITHDRAWN`, `PENDING`, `NON_ENTRY`, `null`. See `[eurovision-final-place.md](../docs/tasks/eurovision-final-place.md#placement-dictionary)`.
+**ESC results:** `external/esc-results/` — `MANIFEST.json` (pinned EurovisionAPI release tag `2026.4`) + `entries.json` (1795 flat rows). Regenerate with `uv run evtop20 vendor-esc flatten`. `esc_final_place` on packaged rows comes from join in `package` (vendor + `metadata/esc-placement-overrides.json` + `metadata/esc-join-overrides.json`). Codes: numeric rank, `DNQ`, `DQ`, `CANCELLED`, `WITHDRAWN`, `PENDING`, `NON_ENTRY`, `null`. See [`esc_final_place.md`](../docs/faq/esc_final_place.md#placement-dictionary).
 
 ---
 

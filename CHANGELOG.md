@@ -29,7 +29,7 @@ Flexible period windows, ESC placement, and site query index. Replaces the fixed
 
 ### Removed
 
-- Completed `flexible-period-window` task and spike specs (behavior documented in ADRs, FAQ, and `data/README.md`).
+- Completed task specs for shipped features (behavior in ADRs, FAQ, and `data/README.md`).
 
 ## [0.0.1] - 2026-06-15
 

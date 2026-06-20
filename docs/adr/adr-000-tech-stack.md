@@ -12,7 +12,7 @@ Eurovision Top 20 is a personal hobby project that:
 - Aggregates rankings into a statistics table (rows = video titles, columns = Top 1 / 3 / 5 / 10 / 20 counts)
 - Publishes an interactive static **per-video** stats table on GitHub Pages; later adds a **second per-song** table — both remain available
 - Publishes machine-readable derived data as JSON (site and git)
-- Will later add **Eurovision final-place** joins (`[eurovision-final-place.md](../tasks/eurovision-final-place.md)`) and timelapse charts (Beta). Song-level stats and packaged paths: `[data/README.md](../../data/README.md)`.
+- **ESC final placement** on packaged rows and per-video site table (shipped 0.1.0) — [`esc_final_place.md`](../faq/esc_final_place.md), [`data/README.md`](../../data/README.md). Timelapse charts remain Beta.
 
 Data volume is small (dozens of episodes, ~20 entries each). Priorities are git-diffable raw data, simple monthly recalculation, and low operational overhead — not big-data infrastructure.
 
