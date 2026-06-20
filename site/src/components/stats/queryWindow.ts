@@ -57,6 +57,8 @@ export type SongMetaRow = {
   flag: string;
   song: string;
   year: number;
+  youtube_video_id: string;
+  youtube_watch_url: string | null;
 };
 
 export type SongMetaPayload = {
@@ -98,6 +100,8 @@ export type WindowSongRow = {
   top10: number;
   top20: number;
   year: number;
+  youtube_video_id: string;
+  youtube_watch_url: string | null;
 };
 
 const TIER_FIELDS = ["top1", "top3", "top5", "top10", "top20"] as const;
@@ -273,6 +277,8 @@ export function querySongWindow(
       year: meta?.year ?? 0,
       esc_final_place: meta?.esc_final_place ?? null,
       fire: meta?.fire ?? false,
+      youtube_video_id: meta?.youtube_video_id ?? "",
+      youtube_watch_url: meta?.youtube_watch_url ?? null,
       ...tiers,
       chart_points: chartPointsFromTiers(tiers),
     });

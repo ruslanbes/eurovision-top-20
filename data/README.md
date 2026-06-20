@@ -159,7 +159,7 @@ Built from `processed/episode-index/` plus latest packaged video rows for enrich
 | `video-hits.json` | Sparse hits per video: `{ periods, hits: [{ video_title, youtube_video_id, entries: [{ period, rank }] }] }` |
 | `video-meta.json` | Window-independent display fields per video (from latest alltime enrichment), including `performance_category` |
 | `song-hits.json` | Sparse hits per song: entries `{ period, ranks: […] }` (member-video ranks per episode) |
-| `song-meta.json` | Window-independent display fields per song |
+| `song-meta.json` | Window-independent display fields per song, including `youtube_watch_url` from the canonical member (highest alltime `chart_points`) |
 
 Client aggregates a `[begin, end]` window from these files via `site/src/components/stats/queryWindow.ts` (golden-tested against pipeline).
 

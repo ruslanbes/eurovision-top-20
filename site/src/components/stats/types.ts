@@ -17,6 +17,8 @@ export type SongStatsRow = {
   top10: number;
   top20: number;
   chart_points: number;
+  youtube_video_id: string;
+  youtube_watch_url: string | null;
 };
 
 export type SongStatsSnapshot = {

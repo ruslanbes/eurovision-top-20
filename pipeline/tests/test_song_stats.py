@@ -11,6 +11,7 @@ from evtop20.paths import (
     packaged_per_song_alltime_stats_latest_path,
     processed_alltime_dir,
 )
+from evtop20.query_index import build_song_meta
 from evtop20.song_stats import (
     is_eligible_song_rollup_row,
     package_song_stats_payload,
@@ -284,3 +285,38 @@ def test_run_package_writes_song_stats_snapshots(repo_root: Path) -> None:
     assert song_latest["rows"][0]["song"] == "Espresso Macchiato"
     assert "generated_at" not in song_latest
     assert "Wrote alltime song stats" in message
+
+
+def test_build_song_meta_youtube_from_highest_chart_points_member() -> None:
+    live = _video_row(
+        chart_points=10,
+        youtube_video_id="lowvid",
+        youtube_watch_url="https://www.youtube.com/watch?v=lowvid",
+        performance_category="final_live",
+    )
+    official = _video_row(
+        video_title="Artist A - Song One | Norway 🇳🇴 | Official Music Video | Eurovision 2020",
+        chart_points=100,
+        youtube_video_id="highvid",
+        youtube_watch_url="https://www.youtube.com/watch?v=highvid",
+        performance_category="official_music_video",
+    )
+    payload = build_song_meta([live, official])
+    assert len(payload["rows"]) == 1
+    row = payload["rows"][0]
+    assert row["youtube_video_id"] == "highvid"
+    assert row["youtube_watch_url"] == "https://www.youtube.com/watch?v=highvid"
+
+
+def test_build_song_meta_no_youtube_when_canonical_lacks_url() -> None:
+    payload = build_song_meta(
+        [
+            _video_row(
+                youtube_video_id="",
+                youtube_watch_url=None,
+            )
+        ]
+    )
+    row = payload["rows"][0]
+    assert row["youtube_video_id"] == ""
+    assert row["youtube_watch_url"] is None

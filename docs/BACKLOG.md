@@ -107,3 +107,10 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - goal: Add reusable on-demand explainers in stats UI, starting with `chart_points`, without permanent layout clutter
 - done_when: Per `docs/tasks/stats-inline-explainers.md` — trigger + popover pattern, `chart_points` explainer, a11y behavior, tests/build green
 - notes: Prefer click/tap popover over tooltip for multi-line/helpful content; keep long-form detail in FAQ
+
+## song-stats-youtube-link
+- status: done
+- parent: scaffold-project
+- goal: Link song title on `/songs/` to YouTube URL of member video with highest alltime chart_points
+- done_when: Per `docs/tasks/song-stats-youtube-link.md` — `song-meta` URL, song table link, picker tests, build green
+- notes: Package-time; reuse canonical member (`_member_precedence_key`)

@@ -38,6 +38,8 @@ SONG_META_FIELDS = (
     "flag",
     "song",
     "year",
+    "youtube_video_id",
+    "youtube_watch_url",
 )
 
 QUERY_ARTIFACT_NAMES = (

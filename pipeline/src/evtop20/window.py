@@ -267,6 +267,8 @@ def aggregate_song_hits(
                 "year": meta.get("year", 0),
                 "esc_final_place": meta.get("esc_final_place"),
                 "fire": bool(meta.get("fire")),
+                "youtube_video_id": meta.get("youtube_video_id", ""),
+                "youtube_watch_url": meta.get("youtube_watch_url"),
             }
         )
 

@@ -155,6 +155,23 @@ export function StatsTable({
           }
           return rowA.original.song.localeCompare(rowB.original.song);
         },
+        cell: ({ row }) => {
+          const label = `${row.original.artist} — ${row.original.song}`;
+          const url = row.original.youtube_watch_url;
+          if (url) {
+            return (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent hover:underline"
+              >
+                {label}
+              </a>
+            );
+          }
+          return label;
+        },
       },
       ...sharedStatColumns<SongStatsRow>(),
     ];

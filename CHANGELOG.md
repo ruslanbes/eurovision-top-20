@@ -8,6 +8,7 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 - URL-persisted stats UI state — episode range + table filters sync across `/` and `/songs/` via query params.
 - Fire songs filter — manual `data/metadata/fire.json` allowlist → packaged `fire` boolean; 🔥 emoji toggle with URL param `fire=1`.
+- Song table YouTube links — `song-meta.json` `youtube_watch_url` from highest alltime `chart_points` member; `/songs/` Song column links when present.
 
 ### Changed
 

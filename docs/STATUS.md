@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-06-17
+Last updated: 2026-06-20
 
 ## Current focus
 
@@ -20,6 +20,7 @@ Finish site-theming chart tokens or pick next backlog item.
 
 ## Session notes
 
+- **`song-stats-youtube-link` done** — `song-meta.json` carries `youtube_watch_url` from canonical member (highest alltime `chart_points`); `/songs/` Song column links when URL present.
 - Drafted **`stats-inline-explainers`** task — reusable on-demand help pattern (popover-style) for stats UI, first target `chart_points` explanation.
 - **`ui-filter-fire-titles` done** — `data/metadata/fire.json` allowlist → packaged `fire`; 🔥 emoji toggle (tap to filter); URL `fire=1`; 7 clips / 5 songs.
 - **`stats-global-filter-state` done** — URL query params for range + filters; `StatsNav` preserves search across pages; `replaceState` with debounced range.
