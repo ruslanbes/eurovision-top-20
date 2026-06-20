@@ -9,7 +9,7 @@ import type { FilterValue } from "./filters/types";
 import { hasActiveFilters } from "./filters/types";
 import { PeriodControls } from "./PeriodControls";
 import { querySongWindow, queryVideoWindow } from "./queryWindow";
-import { DEFAULT_SONG_SORT, DEFAULT_VIDEO_SORT, buildOriginalRanks, formatPeriodLabel } from "./sort";
+import { DEFAULT_SONG_SORT, DEFAULT_TABLE_SORT, DEFAULT_VIDEO_SORT, buildOriginalRanks } from "./sort";
 import { StatsTable } from "./StatsTable";
 import type { SongStatsRow, StatsGrain, VideoStatsRow } from "./types";
 import { useStatsUiState } from "./useStatsUiState";
@@ -24,11 +24,11 @@ const GRAIN_LABEL: Record<StatsGrain, string> = {
 };
 
 export function StatsExplorer({ grain }: StatsExplorerProps) {
-  const defaultSort = grain === "video" ? DEFAULT_VIDEO_SORT : DEFAULT_SONG_SORT;
+  const defaultRankSort = grain === "video" ? DEFAULT_VIDEO_SORT : DEFAULT_SONG_SORT;
 
   const [periods, setPeriods] = useState<string[]>([]);
   const [queryData, setQueryData] = useState<QueryData | null>(null);
-  const [sorting, setSorting] = useState<SortingState>(defaultSort);
+  const [sorting, setSorting] = useState<SortingState>(DEFAULT_TABLE_SORT);
   const [userSorted, setUserSorted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -103,11 +103,8 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
   const filtersActive = hasActiveFilters(filters);
 
   const originalRanks = useMemo(() => {
-    if (!filtersActive) {
-      return undefined;
-    }
-    return buildOriginalRanks(baseRows, sorting, grain);
-  }, [baseRows, sorting, grain, filtersActive]);
+    return buildOriginalRanks(baseRows, defaultRankSort, grain);
+  }, [baseRows, defaultRankSort, grain]);
 
   const handleSortingChange = useCallback<Dispatch<SetStateAction<SortingState>>>(
     (updater) => {
@@ -121,10 +118,10 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
     (nextBegin: string, nextEnd: string) => {
       setWindow(nextBegin, nextEnd);
       if (!userSorted) {
-        setSorting(defaultSort);
+        setSorting(DEFAULT_TABLE_SORT);
       }
     },
-    [defaultSort, setWindow, userSorted],
+    [setWindow, userSorted],
   );
 
   const handleAddFilter = useCallback((filterId: string, value: FilterValue) => {
@@ -170,11 +167,6 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
     );
   }
 
-  const rangeLabel =
-    begin && end
-      ? `${formatPeriodLabel(begin)} – ${formatPeriodLabel(end)}`
-      : "";
-
   const countLabel =
     filtersActive && filteredRows.length !== baseRows.length
       ? `${filteredRows.length} of ${baseRows.length}`
@@ -203,7 +195,6 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
       <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-text-muted">
         <p>
           {countLabel} {GRAIN_LABEL[grain]}
-          {rangeLabel ? ` · window ${rangeLabel}` : ""}
         </p>
         {loading ? <p>Loading…</p> : null}
       </div>

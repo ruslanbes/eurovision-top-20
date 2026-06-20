@@ -1,8 +1,10 @@
 import {
-  ESC_WINNER_NOT_WINNERS,
-  ESC_WINNER_WINNERS,
-  type EscWinnerMode,
-} from "./filters/escWinner";
+  ESC_NON_ENTRIES,
+  ESC_NOT_WINNERS,
+  ESC_WINNERS,
+  type EscMode,
+} from "./filters/esc";
+import { FIRE_FILTER_ON } from "./filters/fireFilter";
 import type { FilterState, FilterValue } from "./filters/types";
 
 export type StatsUiState = {
@@ -14,7 +16,8 @@ export const STATS_URL_PARAMS = [
   "begin",
   "country",
   "end",
-  "esc_winner",
+  "esc",
+  "fire",
   "performance_category",
   "year",
 ] as const;
@@ -26,15 +29,18 @@ const PERFORMANCE_CATEGORY_VALUES = new Set([
   "special",
 ]);
 
-const ESC_WINNER_URL_VALUES: Record<string, EscWinnerMode> = {
-  winners: ESC_WINNER_WINNERS,
-  not_winners: ESC_WINNER_NOT_WINNERS,
-  "not-winners": ESC_WINNER_NOT_WINNERS,
+const ESC_URL_VALUES: Record<string, EscMode> = {
+  winners: ESC_WINNERS,
+  not_winners: ESC_NOT_WINNERS,
+  "not-winners": ESC_NOT_WINNERS,
+  non_entries: ESC_NON_ENTRIES,
+  "non-entries": ESC_NON_ENTRIES,
 };
 
-const ESC_WINNER_TO_URL: Record<EscWinnerMode, string> = {
-  [ESC_WINNER_WINNERS]: "winners",
-  [ESC_WINNER_NOT_WINNERS]: "not_winners",
+const ESC_TO_URL: Record<EscMode, string> = {
+  [ESC_WINNERS]: "winners",
+  [ESC_NOT_WINNERS]: "not_winners",
+  [ESC_NON_ENTRIES]: "non_entries",
 };
 
 export function defaultStatsUiState(periods: readonly string[]): StatsUiState {
@@ -138,8 +144,8 @@ function parsePerformanceCategoryList(raw: string): string[] {
   );
 }
 
-function parseEscWinner(raw: string): EscWinnerMode | null {
-  return ESC_WINNER_URL_VALUES[raw.trim()] ?? null;
+function parseEscWinner(raw: string): EscMode | null {
+  return ESC_URL_VALUES[raw.trim()] ?? null;
 }
 
 export function parseStatsUiState(
@@ -184,9 +190,9 @@ export function parseStatsUiState(
     filters.year = years;
   }
 
-  const escWinner = parseEscWinner(params.get("esc_winner") ?? "");
+  const escWinner = parseEscWinner(params.get("esc") ?? "");
   if (escWinner) {
-    filters.esc_winner = [escWinner];
+    filters.esc = [escWinner];
   }
 
   const categories = parsePerformanceCategoryList(
@@ -194,6 +200,10 @@ export function parseStatsUiState(
   );
   if (categories.length > 0) {
     filters.performance_category = categories;
+  }
+
+  if (params.get("fire") === "1") {
+    filters.fire = [FIRE_FILTER_ON];
   }
 
   return { window, filters };
@@ -235,13 +245,13 @@ export function serializeStatsUiState(
     state.filters.year?.filter((value) => Number.isInteger(value)),
   );
 
-  const escWinner = state.filters.esc_winner?.[0];
+  const escWinner = state.filters.esc?.[0];
   if (
     typeof escWinner === "string" &&
-    escWinner in ESC_WINNER_TO_URL
+    escWinner in ESC_TO_URL
   ) {
     parts.push(
-      `esc_winner=${encodeURIComponent(ESC_WINNER_TO_URL[escWinner as EscWinnerMode])}`,
+      `esc=${encodeURIComponent(ESC_TO_URL[escWinner as EscMode])}`,
     );
   }
 
@@ -252,6 +262,10 @@ export function serializeStatsUiState(
       PERFORMANCE_CATEGORY_VALUES.has(String(value)),
     ),
   );
+
+  if (state.filters.fire?.includes(FIRE_FILTER_ON)) {
+    parts.push("fire=1");
+  }
 
   parts.sort();
   return parts.join("&");

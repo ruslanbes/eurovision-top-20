@@ -19,6 +19,7 @@ VIDEO_META_FIELDS = (
     "artist",
     "country",
     "esc_final_place",
+    "fire",
     "flag",
     "metadata_extractor",
     "performance_category",
@@ -33,6 +34,7 @@ SONG_META_FIELDS = (
     "artist",
     "country",
     "esc_final_place",
+    "fire",
     "flag",
     "song",
     "year",
@@ -184,7 +186,9 @@ def build_song_meta(rows: list[dict]) -> dict:
     song_rows: list[dict] = []
     for members in groups.values():
         canonical = _canonical_member(members)
-        song_rows.append({field: canonical.get(field) for field in SONG_META_FIELDS})
+        row = {field: canonical.get(field) for field in SONG_META_FIELDS}
+        row["fire"] = any(m.get("fire") for m in members)
+        song_rows.append(row)
 
     song_rows.sort(
         key=lambda row: (row["artist"].casefold(), row["song"].casefold())

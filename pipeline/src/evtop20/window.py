@@ -194,6 +194,7 @@ def aggregate_video_hits(
                 "performance_category": meta.get("performance_category"),
                 "year": meta.get("year"),
                 "esc_final_place": meta.get("esc_final_place"),
+                "fire": bool(meta.get("fire")),
                 "metadata_extractor": meta.get("metadata_extractor"),
             }
         )
@@ -265,6 +266,7 @@ def aggregate_song_hits(
                 "country": meta.get("country", ""),
                 "year": meta.get("year", 0),
                 "esc_final_place": meta.get("esc_final_place"),
+                "fire": bool(meta.get("fire")),
             }
         )
 

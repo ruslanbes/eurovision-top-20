@@ -54,6 +54,7 @@ def test_augment_stats_row_adds_metadata_and_watch_url() -> None:
     assert packaged["year"] == 2025
     assert packaged["metadata_extractor"] == "pipe_four_segment_v1"
     assert packaged["youtube_watch_url"] == "https://www.youtube.com/watch?v=abc123xyz01"
+    assert packaged["fire"] is False
     assert packaged["top1"] == 1
     assert packaged["chart_points"] == 10
 
@@ -75,6 +76,12 @@ def test_augment_stats_row_leaves_null_metadata_when_unparsed() -> None:
     assert packaged["metadata_extractor"] is None
     assert packaged["youtube_watch_url"] is None
     assert packaged["esc_final_place"] is None
+
+
+def test_augment_stats_row_sets_fire_from_allowlist() -> None:
+    row = _processed_row(youtube_video_id="KnKVUztvN3M")
+    packaged = augment_stats_row(row, fire_allowlist=frozenset({"KnKVUztvN3M"}))
+    assert packaged["fire"] is True
 
 
 def test_package_alltime_payload_sets_source() -> None:

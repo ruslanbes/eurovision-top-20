@@ -1,37 +1,41 @@
 import {
-  ESC_WINNER_NOT_WINNERS,
-  ESC_WINNER_WINNERS,
-  type EscWinnerMode,
-} from "./escWinner";
+  ESC_NON_ENTRIES,
+  ESC_NOT_WINNERS,
+  ESC_WINNERS,
+  type EscMode,
+} from "./esc";
 import type { FilterValue } from "./types";
 
-type EscWinnerFilterProps = {
+type EscFilterProps = {
   label: string;
   selected: readonly FilterValue[];
   disabled?: boolean;
-  onChange: (value: EscWinnerMode | null) => void;
+  onChange: (value: EscMode | null) => void;
 };
 
 type Segment = {
-  value: EscWinnerMode | null;
+  value: EscMode | null;
   label: string;
 };
 
 const SEGMENTS: Segment[] = [
   { value: null, label: "All" },
-  { value: ESC_WINNER_WINNERS, label: "Winners" },
-  { value: ESC_WINNER_NOT_WINNERS, label: "Not winners" },
+  { value: ESC_WINNERS, label: "Winners" },
+  { value: ESC_NOT_WINNERS, label: "Not winners" },
+  { value: ESC_NON_ENTRIES, label: "Non-entries" },
 ];
 
-export function EscWinnerFilter({
+export function EscFilter({
   label,
   selected,
   disabled = false,
   onChange,
-}: EscWinnerFilterProps) {
+}: EscFilterProps) {
   const active =
-    selected[0] === ESC_WINNER_WINNERS || selected[0] === ESC_WINNER_NOT_WINNERS
-      ? (selected[0] as EscWinnerMode)
+    selected[0] === ESC_WINNERS ||
+    selected[0] === ESC_NOT_WINNERS ||
+    selected[0] === ESC_NON_ENTRIES
+      ? (selected[0] as EscMode)
       : null;
 
   return (
@@ -39,7 +43,7 @@ export function EscWinnerFilter({
       <span className="text-xs font-medium text-text-muted">{label}</span>
       <div
         aria-label={label}
-        className="flex gap-0.5 rounded-lg border border-border bg-surface-elevated p-0.5"
+        className="flex flex-wrap gap-0.5 rounded-lg border border-border bg-surface-elevated p-0.5"
         role="radiogroup"
       >
         {SEGMENTS.map((segment) => {

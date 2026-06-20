@@ -10,6 +10,11 @@ from evtop20.esc_results.join import (
     EscResultsJoiner,
     load_esc_results_joiner,
 )
+from evtop20.fire_allowlist import (
+    FireAllowlistError,
+    load_fire_allowlist,
+    row_is_fire,
+)
 from evtop20.models import youtube_id_is_set
 from evtop20.normalize import write_episode_file
 from evtop20.paths import (
@@ -60,10 +65,13 @@ def augment_stats_row(
     row: dict,
     *,
     esc_joiner: EscResultsJoiner | None = None,
+    fire_allowlist: frozenset[str] | None = None,
 ) -> dict:
     packaged = dict(row)
     video_id = row.get("youtube_video_id")
     packaged["youtube_watch_url"] = youtube_watch_url(video_id)
+    allowlist = fire_allowlist or frozenset()
+    packaged["fire"] = row_is_fire(video_id, allowlist)
 
     video_title = row.get("video_title")
     if not isinstance(video_title, str):
@@ -92,12 +100,12 @@ def augment_stats_row(
 def _empty_metadata() -> dict[str, object]:
     return {
         "artist": None,
-        "song": None,
-        "flag": None,
         "country": None,
-        "performance_category": None,
-        "year": None,
+        "flag": None,
         "metadata_extractor": None,
+        "performance_category": None,
+        "song": None,
+        "year": None,
     }
 
 
@@ -106,6 +114,7 @@ def package_video_payload(
     *,
     source: str,
     esc_joiner: EscResultsJoiner | None = None,
+    fire_allowlist: frozenset[str] | None = None,
 ) -> tuple[dict, int, set[str]]:
     rows = processed_payload.get("rows")
     if not isinstance(rows, list):
@@ -120,7 +129,11 @@ def package_video_payload(
         if not isinstance(row, dict):
             msg = "processed row must be an object"
             raise PackageError(msg)
-        packaged_row = augment_stats_row(row, esc_joiner=esc_joiner)
+        packaged_row = augment_stats_row(
+            row,
+            esc_joiner=esc_joiner,
+            fire_allowlist=fire_allowlist,
+        )
         packaged_rows.append(packaged_row)
         if packaged_row.get("artist") is not None:
             parsed_count += 1
@@ -140,11 +153,13 @@ def package_alltime_payload(
     processed_payload: dict,
     *,
     esc_joiner: EscResultsJoiner | None = None,
+    fire_allowlist: frozenset[str] | None = None,
 ) -> tuple[dict, int, set[str]]:
     return package_video_payload(
         processed_payload,
         source="processed/alltime",
         esc_joiner=esc_joiner,
+        fire_allowlist=fire_allowlist,
     )
 
 
@@ -183,6 +198,7 @@ def _package_variant(
     song_stats_path: Callable[[Path, str], Path],
     song_latest_path: Callable[[Path], Path],
     esc_joiner: EscResultsJoiner | None = None,
+    fire_allowlist: frozenset[str] | None = None,
 ) -> PackageVariantResult | None:
     source_paths = list_processed_snapshot_paths(repo_root)
     if not source_paths:
@@ -205,6 +221,7 @@ def _package_variant(
             processed_payload,
             source=processed_source,
             esc_joiner=esc_joiner,
+            fire_allowlist=fire_allowlist,
         )
 
         write_episode_file(video_stats_path(repo_root, source_path.name), packaged_payload)
@@ -282,6 +299,10 @@ def run_package(repo_root: Path) -> str:
         esc_joiner = load_esc_results_joiner(repo_root)
     except EscResultsJoinError as exc:
         raise PackageError(str(exc)) from exc
+    try:
+        fire_allowlist = load_fire_allowlist(repo_root)
+    except FireAllowlistError as exc:
+        raise PackageError(str(exc)) from exc
 
     alltime = _package_variant(
         repo_root,
@@ -296,6 +317,7 @@ def run_package(repo_root: Path) -> str:
         song_stats_path=packaged_per_song_alltime_stats_path,
         song_latest_path=packaged_per_song_alltime_stats_latest_path,
         esc_joiner=esc_joiner,
+        fire_allowlist=fire_allowlist,
     )
     if alltime is None:
         msg = (

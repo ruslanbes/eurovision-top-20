@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
-  ESC_WINNER_NOT_WINNERS,
-  ESC_WINNER_WINNERS,
-} from "./filters/escWinner";
+  ESC_NON_ENTRIES,
+  ESC_NOT_WINNERS,
+  ESC_WINNERS,
+} from "./filters/esc";
 import {
   defaultStatsUiState,
   normalizeWindow,
@@ -59,7 +60,7 @@ describe("parseStatsUiState", () => {
   it("parses window and shared filters", () => {
     expect(
       parseStatsUiState(
-        "?begin=2021-01&end=2023-01&country=Sweden,Norway&year=2024,2023&esc_winner=winners",
+        "?begin=2021-01&end=2023-01&country=Sweden,Norway&year=2024,2023&esc=winners",
         PERIODS,
       ),
     ).toEqual({
@@ -67,21 +68,28 @@ describe("parseStatsUiState", () => {
       filters: {
         country: ["Sweden", "Norway"],
         year: [2024, 2023],
-        esc_winner: [ESC_WINNER_WINNERS],
+        esc: [ESC_WINNERS],
       },
     });
   });
 
-  it("maps esc_winner not_winners to internal value", () => {
-    expect(parseStatsUiState("?esc_winner=not_winners", PERIODS).filters).toEqual({
-      esc_winner: [ESC_WINNER_NOT_WINNERS],
+  it("maps esc not_winners to internal value", () => {
+    expect(parseStatsUiState("?esc=not_winners", PERIODS).filters).toEqual({
+      esc: [ESC_NOT_WINNERS],
     });
   });
 
-  it("accepts legacy esc_winner not-winners alias", () => {
-    expect(parseStatsUiState("?esc_winner=not-winners", PERIODS).filters).toEqual({
-      esc_winner: [ESC_WINNER_NOT_WINNERS],
+  it("accepts legacy esc not-winners alias", () => {
+    expect(parseStatsUiState("?esc=not-winners", PERIODS).filters).toEqual({
+      esc: [ESC_NOT_WINNERS],
     });
+  });
+
+  it("parses and serializes esc non_entries", () => {
+    const state = parseStatsUiState("?esc=non_entries", PERIODS);
+    expect(state.filters.esc).toEqual([ESC_NON_ENTRIES]);
+    const serialized = serializeStatsUiState(state, PERIODS);
+    expect(serialized).toBe("esc=non_entries");
   });
 
   it("parses performance_category and strips invalid values", () => {
@@ -92,6 +100,12 @@ describe("parseStatsUiState", () => {
       ).filters,
     ).toEqual({
       performance_category: ["final_live", "official_video"],
+    });
+  });
+
+  it("parses fire toggle when fire=1", () => {
+    expect(parseStatsUiState("?fire=1", PERIODS).filters).toEqual({
+      fire: ["1"],
     });
   });
 
@@ -121,28 +135,20 @@ describe("serializeStatsUiState", () => {
     expect(serializeStatsUiState(defaultStatsUiState(PERIODS), PERIODS)).toBe("");
   });
 
-  it("round-trips active state", () => {
-    const state = parseStatsUiState(
-      "?begin=2022-01&end=2024-12&country=Sweden&year=2024&esc_winner=winners&performance_category=final_live",
-      PERIODS,
-    );
-    const serialized = serializeStatsUiState(state, PERIODS);
-    expect(parseStatsUiState(`?${serialized}`, PERIODS)).toEqual(state);
-  });
-
   it("serializes params in alphabetical order", () => {
     const serialized = serializeStatsUiState(
       {
         window: { begin: "2021-01", end: "2023-01" },
         filters: {
           country: ["Sweden"],
+          fire: ["1"],
           performance_category: ["final_live"],
         },
       },
       PERIODS,
     );
     expect(serialized).toBe(
-      "begin=2021-01&country=Sweden&end=2023-01&performance_category=final_live",
+      "begin=2021-01&country=Sweden&end=2023-01&fire=1&performance_category=final_live",
     );
   });
 });

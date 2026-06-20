@@ -144,7 +144,7 @@ Layout: see diagram above. **Future (not shipped):** `insights/`, `charts/` unde
 | Song stats                                                    | per-video rows + roll-up by case-insensitive `(artist, song)`; `[chart_points](../docs/faq/chart_points.md)` from summed tiers (`song_stats.py`) |
 | Window query index (`query/`)                                 | `processed/episode-index/` + latest packaged video enrichment                                                                                    |
 | Insight payloads (heatmaps, winner tables, …)                 | processed + raw + external                                                                                                                       |
-| UI flags (e.g. fire-title filter)                             | parser + keyword lists (`[ui-filter-fire-titles.md](../docs/tasks/ui-filter-fire-titles.md)`)                                                    |
+| UI flags (e.g. fire filter)                                   | `metadata/fire.json` allowlist → packaged `fire` boolean                                                                                           |
 | Period index for scrubber                                     | `query/video-hits.json` `periods` array (via copy script → `periods-alltime.json`)                                                             |
 
 

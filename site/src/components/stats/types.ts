@@ -10,6 +10,7 @@ export type SongStatsRow = {
   country: string;
   year: number;
   esc_final_place: number | string | null;
+  fire: boolean;
   top1: number;
   top3: number;
   top5: number;
@@ -32,6 +33,7 @@ export type VideoStatsRow = {
   top20: number;
   chart_points: number;
   esc_final_place: number | string | null;
+  fire: boolean;
   youtube_video_id: string;
   youtube_watch_url: string | null;
   artist: string | null;

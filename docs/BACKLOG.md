@@ -95,8 +95,15 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - notes: Sketch only; separate from `video-insights`; period player in `site/`; colors per `site-theming`
 
 ## ui-filter-fire-titles
-- status: backlog
-- parent: scaffold-project
-- goal: Stats table UI filter — rows whose title/song matches “fire” in any language (multilingual keyword list)
-- done_when: Per `docs/tasks/ui-filter-fire-titles.md` — packaged flag + table toggle on site
-- notes: Small feature; precompute `matches_fire_filter` in `package`; plug into `stats-table-filters` as toggle type
+- status: done
+- parent: stats-table-filters
+- goal: Stats table toggle — rows on manual fire allowlist (`data/metadata/fire.json` → packaged `fire` field)
+- done_when: Per `docs/tasks/ui-filter-fire-titles.md` — query meta + alltime `fire`, toggle filter, URL param, tests green
+- notes: 7 video ids / 5 songs; field name `fire`; 🔥 emoji toggle, no chips
+
+## stats-inline-explainers
+- status: ready
+- parent: stats-table-filters
+- goal: Add reusable on-demand explainers in stats UI, starting with `chart_points`, without permanent layout clutter
+- done_when: Per `docs/tasks/stats-inline-explainers.md` — trigger + popover pattern, `chart_points` explainer, a11y behavior, tests/build green
+- notes: Prefer click/tap popover over tooltip for multi-line/helpful content; keep long-form detail in FAQ

@@ -3,6 +3,9 @@ import { escFinalPlaceSortKey } from "./escFinalPlace";
 import type { SongStatsRow, StatsGrain, StatsRow, VideoStatsRow } from "./types";
 import { statsRowKey } from "./types";
 
+/** Single-column sort shown in the table header on initial load. */
+export const DEFAULT_TABLE_SORT: SortingState = [{ id: "chart_points", desc: true }];
+
 export const DEFAULT_SONG_SORT: SortingState = [
   { id: "chart_points", desc: true },
   { id: "top1", desc: true },

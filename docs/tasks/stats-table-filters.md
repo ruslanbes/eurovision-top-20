@@ -71,7 +71,7 @@ Filters apply to **already window-aggregated** rows. Changing episode range reco
 | Artifact | When needed |
 |----------|-------------|
 | `packaged/query/facets.json` (or per-grain) | Corpus-wide country/year lists **independent of period window** (e.g. show all countries even if zero hits in range) |
-| Row boolean flags (e.g. `matches_fire_filter`) | [`ui-filter-fire-titles.md`](ui-filter-fire-titles.md) — precomputed in `package`, consumed as toggle filter |
+| Row boolean flags (e.g. `fire`) | [`ui-filter-fire-titles.md`](ui-filter-fire-titles.md) — precomputed in `package` from `metadata/fire.json`, consumed as toggle filter |
 | `performance_type`, `esc_final_place` enums | Future enum filters — values on meta rows today |
 
 ### Null / missing
@@ -168,5 +168,5 @@ Sort order for options: country A→Z; year descending (recent first).
 | Task | Notes |
 |------|-------|
 | [`stats-global-filter-state.md`](stats-global-filter-state.md) | **Done** — URL query params; cross-page sync |
-| `ui-filter-fire-titles` | `type: toggle` on packaged `matches_fire_filter` |
+| `ui-filter-fire-titles` | **Done** — 🔥 emoji toggle on packaged `fire` from `metadata/fire.json` |
 | Future ADR | Freeze filter algebra + optional packaged facet contract |

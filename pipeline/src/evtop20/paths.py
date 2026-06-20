@@ -108,3 +108,7 @@ def esc_join_overrides_path(repo_root: Path) -> Path:
 
 def esc_placement_overrides_path(repo_root: Path) -> Path:
     return metadata_dir(repo_root) / "esc-placement-overrides.json"
+
+
+def fire_allowlist_path(repo_root: Path) -> Path:
+    return metadata_dir(repo_root) / "fire.json"

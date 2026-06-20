@@ -18,6 +18,7 @@ export type VideoMetaRow = {
   artist: string | null;
   country: string | null;
   esc_final_place: number | string | null;
+  fire: boolean;
   flag: string | null;
   metadata_extractor: string | null;
   performance_category: string | null;
@@ -52,6 +53,7 @@ export type SongMetaRow = {
   artist: string;
   country: string;
   esc_final_place: number | string | null;
+  fire: boolean;
   flag: string;
   song: string;
   year: number;
@@ -66,6 +68,7 @@ export type WindowVideoRow = {
   chart_points: number;
   country: string | null;
   esc_final_place: number | string | null;
+  fire: boolean;
   flag: string | null;
   metadata_extractor: string | null;
   performance_category: string | null;
@@ -86,6 +89,7 @@ export type WindowSongRow = {
   chart_points: number;
   country: string;
   esc_final_place: number | string | null;
+  fire: boolean;
   flag: string;
   song: string;
   top1: number;
@@ -213,6 +217,7 @@ export function queryVideoWindow(
       performance_category: meta?.performance_category ?? null,
       year: meta?.year ?? null,
       esc_final_place: meta?.esc_final_place ?? null,
+      fire: meta?.fire ?? false,
       metadata_extractor: meta?.metadata_extractor ?? null,
       ...tiers,
       chart_points: chartPointsFromTiers(tiers),
@@ -267,6 +272,7 @@ export function querySongWindow(
       country: meta?.country ?? "",
       year: meta?.year ?? 0,
       esc_final_place: meta?.esc_final_place ?? null,
+      fire: meta?.fire ?? false,
       ...tiers,
       chart_points: chartPointsFromTiers(tiers),
     });

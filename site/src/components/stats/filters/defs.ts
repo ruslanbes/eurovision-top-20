@@ -1,9 +1,11 @@
 import type { StatsGrain } from "../types";
 import {
-  ESC_WINNER_NOT_WINNERS,
-  ESC_WINNER_WINNERS,
-  escWinnerMatch,
-} from "./escWinner";
+  ESC_NON_ENTRIES,
+  ESC_NOT_WINNERS,
+  ESC_WINNERS,
+  escMatch,
+} from "./esc";
+import { FIRE_FILTER_ON } from "./fireFilter";
 import type {
   FilterDefinition,
   FilterableRow,
@@ -18,6 +20,10 @@ const PERFORMANCE_CATEGORY_LABELS: Record<string, string> = {
   special: "Special",
 };
 
+const PERFORMANCE_CATEGORY_TITLES: Partial<Record<string, string>> = {
+  final_live: "Both semi-final and grand-final",
+};
+
 const PERFORMANCE_CATEGORY_ORDER = [
   "final_live",
   "national_final",
@@ -29,9 +35,10 @@ export type FilterScope = "shared" | "video" | "song";
 
 export const FILTER_SCOPES: Record<string, FilterScope> = {
   country: "shared",
-  year: "shared",
-  esc_winner: "shared",
+  esc: "shared",
+  fire: "shared",
   performance_category: "video",
+  year: "shared",
 };
 
 function countryOptions(rows: FilterableRow[]): FilterOption[] {
@@ -67,8 +74,18 @@ function performanceCategoryOptions(_rows: VideoFilterableRow[]): FilterOption[]
   return PERFORMANCE_CATEGORY_ORDER.map((value) => ({
     value,
     label: PERFORMANCE_CATEGORY_LABELS[value] ?? value,
+    title: PERFORMANCE_CATEGORY_TITLES[value],
   }));
 }
+
+const FIRE_DEF: FilterDefinition<FilterableRow> = {
+  id: "fire",
+  type: "toggle",
+  label: "Songs related to fire",
+  showChips: false,
+  getOptions: () => [{ value: FIRE_FILTER_ON, label: "Songs related to fire" }],
+  match: (row, selected) => row.fire && selected.includes(FIRE_FILTER_ON),
+};
 
 const SHARED_FILTER_DEFS: FilterDefinition<FilterableRow>[] = [
   {
@@ -88,16 +105,18 @@ const SHARED_FILTER_DEFS: FilterDefinition<FilterableRow>[] = [
       typeof row.year === "number" && (selected as number[]).includes(row.year),
   },
   {
-    id: "esc_winner",
+    id: "esc",
     type: "ternary",
-    label: "ESC winner",
+    label: "ESC",
     showChips: false,
     getOptions: () => [
-      { value: ESC_WINNER_WINNERS, label: "Winners only" },
-      { value: ESC_WINNER_NOT_WINNERS, label: "Not winners" },
+      { value: ESC_WINNERS, label: "Winners only" },
+      { value: ESC_NOT_WINNERS, label: "Not winners" },
+      { value: ESC_NON_ENTRIES, label: "Non-entries" },
     ],
-    match: (row, selected) => escWinnerMatch(row.esc_final_place, selected),
+    match: (row, selected) => escMatch(row.esc_final_place, selected),
   },
+  FIRE_DEF,
 ];
 
 const PERFORMANCE_CATEGORY_DEF: FilterDefinition<VideoFilterableRow> = {

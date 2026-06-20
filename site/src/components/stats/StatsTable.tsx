@@ -26,7 +26,7 @@ type StatsTableProps = {
   rows: StatsRow[];
   sorting: SortingState;
   onSortingChange: OnChangeFn<SortingState>;
-  originalRanks?: ReadonlyMap<string, number>;
+  originalRanks: ReadonlyMap<string, number>;
 };
 
 function SortLabel({
@@ -110,11 +110,8 @@ export function StatsTable({
       header: "#",
       enableSorting: false,
       cell: ({ row }) => {
-        if (originalRanks) {
-          const key = statsRowKey(row.original, grain);
-          return originalRanks.get(key) ?? row.index + 1;
-        }
-        return row.index + 1;
+        const key = statsRowKey(row.original, grain);
+        return originalRanks.get(key) ?? "—";
       },
     };
 

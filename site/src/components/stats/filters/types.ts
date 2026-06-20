@@ -3,6 +3,7 @@ export type FilterValue = string | number;
 export type FilterOption = {
   value: FilterValue;
   label: string;
+  title?: string;
   flag?: string;
 };
 
@@ -28,9 +29,10 @@ export interface FilterDefinition<TRow> {
 
 export type FilterableRow = {
   country: string | null;
+  esc_final_place: number | string | null;
+  fire: boolean;
   flag: string | null;
   year: number | null;
-  esc_final_place: number | string | null;
 };
 
 export type VideoFilterableRow = FilterableRow & {

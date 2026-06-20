@@ -85,3 +85,14 @@ Map a `youtube_video_id` to a **contest edition** when title/metadata artist or 
 | `notes` | no | Editor comment |
 
 **Join order in `package`:** placement overrides → join overrides → vendor automatic join.
+
+### `fire.json`
+
+Hand-maintained allowlist of **fire-themed** Top-20 videos for the site **Fire songs** table filter. Read in `package` only.
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| `youtube_video_id` | yes | Lookup key |
+| `notes` | no | Editor comment; not emitted to packaged output |
+
+Sets packaged boolean **`fire`** on matching video rows and on song roll-ups when any member video is listed (~7 clips / 5 songs in the initial corpus).

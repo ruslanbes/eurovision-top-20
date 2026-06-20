@@ -20,6 +20,8 @@ Finish site-theming chart tokens or pick next backlog item.
 
 ## Session notes
 
+- Drafted **`stats-inline-explainers`** task — reusable on-demand help pattern (popover-style) for stats UI, first target `chart_points` explanation.
+- **`ui-filter-fire-titles` done** — `data/metadata/fire.json` allowlist → packaged `fire`; 🔥 emoji toggle (tap to filter); URL `fire=1`; 7 clips / 5 songs.
 - **`stats-global-filter-state` done** — URL query params for range + filters; `StatsNav` preserves search across pages; `replaceState` with debounced range.
 - **Removed `performance-category-overrides.json`** — category comes only from title parse (or full manual row in `manual-video-metadata.json`).
 - **`parse-performance-category` done** — title parse emits `performance_category`; `performance_type` removed from pipeline.

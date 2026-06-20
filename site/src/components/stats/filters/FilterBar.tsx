@@ -1,9 +1,11 @@
 import { useMemo } from "react";
 import { CountryFilter } from "./CountryFilter";
 import { EnumSelectFilter } from "./EnumSelectFilter";
-import { EscWinnerFilter } from "./EscWinnerFilter";
+import { EscFilter } from "./EscFilter";
+import { FireToggleFilter } from "./FireToggleFilter";
+import { FIRE_FILTER_ON } from "./fireFilter";
 import { ToggleGroupFilter } from "./ToggleGroupFilter";
-import type { EscWinnerMode } from "./escWinner";
+import type { EscMode } from "./esc";
 import { filterDefsForGrain } from "./defs";
 import type {
   FilterDefinition,
@@ -107,6 +109,19 @@ export function FilterBar<TRow extends FilterableRow>({
             );
           }
 
+          if (def.type === "toggle" && def.id === "fire") {
+            return (
+              <FireToggleFilter
+                key={def.id}
+                selected={selected}
+                disabled={disabled}
+                onChange={(active) =>
+                  onSetExclusive(def.id, active ? FIRE_FILTER_ON : null)
+                }
+              />
+            );
+          }
+
           if (def.type === "toggle-group") {
             return (
               <ToggleGroupFilter
@@ -126,14 +141,14 @@ export function FilterBar<TRow extends FilterableRow>({
             );
           }
 
-          if (def.type === "ternary" && def.id === "esc_winner") {
+          if (def.type === "ternary" && def.id === "esc") {
             return (
-              <EscWinnerFilter
+              <EscFilter
                 key={def.id}
                 label={def.label}
                 selected={selected}
                 disabled={disabled}
-                onChange={(value: EscWinnerMode | null) =>
+                onChange={(value: EscMode | null) =>
                   onSetExclusive(def.id, value)
                 }
               />

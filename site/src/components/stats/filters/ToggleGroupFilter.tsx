@@ -31,6 +31,7 @@ export function ToggleGroupFilter({
               type="button"
               aria-pressed={isActive}
               disabled={disabled}
+              title={option.title}
               className={[
                 "rounded-md px-3 py-1.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
                 isActive

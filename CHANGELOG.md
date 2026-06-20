@@ -7,6 +7,7 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 ### Added
 
 - URL-persisted stats UI state — episode range + table filters sync across `/` and `/songs/` via query params.
+- Fire songs filter — manual `data/metadata/fire.json` allowlist → packaged `fire` boolean; 🔥 emoji toggle with URL param `fire=1`.
 
 ### Changed
 
