@@ -54,7 +54,7 @@ function sharedStatColumns<T extends StatsRow>(): ColumnDef<T>[] {
     },
     {
       accessorKey: "esc_final_place",
-      header: "Place",
+      header: "ESC Place",
       meta: { title: ESC_FINAL_PLACE_COLUMN_TITLE },
       sortingFn: (rowA, rowB, columnId) =>
         escFinalPlaceSortKey(rowA.getValue(columnId)) -
