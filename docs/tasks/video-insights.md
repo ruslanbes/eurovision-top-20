@@ -30,7 +30,7 @@ Insights will be grouped on the static site under four headings:
 | Processed alltime latest | Cumulative `chart_points`, tier counts — [`chart_points.md`](../faq/chart_points.md), paths in [`data/README.md`](../../data/README.md) |
 | `data/processed/alltime/eurovision-top-20-alltime-YYYY-MM.json` | Stats as-of a month (optional) |
 | `data/raw/episodes/YYYY-MM.json` | Single-episode ranks 1–20 |
-| External ESC dataset | Contest winner / final place — [`eurovision-final-place.md`](eurovision-final-place.md) |
+| External ESC dataset | Contest winner / final place — [`esc_final_place.md`](../faq/esc_final_place.md) |
 | [`title_parse/`](../../pipeline/src/evtop20/title_parse/) in `package` | Contest year, country, song key, winner matching |
 
 ---
@@ -173,7 +173,7 @@ Episode months only — x-axis is **episode timeline**, not every calendar month
 
 ## ESC winner insights
 
-Require external **winner** data per contest year Y ([`eurovision-final-place.md`](eurovision-final-place.md)). Winner → channel `video_title` matching rules TBD (any variant vs Official only).
+Require external **winner** data per contest year Y ([`esc_final_place.md`](../faq/esc_final_place.md)). Winner → channel `video_title` matching rules TBD (any variant vs Official only).
 
 ### esc-april-pulse
 
@@ -314,7 +314,7 @@ Use \(P_{k+1} = 0\) if \(k = n\) (only one video). Suggested default: **\(g = 0.
 
 - Implementation CLI, site widgets, or CI
 - Song-grain versions of year / ESC winner insights (`other-multi-version-songs` is already song-key grouped)
-- Eurovision **final place** column → [`eurovision-final-place.md`](eurovision-final-place.md)
+- Eurovision **final place** column → [`esc_final_place.md`](../faq/esc_final_place.md)
 - Contest-year **wave** viz ([`contest-season-waves.md`](contest-season-waves.md)) — separate task; shares **Year insights** site tab only
 
 ## Done when (future task)

@@ -24,13 +24,6 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 
 ---
 
-## virtual-world-country
-- status: done
-- parent: eurovision-final-place
-- goal: Virtual `World` country for non-national ESC videos (interval acts, live streams) instead of host-nation placeholders
-- done_when: Per `docs/tasks/virtual-world-country.md` — `World`/`🌍` in title-parse map, manual rows updated, join guard, repackaged
-- notes: Display-only; not in ESC vendor `country_to_code`
-
 ## unlikely-events-warnings
 - status: ready
 - parent: generate-song-stats
@@ -44,13 +37,6 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - goal: Measure near-duplicate `(artist, song)` pairs before any normalization rules
 - done_when: Per `docs/tasks/song-key-normalization-audit.md` — audit report on latest packaged alltime
 - notes: Follow-up only; exact keys ship first
-
-## eurovision-final-place
-- status: done
-- parent: package
-- goal: ESC **final placement** on packaged rows and per-video site table
-- done_when: Per `docs/tasks/eurovision-final-place.md` — vendored data, package join, Place column on site
-- notes: Per-song site table deferred to Beta
 
 ## site-theming
 - status: ready

@@ -20,5 +20,5 @@ Pick [`site-theming`](docs/tasks/site-theming.md) or another ready task from [`B
 
 ## Session notes
 
-- **0.1.0** — flexible period windows, ESC placement, query index; changelog bumped; completed epic/spike task specs removed.
-- ADR-003 allows client-side aggregation on packaged data.
+- **0.1.0** — flexible period windows, ESC placement, query index; changelog bumped; shipped task specs removed from backlog.
+- Done backlog entries removed; ESC docs in `docs/faq/esc_final_place.md`.
