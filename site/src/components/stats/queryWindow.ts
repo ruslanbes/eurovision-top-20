@@ -20,7 +20,7 @@ export type VideoMetaRow = {
   esc_final_place: number | string | null;
   flag: string | null;
   metadata_extractor: string | null;
-  performance_type: string | null;
+  performance_category: string | null;
   song: string | null;
   video_title: string;
   year: number | null;
@@ -68,7 +68,7 @@ export type WindowVideoRow = {
   esc_final_place: number | string | null;
   flag: string | null;
   metadata_extractor: string | null;
-  performance_type: string | null;
+  performance_category: string | null;
   song: string | null;
   top1: number;
   top3: number;
@@ -210,7 +210,7 @@ export function queryVideoWindow(
       song: meta?.song ?? null,
       flag: meta?.flag ?? null,
       country: meta?.country ?? null,
-      performance_type: meta?.performance_type ?? null,
+      performance_category: meta?.performance_category ?? null,
       year: meta?.year ?? null,
       esc_final_place: meta?.esc_final_place ?? null,
       metadata_extractor: meta?.metadata_extractor ?? null,

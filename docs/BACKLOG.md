@@ -24,6 +24,34 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 
 ---
 
+## performance-category
+- status: done
+- parent: stats-table-filters
+- goal: Package-time four-bucket performance category (final live, national final, official video, special) — pattern rules + per-video overrides; replace raw performance_type filter
+- done_when: Per `docs/tasks/performance-category.md` — field on video-meta, pipeline tests, site filter on four labels
+- notes: Packaged `performance_type` dropped in follow-up `drop-packaged-performance-type`
+
+## drop-packaged-performance-type
+- status: done
+- parent: performance-category
+- goal: Remove performance_type from packaged video JSON; keep parse-time string for category derivation only
+- done_when: Per `docs/tasks/drop-packaged-performance-type.md`
+- notes: Superseded by `parse-performance-category` (no performance_type anywhere)
+
+## parse-performance-category
+- status: done
+- parent: drop-packaged-performance-type
+- goal: Title parse emits performance_category directly; remove performance_type from pipeline
+- done_when: Per `docs/tasks/parse-performance-category.md`
+- notes: manual-video-metadata uses enum; category_from_segment in title parse
+
+## stats-table-filters
+- status: done
+- parent: scaffold-project
+- goal: Extensible client-side table filters — v1 country (searchable combobox) + year (select); AND across filters, OR within filter
+- done_when: Per `docs/tasks/stats-table-filters.md` — framework + both filters on `/` and `/songs/`; chips; build green
+- notes: Facets from window rows; no new packaged artifact for v1
+
 ## unlikely-events-warnings
 - status: ready
 - parent: generate-song-stats
@@ -39,11 +67,18 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - notes: Follow-up only; exact keys ship first
 
 ## site-theming
-- status: ready
+- status: in_progress
 - parent: scaffold-project
 - goal: Light/dark theme — CSS tokens, toggle, theme-aware palettes for tables and charts (heatmaps, stacks)
 - done_when: Per `docs/tasks/site-theming.md` — toggle, tokens, table + one viz path verified in both modes
 - notes: Stack in ADR-002; Slice 1 uses minimal system theming only
+
+## stats-global-filter-state
+- status: ready
+- parent: stats-table-filters
+- goal: Persist episode range + filters across / and /songs/ — shared filters synced, grain-specific preserved, URL query params
+- done_when: Per `docs/tasks/stats-global-filter-state.md` — round-trip navigation, nav preserves query, tests green
+- notes: Approved — URL-only, replaceState; table sort is a later task; range is window state not FilterState
 
 ## video-insights
 - status: backlog
@@ -64,4 +99,4 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - parent: scaffold-project
 - goal: Stats table UI filter — rows whose title/song matches “fire” in any language (multilingual keyword list)
 - done_when: Per `docs/tasks/ui-filter-fire-titles.md` — packaged flag + table toggle on site
-- notes: Small feature; precompute `matches_fire_filter` in `package`; extend word list as needed
+- notes: Small feature; precompute `matches_fire_filter` in `package`; plug into `stats-table-filters` as toggle type

@@ -20,7 +20,7 @@ Used by `lookup_table_v1` in the title-parse extractor chain (after all title-pa
 | `song` | yes | |
 | `flag` | yes | Emoji, e.g. `🇨🇭` |
 | `country` | yes | Canonical name, e.g. `Switzerland` |
-| `performance_type` | yes | Human-readable, e.g. `Special`, `Grand Final` |
+| `performance_category` | yes | `final_live`, `national_final`, `official_video`, or `special` |
 | `year` | yes | Contest edition, integer |
 | `notes` | no | Editor comment; not emitted to packaged output |
 
@@ -35,7 +35,7 @@ For non-national clips (interval acts, full-show live streams, multi-artist spec
 | `country` | `World` |
 | `flag` | `🌍` |
 
-`World` lives in `title_parse/countries.py` only — **not** an ESC vendor country. Use `esc-placement-overrides.json` (`NON_ENTRY`) when the clip is not a competing entry. Do not auto-assign from `performance_type` alone.
+`World` lives in `title_parse/countries.py` only — **not** an ESC vendor country. Use `esc-placement-overrides.json` (`NON_ENTRY`) when the clip is not a competing entry.
 
 ## Format rules
 
@@ -54,7 +54,7 @@ For non-national clips (interval acts, full-show live streams, multi-artist spec
   "song": "#eurodab",
   "flag": "🌍",
   "country": "World",
-  "performance_type": "Special",
+  "performance_category": "special",
   "year": 2025
 }
 ```
@@ -85,5 +85,3 @@ Map a `youtube_video_id` to a **contest edition** when title/metadata artist or 
 | `notes` | no | Editor comment |
 
 **Join order in `package`:** placement overrides → join overrides → vendor automatic join.
-
-

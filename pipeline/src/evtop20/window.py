@@ -191,7 +191,7 @@ def aggregate_video_hits(
                 "song": meta.get("song"),
                 "flag": meta.get("flag"),
                 "country": meta.get("country"),
-                "performance_type": meta.get("performance_type"),
+                "performance_category": meta.get("performance_category"),
                 "year": meta.get("year"),
                 "esc_final_place": meta.get("esc_final_place"),
                 "metadata_extractor": meta.get("metadata_extractor"),

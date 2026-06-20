@@ -1,14 +1,14 @@
 # Status
 
-Last updated: 2026-06-18
+Last updated: 2026-06-17
 
 ## Current focus
 
-**0.1.0** released. Next: `site-theming` or backlog items.
+`site-theming` in progress (chart token migration open). `performance-category` shipped.
 
 ## Active task
 
-_None — pick next from backlog._
+[`site-theming`](docs/tasks/site-theming.md)
 
 ## Blockers
 
@@ -16,9 +16,14 @@ _None._
 
 ## Next action
 
-Pick [`site-theming`](docs/tasks/site-theming.md) or another ready task from [`BACKLOG.md`](BACKLOG.md).
+Finish site-theming chart tokens or pick next backlog item.
 
 ## Session notes
 
-- **0.1.0** — flexible period windows, ESC placement, query index; changelog bumped; shipped task specs removed from backlog.
-- Done backlog entries removed; ESC docs in `docs/faq/esc_final_place.md`.
+- **Removed `performance-category-overrides.json`** — category comes only from title parse (or full manual row in `manual-video-metadata.json`).
+- **`parse-performance-category` done** — title parse emits `performance_category`; `performance_type` removed from pipeline.
+- **`drop-packaged-performance-type` done** — packaged JSON never had granular type strings.
+- **`performance-category` shipped** — toggle Category filter; packaged `performance_category` field.
+- **`stats-global-filter-state` approved** — URL-only persistence, replaceState, navigation round-trip Vitest required; table sort deferred to later task.
+- **`stats-table-filters` done** — country combobox + year select; AND/OR algebra; chips; client-side on window rows.
+- Theme toggle shipped earlier; semantic tokens partial.

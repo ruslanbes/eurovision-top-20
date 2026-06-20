@@ -49,7 +49,8 @@ def test_augment_stats_row_adds_metadata_and_watch_url() -> None:
     assert packaged["song"] == "Espresso Macchiato"
     assert packaged["flag"] == "🇪🇪"
     assert packaged["country"] == "Estonia"
-    assert packaged["performance_type"] == "Official Music Video"
+    assert "performance_type" not in packaged
+    assert packaged["performance_category"] == "official_video"
     assert packaged["year"] == 2025
     assert packaged["metadata_extractor"] == "pipe_four_segment_v1"
     assert packaged["youtube_watch_url"] == "https://www.youtube.com/watch?v=abc123xyz01"
@@ -68,7 +69,8 @@ def test_augment_stats_row_leaves_null_metadata_when_unparsed() -> None:
     assert packaged["song"] is None
     assert packaged["flag"] is None
     assert packaged["country"] is None
-    assert packaged["performance_type"] is None
+    assert "performance_type" not in packaged
+    assert packaged["performance_category"] is None
     assert packaged["year"] is None
     assert packaged["metadata_extractor"] is None
     assert packaged["youtube_watch_url"] is None
@@ -150,7 +152,8 @@ def test_run_package_writes_alltime_snapshots(repo_root: Path) -> None:
     )
 
     assert latest["rows"][0]["artist"] == "Tommy Cash"
-    assert period["rows"][0]["performance_type"] == "Official Music Video"
+    assert period["rows"][0]["performance_category"] == "official_video"
+    assert "performance_type" not in period["rows"][0]
     assert not stale_period.exists()
     assert "Title metadata (alltime latest): 1/1 rows parsed" in message
     assert "query/video-hits.json" in message

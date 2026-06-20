@@ -1,9 +1,11 @@
+@import "./theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100;
+    @apply bg-surface text-text;
   }
 }

@@ -7,13 +7,13 @@ from evtop20.title_parse.helpers import (
     LIVE_SEGMENT,
     extract_song_and_embedded_country_flag,
     extract_year,
-    format_performance_type,
     parse_parenthetical_country_segment,
-    performance_type_from_year_tail,
+    performance_segment_from_year_tail,
     resolve_country_flag,
-    split_country_and_performance_type,
+    split_country_and_performance_segment,
     split_dash_segments,
 )
+from evtop20.title_parse.models import ParsedVideoTitle
 
 
 def _dash_title(title: str) -> bool:
@@ -36,14 +36,14 @@ class DashFiveCountryNameExtractor:
         artist = parts[0].strip()
         song = parts[1].strip()
         country_flag = resolve_country_flag(parts[2])
-        performance_type_segment = parts[3].strip()
+        performance_segment = parts[3].strip()
         year = extract_year(parts[4])
         if (
             not artist
             or not song
             or country_flag is None
             or year is None
-            or not performance_type_segment
+            or not performance_segment
         ):
             return None
 
@@ -53,7 +53,7 @@ class DashFiveCountryNameExtractor:
             song=song,
             flag=flag,
             country=country,
-            performance_type=performance_type_segment,
+            performance_segment=performance_segment,
             year=year,
             extractor=self.name,
         )
@@ -74,7 +74,7 @@ class DashFiveTypeCountryExtractor:
 
         artist = parts[0].strip()
         song = parts[1].strip()
-        performance_type_segment = parts[2].strip()
+        performance_segment = parts[2].strip()
         country_flag = resolve_country_flag(parts[3])
         year = extract_year(parts[4])
         if (
@@ -82,7 +82,7 @@ class DashFiveTypeCountryExtractor:
             or not song
             or country_flag is None
             or year is None
-            or not performance_type_segment
+            or not performance_segment
         ):
             return None
 
@@ -92,7 +92,7 @@ class DashFiveTypeCountryExtractor:
             song=song,
             flag=flag,
             country=country,
-            performance_type=performance_type_segment,
+            performance_segment=performance_segment,
             year=year,
             extractor=self.name,
         )
@@ -117,14 +117,14 @@ class DashSixLiveBeforeCountryExtractor:
             return None
 
         country_flag = resolve_country_flag(parts[3])
-        performance_type_segment = parts[4].strip()
+        performance_segment = parts[4].strip()
         year = extract_year(parts[5])
         if (
             not artist
             or not song
             or country_flag is None
             or year is None
-            or not performance_type_segment
+            or not performance_segment
         ):
             return None
 
@@ -134,9 +134,7 @@ class DashSixLiveBeforeCountryExtractor:
             song=song,
             flag=flag,
             country=country,
-            performance_type=format_performance_type(
-                performance_type_segment, live=True
-            ),
+            performance_segment=performance_segment,
             year=year,
             extractor=self.name,
         )
@@ -159,14 +157,14 @@ class DashSixLiveAfterCountryExtractor:
         song = parts[1].strip()
         country_flag = resolve_country_flag(parts[2])
         live_segment = parts[3].strip()
-        performance_type_segment = parts[4].strip()
+        performance_segment = parts[4].strip()
         year = extract_year(parts[5])
         if (
             not artist
             or not song
             or country_flag is None
             or year is None
-            or not performance_type_segment
+            or not performance_segment
         ):
             return None
 
@@ -180,9 +178,7 @@ class DashSixLiveAfterCountryExtractor:
             song=song,
             flag=flag,
             country=country,
-            performance_type=format_performance_type(
-                performance_type_segment, live=live
-            ),
+            performance_segment=performance_segment,
             year=year,
             extractor=self.name,
         )
@@ -203,13 +199,13 @@ class DashFourFlagInSongExtractor:
 
         artist = parts[0].strip()
         embedded = extract_song_and_embedded_country_flag(parts[1])
-        performance_type_segment = parts[2].strip()
+        performance_segment = parts[2].strip()
         year = extract_year(parts[3])
         if (
             not artist
             or embedded is None
             or year is None
-            or not performance_type_segment
+            or not performance_segment
         ):
             return None
 
@@ -219,7 +215,7 @@ class DashFourFlagInSongExtractor:
             song=song,
             flag=flag,
             country=country,
-            performance_type=performance_type_segment,
+            performance_segment=performance_segment,
             year=year,
             extractor=self.name,
         )
@@ -240,18 +236,18 @@ class DashFourFlagGluedTypeExtractor:
 
         artist = parts[0].strip()
         song = parts[1].strip()
-        split_type = split_country_and_performance_type(parts[2])
+        split_type = split_country_and_performance_segment(parts[2])
         year = extract_year(parts[3])
         if not artist or not song or split_type is None or year is None:
             return None
 
-        country, flag, performance_type_segment = split_type
+        country, flag, performance_segment = split_type
         return _build_result(
             artist=artist,
             song=song,
             flag=flag,
             country=country,
-            performance_type=performance_type_segment,
+            performance_segment=performance_segment,
             year=year,
             extractor=self.name,
         )
@@ -270,8 +266,8 @@ class DashParenCountryYearExtractor:
         if len(parts) == 3:
             artist = parts[0].strip()
             parsed = parse_parenthetical_country_segment(parts[1])
-            performance_type_segment = parts[2].strip()
-            if not artist or parsed is None or not performance_type_segment:
+            performance_segment = parts[2].strip()
+            if not artist or parsed is None or not performance_segment:
                 return None
             song, country, flag, tail = parsed
             year = extract_year(tail) or extract_year(parts[1])
@@ -280,8 +276,8 @@ class DashParenCountryYearExtractor:
         elif len(parts) == 4:
             artist = parts[0].strip()
             parsed = parse_parenthetical_country_segment(parts[1])
-            performance_type_segment = parts[3].strip()
-            if not artist or parsed is None or not performance_type_segment:
+            performance_segment = parts[3].strip()
+            if not artist or parsed is None or not performance_segment:
                 return None
             song, country, flag, _tail = parsed
             year = extract_year(parts[2])
@@ -295,10 +291,10 @@ class DashParenCountryYearExtractor:
             song, country, flag, tail = parsed
             if re.search(r"\blive at\b", tail, re.IGNORECASE):
                 return None
-            parsed_tail = performance_type_from_year_tail(tail)
+            parsed_tail = performance_segment_from_year_tail(tail)
             if parsed_tail is None:
                 return None
-            performance_type_segment, year = parsed_tail
+            performance_segment, year = parsed_tail
         else:
             return None
 
@@ -307,7 +303,7 @@ class DashParenCountryYearExtractor:
             song=song,
             flag=flag,
             country=country,
-            performance_type=performance_type_segment,
+            performance_segment=performance_segment,
             year=year,
             extractor=self.name,
         )
@@ -332,10 +328,10 @@ class DashLiveAtEurovisionExtractor:
             return None
 
         song, country, flag, tail = parsed
-        parsed_tail = performance_type_from_year_tail(tail)
+        parsed_tail = performance_segment_from_year_tail(tail)
         if parsed_tail is None:
             return None
-        performance_type, year = parsed_tail
+        performance_segment, year = parsed_tail
         if not re.search(r"\blive at\b", tail, re.IGNORECASE):
             return None
 
@@ -344,7 +340,7 @@ class DashLiveAtEurovisionExtractor:
             song=song,
             flag=flag,
             country=country,
-            performance_type=format_performance_type(performance_type, live=True),
+            performance_segment=performance_segment,
             year=year,
             extractor=self.name,
         )

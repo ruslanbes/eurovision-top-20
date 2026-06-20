@@ -10,7 +10,7 @@ type PeriodControlsProps = {
 };
 
 const thumbClassName =
-  "block h-4 w-4 rounded-full border border-blue-600 bg-white shadow focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-blue-400 dark:bg-zinc-950";
+  "block h-4 w-4 rounded-full border border-accent bg-surface shadow focus:outline-none focus:ring-2 focus:ring-accent";
 
 export function PeriodControls({
   periods,
@@ -58,7 +58,7 @@ export function PeriodControls({
           aria-label="Episode month range"
         >
           <Slider.Track className="relative h-1.5 grow rounded-full bg-zinc-200 dark:bg-zinc-800">
-            <Slider.Range className="absolute h-full rounded-full bg-blue-600 dark:bg-blue-500" />
+            <Slider.Range className="absolute h-full rounded-full bg-accent" />
           </Slider.Track>
           <Slider.Thumb
             className={thumbClassName}

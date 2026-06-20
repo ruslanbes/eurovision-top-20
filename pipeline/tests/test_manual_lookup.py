@@ -29,7 +29,7 @@ def test_load_manual_video_metadata_parses_entry(tmp_path: Path) -> None:
                         "song": "Example Song",
                         "flag": "🇫🇮",
                         "country": "Finland",
-                        "performance_type": "Grand Final",
+                        "performance_category": "final_live",
                         "year": 2024,
                     }
                 ],
@@ -47,7 +47,7 @@ def test_load_manual_video_metadata_parses_entry(tmp_path: Path) -> None:
         song="Example Song",
         flag="🇫🇮",
         country="Finland",
-        performance_type="Grand Final",
+        performance_category="final_live",
         year=2024,
         extractor="lookup_table_v1",
     )
@@ -66,7 +66,7 @@ def test_load_manual_video_metadata_rejects_duplicate_ids(tmp_path: Path) -> Non
                         "song": "S",
                         "flag": "🇫🇮",
                         "country": "Finland",
-                        "performance_type": "Grand Final",
+                        "performance_category": "final_live",
                         "year": 2024,
                     },
                     {
@@ -75,7 +75,7 @@ def test_load_manual_video_metadata_rejects_duplicate_ids(tmp_path: Path) -> Non
                         "song": "T",
                         "flag": "🇪🇪",
                         "country": "Estonia",
-                        "performance_type": "Grand Final",
+                        "performance_category": "final_live",
                         "year": 2025,
                     },
                 ],
@@ -101,7 +101,7 @@ def test_lookup_table_extractor_matches_youtube_video_id(tmp_path: Path) -> None
                         "song": "Example Song",
                         "flag": "🇫🇮",
                         "country": "Finland",
-                        "performance_type": "Grand Final",
+                        "performance_category": "final_live",
                         "year": 2024,
                     }
                 ],

@@ -6,7 +6,7 @@ Parent: site (shipped Slice 1)
 Depends on: site shell exists (`site/`)  
 Related: [`site/README.md`](../../site/README.md)
 
-**Status:** Draft — **Slice 1 uses minimal theming** (system `prefers-color-scheme` + Tailwind `dark:` only). Full tokens + toggle: Slice 5 / this task.
+**Status:** In progress — toggle + tokens shipped; chart palette migration open.
 
 ---
 

@@ -4,6 +4,10 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+### Removed
+
+- `data/metadata/performance-category-overrides.json` and package-time category override loader; `performance_category` is set only at title parse (pattern rules or `manual-video-metadata.json`).
+
 ## [0.1.0] - 2026-06-18
 
 Flexible period windows, ESC placement, and site query index. Replaces the fixed 5-year **recent** variant.

@@ -2,10 +2,10 @@ from __future__ import annotations
 
 from typing import Protocol
 
+from evtop20.performance_category import category_from_segment
 from evtop20.title_parse.helpers import (
-    derive_performance_type_from_tail,
+    derive_performance_segment_from_tail,
     extract_year,
-    format_performance_type,
     parse_artist_song,
     parse_country_flag,
     parse_glued_country_tail,
@@ -29,16 +29,20 @@ def _build_result(
     song: str,
     flag: str,
     country: str,
-    performance_type: str,
+    performance_segment: str,
     year: int,
     extractor: str,
 ) -> ParsedVideoTitle | None:
+    segment = performance_segment.strip()
+    if not segment:
+        return None
+
     result = ParsedVideoTitle(
         artist=artist,
         song=song,
         flag=flag,
         country=country,
-        performance_type=performance_type,
+        performance_category=category_from_segment(segment),
         year=year,
         extractor=extractor,
     )
@@ -47,10 +51,10 @@ def _build_result(
     return result
 
 
-def _parse_artist_country_performance_type_year(
+def _parse_artist_country_performance_segment_year(
     artist_song_segment: str,
     country_segment: str,
-    performance_type_segment: str,
+    performance_segment: str,
     year_segment: str,
     *,
     extractor: str,
@@ -61,18 +65,15 @@ def _parse_artist_country_performance_type_year(
     if artist_song is None or country_flag is None or year is None:
         return None
 
-    artist, song, live = artist_song
+    artist, song, _live = artist_song
     country, flag = country_flag
-    performance_type = format_performance_type(performance_type_segment, live=live)
-    if not performance_type:
-        return None
 
     return _build_result(
         artist=artist,
         song=song,
         flag=flag,
         country=country,
-        performance_type=performance_type,
+        performance_segment=performance_segment,
         year=year,
         extractor=extractor,
     )
@@ -87,7 +88,7 @@ class PipeFourSegmentExtractor:
         parts = split_pipe_segments(title)
         if len(parts) != 4:
             return None
-        return _parse_artist_country_performance_type_year(
+        return _parse_artist_country_performance_segment_year(
             parts[0],
             parts[1],
             parts[2],
@@ -108,24 +109,24 @@ class PipeThreeSegmentExtractor:
 
         artist_song = parse_artist_song(parts[0])
         country_flag = parse_country_flag(parts[1])
-        performance_type = derive_performance_type_from_tail(parts[2])
+        performance_segment = derive_performance_segment_from_tail(parts[2])
         year = extract_year(parts[2])
         if (
             artist_song is None
             or country_flag is None
-            or performance_type is None
+            or performance_segment is None
             or year is None
         ):
             return None
 
-        artist, song, live = artist_song
+        artist, song, _live = artist_song
         country, flag = country_flag
         return _build_result(
             artist=artist,
             song=song,
             flag=flag,
             country=country,
-            performance_type=format_performance_type(performance_type, live=live),
+            performance_segment=performance_segment,
             year=year,
             extractor=self.name,
         )
@@ -147,18 +148,18 @@ class PipeTwoSegmentGluedExtractor:
             return None
 
         country, flag, tail_segment = glued
-        performance_type = derive_performance_type_from_tail(tail_segment)
+        performance_segment = derive_performance_segment_from_tail(tail_segment)
         year = extract_year(tail_segment)
-        if performance_type is None or year is None:
+        if performance_segment is None or year is None:
             return None
 
-        artist, song, live = artist_song
+        artist, song, _live = artist_song
         return _build_result(
             artist=artist,
             song=song,
             flag=flag,
             country=country,
-            performance_type=format_performance_type(performance_type, live=live),
+            performance_segment=performance_segment,
             year=year,
             extractor=self.name,
         )
@@ -180,7 +181,7 @@ class DashFiveSegmentExtractor:
         artist = parts[0].strip()
         song = parts[1].strip()
         country_segment = parts[2]
-        performance_type_segment = parts[3].strip()
+        performance_segment = parts[3].strip()
         year_segment = parts[4].strip()
 
         country_flag = parse_country_flag(country_segment)
@@ -190,7 +191,7 @@ class DashFiveSegmentExtractor:
             or not song
             or country_flag is None
             or year is None
-            or not performance_type_segment
+            or not performance_segment
         ):
             return None
 
@@ -200,7 +201,7 @@ class DashFiveSegmentExtractor:
             song=song,
             flag=flag,
             country=country,
-            performance_type=performance_type_segment,
+            performance_segment=performance_segment,
             year=year,
             extractor=self.name,
         )

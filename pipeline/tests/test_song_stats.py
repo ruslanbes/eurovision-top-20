@@ -35,7 +35,7 @@ def _video_row(**overrides: object) -> dict:
         "song": "Song One",
         "flag": "🇳🇴",
         "country": "Norway",
-        "performance_type": "Grand Final",
+        "performance_category": "final_live",
         "year": 2020,
         "metadata_extractor": "test",
     }
@@ -62,7 +62,7 @@ def test_video_stats_basename_to_song_stats_basename_accepts_alltime() -> None:
 def test_is_eligible_requires_all_metadata_fields() -> None:
     assert is_eligible_song_rollup_row(_video_row())
     assert not is_eligible_song_rollup_row(_video_row(year=None))
-    assert not is_eligible_song_rollup_row(_video_row(performance_type=""))
+    assert not is_eligible_song_rollup_row(_video_row(performance_category=""))
 
 
 def test_package_song_stats_sums_tiers_for_shared_key() -> None:
@@ -74,7 +74,7 @@ def test_package_song_stats_sums_tiers_for_shared_key() -> None:
         top10=8,
         top20=10,
         chart_points=100,
-        performance_type="Grand Final (LIVE)",
+        performance_category="final_live",
     )
     official = _video_row(
         video_title="Artist A - Song One | Norway 🇳🇴 | Official Music Video | Eurovision 2020",
@@ -85,7 +85,7 @@ def test_package_song_stats_sums_tiers_for_shared_key() -> None:
         top20=1,
         chart_points=20,
         youtube_video_id="vid000000002",
-        performance_type="Official Music Video",
+        performance_category="official_video",
     )
 
     payload, warnings = package_song_stats_payload(
@@ -150,7 +150,7 @@ def test_package_song_stats_excludes_incomplete_rows() -> None:
         song=None,
         flag=None,
         country=None,
-        performance_type=None,
+        performance_category=None,
         year=None,
         metadata_extractor=None,
     )

@@ -21,7 +21,7 @@ VIDEO_META_FIELDS = (
     "esc_final_place",
     "flag",
     "metadata_extractor",
-    "performance_type",
+    "performance_category",
     "song",
     "video_title",
     "year",

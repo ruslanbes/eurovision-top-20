@@ -157,13 +157,13 @@ Built from `processed/episode-index/` plus latest packaged video rows for enrich
 | File | Role |
 | ---- | ---- |
 | `video-hits.json` | Sparse hits per video: `{ periods, hits: [{ video_title, youtube_video_id, entries: [{ period, rank }] }] }` |
-| `video-meta.json` | Window-independent display fields per video (from latest alltime enrichment) |
+| `video-meta.json` | Window-independent display fields per video (from latest alltime enrichment), including `performance_category` |
 | `song-hits.json` | Sparse hits per song: entries `{ period, ranks: […] }` (member-video ranks per episode) |
 | `song-meta.json` | Window-independent display fields per song |
 
 Client aggregates a `[begin, end]` window from these files via `site/src/components/stats/queryWindow.ts` (golden-tested against pipeline).
 
-Processed row shape remains unchanged. ESC final place is joined in `package` — [`esc_final_place.md`](../docs/faq/esc_final_place.md).
+Processed row shape remains unchanged. ESC final place is joined in `package` — [`esc_final_place.md`](../docs/faq/esc_final_place.md). Video `performance_category` (`final_live`, `national_final`, `official_video`, `special`) is set at title parse from YouTube title segments; unparseable titles use `metadata/manual-video-metadata.json`.
 
 ---
 

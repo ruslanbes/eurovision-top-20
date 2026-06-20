@@ -10,7 +10,7 @@ class ParsedVideoTitle:
     song: str
     flag: str
     country: str
-    performance_type: str
+    performance_category: str | None
     year: int
     extractor: str
 
@@ -20,7 +20,7 @@ class ParsedVideoTitle:
             "song": self.song,
             "flag": self.flag,
             "country": self.country,
-            "performance_type": self.performance_type,
+            "performance_category": self.performance_category,
             "year": self.year,
         }
 
@@ -31,7 +31,6 @@ class ParsedVideoTitle:
                 self.song,
                 self.flag,
                 self.country,
-                self.performance_type,
                 self.year,
             )
         )

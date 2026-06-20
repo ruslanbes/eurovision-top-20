@@ -15,7 +15,7 @@
       "song": "Toy",
       "flag": "🇮🇱",
       "country": "Israel",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -34,7 +34,7 @@
       "song": "Uno",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -53,7 +53,7 @@
       "song": "Düm Tek Tek",
       "flag": "🇹🇷",
       "country": "Turkey",
-      "performance_type": "Grand Final",
+      "performance_category": "final_live",
       "year": 2009,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 4
@@ -72,7 +72,7 @@
       "song": "You Are The Only One",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "Grand Final",
+      "performance_category": "final_live",
       "year": 2016,
       "metadata_extractor": "dash_four_flag_in_song_v1",
       "esc_final_place": 3
@@ -91,7 +91,7 @@
       "song": "Fairytale",
       "flag": "🇳🇴",
       "country": "Norway",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2009,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -110,7 +110,7 @@
       "song": "Arcade",
       "flag": "🇳🇱",
       "country": "Netherlands",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2019,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -129,7 +129,7 @@
       "song": "Fuego",
       "flag": "🇨🇾",
       "country": "Cyprus",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 2
@@ -148,7 +148,7 @@
       "song": "Zitti E Buoni",
       "flag": "🇮🇹",
       "country": "Italy",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2021,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -167,7 +167,7 @@
       "song": "Allez Ola Olé",
       "flag": "🇫🇷",
       "country": "France",
-      "performance_type": "Music Video",
+      "performance_category": "official_video",
       "year": 2010,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 12
@@ -186,7 +186,7 @@
       "song": "Soldi",
       "flag": "🇮🇹",
       "country": "Italy",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2019,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 2
@@ -205,7 +205,7 @@
       "song": "We Could Be The Same",
       "flag": "🇹🇷",
       "country": "Turkey",
-      "performance_type": "Grand Final",
+      "performance_category": "final_live",
       "year": 2010,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 2
@@ -224,7 +224,7 @@
       "song": "Hard Rock Hallelujah",
       "flag": "🇫🇮",
       "country": "Finland",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2006,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -243,7 +243,7 @@
       "song": "Hey Mamma (LIVE feat. Epic Sax Guy)",
       "flag": "🇲🇩",
       "country": "Moldova",
-      "performance_type": "Grand Final",
+      "performance_category": "final_live",
       "year": 2017,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 3
@@ -262,7 +262,7 @@
       "song": "Lie To Me",
       "flag": "🇨🇿",
       "country": "Czechia",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 6
@@ -281,7 +281,7 @@
       "song": "SloMo",
       "flag": "🇪🇸",
       "country": "Spain",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 3
@@ -300,7 +300,7 @@
       "song": "Shum",
       "flag": "🇺🇦",
       "country": "Ukraine",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2021,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 5
@@ -319,7 +319,7 @@
       "song": "TOY",
       "flag": "🇮🇱",
       "country": "Israel",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": 1
@@ -338,7 +338,7 @@
       "song": "Heroes",
       "flag": "🇸🇪",
       "country": "Sweden",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2015,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -357,7 +357,7 @@
       "song": "Horehronie",
       "flag": "🇸🇰",
       "country": "Slovakia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2010,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "DNQ"
@@ -376,7 +376,7 @@
       "song": "Always",
       "flag": "🇦🇿",
       "country": "Azerbaijan",
-      "performance_type": "Grand Final",
+      "performance_category": "final_live",
       "year": 2009,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 3
@@ -395,7 +395,7 @@
       "song": "Satellite",
       "flag": "🇩🇪",
       "country": "Germany",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2010,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -414,7 +414,7 @@
       "song": "Dancing Lasha Tumbai",
       "flag": "🇺🇦",
       "country": "Ukraine",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2007,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 2
@@ -433,7 +433,7 @@
       "song": "Occidentali's Karma",
       "flag": "🇮🇹",
       "country": "Italy",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 6
@@ -452,7 +452,7 @@
       "song": "Stefania",
       "flag": "🇺🇦",
       "country": "Ukraine",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -471,7 +471,7 @@
       "song": "Mata Hari",
       "flag": "🇦🇿",
       "country": "Azerbaijan",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2021,
       "metadata_extractor": "dash_six_live_before_country_v1",
       "esc_final_place": 20
@@ -490,7 +490,7 @@
       "song": "J'ai cherché",
       "flag": "🇫🇷",
       "country": "France",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2016,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 6
@@ -509,7 +509,7 @@
       "song": "I Can't Go On",
       "flag": "🇸🇪",
       "country": "Sweden",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 5
@@ -528,7 +528,7 @@
       "song": "She Got Me",
       "flag": "🇨🇭",
       "country": "Switzerland",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2019,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 4
@@ -547,7 +547,7 @@
       "song": "City Lights",
       "flag": "🇧🇪",
       "country": "Belgium",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 4
@@ -566,7 +566,7 @@
       "song": "Amar Pelos Dois",
       "flag": "🇵🇹",
       "country": "Portugal",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2017,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -585,7 +585,7 @@
       "song": "SHUM",
       "flag": "🇺🇦",
       "country": "Ukraine",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2021,
       "metadata_extractor": "dash_four_flag_glued_type_v1",
       "esc_final_place": 5
@@ -604,7 +604,7 @@
       "song": "Euphoria",
       "flag": "🇸🇪",
       "country": "Sweden",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2012,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -623,7 +623,7 @@
       "song": "Amar Pelos Dois",
       "flag": "🇵🇹",
       "country": "Portugal",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 1
@@ -642,7 +642,7 @@
       "song": "Hey Mamma",
       "flag": "🇲🇩",
       "country": "Moldova",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 3
@@ -661,7 +661,7 @@
       "song": "On Fire",
       "flag": "🇱🇹",
       "country": "Lithuania",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -680,7 +680,7 @@
       "song": "1944",
       "flag": "🇺🇦",
       "country": "Ukraine",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2016,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -699,7 +699,7 @@
       "song": "Think About Things",
       "flag": "🇮🇸",
       "country": "Iceland",
-      "performance_type": "Official Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -718,7 +718,7 @@
       "song": "Snap",
       "flag": "🇦🇲",
       "country": "Armenia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 20
@@ -737,7 +737,7 @@
       "song": "Loco Loco",
       "flag": "🇷🇸",
       "country": "Serbia",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2021,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 15
@@ -756,7 +756,7 @@
       "song": "Spirit In The Sky",
       "flag": "🇳🇴",
       "country": "Norway",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2019,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 6
@@ -775,7 +775,7 @@
       "song": "Stefania",
       "flag": "🇺🇦",
       "country": "Ukraine",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 1
@@ -794,7 +794,7 @@
       "song": "Lie To Me",
       "flag": "🇨🇿",
       "country": "Czechia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": 6
@@ -813,7 +813,7 @@
       "song": "Düm Tek Tek",
       "flag": "🇹🇷",
       "country": "Turkey",
-      "performance_type": "Official Preview Video",
+      "performance_category": "official_video",
       "year": 2009,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": 4
@@ -832,7 +832,7 @@
       "song": "Russian Woman",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2021,
       "metadata_extractor": "dash_six_live_before_country_v1",
       "esc_final_place": 9
@@ -851,7 +851,7 @@
       "song": "LOCO LOCO",
       "flag": "🇷🇸",
       "country": "Serbia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2021,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 15
@@ -870,7 +870,7 @@
       "song": "Tu Canción",
       "flag": "🇪🇸",
       "country": "Spain",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": 23
@@ -889,7 +889,7 @@
       "song": "Russian Woman",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "Official Video",
+      "performance_category": "official_video",
       "year": 2021,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 9
@@ -908,7 +908,7 @@
       "song": "La Venda",
       "flag": "🇪🇸",
       "country": "Spain",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2019,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": 22
@@ -927,7 +927,7 @@
       "song": "Sound Of Silence",
       "flag": "🇦🇺",
       "country": "Australia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2016,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": 2
@@ -946,7 +946,7 @@
       "song": "SloMo",
       "flag": "🇪🇸",
       "country": "Spain",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 3
@@ -965,7 +965,7 @@
       "song": "Llámame",
       "flag": "🇷🇴",
       "country": "Romania",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "dash_six_live_before_country_v1",
       "esc_final_place": 18
@@ -984,7 +984,7 @@
       "song": "Tu Canción",
       "flag": "🇪🇸",
       "country": "Spain",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2018,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": 23
@@ -1003,7 +1003,7 @@
       "song": "That’s How You Write A Song",
       "flag": "🇳🇴",
       "country": "Norway",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 15
@@ -1022,7 +1022,7 @@
       "song": "Tu Canción",
       "flag": "🇪🇸",
       "country": "Spain",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 23
@@ -1041,7 +1041,7 @@
       "song": "Mata Hari",
       "flag": "🇦🇿",
       "country": "Azerbaijan",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2021,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 20
@@ -1060,7 +1060,7 @@
       "song": "Cleopatra",
       "flag": "🇦🇿",
       "country": "Azerbaijan",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -1079,7 +1079,7 @@
       "song": "On Fire",
       "flag": "🇱🇹",
       "country": "Lithuania",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -1098,7 +1098,7 @@
       "song": "De Diepte",
       "flag": "🇳🇱",
       "country": "Netherlands",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 11
@@ -1117,7 +1117,7 @@
       "song": "Rise Like a Phoenix",
       "flag": "🇦🇹",
       "country": "Austria",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2014,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -1136,7 +1136,7 @@
       "song": "SPACE MAN",
       "flag": "🇬🇧",
       "country": "United Kingdom",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 2
@@ -1155,7 +1155,7 @@
       "song": "Voilà",
       "flag": "🇫🇷",
       "country": "France",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2021,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 2
@@ -1174,7 +1174,7 @@
       "song": "City Lights",
       "flag": "🇧🇪",
       "country": "Belgium",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2017,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 4
@@ -1193,7 +1193,7 @@
       "song": "Halo",
       "flag": "🇦🇹",
       "country": "Austria",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "DNQ"
@@ -1212,7 +1212,7 @@
       "song": "Sekret",
       "flag": "🇦🇱",
       "country": "Albania",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "DNQ"
@@ -1231,7 +1231,7 @@
       "song": "Give That Wolf A Banana",
       "flag": "🇳🇴",
       "country": "Norway",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 10
@@ -1250,7 +1250,7 @@
       "song": "That's How You Write A Song",
       "flag": "🇳🇴",
       "country": "Norway",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": 15
@@ -1269,7 +1269,7 @@
       "song": "Bones",
       "flag": "🇧🇬",
       "country": "Bulgaria",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": 14
@@ -1288,7 +1288,7 @@
       "song": "Replay",
       "flag": "🇨🇾",
       "country": "Cyprus",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2019,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 13
@@ -1307,7 +1307,7 @@
       "song": "Give That Wolf A Banana (LIVE)",
       "flag": "🇳🇴",
       "country": "Norway",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 10
@@ -1326,7 +1326,7 @@
       "song": "Tick-Tock",
       "flag": "🇭🇷",
       "country": "Croatia",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2021,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "DNQ"
@@ -1345,7 +1345,7 @@
       "song": "Empires",
       "flag": "🇵🇱",
       "country": "Poland",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -1364,7 +1364,7 @@
       "song": "Grand Final",
       "flag": "🌍",
       "country": "World",
-      "performance_type": "Special",
+      "performance_category": "special",
       "year": 2017,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": "NON_ENTRY"
@@ -1383,7 +1383,7 @@
       "song": "Perfect Life",
       "flag": "🇩🇪",
       "country": "Germany",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 25
@@ -1402,7 +1402,7 @@
       "song": "Scream",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "Grand Final",
+      "performance_category": "final_live",
       "year": 2019,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 3
@@ -1421,7 +1421,7 @@
       "song": "Trenulețul",
       "flag": "🇲🇩",
       "country": "Moldova",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 7
@@ -1440,7 +1440,7 @@
       "song": "Requiem",
       "flag": "🇫🇷",
       "country": "France",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 12
@@ -1459,7 +1459,7 @@
       "song": "Chains On You",
       "flag": "🇦🇲",
       "country": "Armenia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -1478,7 +1478,7 @@
       "song": "Dance You Off",
       "flag": "🇸🇪",
       "country": "Sweden",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 7
@@ -1497,7 +1497,7 @@
       "song": "Flame Is Burning",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "Official Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": "WITHDRAWN"
@@ -1516,7 +1516,7 @@
       "song": "Beautiful Mess",
       "flag": "🇧🇬",
       "country": "Bulgaria",
-      "performance_type": "Official Lyric Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 2
@@ -1535,7 +1535,7 @@
       "song": "If Love Was A Crime",
       "flag": "🇧🇬",
       "country": "Bulgaria",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2016,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 4
@@ -1554,7 +1554,7 @@
       "song": "Sekret",
       "flag": "🇦🇱",
       "country": "Albania",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "DNQ"
@@ -1573,7 +1573,7 @@
       "song": "Run Away",
       "flag": "🇲🇩",
       "country": "Moldova",
-      "performance_type": "Grand Final",
+      "performance_category": "final_live",
       "year": 2010,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 22
@@ -1592,7 +1592,7 @@
       "song": "Dark Side",
       "flag": "🇫🇮",
       "country": "Finland",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2021,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 6
@@ -1611,7 +1611,7 @@
       "song": "We Got Love",
       "flag": "🇦🇺",
       "country": "Australia",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 20
@@ -1630,7 +1630,7 @@
       "song": "Satellite",
       "flag": "🇩🇪",
       "country": "Germany",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2010,
       "metadata_extractor": "dash_four_flag_glued_type_v1",
       "esc_final_place": 1
@@ -1649,7 +1649,7 @@
       "song": "Chameleon",
       "flag": "🇲🇹",
       "country": "Malta",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2019,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 14
@@ -1668,7 +1668,7 @@
       "song": "La Venda",
       "flag": "🇪🇸",
       "country": "Spain",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2019,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 22
@@ -1687,7 +1687,7 @@
       "song": "Higher Ground",
       "flag": "🇩🇰",
       "country": "Denmark",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 9
@@ -1706,7 +1706,7 @@
       "song": "I Can't Go On",
       "flag": "🇸🇪",
       "country": "Sweden",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2017,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 5
@@ -1725,7 +1725,7 @@
       "song": "Brividi",
       "flag": "🇮🇹",
       "country": "Italy",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 6
@@ -1744,7 +1744,7 @@
       "song": "SPACE MAN",
       "flag": "🇬🇧",
       "country": "United Kingdom",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 2
@@ -1763,7 +1763,7 @@
       "song": "In Corpore Sano",
       "flag": "🇷🇸",
       "country": "Serbia",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 5
@@ -1782,7 +1782,7 @@
       "song": "Fai Rumore",
       "flag": "🇮🇹",
       "country": "Italy",
-      "performance_type": "Performance in Arena di Verona",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -1801,7 +1801,7 @@
       "song": "My Last Breath",
       "flag": "🇬🇧",
       "country": "United Kingdom",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_type_country_v1",
       "esc_final_place": "CANCELLED"
@@ -1820,7 +1820,7 @@
       "song": "In Corpore Sano",
       "flag": "🇷🇸",
       "country": "Serbia",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 5
@@ -1839,7 +1839,7 @@
       "song": "Do It For Your Lover",
       "flag": "🇪🇸",
       "country": "Spain",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 26
@@ -1858,7 +1858,7 @@
       "song": "Amar Pelos Dois",
       "flag": "🇵🇹",
       "country": "Portugal",
-      "performance_type": "First Semi-Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2017,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": 1
@@ -1877,7 +1877,7 @@
       "song": "Dance You Off",
       "flag": "🇸🇪",
       "country": "Sweden",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": 7
@@ -1896,7 +1896,7 @@
       "song": "Roi",
       "flag": "🇫🇷",
       "country": "France",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2019,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 16
@@ -1915,7 +1915,7 @@
       "song": "Nobody But You",
       "flag": "🇦🇹",
       "country": "Austria",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 3
@@ -1934,7 +1934,7 @@
       "song": "10 Years",
       "flag": "🇮🇸",
       "country": "Iceland",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2021,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 4
@@ -1953,7 +1953,7 @@
       "song": "Je Me Casse",
       "flag": "🇲🇹",
       "country": "Malta",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2021,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 7
@@ -1972,7 +1972,7 @@
       "song": "El Diablo",
       "flag": "🇨🇾",
       "country": "Cyprus",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2021,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 16
@@ -1991,7 +1991,7 @@
       "song": "Only Teardrops",
       "flag": "🇩🇰",
       "country": "Denmark",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2013,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 1
@@ -2010,7 +2010,7 @@
       "song": "Lost And Found",
       "flag": "🇲🇰",
       "country": "North Macedonia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": "DNQ"
@@ -2029,7 +2029,7 @@
       "song": "Solovey",
       "flag": "🇺🇦",
       "country": "Ukraine",
-      "performance_type": "Official Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -2048,7 +2048,7 @@
       "song": "Yodel It!",
       "flag": "🇷🇴",
       "country": "Romania",
-      "performance_type": "LIVE at the Eurovision Song Contest (LIVE)",
+      "performance_category": "final_live",
       "year": 2017,
       "metadata_extractor": "dash_live_at_eurovision_v1",
       "esc_final_place": 7
@@ -2067,7 +2067,7 @@
       "song": "Don't Come Easy",
       "flag": "🇦🇺",
       "country": "Australia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 9
@@ -2086,7 +2086,7 @@
       "song": "Wild Dances",
       "flag": "🇺🇦",
       "country": "Ukraine",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2004,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -2105,7 +2105,7 @@
       "song": "A Matter Of Time",
       "flag": "🇧🇪",
       "country": "Belgium",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": "DNQ"
@@ -2124,7 +2124,7 @@
       "song": "Spirit Of The Night",
       "flag": "🇸🇲",
       "country": "San Marino",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": "DNQ"
@@ -2143,7 +2143,7 @@
       "song": "Fulenn",
       "flag": "🇫🇷",
       "country": "France",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 24
@@ -2162,7 +2162,7 @@
       "song": "In Corpore Sano",
       "flag": "🇷🇸",
       "country": "Serbia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 5
@@ -2181,7 +2181,7 @@
       "song": "Sekret",
       "flag": "🇦🇱",
       "country": "Albania",
-      "performance_type": "First Semi-Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "dash_six_live_before_country_v1",
       "esc_final_place": "DNQ"
@@ -2200,7 +2200,7 @@
       "song": "Tick-Tock",
       "flag": "🇭🇷",
       "country": "Croatia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2021,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "DNQ"
@@ -2219,7 +2219,7 @@
       "song": "Always",
       "flag": "🇦🇿",
       "country": "Azerbaijan",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2009,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 3
@@ -2238,7 +2238,7 @@
       "song": "Voilà",
       "flag": "🇫🇷",
       "country": "France",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2021,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 2
@@ -2257,7 +2257,7 @@
       "song": "Love Me Back",
       "flag": "🇹🇷",
       "country": "Turkey",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2012,
       "metadata_extractor": "dash_six_live_after_country_v1",
       "esc_final_place": 7
@@ -2276,7 +2276,7 @@
       "song": "Eat Your Salad",
       "flag": "🇱🇻",
       "country": "Latvia",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "DNQ"
@@ -2295,7 +2295,7 @@
       "song": "Bones",
       "flag": "🇧🇬",
       "country": "Bulgaria",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 14
@@ -2314,7 +2314,7 @@
       "song": "Occidentali's Karma",
       "flag": "🇮🇹",
       "country": "Italy",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": 6
@@ -2333,7 +2333,7 @@
       "song": "Occidentali's Karma",
       "flag": "🇮🇹",
       "country": "Italy",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2017,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 6
@@ -2352,7 +2352,7 @@
       "song": "Répondez-moi",
       "flag": "🇨🇭",
       "country": "Switzerland",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -2371,7 +2371,7 @@
       "song": "Tout l'Univers",
       "flag": "🇨🇭",
       "country": "Switzerland",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2021,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 3
@@ -2390,7 +2390,7 @@
       "song": "Tout l’Univers",
       "flag": "🇨🇭",
       "country": "Switzerland",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2021,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 3
@@ -2409,7 +2409,7 @@
       "song": "Hatrið Mun Sigra",
       "flag": "🇮🇸",
       "country": "Iceland",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2019,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 10
@@ -2428,7 +2428,7 @@
       "song": "Dance Alone",
       "flag": "🇲🇰",
       "country": "North Macedonia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": "DNQ"
@@ -2447,7 +2447,7 @@
       "song": "We Got Love",
       "flag": "🇦🇺",
       "country": "Australia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": 20
@@ -2466,7 +2466,7 @@
       "song": "I Won't Break",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": "DNQ"
@@ -2485,7 +2485,7 @@
       "song": "I Won’t Break",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "Second Semi-Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "dash_six_live_after_country_v1",
       "esc_final_place": "DNQ"
@@ -2504,7 +2504,7 @@
       "song": "Zero Gravity",
       "flag": "🇦🇺",
       "country": "Australia",
-      "performance_type": "Official Video",
+      "performance_category": "official_video",
       "year": 2019,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 9
@@ -2523,7 +2523,7 @@
       "song": "Beautiful Mess",
       "flag": "🇧🇬",
       "country": "Bulgaria",
-      "performance_type": "Second Semi-Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2017,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": 2
@@ -2542,7 +2542,7 @@
       "song": "Perfect Life",
       "flag": "🇩🇪",
       "country": "Germany",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": 25
@@ -2561,7 +2561,7 @@
       "song": "Love Shine A Light",
       "flag": "🌍",
       "country": "World",
-      "performance_type": "Special",
+      "performance_category": "special",
       "year": 2020,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": "NON_ENTRY"
@@ -2580,7 +2580,7 @@
       "song": "Mercy",
       "flag": "🇫🇷",
       "country": "France",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": 13
@@ -2599,7 +2599,7 @@
       "song": "Molitva",
       "flag": "🌍",
       "country": "World",
-      "performance_type": "Special",
+      "performance_category": "special",
       "year": 2020,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": "NON_ENTRY"
@@ -2618,7 +2618,7 @@
       "song": "Under The Ladder",
       "flag": "🇺🇦",
       "country": "Ukraine",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 17
@@ -2637,7 +2637,7 @@
       "song": "You Let Me Walk Alone",
       "flag": "🇩🇪",
       "country": "Germany",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2018,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 4
@@ -2656,7 +2656,7 @@
       "song": "Color Of Your Life",
       "flag": "🇵🇱",
       "country": "Poland",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2016,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 8
@@ -2675,7 +2675,7 @@
       "song": "Don't Break Me",
       "flag": "🇦🇺",
       "country": "Australia",
-      "performance_type": "Official Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -2694,7 +2694,7 @@
       "song": "River",
       "flag": "🇵🇱",
       "country": "Poland",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 12
@@ -2713,7 +2713,7 @@
       "song": "Sister",
       "flag": "🇩🇪",
       "country": "Germany",
-      "performance_type": "Official Video",
+      "performance_category": "official_video",
       "year": 2019,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 25
@@ -2732,7 +2732,7 @@
       "song": "You Are The Only One",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2016,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 3
@@ -2751,7 +2751,7 @@
       "song": "Switch Song",
       "flag": "🌍",
       "country": "World",
-      "performance_type": "Special",
+      "performance_category": "special",
       "year": 2019,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": "NON_ENTRY"
@@ -2770,7 +2770,7 @@
       "song": "Move",
       "flag": "🇸🇪",
       "country": "Sweden",
-      "performance_type": "Official Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -2789,7 +2789,7 @@
       "song": "Discoteque",
       "flag": "🇱🇹",
       "country": "Lithuania",
-      "performance_type": "Official Video",
+      "performance_category": "official_video",
       "year": 2021,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 8
@@ -2808,7 +2808,7 @@
       "song": "In Too Deep",
       "flag": "🇷🇸",
       "country": "Serbia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2017,
       "metadata_extractor": "dash_paren_country_year_v1",
       "esc_final_place": "DNQ"
@@ -2827,7 +2827,7 @@
       "song": "Fallen Angel",
       "flag": "🇳🇴",
       "country": "Norway",
-      "performance_type": "Official Video",
+      "performance_category": "official_video",
       "year": 2021,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 18
@@ -2846,7 +2846,7 @@
       "song": "Attention",
       "flag": "🇳🇴",
       "country": "Norway",
-      "performance_type": "Official Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_four_flag_glued_type_v1",
       "esc_final_place": "CANCELLED"
@@ -2865,7 +2865,7 @@
       "song": "Tears Getting Sober",
       "flag": "🇧🇬",
       "country": "Bulgaria",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2020,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "CANCELLED"
@@ -2884,7 +2884,7 @@
       "song": "Outlaw In 'Em",
       "flag": "🇳🇱",
       "country": "Netherlands",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2018,
       "metadata_extractor": "dash_five_country_name_v1",
       "esc_final_place": 18
@@ -2903,7 +2903,7 @@
       "song": "Hold Me Closer",
       "flag": "🇸🇪",
       "country": "Sweden",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 4
@@ -2922,7 +2922,7 @@
       "song": "SloMo",
       "flag": "🇪🇸",
       "country": "Spain",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 3
@@ -2941,7 +2941,7 @@
       "song": "Hold Me Closer",
       "flag": "🇸🇪",
       "country": "Sweden",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 4
@@ -2960,7 +2960,7 @@
       "song": "Snap",
       "flag": "🇦🇲",
       "country": "Armenia",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "dash_six_live_before_country_v1",
       "esc_final_place": 20
@@ -2979,7 +2979,7 @@
       "song": "Llámame",
       "flag": "🇷🇴",
       "country": "Romania",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 18
@@ -2998,7 +2998,7 @@
       "song": "Fulenn",
       "flag": "🇫🇷",
       "country": "France",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 24
@@ -3017,7 +3017,7 @@
       "song": "Die Together",
       "flag": "🇬🇷",
       "country": "Greece",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "dash_six_live_before_country_v1",
       "esc_final_place": 8
@@ -3036,7 +3036,7 @@
       "song": "Ela",
       "flag": "🇨🇾",
       "country": "Cyprus",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "DNQ"
@@ -3055,7 +3055,7 @@
       "song": "Brividi",
       "flag": "🇮🇹",
       "country": "Italy",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 6
@@ -3074,7 +3074,7 @@
       "song": "Brividi",
       "flag": "🇮🇹",
       "country": "Italy",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 6
@@ -3093,7 +3093,7 @@
       "song": "Rockstars",
       "flag": "🇩🇪",
       "country": "Germany",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 25
@@ -3112,7 +3112,7 @@
       "song": "Russian Woman",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "First Semi-Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2021,
       "metadata_extractor": "dash_six_live_before_country_v1",
       "esc_final_place": 9
@@ -3131,7 +3131,7 @@
       "song": "Sentimentai",
       "flag": "🇱🇹",
       "country": "Lithuania",
-      "performance_type": "National Final Performance",
+      "performance_category": "national_final",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 14
@@ -3150,7 +3150,7 @@
       "song": "Sentimentai",
       "flag": "🇱🇹",
       "country": "Lithuania",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2022,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 14
@@ -3169,7 +3169,7 @@
       "song": "Deli",
       "flag": "🇹🇷",
       "country": "Turkey",
-      "performance_type": "Grand Final",
+      "performance_category": "final_live",
       "year": 2008,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 7
@@ -3188,7 +3188,7 @@
       "song": "River",
       "flag": "🇵🇱",
       "country": "Poland",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2022,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 12
@@ -3207,7 +3207,7 @@
       "song": "Long Live Love",
       "flag": "🇬🇧",
       "country": "United Kingdom",
-      "performance_type": "Grand Final",
+      "performance_category": "final_live",
       "year": 1974,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 4

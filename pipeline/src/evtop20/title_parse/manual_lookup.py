@@ -5,13 +5,15 @@ from pathlib import Path
 
 from evtop20.title_parse.models import ParsedVideoTitle
 
+from evtop20.performance_category import PERFORMANCE_CATEGORIES
+
 LOOKUP_EXTRACTOR_NAME = "lookup_table_v1"
 METADATA_FIELDS = (
     "artist",
     "song",
     "flag",
     "country",
-    "performance_type",
+    "performance_category",
     "year",
 )
 
@@ -58,6 +60,12 @@ def load_manual_video_metadata(path: Path) -> dict[str, ParsedVideoTitle]:
             if not isinstance(value, str) or not value.strip():
                 msg = f"{path}: entries[{index}].{field} must be a non-empty string"
                 raise ManualLookupError(msg)
+            if field == "performance_category" and value.strip() not in PERFORMANCE_CATEGORIES:
+                msg = (
+                    f"{path}: entries[{index}].performance_category "
+                    f"must be one of {', '.join(PERFORMANCE_CATEGORIES)}"
+                )
+                raise ManualLookupError(msg)
             values[field] = value.strip()
 
         parsed = ParsedVideoTitle(
@@ -65,7 +73,7 @@ def load_manual_video_metadata(path: Path) -> dict[str, ParsedVideoTitle]:
             song=str(values["song"]),
             flag=str(values["flag"]),
             country=str(values["country"]),
-            performance_type=str(values["performance_type"]),
+            performance_category=str(values["performance_category"]),
             year=int(values["year"]),
             extractor=LOOKUP_EXTRACTOR_NAME,
         )

@@ -2,9 +2,14 @@ import type { SortingState } from "@tanstack/react-table";
 import type { Dispatch, SetStateAction } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { loadQueryData, type QueryData } from "./data";
+import { applyFilters } from "./filters/applyFilters";
+import { filterDefsForGrain } from "./filters/defs";
+import { FilterBar } from "./filters/FilterBar";
+import type { FilterState, FilterValue } from "./filters/types";
+import { hasActiveFilters } from "./filters/types";
 import { PeriodControls } from "./PeriodControls";
 import { querySongWindow, queryVideoWindow } from "./queryWindow";
-import { DEFAULT_SONG_SORT, DEFAULT_VIDEO_SORT, formatPeriodLabel } from "./sort";
+import { DEFAULT_SONG_SORT, DEFAULT_VIDEO_SORT, buildOriginalRanks, formatPeriodLabel } from "./sort";
 import { StatsTable } from "./StatsTable";
 import type { SongStatsRow, StatsGrain, VideoStatsRow } from "./types";
 
@@ -26,6 +31,7 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
   const [queryData, setQueryData] = useState<QueryData | null>(null);
   const [sorting, setSorting] = useState<SortingState>(defaultSort);
   const [userSorted, setUserSorted] = useState(false);
+  const [filterState, setFilterState] = useState<FilterState>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -65,7 +71,7 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
     };
   }, [grain]);
 
-  const rows = useMemo(() => {
+  const baseRows = useMemo(() => {
     if (!queryData || !begin || !end) {
       return [];
     }
@@ -84,6 +90,25 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
       end,
     ) as SongStatsRow[];
   }, [queryData, begin, end, grain]);
+
+  const filterDefs = useMemo(() => filterDefsForGrain(grain), [grain]);
+
+  const filteredRows = useMemo(() => {
+    return applyFilters(
+      baseRows,
+      filterState,
+      filterDefs,
+    ) as typeof baseRows;
+  }, [baseRows, filterState, filterDefs]);
+
+  const filtersActive = hasActiveFilters(filterState);
+
+  const originalRanks = useMemo(() => {
+    if (!filtersActive) {
+      return undefined;
+    }
+    return buildOriginalRanks(baseRows, sorting, grain);
+  }, [baseRows, sorting, grain, filtersActive]);
 
   const handleSortingChange = useCallback<Dispatch<SetStateAction<SortingState>>>(
     (updater) => {
@@ -104,6 +129,41 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
     [defaultSort, userSorted],
   );
 
+  const handleAddFilter = useCallback((filterId: string, value: FilterValue) => {
+    setFilterState((prev) => {
+      const current = prev[filterId] ?? [];
+      if (current.includes(value)) {
+        return prev;
+      }
+      return { ...prev, [filterId]: [...current, value] };
+    });
+  }, []);
+
+  const handleRemoveFilter = useCallback((filterId: string, value: FilterValue) => {
+    setFilterState((prev) => {
+      const current = prev[filterId] ?? [];
+      const next = current.filter((item) => item !== value);
+      if (next.length === 0) {
+        const { [filterId]: _removed, ...rest } = prev;
+        return rest;
+      }
+      return { ...prev, [filterId]: next };
+    });
+  }, []);
+
+  const handleSetExclusiveFilter = useCallback(
+    (filterId: string, value: FilterValue | null) => {
+      setFilterState((prev) => {
+        if (value === null) {
+          const { [filterId]: _removed, ...rest } = prev;
+          return rest;
+        }
+        return { ...prev, [filterId]: [value] };
+      });
+    },
+    [],
+  );
+
   if (error && !queryData) {
     return (
       <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200">
@@ -117,6 +177,11 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
       ? `${formatPeriodLabel(begin)} – ${formatPeriodLabel(end)}`
       : "";
 
+  const countLabel =
+    filtersActive && filteredRows.length !== baseRows.length
+      ? `${filteredRows.length} of ${baseRows.length}`
+      : String(filteredRows.length);
+
   return (
     <div className="space-y-6">
       <PeriodControls
@@ -127,9 +192,19 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
         disabled={loading}
       />
 
-      <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-zinc-600 dark:text-zinc-400">
+      <FilterBar
+        grain={grain}
+        rows={baseRows}
+        state={filterState}
+        disabled={loading || baseRows.length === 0}
+        onAdd={handleAddFilter}
+        onRemove={handleRemoveFilter}
+        onSetExclusive={handleSetExclusiveFilter}
+      />
+
+      <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-text-muted">
         <p>
-          {rows.length} {GRAIN_LABEL[grain]}
+          {countLabel} {GRAIN_LABEL[grain]}
           {rangeLabel ? ` · window ${rangeLabel}` : ""}
         </p>
         {loading ? <p>Loading…</p> : null}
@@ -141,18 +216,25 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
         </p>
       ) : null}
 
-      {!loading && rows.length > 0 ? (
+      {!loading && filteredRows.length > 0 ? (
         <StatsTable
           grain={grain}
-          rows={rows}
+          rows={filteredRows}
           sorting={sorting}
           onSortingChange={handleSortingChange}
+          originalRanks={originalRanks}
         />
       ) : null}
 
-      {!loading && !error && rows.length === 0 ? (
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+      {!loading && !error && baseRows.length === 0 ? (
+        <p className="text-sm text-text-muted">
           No {GRAIN_LABEL[grain]} with chart activity in this range.
+        </p>
+      ) : null}
+
+      {!loading && !error && baseRows.length > 0 && filteredRows.length === 0 ? (
+        <p className="text-sm text-text-muted">
+          No {GRAIN_LABEL[grain]} match the current filters.
         </p>
       ) : null}
     </div>

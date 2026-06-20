@@ -15,7 +15,7 @@
       "song": "You Are The Only One",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "Grand Final",
+      "performance_category": "final_live",
       "year": 2016,
       "metadata_extractor": "dash_four_flag_in_song_v1",
       "esc_final_place": 3
@@ -34,7 +34,7 @@
       "song": "J'ai cherché",
       "flag": "🇫🇷",
       "country": "France",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2016,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 6
@@ -53,7 +53,7 @@
       "song": "Horehronie",
       "flag": "🇸🇰",
       "country": "Slovakia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2010,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": "DNQ"
@@ -72,7 +72,7 @@
       "song": "Hard Rock Hallelujah",
       "flag": "🇫🇮",
       "country": "Finland",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2006,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -91,7 +91,7 @@
       "song": "Sound Of Silence",
       "flag": "🇦🇺",
       "country": "Australia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2016,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": 2
@@ -110,7 +110,7 @@
       "song": "1944",
       "flag": "🇺🇦",
       "country": "Ukraine",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2016,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -129,7 +129,7 @@
       "song": "Düm Tek Tek",
       "flag": "🇹🇷",
       "country": "Turkey",
-      "performance_type": "Official Preview Video",
+      "performance_category": "official_video",
       "year": 2009,
       "metadata_extractor": "lookup_table_v1",
       "esc_final_place": 4
@@ -148,7 +148,7 @@
       "song": "Heroes",
       "flag": "🇸🇪",
       "country": "Sweden",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2015,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -167,7 +167,7 @@
       "song": "If Love Was A Crime",
       "flag": "🇧🇬",
       "country": "Bulgaria",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2016,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 4
@@ -186,7 +186,7 @@
       "song": "Satellite",
       "flag": "🇩🇪",
       "country": "Germany",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2010,
       "metadata_extractor": "dash_four_flag_glued_type_v1",
       "esc_final_place": 1
@@ -205,7 +205,7 @@
       "song": "Always",
       "flag": "🇦🇿",
       "country": "Azerbaijan",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2009,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 3
@@ -224,7 +224,7 @@
       "song": "Only Teardrops",
       "flag": "🇩🇰",
       "country": "Denmark",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2013,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 1
@@ -243,7 +243,7 @@
       "song": "Euphoria",
       "flag": "🇸🇪",
       "country": "Sweden",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2012,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 1
@@ -262,7 +262,7 @@
       "song": "Color Of Your Life",
       "flag": "🇵🇱",
       "country": "Poland",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2016,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 8
@@ -281,7 +281,7 @@
       "song": "You Are The Only One",
       "flag": "🇷🇺",
       "country": "Russia",
-      "performance_type": "Official Music Video",
+      "performance_category": "official_video",
       "year": 2016,
       "metadata_extractor": "dash_five_segment_v1",
       "esc_final_place": 3
@@ -300,7 +300,7 @@
       "song": "Dancing Lasha Tumbai",
       "flag": "🇺🇦",
       "country": "Ukraine",
-      "performance_type": "Grand Final (LIVE)",
+      "performance_category": "final_live",
       "year": 2007,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 2

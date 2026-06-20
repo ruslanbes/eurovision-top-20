@@ -10,7 +10,7 @@ SONG_METADATA_FIELDS = (
     "song",
     "flag",
     "country",
-    "performance_type",
+    "performance_category",
     "year",
 )
 

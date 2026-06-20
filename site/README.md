@@ -21,11 +21,15 @@ npm run preview  # preview production build
 ## Stack
 
 - Astro + React islands (`StatsExplorer`)
-- Tailwind CSS (minimal system light/dark)
+- Tailwind CSS + CSS theme tokens (light / dark / system)
 - TanStack Table v8
 - Radix Slider (dual-thumb episode range)
 
 Videos (`/`) and songs (`/songs/`) each load the sparse query index (`video-hits` + `video-meta` or `song-hits` + `song-meta`) and aggregate stats client-side for the selected `[begin, end]` episode-month window. Default range = full corpus.
+
+Theme: **light**, **dark**, or **system** via the toggle (top-right). Choice persists in `localStorage`. Inline script in the layout avoids a flash of wrong theme on load.
+
+**Table filters:** client-side AND/OR filters on window-aggregated rows — country (searchable), year, ESC winner (segmented: All / Winners / Not winners), and on videos only Category (four toggle buttons).
 
 ## Deploy
 

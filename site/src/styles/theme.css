@@ -1,0 +1,37 @@
+:root {
+  --color-surface: 255 255 255;
+  --color-surface-elevated: 250 250 250;
+  --color-text: 24 24 27;
+  --color-text-muted: 82 82 91;
+  --color-border: 228 228 231;
+  --color-accent: 37 99 235;
+
+  --chart-cat-1: 37 99 235;
+  --chart-cat-2: 234 88 12;
+  --chart-cat-3: 22 163 74;
+  --chart-cat-4: 168 85 247;
+  --chart-cat-5: 236 72 153;
+  --chart-seq-low: 224 242 254;
+  --chart-seq-high: 29 78 216;
+  --chart-grid: 212 212 216;
+  --chart-highlight: 37 99 235;
+}
+
+.dark {
+  --color-surface: 9 9 11;
+  --color-surface-elevated: 24 24 27;
+  --color-text: 250 250 250;
+  --color-text-muted: 161 161 170;
+  --color-border: 39 39 42;
+  --color-accent: 96 165 250;
+
+  --chart-cat-1: 96 165 250;
+  --chart-cat-2: 251 146 60;
+  --chart-cat-3: 74 222 128;
+  --chart-cat-4: 192 132 252;
+  --chart-cat-5: 244 114 182;
+  --chart-seq-low: 30 58 138;
+  --chart-seq-high: 191 219 254;
+  --chart-grid: 63 63 70;
+  --chart-highlight: 96 165 250;
+}

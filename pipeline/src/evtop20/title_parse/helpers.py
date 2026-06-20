@@ -122,7 +122,7 @@ def resolve_country_flag(segment: str) -> tuple[str, str] | None:
     return lookup_country_name(segment)
 
 
-def split_country_and_performance_type(segment: str) -> tuple[str, str, str] | None:
+def split_country_and_performance_segment(segment: str) -> tuple[str, str, str] | None:
     """Parse ``Country flag PerformanceType`` in one dash segment."""
     segment = segment.strip()
     match = FLAG_PATTERN.search(segment)
@@ -189,36 +189,29 @@ def parse_parenthetical_country_segment(
     return song, country, flag, tail
 
 
-def format_performance_type(performance_type_segment: str, *, live: bool) -> str:
-    performance_type = performance_type_segment.strip()
-    if live and "(LIVE)" not in performance_type.upper():
-        return f"{performance_type} (LIVE)"
-    return performance_type
-
-
 def strip_year_from_text(text: str, year: int) -> str:
     without_year = re.sub(rf"\b{year}\b", "", text)
     return re.sub(r"\s+", " ", without_year).strip()
 
 
-def performance_type_from_year_tail(tail: str) -> tuple[str, int] | None:
+def performance_segment_from_year_tail(tail: str) -> tuple[str, int] | None:
     year = extract_year(tail)
     if year is None:
         return None
 
     if re.search(r"\blive at\b", tail, re.IGNORECASE):
-        performance_type = strip_year_from_text(tail, year)
+        segment = strip_year_from_text(tail, year)
     else:
-        performance_type = strip_year_phrases(tail).strip()
-        if performance_type.startswith("-"):
-            performance_type = performance_type.lstrip("-").strip()
+        segment = strip_year_phrases(tail).strip()
+        if segment.startswith("-"):
+            segment = segment.lstrip("-").strip()
 
-    if not performance_type:
+    if not segment:
         return None
-    return performance_type, year
+    return segment, year
 
 
-def derive_performance_type_from_tail(tail_segment: str) -> str | None:
+def derive_performance_segment_from_tail(tail_segment: str) -> str | None:
     if extract_year(tail_segment) is None:
         return None
 

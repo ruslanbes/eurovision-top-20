@@ -38,7 +38,7 @@ export type VideoStatsRow = {
   song: string | null;
   flag: string | null;
   country: string | null;
-  performance_type: string | null;
+  performance_category: string | null;
   year: number | null;
   metadata_extractor: string | null;
 };

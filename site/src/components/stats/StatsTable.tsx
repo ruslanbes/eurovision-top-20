@@ -26,6 +26,7 @@ type StatsTableProps = {
   rows: StatsRow[];
   sorting: SortingState;
   onSortingChange: OnChangeFn<SortingState>;
+  originalRanks?: ReadonlyMap<string, number>;
 };
 
 function SortLabel({
@@ -101,13 +102,20 @@ export function StatsTable({
   rows,
   sorting,
   onSortingChange,
+  originalRanks,
 }: StatsTableProps) {
   const columns = useMemo<ColumnDef<StatsRow>[]>(() => {
     const rankColumn: ColumnDef<StatsRow> = {
       id: "rank",
       header: "#",
       enableSorting: false,
-      cell: ({ row }) => row.index + 1,
+      cell: ({ row }) => {
+        if (originalRanks) {
+          const key = statsRowKey(row.original, grain);
+          return originalRanks.get(key) ?? row.index + 1;
+        }
+        return row.index + 1;
+      },
     };
 
     if (grain === "video") {
@@ -124,7 +132,7 @@ export function StatsTable({
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-700 hover:underline dark:text-blue-400"
+                  className="text-accent hover:underline"
                 >
                   {title}
                 </a>
@@ -154,7 +162,7 @@ export function StatsTable({
       ...sharedStatColumns<SongStatsRow>(),
     ];
     return [rankColumn, ...(songColumns as ColumnDef<StatsRow>[])];
-  }, [grain]);
+  }, [grain, originalRanks]);
 
   const table = useReactTable({
     data: rows,

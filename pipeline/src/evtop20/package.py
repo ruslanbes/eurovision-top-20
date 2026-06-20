@@ -69,6 +69,7 @@ def augment_stats_row(
     if not isinstance(video_title, str):
         packaged.update(_empty_metadata())
         packaged["esc_final_place"] = None
+        packaged["performance_category"] = None
         return packaged
 
     video_id_str = video_id.strip() if isinstance(video_id, str) else ""
@@ -76,6 +77,7 @@ def augment_stats_row(
     if parsed is None:
         packaged.update(_empty_metadata())
         packaged["esc_final_place"] = None
+        packaged["performance_category"] = None
         return packaged
 
     packaged.update(parsed.as_dict())
@@ -93,7 +95,7 @@ def _empty_metadata() -> dict[str, object]:
         "song": None,
         "flag": None,
         "country": None,
-        "performance_type": None,
+        "performance_category": None,
         "year": None,
         "metadata_extractor": None,
     }
