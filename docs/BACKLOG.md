@@ -2,7 +2,7 @@
 
 Flat task list. Status values: `backlog` | `ready` | `in_progress` | `blocked` | `cancelled`.
 
-Move shipped work to the [`CHANGELOG.md`](../CHANGELOG.md) on request or when there is a new release.
+On release, move shipped work to [`CHANGELOG.md`](../CHANGELOG.md) and clean the backlog — see [`docs/RELEASE.md`](RELEASE.md).
 
 Reorder freely. Cancel by setting status to `cancelled`. Unexpected work becomes a new task with its own ID.
 

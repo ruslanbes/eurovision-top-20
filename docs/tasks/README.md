@@ -10,4 +10,4 @@ Use when a task needs examples, sample data, decision notes, or acceptance detai
 
 Keep `BACKLOG.md` as the index (status, goal, done_when). This folder holds supporting material only.
 
-Completed build-out task specs are removed before publish; this README and the folder stay for future tasks.
+Completed build-out task specs are removed on release (see [`../RELEASE.md`](../RELEASE.md)); this README and the folder stay for future tasks.
