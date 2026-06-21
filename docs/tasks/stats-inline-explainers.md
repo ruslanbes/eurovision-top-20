@@ -2,7 +2,7 @@
 
 Add on-demand explanations for stats concepts (starting with `chart_points`) without permanent screen clutter.
 
-Parent: [`stats-table-filters`](stats-table-filters.md)  
+Parent: shipped 0.2.0 filter/table UI ([`CHANGELOG.md`](../CHANGELOG.md#020---2026-06-21))  
 Depends on: existing stats table/header controls in `site/src/components/stats/`  
 Related: [`chart_points.md`](../faq/chart_points.md), [`site-theming.md`](site-theming.md)
 

@@ -4,20 +4,28 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-21
+
+Filters, fire-themed songs, song YouTube links, and sort tie-breakers since 0.1.0.
+
 ### Added
 
-- URL-persisted stats UI state — episode range + table filters sync across `/` and `/songs/` via query params.
-- Fire songs filter — manual `data/metadata/fire.json` allowlist → packaged `fire` boolean; 🔥 emoji toggle with URL param `fire=1`.
-- Song table YouTube links — `song-meta.json` `youtube_watch_url` from highest alltime `chart_points` member; `/songs/` Song column links when present.
+- **Table filters** on `/` and `/songs/` — country (searchable combobox), year (select), ESC placement segment (All / Winners / Not winners / Non-entries), performance category toggles on videos only; AND across filters, OR within a filter; filter chips.
+- **URL-persisted stats UI** — episode range + filters sync across `/` and `/songs/` via query params (`replaceState`, debounced range slider).
+- **Fire songs filter** — manual `data/metadata/fire.json` allowlist → packaged `fire` boolean; 🔥 emoji toggle with URL param `fire=1`.
+- **Song table YouTube links** — `song-meta.json` `youtube_watch_url` from highest alltime `chart_points` member; `/songs/` Song column links when present.
+- Packaged **`performance_category`** on video rows — `final_live`, `national_final`, `official_video`, `special` from title parse (pattern rules or `manual-video-metadata.json`).
 
 ### Changed
 
-- Default stats sort tie-breakers — after tier counts: `esc_final_place` ascending, contest year descending, then name.
-- Replaced `performance_type` with `performance_category`.
+- Default stats sort tie-breakers — after tier counts: `esc_final_place` ascending, contest year descending, then name (`sort_keys.py`, `queryWindow.ts`, `sort.ts`).
+- **ESC Place** column moved after **Top 20** in the stats table.
+- Replaced `performance_type` with `performance_category` (no granular type strings in packaged JSON).
 
 ### Removed
 
-- `data/metadata/performance-category-overrides.json` and package-time category override loader; `performance_category` is set only at title parse (pattern rules or `manual-video-metadata.json`).
+- `data/metadata/performance-category-overrides.json` and package-time category override loader; `performance_category` is set only at title parse.
+- Completed task specs for shipped 0.2.0 features (behavior in CHANGELOG, FAQ, and layer READMEs).
 
 ## [0.1.0] - 2026-06-18
 

@@ -1,6 +1,6 @@
 [project]
 name = "evtop20"
-version = "0.1.0"
+version = "0.2.0"
 description = "Eurovision Top 20 data pipeline"
 readme = "README.md"
 requires-python = ">=3.14"

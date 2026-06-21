@@ -24,34 +24,6 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 
 ---
 
-## performance-category
-- status: done
-- parent: stats-table-filters
-- goal: Package-time four-bucket performance category (final live, national final, official video, special) — pattern rules + per-video overrides; replace raw performance_type filter
-- done_when: Per `docs/tasks/performance-category.md` — field on video-meta, pipeline tests, site filter on four labels
-- notes: Packaged `performance_type` dropped in follow-up `drop-packaged-performance-type`
-
-## drop-packaged-performance-type
-- status: done
-- parent: performance-category
-- goal: Remove performance_type from packaged video JSON; keep parse-time string for category derivation only
-- done_when: Per `docs/tasks/drop-packaged-performance-type.md`
-- notes: Superseded by `parse-performance-category` (no performance_type anywhere)
-
-## parse-performance-category
-- status: done
-- parent: drop-packaged-performance-type
-- goal: Title parse emits performance_category directly; remove performance_type from pipeline
-- done_when: Per `docs/tasks/parse-performance-category.md`
-- notes: manual-video-metadata uses enum; category_from_segment in title parse
-
-## stats-table-filters
-- status: done
-- parent: scaffold-project
-- goal: Extensible client-side table filters — v1 country (searchable combobox) + year (select); AND across filters, OR within filter
-- done_when: Per `docs/tasks/stats-table-filters.md` — framework + both filters on `/` and `/songs/`; chips; build green
-- notes: Facets from window rows; no new packaged artifact for v1
-
 ## unlikely-events-warnings
 - status: ready
 - parent: generate-song-stats
@@ -73,13 +45,6 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - done_when: Per `docs/tasks/site-theming.md` — toggle, tokens, table + one viz path verified in both modes
 - notes: Stack in ADR-002; Slice 1 uses minimal system theming only
 
-## stats-global-filter-state
-- status: done
-- parent: stats-table-filters
-- goal: Persist episode range + filters across / and /songs/ — shared filters synced, grain-specific preserved, URL query params
-- done_when: Per `docs/tasks/stats-global-filter-state.md` — round-trip navigation, nav preserves query, tests green
-- notes: Approved — URL-only, replaceState; table sort is a later task; range is window state not FilterState
-
 ## video-insights
 - status: backlog
 - parent: generate-stats-table
@@ -94,23 +59,9 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - done_when: Per `docs/tasks/contest-season-waves.md` — wave data artifact + at least one chart view live
 - notes: Sketch only; separate from `video-insights`; period player in `site/`; colors per `site-theming`
 
-## ui-filter-fire-titles
-- status: done
-- parent: stats-table-filters
-- goal: Stats table toggle — rows on manual fire allowlist (`data/metadata/fire.json` → packaged `fire` field)
-- done_when: Per `docs/tasks/ui-filter-fire-titles.md` — query meta + alltime `fire`, toggle filter, URL param, tests green
-- notes: 7 video ids / 5 songs; field name `fire`; 🔥 emoji toggle, no chips
-
 ## stats-inline-explainers
 - status: ready
-- parent: stats-table-filters
+- parent: scaffold-project
 - goal: Add reusable on-demand explainers in stats UI, starting with `chart_points`, without permanent layout clutter
 - done_when: Per `docs/tasks/stats-inline-explainers.md` — trigger + popover pattern, `chart_points` explainer, a11y behavior, tests/build green
-- notes: Prefer click/tap popover over tooltip for multi-line/helpful content; keep long-form detail in FAQ
-
-## song-stats-youtube-link
-- status: done
-- parent: scaffold-project
-- goal: Link song title on `/songs/` to YouTube URL of member video with highest alltime chart_points
-- done_when: Per `docs/tasks/song-stats-youtube-link.md` — `song-meta` URL, song table link, picker tests, build green
-- notes: Package-time; reuse canonical member (`_member_precedence_key`)
+- notes: Follow-up on shipped 0.2.0 filter/table UI; prefer click/tap popover over tooltip for multi-line content
