@@ -38,4 +38,6 @@ Song-level stats sum tier counts across video variants, then apply the same form
 
 ## Default sort
 
-Stats tables sort by `chart_points` descending, then `top1` … `top20`, then `video_title`.
+Stats tables sort by `chart_points` descending, then `top1` … `top20`, then `esc_final_place` ascending (1 = winner; special codes after numeric ranks; unknown last), then contest `year` descending, then `video_title` (video grain) or `artist` + `song` (song grain).
+
+Pipeline: `evtop20/sort_keys.py`. Site: `site/src/components/stats/sort.ts` and `queryWindow.ts`.

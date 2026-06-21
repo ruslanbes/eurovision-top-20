@@ -29,6 +29,7 @@ from evtop20.paths import (
     processed_alltime_dir,
 )
 from evtop20.query_index import run_query_index
+from evtop20.sort_keys import stats_row_sort_key
 from evtop20.song_stats import (
     package_song_stats_payload,
     video_stats_basename_to_song_stats_basename,
@@ -141,6 +142,8 @@ def package_video_payload(
             title = row.get("video_title")
             if isinstance(title, str) and title:
                 unparsed_titles.add(title)
+
+    packaged_rows.sort(key=stats_row_sort_key)
 
     packaged_payload = {
         "source": source,

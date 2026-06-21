@@ -1,3 +1,5 @@
+import { escFinalPlaceSortKey } from "./escFinalPlace";
+
 export type VideoHitEntry = {
   period: string;
   rank: number;
@@ -161,7 +163,7 @@ function periodInRange(
   return beginIndex <= index && index <= endIndex;
 }
 
-function videoSortKey(row: WindowVideoRow): [number, number, number, number, number, number, string] {
+function videoSortKey(row: WindowVideoRow): (number | string)[] {
   return [
     -row.chart_points,
     -row.top1,
@@ -169,11 +171,13 @@ function videoSortKey(row: WindowVideoRow): [number, number, number, number, num
     -row.top5,
     -row.top10,
     -row.top20,
+    escFinalPlaceSortKey(row.esc_final_place),
+    -(typeof row.year === "number" && row.year > 0 ? row.year : 0),
     row.video_title.toLowerCase(),
   ];
 }
 
-function songSortKey(row: WindowSongRow): [number, number, number, number, number, number, string, string] {
+function songSortKey(row: WindowSongRow): (number | string)[] {
   return [
     -row.chart_points,
     -row.top1,
@@ -181,6 +185,8 @@ function songSortKey(row: WindowSongRow): [number, number, number, number, numbe
     -row.top5,
     -row.top10,
     -row.top20,
+    escFinalPlaceSortKey(row.esc_final_place),
+    -(row.year > 0 ? row.year : 0),
     row.artist.toLowerCase(),
     row.song.toLowerCase(),
   ];

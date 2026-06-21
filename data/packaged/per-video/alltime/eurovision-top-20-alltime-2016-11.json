@@ -102,26 +102,6 @@
       "esc_final_place": 1
     },
     {
-      "video_title": "Hadise - Düm Tek Tek (Turkey)",
-      "top1": 0,
-      "top3": 0,
-      "top5": 1,
-      "top10": 2,
-      "top20": 2,
-      "chart_points": 9,
-      "youtube_video_id": "-Nx6iVCaix0",
-      "youtube_watch_url": "https://www.youtube.com/watch?v=-Nx6iVCaix0",
-      "fire": false,
-      "artist": "Hadise",
-      "song": "Düm Tek Tek",
-      "flag": "🇹🇷",
-      "country": "Turkey",
-      "performance_category": "official_video",
-      "year": 2009,
-      "metadata_extractor": "lookup_table_v1",
-      "esc_final_place": 4
-    },
-    {
       "video_title": "Poli Genova - If Love Was A Crime - 🇧🇬 Bulgaria - Official Music Video - Eurovision 2016",
       "top1": 0,
       "top3": 0,
@@ -139,6 +119,26 @@
       "performance_category": "official_video",
       "year": 2016,
       "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 4
+    },
+    {
+      "video_title": "Hadise - Düm Tek Tek (Turkey)",
+      "top1": 0,
+      "top3": 0,
+      "top5": 1,
+      "top10": 2,
+      "top20": 2,
+      "chart_points": 9,
+      "youtube_video_id": "-Nx6iVCaix0",
+      "youtube_watch_url": "https://www.youtube.com/watch?v=-Nx6iVCaix0",
+      "fire": false,
+      "artist": "Hadise",
+      "song": "Düm Tek Tek",
+      "flag": "🇹🇷",
+      "country": "Turkey",
+      "performance_category": "official_video",
+      "year": 2009,
+      "metadata_extractor": "lookup_table_v1",
       "esc_final_place": 4
     },
     {
@@ -202,6 +202,26 @@
       "esc_final_place": 1
     },
     {
+      "video_title": "Sergey Lazarev - You Are The Only One - 🇷🇺 Russia - Official Music Video - Eurovision 2016",
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 1,
+      "top20": 1,
+      "chart_points": 3,
+      "youtube_video_id": "gHgxi57Um0w",
+      "youtube_watch_url": "https://www.youtube.com/watch?v=gHgxi57Um0w",
+      "fire": false,
+      "artist": "Sergey Lazarev",
+      "song": "You Are The Only One",
+      "flag": "🇷🇺",
+      "country": "Russia",
+      "performance_category": "official_video",
+      "year": 2016,
+      "metadata_extractor": "dash_five_segment_v1",
+      "esc_final_place": 3
+    },
+    {
       "video_title": "AySel & Arash - Always - 🇦🇿 Azerbaijan - Official Music Video - Eurovision 2009",
       "top1": 0,
       "top3": 0,
@@ -240,26 +260,6 @@
       "year": 2016,
       "metadata_extractor": "pipe_four_segment_v1",
       "esc_final_place": 8
-    },
-    {
-      "video_title": "Sergey Lazarev - You Are The Only One - 🇷🇺 Russia - Official Music Video - Eurovision 2016",
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3,
-      "youtube_video_id": "gHgxi57Um0w",
-      "youtube_watch_url": "https://www.youtube.com/watch?v=gHgxi57Um0w",
-      "fire": false,
-      "artist": "Sergey Lazarev",
-      "song": "You Are The Only One",
-      "flag": "🇷🇺",
-      "country": "Russia",
-      "performance_category": "official_video",
-      "year": 2016,
-      "metadata_extractor": "dash_five_segment_v1",
-      "esc_final_place": 3
     }
   ]
 }

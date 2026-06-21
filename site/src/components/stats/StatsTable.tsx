@@ -53,15 +53,6 @@ function sharedStatColumns<T extends StatsRow>(): ColumnDef<T>[] {
       header: "Chart Points",
     },
     {
-      accessorKey: "esc_final_place",
-      header: "ESC Place",
-      meta: { title: ESC_FINAL_PLACE_COLUMN_TITLE },
-      sortingFn: (rowA, rowB, columnId) =>
-        escFinalPlaceSortKey(rowA.getValue(columnId)) -
-        escFinalPlaceSortKey(rowB.getValue(columnId)),
-      cell: ({ getValue }) => formatEscFinalPlace(getValue()),
-    },
-    {
       accessorKey: "top1",
       header: "Top 1",
     },
@@ -80,6 +71,15 @@ function sharedStatColumns<T extends StatsRow>(): ColumnDef<T>[] {
     {
       accessorKey: "top20",
       header: "Top 20",
+    },
+    {
+      accessorKey: "esc_final_place",
+      header: "ESC Place",
+      meta: { title: ESC_FINAL_PLACE_COLUMN_TITLE },
+      sortingFn: (rowA, rowB, columnId) =>
+        escFinalPlaceSortKey(rowA.getValue(columnId)) -
+        escFinalPlaceSortKey(rowB.getValue(columnId)),
+      cell: ({ getValue }) => formatEscFinalPlace(getValue()),
     },
     {
       accessorKey: "flag",

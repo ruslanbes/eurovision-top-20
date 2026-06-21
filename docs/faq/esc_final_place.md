@@ -53,3 +53,5 @@ Non-national clips (interval acts, full-show streams) use **`World`** / `🌍` i
 ## Site
 
 Per-video stats table: sortable **Place** column (`site/src/components/stats/escFinalPlace.ts`). Numeric ranks as `1`, `2`, …; codes as `DNQ`, `DQ`, `Cancelled`, `Pending`, `Non-entry`; `—` when unknown.
+
+Default table sort uses `esc_final_place` ascending after tier counts and before contest year (see [`chart_points.md`](chart_points.md#default-sort)).

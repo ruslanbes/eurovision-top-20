@@ -1621,7 +1621,7 @@
       "artist": "Mia Nicolai & Dion Cooper",
       "country": "Netherlands",
       "esc_final_place": "DNQ",
-      "fire": true,
+      "fire": false,
       "flag": "🇳🇱",
       "song": "Burning Daylight",
       "year": 2023,

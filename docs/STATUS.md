@@ -20,6 +20,7 @@ Finish site-theming chart tokens or pick next backlog item.
 
 ## Session notes
 
+- **Default sort tie-breakers** — after tier counts: `esc_final_place` asc, contest year desc, then name; shared in `sort_keys.py`, `queryWindow.ts`, `sort.ts`.
 - **`song-stats-youtube-link` done** — `song-meta.json` carries `youtube_watch_url` from canonical member (highest alltime `chart_points`); `/songs/` Song column links when URL present.
 - Drafted **`stats-inline-explainers`** task — reusable on-demand help pattern (popover-style) for stats UI, first target `chart_points` explanation.
 - **`ui-filter-fire-titles` done** — `data/metadata/fire.json` allowlist → packaged `fire`; 🔥 emoji toggle (tap to filter); URL `fire=1`; 7 clips / 5 songs.

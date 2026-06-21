@@ -259,7 +259,7 @@ Use \(P_{k+1} = 0\) if \(k = n\) (only one video). Suggested default: **\(g = 0.
 
 1. Take rows from `eurovision-top-20-alltime-latest.json`.
 2. **Eligible** iff `top1 == 0` (never rank 1 in any included episode).
-3. Sort eligible by `chart_points` descending, then `top3` … `top20`, then `video_title` (same tie-break as default stats sort).
+3. Sort eligible by `chart_points` descending, then `top1` … `top20`, then `esc_final_place` ascending, then contest year descending, then `video_title` (same tie-break as default stats sort).
 4. **Leader** = first row(s) after sort; report ties if `chart_points` equal.
 
 **Optional metrics for context:** `top3`, `top10`, `top20` on the leader row; gap to next eligible row.

@@ -184,20 +184,6 @@
       "chart_points": 9
     },
     {
-      "artist": "Lena",
-      "song": "Satellite",
-      "flag": "🇩🇪",
-      "country": "Germany",
-      "year": 2010,
-      "esc_final_place": 1,
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 3,
-      "top20": 3,
-      "chart_points": 9
-    },
-    {
       "artist": "Loreen",
       "song": "Euphoria",
       "flag": "🇸🇪",
@@ -212,18 +198,18 @@
       "chart_points": 9
     },
     {
-      "artist": "Julia Samoylova",
-      "song": "Flame Is Burning",
-      "flag": "🇷🇺",
-      "country": "Russia",
-      "year": 2017,
-      "esc_final_place": "WITHDRAWN",
+      "artist": "Lena",
+      "song": "Satellite",
+      "flag": "🇩🇪",
+      "country": "Germany",
+      "year": 2010,
+      "esc_final_place": 1,
       "top1": 0,
       "top3": 0,
-      "top5": 1,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 6
+      "top5": 0,
+      "top10": 3,
+      "top20": 3,
+      "chart_points": 9
     },
     {
       "artist": "Kristian Kostov",
@@ -254,6 +240,20 @@
       "chart_points": 6
     },
     {
+      "artist": "Julia Samoylova",
+      "song": "Flame Is Burning",
+      "flag": "🇷🇺",
+      "country": "Russia",
+      "year": 2017,
+      "esc_final_place": "WITHDRAWN",
+      "top1": 0,
+      "top3": 0,
+      "top5": 1,
+      "top10": 1,
+      "top20": 1,
+      "chart_points": 6
+    },
+    {
       "artist": "Emmelie de Forest",
       "song": "Only Teardrops",
       "flag": "🇩🇰",
@@ -268,12 +268,12 @@
       "chart_points": 6
     },
     {
-      "artist": "Alma",
-      "song": "Requiem",
-      "flag": "🇫🇷",
-      "country": "France",
-      "year": 2017,
-      "esc_final_place": 12,
+      "artist": "Verka Serduchka",
+      "song": "Dancing Lasha Tumbai",
+      "flag": "🇺🇦",
+      "country": "Ukraine",
+      "year": 2007,
+      "esc_final_place": 2,
       "top1": 0,
       "top3": 0,
       "top5": 0,
@@ -296,6 +296,20 @@
       "chart_points": 3
     },
     {
+      "artist": "Michał Szpak",
+      "song": "Color Of Your Life",
+      "flag": "🇵🇱",
+      "country": "Poland",
+      "year": 2016,
+      "esc_final_place": 8,
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 1,
+      "top20": 1,
+      "chart_points": 3
+    },
+    {
       "artist": "Isaiah",
       "song": "Don't Come Easy",
       "flag": "🇦🇺",
@@ -310,12 +324,12 @@
       "chart_points": 3
     },
     {
-      "artist": "Jana Burčeska",
-      "song": "Dance Alone",
-      "flag": "🇲🇰",
-      "country": "North Macedonia",
+      "artist": "Alma",
+      "song": "Requiem",
+      "flag": "🇫🇷",
+      "country": "France",
       "year": 2017,
-      "esc_final_place": "DNQ",
+      "esc_final_place": 12,
       "top1": 0,
       "top3": 0,
       "top5": 0,
@@ -324,12 +338,12 @@
       "chart_points": 3
     },
     {
-      "artist": "Michał Szpak",
-      "song": "Color Of Your Life",
-      "flag": "🇵🇱",
-      "country": "Poland",
-      "year": 2016,
-      "esc_final_place": 8,
+      "artist": "Jana Burčeska",
+      "song": "Dance Alone",
+      "flag": "🇲🇰",
+      "country": "North Macedonia",
+      "year": 2017,
+      "esc_final_place": "DNQ",
       "top1": 0,
       "top3": 0,
       "top5": 0,
@@ -358,20 +372,6 @@
       "country": "San Marino",
       "year": 2017,
       "esc_final_place": "DNQ",
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3
-    },
-    {
-      "artist": "Verka Serduchka",
-      "song": "Dancing Lasha Tumbai",
-      "flag": "🇺🇦",
-      "country": "Ukraine",
-      "year": 2007,
-      "esc_final_place": 2,
       "top1": 0,
       "top3": 0,
       "top5": 0,

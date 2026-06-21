@@ -6,6 +6,7 @@ from pathlib import Path
 
 from evtop20.models import youtube_id_is_set
 from evtop20.normalize import write_episode_file
+from evtop20.sort_keys import stats_row_sort_key
 from evtop20.paths import (
     ALLTIME_STATS_BASENAME,
     processed_alltime_dir,
@@ -44,18 +45,6 @@ def tiers_for_rank(rank: int) -> list[str]:
 
 def chart_points_from_tiers(row: dict) -> int:
     return sum(row[field] * weight for field, weight in CHART_POINT_WEIGHTS.items())
-
-
-def stats_row_sort_key(row: dict) -> tuple:
-    return (
-        -chart_points_from_tiers(row),
-        -row["top1"],
-        -row["top3"],
-        -row["top5"],
-        -row["top10"],
-        -row["top20"],
-        row["video_title"].casefold(),
-    )
 
 
 def episode_period(data: dict) -> Period:

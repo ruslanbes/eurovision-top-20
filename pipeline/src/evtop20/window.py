@@ -9,7 +9,6 @@ from evtop20.aggregate import (
     chart_points_from_tiers,
     episode_period,
     load_episodes,
-    stats_row_sort_key,
     tiers_for_rank,
 )
 from evtop20.paths import (
@@ -19,8 +18,8 @@ from evtop20.paths import (
 from evtop20.song_stats import (
     is_eligible_song_rollup_row,
     song_group_key,
-    song_row_sort_key,
 )
+from evtop20.sort_keys import song_row_sort_key, stats_row_sort_key
 from evtop20.periods import format_period, period_before, period_in_range
 
 

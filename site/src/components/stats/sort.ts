@@ -13,6 +13,8 @@ export const DEFAULT_SONG_SORT: SortingState = [
   { id: "top5", desc: true },
   { id: "top10", desc: true },
   { id: "top20", desc: true },
+  { id: "esc_final_place", desc: false },
+  { id: "year", desc: true },
   { id: "song_label", desc: false },
 ];
 
@@ -23,6 +25,8 @@ export const DEFAULT_VIDEO_SORT: SortingState = [
   { id: "top5", desc: true },
   { id: "top10", desc: true },
   { id: "top20", desc: true },
+  { id: "esc_final_place", desc: false },
+  { id: "year", desc: true },
   { id: "video_title", desc: false },
 ];
 

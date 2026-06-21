@@ -12,6 +12,7 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ### Changed
 
+- Default stats sort tie-breakers — after tier counts: `esc_final_place` ascending, contest year descending, then name.
 - Replaced `performance_type` with `performance_category`.
 
 ### Removed

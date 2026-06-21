@@ -16,20 +16,6 @@
       "chart_points": 18
     },
     {
-      "artist": "Amir",
-      "song": "J'ai cherché",
-      "flag": "🇫🇷",
-      "country": "France",
-      "year": 2016,
-      "esc_final_place": 6,
-      "top1": 0,
-      "top3": 1,
-      "top5": 1,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 10
-    },
-    {
       "artist": "Dami Im",
       "song": "Sound Of Silence",
       "flag": "🇦🇺",
@@ -44,18 +30,18 @@
       "chart_points": 10
     },
     {
-      "artist": "Kristina",
-      "song": "Horehronie",
-      "flag": "🇸🇰",
-      "country": "Slovakia",
-      "year": 2010,
-      "esc_final_place": "DNQ",
+      "artist": "Amir",
+      "song": "J'ai cherché",
+      "flag": "🇫🇷",
+      "country": "France",
+      "year": 2016,
+      "esc_final_place": 6,
       "top1": 0,
-      "top3": 0,
+      "top3": 1,
       "top5": 1,
       "top10": 1,
       "top20": 1,
-      "chart_points": 6
+      "chart_points": 10
     },
     {
       "artist": "Poli Genova",
@@ -72,11 +58,39 @@
       "chart_points": 6
     },
     {
+      "artist": "Kristina",
+      "song": "Horehronie",
+      "flag": "🇸🇰",
+      "country": "Slovakia",
+      "year": 2010,
+      "esc_final_place": "DNQ",
+      "top1": 0,
+      "top3": 0,
+      "top5": 1,
+      "top10": 1,
+      "top20": 1,
+      "chart_points": 6
+    },
+    {
       "artist": "Jamala",
       "song": "1944",
       "flag": "🇺🇦",
       "country": "Ukraine",
       "year": 2016,
+      "esc_final_place": 1,
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 1,
+      "top20": 1,
+      "chart_points": 3
+    },
+    {
+      "artist": "Måns Zelmerlöw",
+      "song": "Heroes",
+      "flag": "🇸🇪",
+      "country": "Sweden",
+      "year": 2015,
       "esc_final_place": 1,
       "top1": 0,
       "top3": 0,
@@ -106,20 +120,6 @@
       "country": "Poland",
       "year": 2016,
       "esc_final_place": 8,
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3
-    },
-    {
-      "artist": "Måns Zelmerlöw",
-      "song": "Heroes",
-      "flag": "🇸🇪",
-      "country": "Sweden",
-      "year": 2015,
-      "esc_final_place": 1,
       "top1": 0,
       "top3": 0,
       "top5": 0,

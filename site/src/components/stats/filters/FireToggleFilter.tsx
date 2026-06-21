@@ -22,11 +22,9 @@ export function FireToggleFilter({
       title="Songs related to fire"
       disabled={disabled}
       className={[
-        "rounded-lg border border-border bg-surface-elevated px-2.5 py-1.5 text-xl leading-none transition-[filter,opacity] duration-150",
+        "rounded-lg border border-border bg-surface-elevated px-2.5 py-1.5 text-xl leading-none transition-[filter] duration-150",
         "disabled:cursor-not-allowed disabled:opacity-50",
-        active
-          ? "opacity-100 saturate-100"
-          : "opacity-35 saturate-0 hover:opacity-55",
+        active ? "saturate-100" : "saturate-0 hover:saturate-50",
       ].join(" ")}
       onClick={() => onChange(!active)}
     >
