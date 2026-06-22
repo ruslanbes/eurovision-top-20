@@ -1,6 +1,6 @@
 # insight-presence-heatmap
 
-**Matrix heatmap** on `/insights/` — episode presence over time for **country** or **contest year**. Complements [`insight-country-composition-bars.md`](insight-country-composition-bars.md) (per-episode slot mix); either or both may ship.
+**Matrix heatmap** on `/insights/` — episode presence over time for **country** or **contest year**. Complements per-episode slot-mix charts (e.g. year composition); either or both may ship.
 
 Parent: empty Insights page (shipped scaffold)  
 Depends on: `data/raw/episodes/`, title parser ([`title_parse/`](../../pipeline/src/evtop20/title_parse/) in `package`), [`site-theming.md`](site-theming.md)  
@@ -197,7 +197,7 @@ Add to `evtop20 package` (can share walk with composition bars task):
 4. Emit dense row arrays + max values.
 5. Sort rows for output.
 
-**Reuse:** same episode walk as [`insight-country-composition-bars.md`](insight-country-composition-bars.md) where possible; different aggregation (distinct titles vs slot counts).
+**Reuse:** same raw-episode walk as slot-matrix insights where possible; different aggregation (distinct titles vs slot counts).
 
 ---
 

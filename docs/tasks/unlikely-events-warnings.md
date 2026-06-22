@@ -5,7 +5,7 @@ Structured pipeline warnings for **rare but valid** domain situations that shoul
 Parent: `generate-song-stats`  
 Blocked by: `generate-song-stats` (song roll-up must exist first)
 
-**Status:** Backlog — v1 uses **generic warning text** only.
+**Status:** Cancelled — generic CLI warning strings are enough; structured global warning collector not planned.
 
 ---
 

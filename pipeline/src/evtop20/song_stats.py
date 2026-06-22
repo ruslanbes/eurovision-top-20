@@ -4,6 +4,7 @@ from collections import defaultdict
 
 from evtop20.aggregate import TIER_COUNT_FIELDS, chart_points_from_tiers
 from evtop20.paths import ALLTIME_STATS_BASENAME, SONG_STATS_BASENAME
+from evtop20.song_key_normalize import normalized_song_key
 from evtop20.sort_keys import song_row_sort_key
 
 SONG_METADATA_FIELDS = (
@@ -27,7 +28,7 @@ def is_eligible_song_rollup_row(row: dict) -> bool:
 
 
 def song_group_key(row: dict) -> tuple[str, str]:
-    return (row["artist"].casefold(), row["song"].casefold())
+    return normalized_song_key(row["artist"], row["song"])
 
 
 def _member_precedence_key(row: dict) -> tuple:

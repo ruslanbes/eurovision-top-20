@@ -2,9 +2,9 @@
 
 **Episode slot matrix** — reuse the year-composition ●/row UI as a **scheme-driven** insight: each row = one Top 20 episode (20 nominal slots); controls switch **color scheme**, **Group** (in-row facet grouping), and optional **chart rank order**.
 
-Parent: shipped [`insight-year-composition-tooltips`](insight-year-composition-tooltips.md) (year scheme PoC on `/insights/year-composition/`)  
+Parent: shipped year composition PoC on `/insights/year-composition/` ([`CHANGELOG.md`](../CHANGELOG.md#030---2026-06-22))  
 Depends on: `data/raw/episodes/`, `package` title parse + ESC join + `fire.json`, [`site-theming.md`](site-theming.md)  
-Related: removed [`insight-country-composition-bars.md`](insight-country-composition-bars.md), [`insight-presence-heatmap.md`](insight-presence-heatmap.md), stats [`FilterBar`](../site/src/components/stats/filters/FilterBar.tsx) / [`defs.ts`](../site/src/components/stats/filters/defs.ts), [ADR-003](../adr/adr-003-data-layers.md), [ADR-002](../adr/adr-002-site-visualization.md)
+Related: [`insight-presence-heatmap.md`](insight-presence-heatmap.md), stats [`FilterBar`](../site/src/components/stats/filters/FilterBar.tsx) / [`defs.ts`](../site/src/components/stats/filters/defs.ts), [ADR-003](../adr/adr-003-data-layers.md), [ADR-002](../adr/adr-002-site-visualization.md)
 
 **Status:** Backlog (epic)
 
@@ -63,7 +63,7 @@ One **flexible slot-matrix insight** (route TBD — evolve `/insights/year-compo
 | `packaged/query/video-hits.json` | sparse period+rank | via meta join | Reconstruct episode membership; heavier client join |
 | `packaged/insights/episode-year-composition.json` v2 | aggregated segments + `titles[]` | year only | **Scheme-specific** — replace with generic slots artifact |
 | `data/metadata/year-colors.json` | year → hex | Year scheme colors | ✓ exists |
-| `data/metadata/country-colors.json` | — | **Removed** with country composition | Country scheme needs **revival** (see cancelled bars task) |
+| `data/metadata/country-colors.json` | — | Not shipped | Country scheme needs new file (see Planned schemes) |
 | `data/metadata/fire.json` | id allowlist | Fire scheme | ✓ exists |
 | Stats `esc` filter helpers | `esc_final_place === 1` | Winners scheme | Reuse **rules**, not filter UI |
 
@@ -151,7 +151,7 @@ Mirror stats filter bar **layout**, different semantics:
 
 - **Scheme** — segmented control or select (Year \| ESC winners \| Country \| Fire).
 - **Group** — toggle (default **on** per scheme). On: facet clustering via in-row sort. Off: chart rank order. Label is **Group**, not “Sort”.
-- **URL persist?** — follow [`ui-sort-url-persist`](ui-sort-url-persist.md) / filter URL patterns if insights subpage should be shareable (spike). Param name e.g. `group=1` \| `group=0`, not `sort=`.
+- **URL persist?** — follow stats URL patterns in [`site/README.md`](../../site/README.md) if insights subpage should be shareable (spike). Param name e.g. `group=1` \| `group=0`, not `sort=`.
 
 ---
 
@@ -161,8 +161,10 @@ Mirror stats filter bar **layout**, different semantics:
 |--------|---------------|---------------------|-------|
 | `year` | `year-colors.json` | Year desc (newest left) | Migrate PoC |
 | `esc-winner` | Red if `esc_final_place === 1`, else `--chart-missing` | Winners first | Gray = non-winner + unknown placement |
-| `country` | `country-colors.json` | `country` ASC | Regenerate metadata file; many hues |
+| `country` | `country-colors.json` | `country` ASC | See note below |
 | `fire` | `🔥` if `fire`, else gray ● | Fire first | Glyph not color; access/a11y note |
+
+Country scheme: add `country-colors.json` (same shape as `year-colors.json`); palette TBD — flag averages, manual map, or hash.
 
 Future schemes (out of epic scope): `performance_category`, `esc_final_place` bands, song grain, etc.
 
@@ -178,7 +180,7 @@ Work **top-down**: data model spike → foundation → one new scheme → UI chr
 | **`insight-slot-matrix-foundation`** | Refactor | `SlotMatrixChart` + scheme interface; migrate year page to registry; deprecate year-only composition JSON path |
 | **`insight-slot-scheme-ui`** | UI | Scheme picker, **Group** toggle, wire to chart |
 | **`insight-scheme-esc-winners`** | Scheme | Winner coloring + group key |
-| **`insight-scheme-country`** | Scheme + metadata | Restore `country-colors.json` + generator script; country scheme |
+| **`insight-scheme-country`** | Scheme + metadata | `country-colors.json` + palette generator (mirror `year-colors` pattern) |
 | **`insight-scheme-fire`** | Scheme | Fire glyph + group key |
 | **`insight-year-composition-cleanup`** | Cleanup | Remove redundant `episode-year-composition.json` if fully superseded; docs/RELEASE |
 
@@ -229,7 +231,7 @@ Optional parallel spikes (time-boxed):
 1. **Route:** keep `/insights/year-composition/` and generalize in place, or new `/insights/episode-slots/` with year as default scheme?
 2. **Missing slots in packaged data:** explicit 20-length array with `missing: true` entries vs sparse filled-only + pad in site?
 3. **Group off + scheme:** keep scheme colors on rank-ordered slots, or neutral rank view?
-4. **Country colors:** regenerate `country-colors.json` from old script, or new palette strategy (see cancelled bars task)?
+4. **Country colors:** flag-averaged hexes, manual curated map, or hash — follow `year-colors.json` tooling pattern?
 5. **Fire glyph:** replace ● entirely for fire slots, or overlay? Screen-reader / tooltip text?
 6. **ESC winners:** is `esc_final_place === 1` sufficient, or include “Winner of Eurovision” title heuristic for `null` placements?
 7. **Unknown metadata:** same `Missing` treatment as year chart for all schemes?

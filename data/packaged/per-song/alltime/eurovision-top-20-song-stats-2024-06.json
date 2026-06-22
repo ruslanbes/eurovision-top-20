@@ -366,6 +366,20 @@
       "chart_points": 60
     },
     {
+      "artist": "Aysel and Arash",
+      "song": "Always",
+      "flag": "🇦🇿",
+      "country": "Azerbaijan",
+      "year": 2009,
+      "esc_final_place": 3,
+      "top1": 0,
+      "top3": 0,
+      "top5": 2,
+      "top10": 14,
+      "top20": 26,
+      "chart_points": 60
+    },
+    {
       "artist": "Efendi",
       "song": "Mata Hari",
       "flag": "🇦🇿",
@@ -378,20 +392,6 @@
       "top10": 9,
       "top20": 9,
       "chart_points": 59
-    },
-    {
-      "artist": "Aysel and Arash",
-      "song": "Always",
-      "flag": "🇦🇿",
-      "country": "Azerbaijan",
-      "year": 2009,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 0,
-      "top5": 2,
-      "top10": 13,
-      "top20": 25,
-      "chart_points": 57
     },
     {
       "artist": "Alessandra",
@@ -688,6 +688,20 @@
       "chart_points": 30
     },
     {
+      "artist": "Alexander Rybak",
+      "song": "That’s How You Write A Song",
+      "flag": "🇳🇴",
+      "country": "Norway",
+      "year": 2018,
+      "esc_final_place": 15,
+      "top1": 0,
+      "top3": 0,
+      "top5": 5,
+      "top10": 5,
+      "top20": 5,
+      "chart_points": 30
+    },
+    {
       "artist": "Miki",
       "song": "La Venda",
       "flag": "🇪🇸",
@@ -825,20 +839,6 @@
       "top5": 1,
       "top10": 2,
       "top20": 2,
-      "chart_points": 18
-    },
-    {
-      "artist": "Alexander Rybak",
-      "song": "That’s How You Write A Song",
-      "flag": "🇳🇴",
-      "country": "Norway",
-      "year": 2018,
-      "esc_final_place": 15,
-      "top1": 0,
-      "top3": 0,
-      "top5": 3,
-      "top10": 3,
-      "top20": 3,
       "chart_points": 18
     },
     {
@@ -1036,20 +1036,6 @@
       "top10": 3,
       "top20": 4,
       "chart_points": 13
-    },
-    {
-      "artist": "Alexander Rybak",
-      "song": "That's How You Write A Song",
-      "flag": "🇳🇴",
-      "country": "Norway",
-      "year": 2018,
-      "esc_final_place": 15,
-      "top1": 0,
-      "top3": 0,
-      "top5": 2,
-      "top10": 2,
-      "top20": 2,
-      "chart_points": 12
     },
     {
       "artist": "Kristian Kostov",
@@ -1472,6 +1458,20 @@
       "chart_points": 6
     },
     {
+      "artist": "Gjon's Tears",
+      "song": "Tout l’Univers",
+      "flag": "🇨🇭",
+      "country": "Switzerland",
+      "year": 2021,
+      "esc_final_place": 3,
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 2,
+      "top20": 2,
+      "chart_points": 6
+    },
+    {
       "artist": "Cesár Sampson",
       "song": "Nobody But You",
       "flag": "🇦🇹",
@@ -1602,6 +1602,20 @@
       "song": "Lost And Found",
       "flag": "🇲🇰",
       "country": "North Macedonia",
+      "year": 2018,
+      "esc_final_place": "DNQ",
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 2,
+      "top20": 2,
+      "chart_points": 6
+    },
+    {
+      "artist": "Julia Samoylova",
+      "song": "I Won’t Break",
+      "flag": "🇷🇺",
+      "country": "Russia",
       "year": 2018,
       "esc_final_place": "DNQ",
       "top1": 0,
@@ -1808,48 +1822,6 @@
       "chart_points": 4
     },
     {
-      "artist": "Gjon's Tears",
-      "song": "Tout l'Univers",
-      "flag": "🇨🇭",
-      "country": "Switzerland",
-      "year": 2021,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3
-    },
-    {
-      "artist": "Gjon's Tears",
-      "song": "Tout l’Univers",
-      "flag": "🇨🇭",
-      "country": "Switzerland",
-      "year": 2021,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3
-    },
-    {
-      "artist": "AySel & Arash",
-      "song": "Always",
-      "flag": "🇦🇿",
-      "country": "Azerbaijan",
-      "year": 2009,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3
-    },
-    {
       "artist": "Michael Schulte",
       "song": "You Let Me Walk Alone",
       "flag": "🇩🇪",
@@ -2023,34 +1995,6 @@
       "flag": "🇱🇻",
       "country": "Latvia",
       "year": 2022,
-      "esc_final_place": "DNQ",
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3
-    },
-    {
-      "artist": "Julia Samoylova",
-      "song": "I Won't Break",
-      "flag": "🇷🇺",
-      "country": "Russia",
-      "year": 2018,
-      "esc_final_place": "DNQ",
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3
-    },
-    {
-      "artist": "Julia Samoylova",
-      "song": "I Won’t Break",
-      "flag": "🇷🇺",
-      "country": "Russia",
-      "year": 2018,
       "esc_final_place": "DNQ",
       "top1": 0,
       "top3": 0,

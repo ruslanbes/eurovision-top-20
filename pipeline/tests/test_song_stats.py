@@ -11,7 +11,7 @@ from evtop20.paths import (
     packaged_per_song_alltime_stats_latest_path,
     processed_alltime_dir,
 )
-from evtop20.query_index import build_song_meta
+from evtop20.query_index import build_song_hits, build_song_meta
 from evtop20.song_stats import (
     is_eligible_song_rollup_row,
     package_song_stats_payload,
@@ -212,6 +212,82 @@ def test_song_group_key_is_case_insensitive() -> None:
     assert song_group_key(row) == ("abba", "waterloo")
 
 
+def test_package_song_stats_merges_apostrophe_variants() -> None:
+    ascii_apostrophe = _video_row(
+        artist="Alexander Rybak",
+        song="That's How You Write A Song",
+        video_title="Alexander Rybak - That's How You Write A Song - Norway - Official Music Video",
+        chart_points=20,
+        top1=1,
+        top3=1,
+        top5=1,
+        top10=1,
+        top20=1,
+    )
+    curly_apostrophe = _video_row(
+        artist="Alexander Rybak",
+        song="That\u2019s How You Write A Song",
+        video_title="Alexander Rybak - That\u2019s How You Write A Song (LIVE) | Norway",
+        chart_points=100,
+        top1=5,
+        top3=5,
+        top5=5,
+        top10=5,
+        top20=5,
+        youtube_video_id="vid000000010",
+    )
+
+    payload, warnings = package_song_stats_payload(
+        _packaged_payload(ascii_apostrophe, curly_apostrophe),
+        source="packaged/per-video/alltime",
+    )
+
+    assert warnings == []
+    assert len(payload["rows"]) == 1
+    assert payload["rows"][0]["song"] == "That\u2019s How You Write A Song"
+
+
+def test_package_song_stats_merges_and_and_ampersand_artists() -> None:
+    ampersand = _video_row(
+        artist="AySel & Arash",
+        song="Always",
+        country="Azerbaijan",
+        year=2009,
+        flag="🇦🇿",
+        video_title="AySel & Arash - Always - Azerbaijan - Official Music Video",
+        chart_points=20,
+        top1=1,
+        top3=1,
+        top5=1,
+        top10=1,
+        top20=1,
+    )
+    and_form = _video_row(
+        artist="Aysel and Arash",
+        song="Always",
+        country="Azerbaijan",
+        year=2009,
+        flag="🇦🇿",
+        video_title="Aysel and Arash - Always - Azerbaijan - Grand Final",
+        chart_points=100,
+        top1=5,
+        top3=5,
+        top5=5,
+        top10=5,
+        top20=5,
+        youtube_video_id="vid000000011",
+    )
+
+    payload, warnings = package_song_stats_payload(
+        _packaged_payload(ampersand, and_form),
+        source="packaged/per-video/alltime",
+    )
+
+    assert warnings == []
+    assert len(payload["rows"]) == 1
+    assert payload["rows"][0]["artist"] == "Aysel and Arash"
+
+
 def test_package_song_stats_empty_rows_when_all_ineligible() -> None:
     incomplete = _video_row(artist=None, song=None, flag=None, country=None, year=None)
 
@@ -290,6 +366,55 @@ def test_run_package_writes_song_stats_snapshots(repo_root: Path) -> None:
     assert song_latest["rows"][0]["song"] == "Espresso Macchiato"
     assert "generated_at" not in song_latest
     assert "Wrote alltime song stats" in message
+
+
+def test_build_song_hits_uses_canonical_display_matching_song_meta() -> None:
+    ampersand = _video_row(
+        artist="AySel & Arash",
+        song="Always",
+        country="Azerbaijan",
+        year=2009,
+        flag="🇦🇿",
+        video_title="AySel & Arash - Always - Azerbaijan - Official Music Video",
+        chart_points=20,
+        top1=1,
+        top3=1,
+        top5=1,
+        top10=1,
+        top20=1,
+    )
+    and_form = _video_row(
+        artist="Aysel and Arash",
+        song="Always",
+        country="Azerbaijan",
+        year=2009,
+        flag="🇦🇿",
+        video_title="Aysel and Arash - Always - Azerbaijan - Grand Final",
+        chart_points=100,
+        top1=5,
+        top3=5,
+        top5=5,
+        top10=5,
+        top20=5,
+        youtube_video_id="highvid",
+        youtube_watch_url="https://www.youtube.com/watch?v=highvid",
+    )
+    rows = [ampersand, and_form]
+    contributions = [
+        {
+            "period": "2020-01",
+            "rows": [
+                {"video_title": ampersand["video_title"], "rank": 5},
+            ],
+        },
+    ]
+    hits = build_song_hits(contributions, rows)
+    meta = build_song_meta(rows)
+
+    assert len(hits["hits"]) == 1
+    assert len(meta["rows"]) == 1
+    assert hits["hits"][0]["artist"] == meta["rows"][0]["artist"] == "Aysel and Arash"
+    assert hits["hits"][0]["song"] == meta["rows"][0]["song"] == "Always"
 
 
 def test_build_song_meta_youtube_from_highest_chart_points_member() -> None:

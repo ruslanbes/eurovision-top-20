@@ -31,6 +31,8 @@ Theme: **light**, **dark**, or **system** via the toggle (top-right). Choice per
 
 **Table filters:** client-side AND/OR filters on window-aggregated rows — full-text search, country (searchable), year, ESC (dropdown: All / Winners / Not winners / Non-entries), and on videos only Category (four toggle buttons). Filter, episode-range, and table-sort state persist in the **URL query string** and survive navigation between `/` and `/songs/` (shared filters + range + sort synced; video-only Category preserved in the URL but hidden on the song page). Bare path = full corpus, no filters, default sort (`chart_points` desc).
 
+**Column explainers:** `?` button in the **Chart Points** header opens a popover (formula + link to [`chart_points` FAQ](../docs/faq/chart_points.md)). Reusable pattern under `src/components/stats/help/`.
+
 ### URL query params
 
 | Param | Example | Notes |

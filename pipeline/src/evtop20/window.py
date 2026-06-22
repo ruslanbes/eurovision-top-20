@@ -15,6 +15,7 @@ from evtop20.paths import (
     ALLTIME_STATS_BASENAME,
     processed_alltime_dir,
 )
+from evtop20.song_key_normalize import normalized_song_key
 from evtop20.song_stats import (
     is_eligible_song_rollup_row,
     song_group_key,
@@ -233,7 +234,7 @@ def aggregate_song_hits(
         song = hit.get("song")
         if not isinstance(artist, str) or not isinstance(song, str):
             continue
-        key = (artist.casefold(), song.casefold())
+        key = normalized_song_key(artist, song)
         tiers = _empty_tiers()
         entries = hit.get("entries")
         if isinstance(entries, list):

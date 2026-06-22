@@ -8,7 +8,7 @@ Related: `[BACKLOG.md](BACKLOG.md)`, `[STATUS.md](STATUS.md)`, `[tasks/README.md
 
 Cut a release when:
 
-- One or more backlog items are `**done**` (all `done_when` criteria met).
+- One or more backlog items are `done` (all `done_when` criteria met).
 - `[CHANGELOG.md](../CHANGELOG.md)` `[Unreleased]` contains significant work chunk.
 - Pipeline and site tests pass locally (or CI on `main` is green).
 
@@ -18,11 +18,9 @@ Ad-hoc changelog updates without a version tag are fine anytime; this runbook is
 
 ## Pre-release checklist
 
-- [ ] Every feature in the release has `status: done` in `[BACKLOG.md](BACKLOG.md)` and its task `## Done when` boxes checked (if a detail file exists).
 - [ ] `uv run pytest` (from `pipeline/`) green.
 - [ ] `npm test` and `npm run build` (from `site/`) green.
-- [ ] `uv run evtop20 validate && uv run evtop20 process && uv run evtop20 package` succeeds on current raw data (or will run on deploy).
-- [ ] User-facing behavior is documented where it belongs: FAQ, `data/README.md`, `site/README.md`, or ADRs — not only in task specs.
+- [ ] `uv run evtop20 validate && uv run evtop20 process && uv run evtop20 package` succeeds on current raw data.
 
 ---
 
@@ -35,13 +33,14 @@ In `[BACKLOG.md](BACKLOG.md)`:
 - **Remove** entries whose work is fully captured in the new changelog section.
 - Create missing CHANGELOG entries in the `[Unreleased]` section.
 - Keep `backlog` / `ready` / `in_progress` / `blocked` items.
+- Remove cancelled tasks and their detail files.
 - Do **not** leave stale `done` rows after a release — the changelog is the archive of shipped work.
 
 If a removed task is still referenced as `parent:` elsewhere, keep the ID in the child’s notes or repoint the parent.
 
-### 2. Analyze and cleanup completed task detail files
+### 2. Analyze and cleanup task detail files
 
-Per `[tasks/README.md](tasks/README.md)`: delete `docs/tasks/<task-id>.md` for tasks shipped in this release.
+Per `[tasks/README.md](tasks/README.md)`: delete `docs/tasks/<task-id>.md` for tasks shipped in this release or cancelled.
 
 Keep the `docs/tasks/` folder and `tasks/README.md`. Behavior should live in CHANGELOG, ADRs, FAQ, and layer READMEs — not in deleted specs.
 
@@ -51,8 +50,8 @@ Keep the `docs/tasks/` folder and `tasks/README.md`. Behavior should live in CHA
 - Read each detailed task doc.
 - Check if any stable docs (FAQ, README) reference the task doc.
 - Extract important architectural decisions and contracts, extract summary of diagrams and tables, user-facing behavior.
-- Check if the extracted info is covered in stable documentation files. 
-- If the stable docs has gaps, move the extracted data to ADRs, FAQ, README etc. Creating new stable docs is fine, they will be reviewed before commit.
+- Check if the extracted info is covered in stable documentation files: FAQ, `data/README.md`, `site/README.md`, or ADRs.
+- If the stable docs has gaps, move the extracted data there. Create new stable docs if needed, they will be reviewed before commit.
 
 ### 3. Refresh session status
 
@@ -73,7 +72,7 @@ Edit `[CHANGELOG.md](../CHANGELOG.md)`:
 
 Write for **readers of the repo and release notes**, not for internal task IDs. Link ADRs or FAQ where helpful.
 
-### 5. Tag and deploy (optional but recommended)
+### 5. Tag and deploy (optional)
 
 ```bash
 git tag -a v0.2.0 -m "Release 0.2.0"
@@ -83,30 +82,4 @@ git push origin main --tags
 Push to `main` runs `[.github/workflows/deploy.yml](../.github/workflows/deploy.yml)`: validate → process → package → build → GitHub Pages.
 
 Verify the live site after deploy if the release includes site or packaged-data changes.
-
----
-
-## What not to do
-
-
-| Avoid                                               | Why                                                             |
-| --------------------------------------------------- | --------------------------------------------------------------- |
-| Put the runbook in root `README.md`                 | Onboarding for users who run the site/data, not release process |
-| Put process in `site/README.md` or `data/README.md` | Consumer / data-layer docs                                      |
-| Rely on `BACKLOG.md` as long-term history           | Shipped work belongs in `CHANGELOG.md`                          |
-| Mark `done` without meeting `done_when`             | See [workflow rule](../.cursor/rules/workflow.mdc)              |
-
-
----
-
-## Agent quick reference
-
-On “prepare a release” or “cut version X.Y.Z”:
-
-1. Read this file.
-2. Confirm done tasks and tests.
-3. Promote `[Unreleased]` in `CHANGELOG.md`.
-4. Remove shipped tasks from `BACKLOG.md` and delete their `docs/tasks/*.md` detail files.
-5. Update `STATUS.md`.
-6. Tag only if the user asked for a git tag / release.
 

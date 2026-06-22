@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -18,6 +19,11 @@ from evtop20.package import PackageError, run_package
 from evtop20.process import ProcessError, run_process
 from evtop20.new_episode import NewEpisodeError, run_new_episode
 from evtop20.paths import find_repo_root
+from evtop20.song_key_audit import (
+    audit_report_to_json,
+    format_audit_markdown,
+    run_song_key_audit,
+)
 from evtop20.esc_results.flatten import FlattenError
 from evtop20.vendor_esc import run_vendor_esc_flatten
 from evtop20.validate import (
@@ -284,6 +290,61 @@ def vendor_esc_flatten(
         echo_cli_error(str(exc))
         raise typer.Exit(code=1)
     typer.echo(message)
+
+
+@app.command("audit-song-keys")
+def audit_song_keys_cmd(
+    repo_root: Path | None = typer.Option(
+        None,
+        "--repo-root",
+        help="Repository root (auto-detected if omitted).",
+        file_okay=False,
+        dir_okay=True,
+        resolve_path=True,
+    ),
+    output_format: str = typer.Option(
+        "markdown",
+        "--format",
+        help="Output format: markdown or json.",
+    ),
+    output: Path | None = typer.Option(
+        None,
+        "--output",
+        help="Write report to this path instead of stdout.",
+        file_okay=True,
+        dir_okay=False,
+        resolve_path=True,
+    ),
+    example_limit: int = typer.Option(
+        10,
+        "--example-limit",
+        min=0,
+        help="Max examples per section in markdown output.",
+    ),
+) -> None:
+    """Audit song roll-up keys on latest packaged alltime video snapshot."""
+    root = _repo_root_option(repo_root)
+    try:
+        report = run_song_key_audit(root)
+    except (FileNotFoundError, TypeError, json.JSONDecodeError) as exc:
+        echo_cli_error(str(exc))
+        raise typer.Exit(code=1)
+
+    if output_format == "json":
+        text = json.dumps(audit_report_to_json(report), indent=2, ensure_ascii=False)
+        text = f"{text}\n"
+    elif output_format == "markdown":
+        text = format_audit_markdown(report, example_limit=example_limit)
+    else:
+        echo_cli_error("--format must be markdown or json")
+        raise typer.Exit(code=1)
+
+    if output is None:
+        typer.echo(text, nl=False)
+        return
+
+    output.write_text(text, encoding="utf-8")
+    typer.echo(f"Wrote {output}")
 
 
 @app.command("process")

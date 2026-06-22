@@ -135,13 +135,11 @@ Rows sorted by `video_title`. Ranks 1–20 only; empty slots omitted.
 
 May read **any source**: processed alltime, raw episodes, title parser (`title_parse/`), manual overrides (`data/metadata/`), external ESC datasets.
 
-Layout: see diagram above. **Future (not shipped):** `insights/`, `charts/` under `packaged/`.
-
 
 | Typical content                                               | Sources                                                                                                                                          |
 | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Augmented alltime video rows (watch URLs, parsed metadata, …) | processed alltime + title parser                                                                                                                 |
-| Song stats                                                    | per-video rows + roll-up by case-insensitive `(artist, song)`; `[chart_points](../docs/faq/chart_points.md)` from summed tiers (`song_stats.py`) |
+| Song stats                                                    | per-video rows + roll-up by normalized `(artist, song)` key; `[chart_points](../docs/faq/chart_points.md)` from summed tiers (`song_stats.py`, `song_key_normalize.py`) |
 | Row order (video + song snapshots, query window)              | `[chart_points](../docs/faq/chart_points.md)` default sort via `sort_keys.py` / `queryWindow.ts`                                                 |
 | Window query index (`query/`)                                 | `processed/episode-index/` + latest packaged video enrichment                                                                                    |
 | Insight payloads (heatmaps, winner tables, …)                 | processed + raw + external                                                                                                                       |
@@ -149,7 +147,9 @@ Layout: see diagram above. **Future (not shipped):** `insights/`, `charts/` unde
 | Period index for scrubber                                     | `query/video-hits.json` `periods` array (via copy script → `periods-alltime.json`)                                                             |
 
 
-**Shipped:** `per-video/alltime`, `per-song/alltime`, and `query/` (`video-hits`, `video-meta`, `song-hits`, `song-meta`). Flexible period range UI on `/` and `/songs/`. Insights/charts folders still future.
+**Shipped:** `per-video/alltime`, `per-song/alltime`, `query/` (`video-hits`, `video-meta`, `song-hits`, `song-meta`), and `insights/` (`episode-year-composition.json` v2 + copied `year-colors.json`). Flexible period range UI on `/` and `/songs/`; year composition insight on `/insights/year-composition/`.
+
+`year-colors.json` lives under `metadata/` (hand-maintained; regenerate with `pipeline/scripts/refresh_year_colors.py`). `episode-year-composition.json` is built in `package` from raw episodes + title parse (`insights_composition.py`); v2 segments include sorted `titles[]` per contest-year band for per-slot site tooltips.
 
 ### Query index (`packaged/query/`)
 

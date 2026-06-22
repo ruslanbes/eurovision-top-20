@@ -120,29 +120,30 @@ def build_video_meta(rows: list[dict]) -> dict:
 
 def build_song_hits(
     contributions: list[dict],
-    video_meta: dict,
+    latest_video_rows: list[dict],
 ) -> dict:
     periods = [contribution["period"] for contribution in contributions]
     title_to_key: dict[str, tuple[str, str]] = {}
-    display_by_key: dict[tuple[str, str], tuple[str, str]] = {}
-    meta_rows = video_meta.get("rows")
-    if isinstance(meta_rows, list):
-        for row in meta_rows:
-            if not isinstance(row, dict):
-                continue
-            if not is_eligible_song_rollup_row(row):
-                continue
-            title = row.get("video_title")
-            artist = row.get("artist")
-            song = row.get("song")
-            if (
-                isinstance(title, str)
-                and isinstance(artist, str)
-                and isinstance(song, str)
-            ):
-                key = song_group_key(row)
-                title_to_key[title] = key
-                display_by_key.setdefault(key, (artist, song))
+    members_by_key: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    for row in latest_video_rows:
+        if not isinstance(row, dict):
+            continue
+        if not is_eligible_song_rollup_row(row):
+            continue
+        title = row.get("video_title")
+        if not isinstance(title, str):
+            continue
+        key = song_group_key(row)
+        title_to_key[title] = key
+        members_by_key[key].append(row)
+
+    display_by_key = {
+        key: (
+            _canonical_member(members)["artist"],
+            _canonical_member(members)["song"],
+        )
+        for key, members in members_by_key.items()
+    }
 
     by_song: dict[tuple[str, str], dict] = {}
 
@@ -206,7 +207,7 @@ def build_query_payloads(
     return {
         "video_hits": build_video_hits(contributions),
         "video_meta": video_meta,
-        "song_hits": build_song_hits(contributions, video_meta),
+        "song_hits": build_song_hits(contributions, latest_video_rows),
         "song_meta": build_song_meta(latest_video_rows),
     }
 

@@ -296,6 +296,20 @@
       "chart_points": 47
     },
     {
+      "artist": "Aysel and Arash",
+      "song": "Always",
+      "flag": "🇦🇿",
+      "country": "Azerbaijan",
+      "year": 2009,
+      "esc_final_place": 3,
+      "top1": 0,
+      "top3": 0,
+      "top5": 2,
+      "top10": 12,
+      "top20": 12,
+      "chart_points": 42
+    },
+    {
       "artist": "Amir",
       "song": "J'ai cherché",
       "flag": "🇫🇷",
@@ -307,20 +321,6 @@
       "top5": 4,
       "top10": 5,
       "top20": 5,
-      "chart_points": 39
-    },
-    {
-      "artist": "Aysel and Arash",
-      "song": "Always",
-      "flag": "🇦🇿",
-      "country": "Azerbaijan",
-      "year": 2009,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 0,
-      "top5": 2,
-      "top10": 11,
-      "top20": 11,
       "chart_points": 39
     },
     {
@@ -392,6 +392,20 @@
       "top10": 6,
       "top20": 6,
       "chart_points": 31
+    },
+    {
+      "artist": "Alexander Rybak",
+      "song": "That’s How You Write A Song",
+      "flag": "🇳🇴",
+      "country": "Norway",
+      "year": 2018,
+      "esc_final_place": 15,
+      "top1": 0,
+      "top3": 0,
+      "top5": 5,
+      "top10": 5,
+      "top20": 5,
+      "chart_points": 30
     },
     {
       "artist": "Loreen",
@@ -478,20 +492,6 @@
       "chart_points": 18
     },
     {
-      "artist": "Alexander Rybak",
-      "song": "That’s How You Write A Song",
-      "flag": "🇳🇴",
-      "country": "Norway",
-      "year": 2018,
-      "esc_final_place": 15,
-      "top1": 0,
-      "top3": 0,
-      "top5": 3,
-      "top10": 3,
-      "top20": 3,
-      "chart_points": 18
-    },
-    {
       "artist": "Efendi",
       "song": "Cleopatra",
       "flag": "🇦🇿",
@@ -560,20 +560,6 @@
       "top10": 2,
       "top20": 2,
       "chart_points": 13
-    },
-    {
-      "artist": "Alexander Rybak",
-      "song": "That's How You Write A Song",
-      "flag": "🇳🇴",
-      "country": "Norway",
-      "year": 2018,
-      "esc_final_place": 15,
-      "top1": 0,
-      "top3": 0,
-      "top5": 2,
-      "top10": 2,
-      "top20": 2,
-      "chart_points": 12
     },
     {
       "artist": "Kristian Kostov",
@@ -898,6 +884,20 @@
       "chart_points": 6
     },
     {
+      "artist": "Julia Samoylova",
+      "song": "I Won’t Break",
+      "flag": "🇷🇺",
+      "country": "Russia",
+      "year": 2018,
+      "esc_final_place": "DNQ",
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 2,
+      "top20": 2,
+      "chart_points": 6
+    },
+    {
       "artist": "Sennek",
       "song": "A Matter Of Time",
       "flag": "🇧🇪",
@@ -938,20 +938,6 @@
       "top10": 2,
       "top20": 2,
       "chart_points": 6
-    },
-    {
-      "artist": "AySel & Arash",
-      "song": "Always",
-      "flag": "🇦🇿",
-      "country": "Azerbaijan",
-      "year": 2009,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3
     },
     {
       "artist": "Michael Schulte",
@@ -1072,34 +1058,6 @@
       "country": "Germany",
       "year": 2019,
       "esc_final_place": 25,
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3
-    },
-    {
-      "artist": "Julia Samoylova",
-      "song": "I Won't Break",
-      "flag": "🇷🇺",
-      "country": "Russia",
-      "year": 2018,
-      "esc_final_place": "DNQ",
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3
-    },
-    {
-      "artist": "Julia Samoylova",
-      "song": "I Won’t Break",
-      "flag": "🇷🇺",
-      "country": "Russia",
-      "year": 2018,
-      "esc_final_place": "DNQ",
       "top1": 0,
       "top3": 0,
       "top5": 0,

@@ -731,13 +731,7 @@
           "ranks": [
             5
           ]
-        }
-      ],
-      "song": "That's How You Write A Song"
-    },
-    {
-      "artist": "Alexander Rybak",
-      "entries": [
+        },
         {
           "period": "2018-05",
           "ranks": [
@@ -1228,20 +1222,14 @@
       "song": "Chains On You"
     },
     {
-      "artist": "AySel & Arash",
+      "artist": "Aysel and Arash",
       "entries": [
         {
           "period": "2016-11",
           "ranks": [
             10
           ]
-        }
-      ],
-      "song": "Always"
-    },
-    {
-      "artist": "Aysel and Arash",
-      "entries": [
+        },
         {
           "period": "2018-08",
           "ranks": [
@@ -3218,21 +3206,15 @@
       "artist": "Gjon's Tears",
       "entries": [
         {
-          "period": "2021-05",
-          "ranks": [
-            7
-          ]
-        }
-      ],
-      "song": "Tout l'Univers"
-    },
-    {
-      "artist": "Gjon's Tears",
-      "entries": [
-        {
           "period": "2021-03",
           "ranks": [
             8
+          ]
+        },
+        {
+          "period": "2021-05",
+          "ranks": [
+            7
           ]
         }
       ],
@@ -4424,13 +4406,7 @@
           "ranks": [
             6
           ]
-        }
-      ],
-      "song": "I Won't Break"
-    },
-    {
-      "artist": "Julia Samoylova",
-      "entries": [
+        },
         {
           "period": "2018-05",
           "ranks": [
@@ -6681,7 +6657,7 @@
       "song": "Soldi"
     },
     {
-      "artist": "Mahmood & Blanco",
+      "artist": "Mahmood & BLANCO",
       "entries": [
         {
           "period": "2022-02",
@@ -9826,7 +9802,7 @@
       "song": "Hey Mamma (LIVE feat. Epic Sax Guy)"
     },
     {
-      "artist": "SunStroke Project & Olia Tira",
+      "artist": "Sunstroke Project & Olia Tira",
       "entries": [
         {
           "period": "2017-09",

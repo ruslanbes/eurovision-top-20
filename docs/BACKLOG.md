@@ -25,18 +25,11 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 ---
 
 ## unlikely-events-warnings
-- status: ready
+- status: cancelled
 - parent: generate-song-stats
 - goal: Typed warning codes for rare domain cases (e.g. song merge country/year mismatch)
 - done_when: Per `docs/tasks/unlikely-events-warnings.md` — coded warnings replace generic merge messages
-- notes: v1 ships generic warnings only; this task adds structure
-
-## song-key-normalization-audit
-- status: ready
-- parent: generate-song-stats
-- goal: Measure near-duplicate `(artist, song)` pairs before any normalization rules
-- done_when: Per `docs/tasks/song-key-normalization-audit.md` — audit report on latest packaged alltime
-- notes: Follow-up only; exact keys ship first
+- notes: Cancelled — keep generic `Warning:` strings in `song_stats` / ESC join; no global warning collector
 
 ## site-theming
 - status: in_progress
@@ -59,20 +52,6 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - done_when: Per `docs/tasks/contest-season-waves.md` — wave data artifact + at least one chart view live
 - notes: Sketch only; separate from `video-insights`; period player in `site/`; colors per `site-theming`
 
-## stats-inline-explainers
-- status: ready
-- parent: scaffold-project
-- goal: Add reusable on-demand explainers in stats UI, starting with `chart_points`, without permanent layout clutter
-- done_when: Per `docs/tasks/stats-inline-explainers.md` — trigger + popover pattern, `chart_points` explainer, a11y behavior, tests/build green
-- notes: Follow-up on shipped 0.2.0 filter/table UI; prefer click/tap popover over tooltip for multi-line content
-
-## insight-year-bar-gradients
-- status: cancelled
-- parent: scaffold-project
-- goal: Smooth horizontal color blends between contest-year segments in year composition rows; keep per-year tooltips
-- done_when: Per `docs/tasks/insight-year-bar-gradients.md` — gradient paint layer + overlay hit targets, tests/build green, no packaged JSON change
-- notes: Shipped then reverted — solid bars read clearer than gradient blends at any tested width
-
 ## insight-presence-heatmap
 - status: ready
 - parent: scaffold-project
@@ -86,24 +65,3 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - goal: Epic — scheme-driven episode slot matrix (● rows); color/sort/glyph per metadata dimension; **Group** toggle + chart rank order; generalize year-composition PoC
 - done_when: Per `docs/tasks/insight-episode-slot-schemes.md` — packaged episode slots, SlotMatrixChart + registry, scheme UI, ≥2 new schemes, extensibility proven
 - notes: Start with `insight-episode-slots-data` spike; year scheme migrates into registry
-
-## insight-year-composition-tooltips
-- status: done
-- parent: scaffold-project
-- goal: Year composition per-● tooltips — episode month + one video title per slot (not multi-title segment tooltips)
-- done_when: Per `docs/tasks/insight-year-composition-tooltips.md` — packaged v2 `titles[]` per segment, per-slot hover, pipeline + site tests green
-- notes: Option A approved; per-● tooltips; missing/unknown ● → `Missing`; legend **Missing** only
-
-## ui-filter-fulltext
-- status: done
-- parent: scaffold-project
-- goal: Full-text search filter — substring on video title or artist — song; case- and diacritic-insensitive; one query; filter on typing
-- done_when: Per `docs/tasks/ui-filter-fulltext.md` — search input, match helper tests, URL `q`, AND with other filters, build green
-- notes: Client-side only; shared scope on `/` and `/songs/`
-
-## ui-sort-url-persist
-- status: done
-- parent: scaffold-project
-- goal: Persist table sort in URL and keep it across `/` and `/songs/` — shared column ids; `title` for video/song label column
-- done_when: Per `docs/tasks/ui-sort-url-persist.md` — `sort`/`order` params, grain mapping, nav round-trip, tests/build green
-- notes: Follow-up on filter URL persistence; `#` rank sort unchanged

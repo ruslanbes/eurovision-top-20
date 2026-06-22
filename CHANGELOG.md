@@ -4,6 +4,39 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-06-22
+
+Song roll-up key normalization and song-table YouTube link fix since 0.3.0.
+
+### Added
+
+- **`evtop20 audit-song-keys`** — report on near-duplicate `(artist, song)` pairs on latest packaged alltime video snapshot (markdown or JSON). See [`commands.md`](docs/faq/commands.md).
+
+### Changed
+
+- **Song roll-up keys** — normalize `(artist, song)` before merge (casefold, apostrophe map, `&`/`and`, punctuation strip); merges 4 near-duplicate video pairs on latest alltime (226→222 song rows). Display strings unchanged (canonical member). `song_key_normalize.py`; `song-hits` labels aligned with `song-meta`.
+
+### Fixed
+
+- **Song table YouTube links** after key normalization — site joins `song-meta` with the same normalized key as the pipeline (`songMetaLookupKey.ts`).
+
+
+## [0.3.0] - 2026-06-22
+
+Insights year composition, stats search/sort URL persistence, and Chart Points explainer since 0.2.0.
+
+### Added
+
+- **Insights** — `/insights/` index; **Year composition** at `/insights/year-composition/` — 20-slot ● matrix per episode showing contest-year mix over time; hand-maintained `year-colors.json` + packaged `episode-year-composition.json`.
+- **Per-slot year composition tooltips** — hover a ● for episode month + one `video_title`; missing or unparseable year → `Missing`; packaged v2 adds sorted `titles[]` per segment.
+- **Full-text search** on `/` and `/songs/` — substring on video title or `artist — song`; case- and diacritic-insensitive; URL param `q` (debounced); AND with other filters.
+- **URL-persisted table sort** — `sort` + `order` query params; shared column ids (`title` alias for video/song label column); survives navigation between `/` and `/songs/`.
+- **Chart Points explainer** — `?` popover on the Chart Points column header (formula + link to [`chart_points` FAQ](docs/faq/chart_points.md)).
+
+### Changed
+
+- Year composition chart — pointer cursor on ●; labeled calendar-year gap separators; unified **Missing** legend for unfilled and unknown-year slots; wider chart layout.
+
 ## [0.2.0] - 2026-06-21
 
 Filters, fire-themed songs, song YouTube links, and sort tie-breakers since 0.1.0.
@@ -25,7 +58,6 @@ Filters, fire-themed songs, song YouTube links, and sort tie-breakers since 0.1.
 ### Removed
 
 - `data/metadata/performance-category-overrides.json` and package-time category override loader; `performance_category` is set only at title parse.
-- Completed task specs for shipped 0.2.0 features (behavior in CHANGELOG, FAQ, and layer READMEs).
 
 ## [0.1.0] - 2026-06-18
 
@@ -50,9 +82,6 @@ Flexible period windows, ESC placement, and site query index. Replaces the fixed
 - Pipeline requires **Python 3.14** (`pipeline/.python-version`, CI test job on push/PR).
 - Removed `generated_at` from processed and packaged snapshot JSON (was pipeline run date on every file, causing noisy git diffs on no-op reruns). Site footer uses the selected period instead.
 
-### Removed
-
-- Completed task specs for shipped features (behavior in ADRs, FAQ, and `data/README.md`).
 
 ## [0.0.1] - 2026-06-15
 
@@ -96,7 +125,3 @@ First pre-release. Pipeline, packaged data layer, and site Slice 1.
 
 - Astro + React stats explorer: video grain, alltime variant, period scrubber, TanStack Table.
 - Prebuild copies packaged data; GitHub Actions deploy to GitHub Pages.
-
-**Docs**
-
-- Completed task specs removed; ADRs, FAQ, and `data/README.md` cover shipped behavior.

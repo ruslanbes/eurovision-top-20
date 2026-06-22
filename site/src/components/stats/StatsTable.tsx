@@ -20,6 +20,21 @@ import type {
   VideoStatsRow,
 } from "./types";
 import { statsRowKey } from "./types";
+import { HelpPopover } from "./help/HelpPopover";
+import type { HelpContentId } from "./help/helpContent";
+
+type ColumnMeta = {
+  help?: HelpContentId;
+  title?: string;
+};
+
+function columnMeta(columnDef: ColumnDef<StatsRow>): ColumnMeta {
+  const meta = columnDef.meta;
+  if (typeof meta === "object" && meta !== null) {
+    return meta as ColumnMeta;
+  }
+  return {};
+}
 
 type StatsTableProps = {
   grain: StatsGrain;
@@ -51,6 +66,7 @@ function sharedStatColumns<T extends StatsRow>(): ColumnDef<T>[] {
     {
       accessorKey: "chart_points",
       header: "Chart Points",
+      meta: { help: "chart_points" },
     },
     {
       accessorKey: "top1",
@@ -199,29 +215,28 @@ export function StatsTable({
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
                 const canSort = header.column.getCanSort();
+                const meta = columnMeta(header.column.columnDef);
+                const label = String(header.column.columnDef.header ?? header.column.id);
                 return (
                   <th
                     key={header.id}
                     className="px-3 py-2 text-left font-semibold text-zinc-700 dark:text-zinc-300"
                   >
                     {header.isPlaceholder ? null : canSort ? (
-                      <button
-                        type="button"
-                        className="inline-flex items-center gap-1 hover:text-zinc-900 dark:hover:text-zinc-100"
-                        title={
-                          typeof header.column.columnDef.meta === "object" &&
-                          header.column.columnDef.meta !== null &&
-                          "title" in header.column.columnDef.meta
-                            ? String(header.column.columnDef.meta.title)
-                            : undefined
-                        }
-                        onClick={header.column.getToggleSortingHandler()}
-                      >
-                        <SortLabel
-                          label={String(header.column.columnDef.header)}
-                          sorted={header.column.getIsSorted()}
-                        />
-                      </button>
+                      <div className="inline-flex items-center gap-0.5">
+                        <button
+                          type="button"
+                          className="inline-flex items-center gap-1 hover:text-zinc-900 dark:hover:text-zinc-100"
+                          title={meta.title}
+                          onClick={header.column.getToggleSortingHandler()}
+                        >
+                          <SortLabel
+                            label={label}
+                            sorted={header.column.getIsSorted()}
+                          />
+                        </button>
+                        {meta.help ? <HelpPopover contentId={meta.help} /> : null}
+                      </div>
                     ) : (
                       flexRender(
                         header.column.columnDef.header,

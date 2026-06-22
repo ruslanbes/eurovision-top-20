@@ -1,4 +1,5 @@
 import { escFinalPlaceSortKey } from "./escFinalPlace";
+import { songMetaLookupKey } from "./songMetaLookupKey";
 
 export type VideoHitEntry = {
   period: string;
@@ -254,7 +255,7 @@ export function querySongWindow(
   end: string,
 ): WindowSongRow[] {
   const metaByKey = new Map(
-    songMeta.rows.map((row) => [`${row.artist.toLowerCase()}\0${row.song.toLowerCase()}`, row]),
+    songMeta.rows.map((row) => [songMetaLookupKey(row.artist, row.song), row]),
   );
   const rows: WindowSongRow[] = [];
 
@@ -274,7 +275,7 @@ export function querySongWindow(
       continue;
     }
 
-    const meta = metaByKey.get(`${hit.artist.toLowerCase()}\0${hit.song.toLowerCase()}`);
+    const meta = metaByKey.get(songMetaLookupKey(hit.artist, hit.song));
     rows.push({
       artist: hit.artist,
       song: hit.song,

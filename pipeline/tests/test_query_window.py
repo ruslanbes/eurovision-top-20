@@ -13,7 +13,7 @@ from evtop20.query_index import (
     load_query_payloads,
     run_query_index,
 )
-from evtop20.song_stats import is_eligible_song_rollup_row
+from evtop20.song_stats import is_eligible_song_rollup_row, song_group_key
 from evtop20.window import (
     aggregate_song_hits,
     aggregate_video_hits,
@@ -167,15 +167,13 @@ def test_song_hits_match_video_rollup(
     grouped: dict[tuple[str, str], dict[str, int]] = {}
     tier_fields = ("top1", "top3", "top5", "top10", "top20")
     for row in eligible_videos:
-        key = (row["artist"].casefold(), row["song"].casefold())
+        key = song_group_key(row)
         if key not in grouped:
             grouped[key] = {field: 0 for field in tier_fields}
         for field in tier_fields:
             grouped[key][field] += row[field]
 
-    song_map = {
-        (row["artist"].casefold(), row["song"].casefold()): row for row in song_rows
-    }
+    song_map = {song_group_key(row): row for row in song_rows}
     assert set(grouped) == set(song_map)
     for key, tiers in grouped.items():
         for field in tier_fields:
