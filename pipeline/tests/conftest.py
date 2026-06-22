@@ -29,3 +29,15 @@ def write_episode_index_snapshot(
         encoding="utf-8",
     )
     return path
+
+
+def write_year_colors(repo_root: Path) -> Path:
+    from evtop20.paths import metadata_year_colors_path
+
+    source = (
+        Path(__file__).resolve().parents[2] / "data" / "metadata" / "year-colors.json"
+    )
+    destination = metadata_year_colors_path(repo_root)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(source, destination)
+    return destination

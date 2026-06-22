@@ -16,7 +16,7 @@ from evtop20.paths import (
     packaged_query_dir,
     processed_alltime_dir,
 )
-from conftest import write_episode_index_snapshot, write_vendored_esc_results
+from conftest import write_episode_index_snapshot, write_vendored_esc_results, write_year_colors
 
 
 def _processed_row(**overrides: object) -> dict:
@@ -108,15 +108,7 @@ def repo_root(tmp_path: Path) -> Path:
     schema_dst.parent.mkdir(parents=True)
     schema_dst.write_text(schema_src.read_text(encoding="utf-8"), encoding="utf-8")
     write_vendored_esc_results(tmp_path)
-    year_colors_src = (
-        Path(__file__).resolve().parents[2]
-        / "data"
-        / "metadata"
-        / "year-colors.json"
-    )
-    year_colors_dst = tmp_path / "data" / "metadata" / "year-colors.json"
-    year_colors_dst.parent.mkdir(parents=True, exist_ok=True)
-    year_colors_dst.write_text(year_colors_src.read_text(encoding="utf-8"), encoding="utf-8")
+    write_year_colors(tmp_path)
     return tmp_path
 
 
