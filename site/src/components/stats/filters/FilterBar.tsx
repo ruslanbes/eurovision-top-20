@@ -110,18 +110,17 @@ export function FilterBar<TRow extends FilterableRow>({
 
           if (def.type === "enum") {
             return (
-              <div key={def.id} className="min-w-[8rem]">
-                <EnumSelectFilter
-                  label={def.label}
-                  options={options}
-                  selected={selected}
-                  disabled={disabled}
-                  onSelect={(value) => onAdd(def.id, value)}
-                  parseValue={
-                    def.id === "year" ? (raw) => Number(raw) : (raw) => raw
-                  }
-                />
-              </div>
+              <EnumSelectFilter
+                key={def.id}
+                label={def.label}
+                options={options}
+                selected={selected}
+                disabled={disabled}
+                onSelect={(value) => onAdd(def.id, value)}
+                parseValue={
+                  def.id === "year" ? (raw) => Number(raw) : (raw) => raw
+                }
+              />
             );
           }
 
@@ -157,7 +156,7 @@ export function FilterBar<TRow extends FilterableRow>({
             );
           }
 
-          if (def.type === "ternary" && def.id === "esc") {
+          if (def.type === "enum-exclusive" && def.id === "esc") {
             return (
               <EscFilter
                 key={def.id}

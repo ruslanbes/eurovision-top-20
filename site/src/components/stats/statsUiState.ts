@@ -7,10 +7,16 @@ import {
 import { FIRE_FILTER_ON } from "./filters/fireFilter";
 import { SEARCH_FILTER_ID } from "./filters/searchFilterMatch";
 import type { FilterState, FilterValue } from "./filters/types";
+import {
+  parseUrlSort,
+  serializeUrlSort,
+  type TableSort,
+} from "./sortUrl";
 
 export type StatsUiState = {
   window: { begin: string; end: string };
   filters: FilterState;
+  sort: TableSort | null;
 };
 
 export const STATS_URL_PARAMS = [
@@ -19,8 +25,10 @@ export const STATS_URL_PARAMS = [
   "end",
   "esc",
   "fire",
+  "order",
   "performance_category",
   "q",
+  "sort",
   "year",
 ] as const;
 
@@ -47,11 +55,12 @@ const ESC_TO_URL: Record<EscMode, string> = {
 
 export function defaultStatsUiState(periods: readonly string[]): StatsUiState {
   if (periods.length === 0) {
-    return { window: { begin: "", end: "" }, filters: {} };
+    return { window: { begin: "", end: "" }, filters: {}, sort: null };
   }
   return {
     window: { begin: periods[0], end: periods[periods.length - 1] },
     filters: {},
+    sort: null,
   };
 }
 
@@ -213,7 +222,9 @@ export function parseStatsUiState(
     filters[SEARCH_FILTER_ID] = [searchQuery];
   }
 
-  return { window, filters };
+  const sort = parseUrlSort(params.get("sort"), params.get("order"));
+
+  return { window, filters, sort };
 }
 
 function appendCommaParam(
@@ -280,6 +291,12 @@ export function serializeStatsUiState(
     if (trimmed) {
       parts.push(`q=${encodeURIComponent(trimmed)}`);
     }
+  }
+
+  const { order, sort } = serializeUrlSort(state.sort);
+  if (sort && order) {
+    parts.push(`order=${order}`);
+    parts.push(`sort=${encodeURIComponent(sort)}`);
   }
 
   parts.sort();

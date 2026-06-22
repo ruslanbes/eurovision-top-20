@@ -103,7 +103,7 @@ function searchFilterDef(grain: StatsGrain): FilterDefinition<FilterableRow> {
 const SHARED_FILTER_DEFS: FilterDefinition<FilterableRow>[] = [
   {
     id: "esc",
-    type: "ternary",
+    type: "enum-exclusive",
     label: "ESC Place",
     showChips: false,
     getOptions: () => [

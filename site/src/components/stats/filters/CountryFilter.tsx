@@ -54,7 +54,7 @@ export function CountryFilter({
   };
 
   return (
-    <div ref={rootRef} className="relative min-w-[12rem]">
+    <div ref={rootRef} className="relative w-fit max-w-full">
       <label className="sr-only" htmlFor={`${listId}-input`}>
         Country
       </label>
@@ -68,7 +68,7 @@ export function CountryFilter({
         disabled={disabled || available.length === 0}
         placeholder="Country"
         value={query}
-        className="w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent disabled:cursor-not-allowed disabled:opacity-50"
+        className="min-w-[8ch] max-w-[12rem] [field-sizing:content] rounded-md border border-border bg-surface px-3 py-2 text-sm text-text placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent disabled:cursor-not-allowed disabled:opacity-50"
         onFocus={() => setOpen(true)}
         onChange={(event) => {
           setQuery(event.target.value);
@@ -89,7 +89,7 @@ export function CountryFilter({
         <ul
           id={`${listId}-listbox`}
           role="listbox"
-          className="absolute z-20 mt-1 max-h-56 w-full overflow-auto rounded-md border border-border bg-surface py-1 text-sm shadow-lg"
+          className="absolute left-0 z-20 mt-1 max-h-56 min-w-full w-max overflow-auto rounded-md border border-border bg-surface py-1 text-sm shadow-lg"
         >
           {filtered.map((option) => (
             <li key={String(option.value)} role="presentation">

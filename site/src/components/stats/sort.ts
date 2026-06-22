@@ -15,7 +15,7 @@ export const DEFAULT_SONG_SORT: SortingState = [
   { id: "top20", desc: true },
   { id: "esc_final_place", desc: false },
   { id: "year", desc: true },
-  { id: "song_label", desc: false },
+  { id: "title", desc: false },
 ];
 
 export const DEFAULT_VIDEO_SORT: SortingState = [
@@ -27,7 +27,7 @@ export const DEFAULT_VIDEO_SORT: SortingState = [
   { id: "top20", desc: true },
   { id: "esc_final_place", desc: false },
   { id: "year", desc: true },
-  { id: "video_title", desc: false },
+  { id: "title", desc: false },
 ];
 
 export function formatPeriodLabel(period: string): string {
@@ -63,14 +63,19 @@ function compareByColumn(
   columnId: string,
   grain: StatsGrain,
 ): number {
-  if (columnId === "song_label") {
-    const a = rowA as SongStatsRow;
-    const b = rowB as SongStatsRow;
-    const artistCmp = a.artist.localeCompare(b.artist);
-    if (artistCmp !== 0) {
-      return artistCmp;
+  if (columnId === "title") {
+    if (grain === "song") {
+      const a = rowA as SongStatsRow;
+      const b = rowB as SongStatsRow;
+      const artistCmp = a.artist.localeCompare(b.artist);
+      if (artistCmp !== 0) {
+        return artistCmp;
+      }
+      return a.song.localeCompare(b.song);
     }
-    return a.song.localeCompare(b.song);
+    const a = rowA as VideoStatsRow;
+    const b = rowB as VideoStatsRow;
+    return a.video_title.localeCompare(b.video_title);
   }
   if (columnId === "esc_final_place") {
     return (

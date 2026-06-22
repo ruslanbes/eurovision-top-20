@@ -38,7 +38,7 @@ describe("DEFAULT_VIDEO_SORT", () => {
       "top20",
       "esc_final_place",
       "year",
-      "video_title",
+      "title",
     ]);
   });
 });

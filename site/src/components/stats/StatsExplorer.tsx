@@ -6,10 +6,14 @@ import { applyFilters } from "./filters/applyFilters";
 import { filterDefsForGrain } from "./filters/defs";
 import { FilterBar } from "./filters/FilterBar";
 import { SEARCH_FILTER_ID } from "./filters/searchFilterMatch";
-import { hasActiveFilters } from "./filters/types";
+import { hasActiveFilters, type FilterValue } from "./filters/types";
 import { PeriodControls } from "./PeriodControls";
 import { querySongWindow, queryVideoWindow } from "./queryWindow";
-import { DEFAULT_SONG_SORT, DEFAULT_TABLE_SORT, DEFAULT_VIDEO_SORT, buildOriginalRanks } from "./sort";
+import { DEFAULT_SONG_SORT, DEFAULT_VIDEO_SORT, buildOriginalRanks } from "./sort";
+import {
+  sortingStateToTableSort,
+  tableSortToSortingState,
+} from "./sortUrl";
 import { StatsTable } from "./StatsTable";
 import type { SongStatsRow, StatsGrain, VideoStatsRow } from "./types";
 import { useStatsUiState } from "./useStatsUiState";
@@ -28,13 +32,13 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
 
   const [periods, setPeriods] = useState<string[]>([]);
   const [queryData, setQueryData] = useState<QueryData | null>(null);
-  const [sorting, setSorting] = useState<SortingState>(DEFAULT_TABLE_SORT);
-  const [userSorted, setUserSorted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const { window, filters, setWindow, updateFilters } = useStatsUiState(periods);
+  const { window, filters, sort, setWindow, updateFilters, setSort } = useStatsUiState(periods);
   const { begin, end } = window;
+  const sorting = useMemo(() => tableSortToSortingState(sort), [sort]);
+  const userSorted = sort !== null;
 
   useEffect(() => {
     let cancelled = false;
@@ -108,20 +112,20 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
 
   const handleSortingChange = useCallback<Dispatch<SetStateAction<SortingState>>>(
     (updater) => {
-      setUserSorted(true);
-      setSorting(updater);
+      const next = typeof updater === "function" ? updater(sorting) : updater;
+      setSort(sortingStateToTableSort(next));
     },
-    [],
+    [setSort, sorting],
   );
 
   const handleRangeChange = useCallback(
     (nextBegin: string, nextEnd: string) => {
       setWindow(nextBegin, nextEnd);
       if (!userSorted) {
-        setSorting(DEFAULT_TABLE_SORT);
+        setSort(null);
       }
     },
-    [setWindow, userSorted],
+    [setWindow, setSort, userSorted],
   );
 
   const handleAddFilter = useCallback((filterId: string, value: FilterValue) => {

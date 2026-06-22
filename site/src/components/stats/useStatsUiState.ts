@@ -6,6 +6,7 @@ import {
   serializeStatsUiState,
   type StatsUiState,
 } from "./statsUiState";
+import type { TableSort } from "./sortUrl";
 
 export const STATS_URL_CHANGE_EVENT = "stats-url-change";
 
@@ -27,6 +28,7 @@ function replaceUrlQuery(serialized: string) {
 export type StatsUiStatePatch = {
   window?: Partial<StatsUiState["window"]>;
   filters?: FilterState | ((prev: FilterState) => FilterState);
+  sort?: TableSort | null;
 };
 
 function mergeUiState(prev: StatsUiState, patch: StatsUiStatePatch): StatsUiState {
@@ -37,7 +39,8 @@ function mergeUiState(prev: StatsUiState, patch: StatsUiStatePatch): StatsUiStat
     typeof patch.filters === "function"
       ? patch.filters(prev.filters)
       : patch.filters ?? prev.filters;
-  return { window, filters };
+  const sort = patch.sort !== undefined ? patch.sort : prev.sort;
+  return { window, filters, sort };
 }
 
 export function useStatsUiState(periods: readonly string[]) {
@@ -111,10 +114,19 @@ export function useStatsUiState(periods: readonly string[]) {
     [patchUiState],
   );
 
+  const setSort = useCallback(
+    (sort: TableSort | null) => {
+      patchUiState({ sort });
+    },
+    [patchUiState],
+  );
+
   return {
     window: state.window,
     filters: state.filters,
+    sort: state.sort,
     setWindow,
     updateFilters,
+    setSort,
   };
 }

@@ -12,7 +12,7 @@ export type FilterState = Partial<Record<string, readonly FilterValue[]>>;
 export type FilterType =
   | "enum-searchable"
   | "enum"
-  | "ternary"
+  | "enum-exclusive"
   | "toggle-group"
   | "toggle"
   | "text"

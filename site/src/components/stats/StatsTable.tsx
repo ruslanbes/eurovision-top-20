@@ -118,7 +118,8 @@ export function StatsTable({
     if (grain === "video") {
       const videoColumns: ColumnDef<VideoStatsRow>[] = [
         {
-          accessorKey: "video_title",
+          id: "title",
+          accessorFn: (row) => row.video_title,
           header: "Video",
           cell: ({ row }) => {
             const title = row.original.video_title;
@@ -145,7 +146,7 @@ export function StatsTable({
 
     const songColumns: ColumnDef<SongStatsRow>[] = [
       {
-        id: "song_label",
+        id: "title",
         header: "Song",
         accessorFn: (row) => `${row.artist} — ${row.song}`,
         sortingFn: (rowA, rowB) => {
@@ -188,7 +189,7 @@ export function StatsTable({
     enableMultiSort: true,
   });
 
-  const titleColumnId = grain === "video" ? "video_title" : "song_label";
+  const titleColumnId = "title";
 
   return (
     <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">

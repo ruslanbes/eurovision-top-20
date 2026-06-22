@@ -25,6 +25,7 @@ describe("defaultStatsUiState", () => {
     expect(defaultStatsUiState(PERIODS)).toEqual({
       window: { begin: "2020-01", end: "2024-12" },
       filters: {},
+      sort: null,
     });
   });
 
@@ -32,6 +33,7 @@ describe("defaultStatsUiState", () => {
     expect(defaultStatsUiState([])).toEqual({
       window: { begin: "", end: "" },
       filters: {},
+      sort: null,
     });
   });
 });
@@ -70,6 +72,7 @@ describe("parseStatsUiState", () => {
         year: [2024, 2023],
         esc: [ESC_WINNERS],
       },
+      sort: null,
     });
   });
 
@@ -120,9 +123,32 @@ describe("parseStatsUiState", () => {
   });
 
   it("ignores unknown query keys", () => {
-    expect(parseStatsUiState("?sort=artist&country=Sweden", PERIODS).filters).toEqual({
-      country: ["Sweden"],
+    expect(parseStatsUiState("?sort=artist&country=Sweden", PERIODS)).toEqual({
+      window: defaultStatsUiState(PERIODS).window,
+      filters: {
+        country: ["Sweden"],
+      },
+      sort: null,
     });
+  });
+
+  it("parses sort and order when both are present", () => {
+    expect(parseStatsUiState("?sort=year&order=asc", PERIODS).sort).toEqual({
+      column: "year",
+      desc: false,
+    });
+  });
+
+  it("requires order when sort is set", () => {
+    expect(parseStatsUiState("?sort=year", PERIODS).sort).toBeNull();
+  });
+
+  it("serializes non-default sort with order", () => {
+    const state = {
+      ...defaultStatsUiState(PERIODS),
+      sort: { column: "title", desc: true },
+    };
+    expect(serializeStatsUiState(state, PERIODS)).toBe("order=desc&sort=title");
   });
 
   it("defaults missing end to corpus end when only begin is set", () => {
@@ -154,6 +180,7 @@ describe("serializeStatsUiState", () => {
           fire: ["1"],
           performance_category: ["final_live"],
         },
+        sort: null,
       },
       PERIODS,
     );
@@ -188,5 +215,19 @@ describe("navigation round-trip", () => {
     ]);
     expect(reparsed.filters.country).toEqual(["Sweden", "Norway"]);
     expect(reparsed.filters.year).toEqual([2024]);
+    expect(reparsed.sort).toBeNull();
+  });
+
+  it("preserves sort across navigation round-trip", () => {
+    const state = {
+      ...parseStatsUiState("?country=Sweden", PERIODS),
+      sort: { column: "country", desc: false },
+    };
+    const serialized = serializeStatsUiState(state, PERIODS);
+    expect(serialized).toBe("country=Sweden&order=asc&sort=country");
+    expect(parseStatsUiState(`?${serialized}`, PERIODS).sort).toEqual({
+      column: "country",
+      desc: false,
+    });
   });
 });

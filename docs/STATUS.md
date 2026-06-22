@@ -22,3 +22,5 @@ Finish site-theming chart tokens or pick next backlog item (`stats-inline-explai
 
 - **Released 0.2.0** — filters, fire toggle, song YouTube links, performance category, sort tie-breakers. See [`CHANGELOG.md`](../CHANGELOG.md).
 - **`ui-filter-fulltext` done** — shared search input on `/` and `/songs/`; substring match on video title or `artist — song`; case/diacritic-insensitive; URL `q` (debounced ~200 ms); AND with other filters. 45 site tests green.
+- Drafted **`ui-sort-url-persist`** — URL `sort`/`order`; shared column ids; `title` alias for video/song label; survives `/` ↔ `/songs/`.
+- **`ui-sort-url-persist` done** — `sort` + `order` in URL (`order` required); internal title column id `title`; 57 site tests green.

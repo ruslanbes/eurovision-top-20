@@ -72,3 +72,10 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - goal: Full-text search filter — substring on video title or artist — song; case- and diacritic-insensitive; one query; filter on typing
 - done_when: Per `docs/tasks/ui-filter-fulltext.md` — search input, match helper tests, URL `q`, AND with other filters, build green
 - notes: Client-side only; shared scope on `/` and `/songs/`
+
+## ui-sort-url-persist
+- status: done
+- parent: scaffold-project
+- goal: Persist table sort in URL and keep it across `/` and `/songs/` — shared column ids; `title` for video/song label column
+- done_when: Per `docs/tasks/ui-sort-url-persist.md` — `sort`/`order` params, grain mapping, nav round-trip, tests/build green
+- notes: Follow-up on filter URL persistence; `#` rank sort unchanged
