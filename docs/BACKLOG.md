@@ -66,6 +66,20 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - done_when: Per `docs/tasks/stats-inline-explainers.md` — trigger + popover pattern, `chart_points` explainer, a11y behavior, tests/build green
 - notes: Follow-up on shipped 0.2.0 filter/table UI; prefer click/tap popover over tooltip for multi-line content
 
+## insight-country-composition-bars
+- status: ready
+- parent: scaffold-project
+- goal: Insights v1 — per-episode stacked bar of country slot shares (fixed width = 20 slots); stable colors; gray missing rightmost
+- done_when: Per `docs/tasks/insight-country-composition-bars.md` — packaged JSON, reusable chart component, `/insights/` live, tests/build green
+- notes: Year dimension reuses same component; complementary to heatmap task
+
+## insight-presence-heatmap
+- status: ready
+- parent: scaffold-project
+- goal: Insights matrix heatmap — country or contest year × episode month; presence or new-entries metric; sequential theme scale
+- done_when: Per `docs/tasks/insight-presence-heatmap.md` — packaged matrices, PresenceHeatmap, Country + Year tabs, tests/build green
+- notes: Distinct videos per cell (not slots); either or both with composition bars
+
 ## ui-filter-fulltext
 - status: done
 - parent: scaffold-project
