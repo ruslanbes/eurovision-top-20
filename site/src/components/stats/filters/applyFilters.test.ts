@@ -174,4 +174,86 @@ describe("applyFilters", () => {
     expect(result).toHaveLength(1);
     expect(result[0]?.fire).toBe(true);
   });
+
+  it("filters song rows by diacritic-insensitive search", () => {
+    const songRows = [
+      {
+        artist: "Hadise",
+        song: "Düm Tek Tek",
+        country: "Turkey",
+        flag: "🇹🇷",
+        year: 2009,
+        esc_final_place: 4,
+        fire: false,
+      },
+      {
+        artist: "Loreen",
+        song: "Tattoo",
+        country: "Sweden",
+        flag: "🇸🇪",
+        year: 2023,
+        esc_final_place: 1,
+        fire: false,
+      },
+    ];
+    const state: FilterState = { search: ["dum tek tek"] };
+    const result = applyFilters(songRows, state, sharedDefs);
+    expect(result).toHaveLength(1);
+    expect(result[0]?.artist).toBe("Hadise");
+  });
+
+  it("ANDs search with other filters", () => {
+    const songRows = [
+      {
+        artist: "Hadise",
+        song: "Düm Tek Tek",
+        country: "Turkey",
+        flag: "🇹🇷",
+        year: 2009,
+        esc_final_place: 4,
+        fire: false,
+      },
+      {
+        artist: "Loreen",
+        song: "Tattoo",
+        country: "Sweden",
+        flag: "🇸🇪",
+        year: 2023,
+        esc_final_place: 1,
+        fire: false,
+      },
+    ];
+    const state: FilterState = { search: ["tattoo"], country: ["Sweden"] };
+    const result = applyFilters(songRows, state, sharedDefs);
+    expect(result).toHaveLength(1);
+    expect(result[0]?.artist).toBe("Loreen");
+  });
+
+  it("filters video rows by video_title search", () => {
+    const videoRows = [
+      {
+        video_title: "Eleni Foureira - Fuego (LIVE) | Cyprus 🇨🇾 | Grand Final | Eurovision 2018",
+        country: "Cyprus",
+        flag: "🇨🇾",
+        year: 2018,
+        esc_final_place: 2,
+        fire: true,
+        performance_category: "final_live",
+      },
+      {
+        video_title: "Loreen - Tattoo (LIVE) | Sweden 🇸🇪 | Grand Final | Eurovision 2023",
+        country: "Sweden",
+        flag: "🇸🇪",
+        year: 2023,
+        esc_final_place: 1,
+        fire: false,
+        performance_category: "final_live",
+      },
+    ];
+    const videoDefs = filterDefsForGrain("video");
+    const state: FilterState = { search: ["fuego"] };
+    const result = applyFilters(videoRows, state, videoDefs);
+    expect(result).toHaveLength(1);
+    expect(result[0]?.country).toBe("Cyprus");
+  });
 });

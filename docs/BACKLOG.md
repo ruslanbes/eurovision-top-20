@@ -65,3 +65,10 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - goal: Add reusable on-demand explainers in stats UI, starting with `chart_points`, without permanent layout clutter
 - done_when: Per `docs/tasks/stats-inline-explainers.md` — trigger + popover pattern, `chart_points` explainer, a11y behavior, tests/build green
 - notes: Follow-up on shipped 0.2.0 filter/table UI; prefer click/tap popover over tooltip for multi-line content
+
+## ui-filter-fulltext
+- status: done
+- parent: scaffold-project
+- goal: Full-text search filter — substring on video title or artist — song; case- and diacritic-insensitive; one query; filter on typing
+- done_when: Per `docs/tasks/ui-filter-fulltext.md` — search input, match helper tests, URL `q`, AND with other filters, build green
+- notes: Client-side only; shared scope on `/` and `/songs/`

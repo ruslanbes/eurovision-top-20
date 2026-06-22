@@ -1,4 +1,4 @@
-import type { StatsGrain } from "../types";
+import type { StatsGrain, StatsRow } from "../types";
 import {
   ESC_NON_ENTRIES,
   ESC_NOT_WINNERS,
@@ -6,6 +6,7 @@ import {
   escMatch,
 } from "./esc";
 import { FIRE_FILTER_ON } from "./fireFilter";
+import { SEARCH_FILTER_ID, searchFilterMatch } from "./searchFilterMatch";
 import type {
   FilterDefinition,
   FilterableRow,
@@ -38,6 +39,7 @@ export const FILTER_SCOPES: Record<string, FilterScope> = {
   esc: "shared",
   fire: "shared",
   performance_category: "video",
+  search: "shared",
   year: "shared",
 };
 
@@ -87,7 +89,31 @@ const FIRE_DEF: FilterDefinition<FilterableRow> = {
   match: (row, selected) => row.fire && selected.includes(FIRE_FILTER_ON),
 };
 
+function searchFilterDef(grain: StatsGrain): FilterDefinition<FilterableRow> {
+  return {
+    id: SEARCH_FILTER_ID,
+    type: "text",
+    label: "Search",
+    showChips: false,
+    getOptions: () => [],
+    match: (row, selected) => searchFilterMatch(row as StatsRow, grain, selected),
+  };
+}
+
 const SHARED_FILTER_DEFS: FilterDefinition<FilterableRow>[] = [
+  {
+    id: "esc",
+    type: "ternary",
+    label: "ESC Place",
+    showChips: false,
+    getOptions: () => [
+      { value: ESC_WINNERS, label: "Winners only" },
+      { value: ESC_NOT_WINNERS, label: "Not winners" },
+      { value: ESC_NON_ENTRIES, label: "Non-entries" },
+    ],
+    match: (row, selected) => escMatch(row.esc_final_place, selected),
+  },
+  FIRE_DEF,
   {
     id: "country",
     type: "enum-searchable",
@@ -104,19 +130,6 @@ const SHARED_FILTER_DEFS: FilterDefinition<FilterableRow>[] = [
     match: (row, selected) =>
       typeof row.year === "number" && (selected as number[]).includes(row.year),
   },
-  {
-    id: "esc",
-    type: "ternary",
-    label: "ESC",
-    showChips: false,
-    getOptions: () => [
-      { value: ESC_WINNERS, label: "Winners only" },
-      { value: ESC_NOT_WINNERS, label: "Not winners" },
-      { value: ESC_NON_ENTRIES, label: "Non-entries" },
-    ],
-    match: (row, selected) => escMatch(row.esc_final_place, selected),
-  },
-  FIRE_DEF,
 ];
 
 const PERFORMANCE_CATEGORY_DEF: FilterDefinition<VideoFilterableRow> = {
@@ -136,8 +149,12 @@ export const STATS_FILTER_DEFS = SHARED_FILTER_DEFS;
 export function filterDefsForGrain(
   grain: StatsGrain,
 ): FilterDefinition<FilterableRow>[] {
+  const trailing = SHARED_FILTER_DEFS.slice(-2);
+  const mid = SHARED_FILTER_DEFS.slice(0, -2);
+  const defs = [searchFilterDef(grain), ...mid];
   if (grain === "video") {
-    return [...SHARED_FILTER_DEFS, PERFORMANCE_CATEGORY_DEF];
+    defs.push(PERFORMANCE_CATEGORY_DEF);
   }
-  return SHARED_FILTER_DEFS;
+  defs.push(...trailing);
+  return defs;
 }

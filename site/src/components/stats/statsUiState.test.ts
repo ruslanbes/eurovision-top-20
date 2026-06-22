@@ -109,6 +109,16 @@ describe("parseStatsUiState", () => {
     });
   });
 
+  it("parses and serializes full-text search q", () => {
+    const state = parseStatsUiState("?q=dum+tek+tek", PERIODS);
+    expect(state.filters.search).toEqual(["dum tek tek"]);
+    expect(serializeStatsUiState(state, PERIODS)).toBe("q=dum%20tek%20tek");
+  });
+
+  it("ignores blank q values", () => {
+    expect(parseStatsUiState("?q=%20%20", PERIODS).filters).toEqual({});
+  });
+
   it("ignores unknown query keys", () => {
     expect(parseStatsUiState("?sort=artist&country=Sweden", PERIODS).filters).toEqual({
       country: ["Sweden"],

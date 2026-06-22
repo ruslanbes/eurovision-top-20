@@ -3,6 +3,8 @@ import { CountryFilter } from "./CountryFilter";
 import { EnumSelectFilter } from "./EnumSelectFilter";
 import { EscFilter } from "./EscFilter";
 import { FireToggleFilter } from "./FireToggleFilter";
+import { SearchFilter } from "./SearchFilter";
+import { SEARCH_FILTER_ID } from "./searchFilterMatch";
 import { FIRE_FILTER_ON } from "./fireFilter";
 import { ToggleGroupFilter } from "./ToggleGroupFilter";
 import type { EscMode } from "./esc";
@@ -24,6 +26,7 @@ type FilterBarProps<TRow extends FilterableRow> = {
   onAdd: (filterId: string, value: FilterValue) => void;
   onRemove: (filterId: string, value: FilterValue) => void;
   onSetExclusive: (filterId: string, value: FilterValue | null) => void;
+  onSearchChange: (value: string) => void;
   defs?: readonly FilterDefinition<TRow>[];
 };
 
@@ -42,6 +45,7 @@ export function FilterBar<TRow extends FilterableRow>({
   onAdd,
   onRemove,
   onSetExclusive,
+  onSearchChange,
   defs = filterDefsForGrain(grain) as FilterDefinition<TRow>[],
 }: FilterBarProps<TRow>) {
   const optionsByFilter = useMemo(() => {
@@ -79,6 +83,18 @@ export function FilterBar<TRow extends FilterableRow>({
         {defs.map((def) => {
           const selected = state[def.id] ?? [];
           const options = optionsByFilter.get(def.id) ?? [];
+
+          if (def.type === "text" && def.id === SEARCH_FILTER_ID) {
+            const query = state[SEARCH_FILTER_ID]?.[0];
+            return (
+              <SearchFilter
+                key={def.id}
+                value={typeof query === "string" ? query : ""}
+                disabled={disabled}
+                onChange={onSearchChange}
+              />
+            );
+          }
 
           if (def.type === "enum-searchable" && def.id === "country") {
             return (
@@ -146,6 +162,7 @@ export function FilterBar<TRow extends FilterableRow>({
               <EscFilter
                 key={def.id}
                 label={def.label}
+                options={options}
                 selected={selected}
                 disabled={disabled}
                 onChange={(value: EscMode | null) =>

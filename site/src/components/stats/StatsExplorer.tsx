@@ -5,7 +5,7 @@ import { loadQueryData, type QueryData } from "./data";
 import { applyFilters } from "./filters/applyFilters";
 import { filterDefsForGrain } from "./filters/defs";
 import { FilterBar } from "./filters/FilterBar";
-import type { FilterValue } from "./filters/types";
+import { SEARCH_FILTER_ID } from "./filters/searchFilterMatch";
 import { hasActiveFilters } from "./filters/types";
 import { PeriodControls } from "./PeriodControls";
 import { querySongWindow, queryVideoWindow } from "./queryWindow";
@@ -159,6 +159,19 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
     [updateFilters],
   );
 
+  const handleSearchChange = useCallback(
+    (value: string) => {
+      updateFilters((prev) => {
+        if (!value.trim()) {
+          const { [SEARCH_FILTER_ID]: _removed, ...rest } = prev;
+          return rest;
+        }
+        return { ...prev, [SEARCH_FILTER_ID]: [value] };
+      }, { debounceUrl: true });
+    },
+    [updateFilters],
+  );
+
   if (error && !queryData) {
     return (
       <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200">
@@ -190,6 +203,7 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
         onAdd={handleAddFilter}
         onRemove={handleRemoveFilter}
         onSetExclusive={handleSetExclusiveFilter}
+        onSearchChange={handleSearchChange}
       />
 
       <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-text-muted">

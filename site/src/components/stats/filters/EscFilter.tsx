@@ -1,73 +1,61 @@
+import { useId } from "react";
 import {
   ESC_NON_ENTRIES,
   ESC_NOT_WINNERS,
   ESC_WINNERS,
   type EscMode,
 } from "./esc";
-import type { FilterValue } from "./types";
+import type { FilterOption, FilterValue } from "./types";
 
 type EscFilterProps = {
   label: string;
+  options: FilterOption[];
   selected: readonly FilterValue[];
   disabled?: boolean;
   onChange: (value: EscMode | null) => void;
 };
 
-type Segment = {
-  value: EscMode | null;
-  label: string;
-};
-
-const SEGMENTS: Segment[] = [
-  { value: null, label: "All" },
-  { value: ESC_WINNERS, label: "Winners" },
-  { value: ESC_NOT_WINNERS, label: "Not winners" },
-  { value: ESC_NON_ENTRIES, label: "Non-entries" },
-];
+const ESC_VALUES = new Set<string>([
+  ESC_WINNERS,
+  ESC_NOT_WINNERS,
+  ESC_NON_ENTRIES,
+]);
 
 export function EscFilter({
   label,
+  options,
   selected,
   disabled = false,
   onChange,
 }: EscFilterProps) {
+  const selectId = useId();
   const active =
-    selected[0] === ESC_WINNERS ||
-    selected[0] === ESC_NOT_WINNERS ||
-    selected[0] === ESC_NON_ENTRIES
-      ? (selected[0] as EscMode)
-      : null;
+    selected[0] !== undefined && ESC_VALUES.has(String(selected[0]))
+      ? String(selected[0])
+      : "";
 
   return (
-    <div className="space-y-1">
-      <span className="text-xs font-medium text-text-muted">{label}</span>
-      <div
-        aria-label={label}
-        className="flex flex-wrap gap-0.5 rounded-lg border border-border bg-surface-elevated p-0.5"
-        role="radiogroup"
+    <div className="min-w-[8rem]">
+      <label className="sr-only" htmlFor={selectId}>
+        {label}
+      </label>
+      <select
+        id={selectId}
+        disabled={disabled}
+        value={active}
+        className="w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-text focus:outline-none focus:ring-2 focus:ring-accent disabled:cursor-not-allowed disabled:opacity-50"
+        onChange={(event) => {
+          const raw = event.target.value;
+          onChange(raw ? (raw as EscMode) : null);
+        }}
       >
-        {SEGMENTS.map((segment) => {
-          const isActive = active === segment.value;
-          return (
-            <button
-              key={segment.label}
-              type="button"
-              role="radio"
-              aria-checked={isActive}
-              disabled={disabled}
-              className={[
-                "rounded-md px-3 py-1.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
-                isActive
-                  ? "bg-surface text-text shadow-sm"
-                  : "text-text-muted hover:text-text",
-              ].join(" ")}
-              onClick={() => onChange(segment.value)}
-            >
-              {segment.label}
-            </button>
-          );
-        })}
-      </div>
+        <option value="">{label}</option>
+        {options.map((option) => (
+          <option key={String(option.value)} value={String(option.value)}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

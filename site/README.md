@@ -29,7 +29,7 @@ Videos (`/`) and songs (`/songs/`) each load the sparse query index (`video-hits
 
 Theme: **light**, **dark**, or **system** via the toggle (top-right). Choice persists in `localStorage`. Inline script in the layout avoids a flash of wrong theme on load.
 
-**Table filters:** client-side AND/OR filters on window-aggregated rows — country (searchable), year, ESC winner (segmented: All / Winners / Not winners), and on videos only Category (four toggle buttons). Filter and episode-range state persist in the **URL query string** and survive navigation between `/` and `/songs/` (shared filters + range synced; video-only Category preserved in the URL but hidden on the song page). Bare path = full corpus, no filters. Table sort stays local per page.
+**Table filters:** client-side AND/OR filters on window-aggregated rows — full-text search, country (searchable), year, ESC (dropdown: All / Winners / Not winners / Non-entries), and on videos only Category (four toggle buttons). Filter and episode-range state persist in the **URL query string** and survive navigation between `/` and `/songs/` (shared filters + range synced; video-only Category preserved in the URL but hidden on the song page). Bare path = full corpus, no filters. Table sort stays local per page.
 
 ### URL query params
 
@@ -41,9 +41,10 @@ Theme: **light**, **dark**, or **system** via the toggle (top-right). Choice per
 | `year` | `year=2024,2023` | Comma-separated contest years |
 | `esc` | `esc=winners` | `winners`, `not_winners`, or `non_entries`; omit = All |
 | `fire` | `fire=1` | 🔥 emoji toggle — fire-themed songs only; omit = off |
+| `q` | `q=dum+tek+tek` | Full-text search on titles (video title or `artist — song`); case- and diacritic-insensitive |
 | `performance_category` | `performance_category=final_live` | Video-only control; kept in URL on song page |
 
-Omitted params use defaults (full range, no filter). Filter edits update the URL via `history.replaceState` (range slider debounced ~200 ms).
+Omitted params use defaults (full range, no filter). Filter edits update the URL via `history.replaceState` (range slider and search debounced ~200 ms).
 
 ## Deploy
 

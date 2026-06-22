@@ -21,3 +21,4 @@ Finish site-theming chart tokens or pick next backlog item (`stats-inline-explai
 ## Session notes
 
 - **Released 0.2.0** — filters, fire toggle, song YouTube links, performance category, sort tie-breakers. See [`CHANGELOG.md`](../CHANGELOG.md).
+- **`ui-filter-fulltext` done** — shared search input on `/` and `/songs/`; substring match on video title or `artist — song`; case/diacritic-insensitive; URL `q` (debounced ~200 ms); AND with other filters. 45 site tests green.

@@ -15,6 +15,7 @@ export type FilterType =
   | "ternary"
   | "toggle-group"
   | "toggle"
+  | "text"
   | "range";
 
 export interface FilterDefinition<TRow> {
@@ -23,7 +24,7 @@ export interface FilterDefinition<TRow> {
   label: string;
   getOptions: (rows: TRow[]) => FilterOption[];
   match: (row: TRow, selected: readonly FilterValue[]) => boolean;
-  /** When false, UI is self-contained (e.g. segmented control) — no chips. */
+  /** When false, UI is self-contained (e.g. exclusive dropdown) — no chips. */
   showChips?: boolean;
 }
 
@@ -39,8 +40,19 @@ export type VideoFilterableRow = FilterableRow & {
   performance_category: string | null;
 };
 
+import { searchFilterActive } from "./normalizeSearchText";
+import { SEARCH_FILTER_ID } from "./searchFilterMatch";
+
 export function hasActiveFilters(state: FilterState): boolean {
-  return Object.values(state).some((values) => values && values.length > 0);
+  return Object.entries(state).some(([filterId, values]) => {
+    if (!values || values.length === 0) {
+      return false;
+    }
+    if (filterId === SEARCH_FILTER_ID) {
+      return searchFilterActive(values);
+    }
+    return true;
+  });
 }
 
 export function optionByValue(

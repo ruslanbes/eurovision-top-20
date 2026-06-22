@@ -102,8 +102,11 @@ export function useStatsUiState(periods: readonly string[]) {
   );
 
   const updateFilters = useCallback(
-    (updater: (prev: FilterState) => FilterState) => {
-      patchUiState({ filters: updater });
+    (
+      updater: (prev: FilterState) => FilterState,
+      options?: { debounceUrl?: boolean },
+    ) => {
+      patchUiState({ filters: updater }, { debounceUrl: options?.debounceUrl });
     },
     [patchUiState],
   );

@@ -5,6 +5,7 @@ import {
   type EscMode,
 } from "./filters/esc";
 import { FIRE_FILTER_ON } from "./filters/fireFilter";
+import { SEARCH_FILTER_ID } from "./filters/searchFilterMatch";
 import type { FilterState, FilterValue } from "./filters/types";
 
 export type StatsUiState = {
@@ -19,6 +20,7 @@ export const STATS_URL_PARAMS = [
   "esc",
   "fire",
   "performance_category",
+  "q",
   "year",
 ] as const;
 
@@ -206,6 +208,11 @@ export function parseStatsUiState(
     filters.fire = [FIRE_FILTER_ON];
   }
 
+  const searchQuery = params.get("q")?.trim();
+  if (searchQuery) {
+    filters[SEARCH_FILTER_ID] = [searchQuery];
+  }
+
   return { window, filters };
 }
 
@@ -265,6 +272,14 @@ export function serializeStatsUiState(
 
   if (state.filters.fire?.includes(FIRE_FILTER_ON)) {
     parts.push("fire=1");
+  }
+
+  const searchQuery = state.filters[SEARCH_FILTER_ID]?.[0];
+  if (typeof searchQuery === "string") {
+    const trimmed = searchQuery.trim();
+    if (trimmed) {
+      parts.push(`q=${encodeURIComponent(trimmed)}`);
+    }
   }
 
   parts.sort();
