@@ -6,7 +6,7 @@ Parent: `scaffold-project` (site)
 Depends on: raw episodes, partial stats snapshots, contest-year parsing (TBD)  
 Related: [ADR-002](../adr/adr-002-site-visualization.md) (stack), [`site/README.md`](../../site/README.md), [`video-insights.md`](video-insights.md) (April/May/legacy insights)
 
-**Status:** Idea / sketch only — no pipeline or site implementation yet.
+**Status:** Idea / sketch only — no pipeline or site implementation yet. Do later
 
 ---
 
