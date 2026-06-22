@@ -112,3 +112,19 @@ def esc_placement_overrides_path(repo_root: Path) -> Path:
 
 def fire_allowlist_path(repo_root: Path) -> Path:
     return metadata_dir(repo_root) / "fire.json"
+
+
+def metadata_year_colors_path(repo_root: Path) -> Path:
+    return metadata_dir(repo_root) / "year-colors.json"
+
+
+def packaged_insights_dir(repo_root: Path) -> Path:
+    return packaged_dir(repo_root) / "insights"
+
+
+def packaged_episode_year_composition_path(repo_root: Path) -> Path:
+    return packaged_insights_dir(repo_root) / "episode-year-composition.json"
+
+
+def packaged_year_colors_path(repo_root: Path) -> Path:
+    return packaged_insights_dir(repo_root) / "year-colors.json"

@@ -66,19 +66,33 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - done_when: Per `docs/tasks/stats-inline-explainers.md` — trigger + popover pattern, `chart_points` explainer, a11y behavior, tests/build green
 - notes: Follow-up on shipped 0.2.0 filter/table UI; prefer click/tap popover over tooltip for multi-line content
 
-## insight-country-composition-bars
-- status: ready
+## insight-year-bar-gradients
+- status: cancelled
 - parent: scaffold-project
-- goal: Insights v1 — per-episode stacked bar of country slot shares (fixed width = 20 slots); stable colors; gray missing rightmost
-- done_when: Per `docs/tasks/insight-country-composition-bars.md` — packaged JSON, reusable chart component, `/insights/` live, tests/build green
-- notes: Year dimension reuses same component; complementary to heatmap task
+- goal: Smooth horizontal color blends between contest-year segments in year composition rows; keep per-year tooltips
+- done_when: Per `docs/tasks/insight-year-bar-gradients.md` — gradient paint layer + overlay hit targets, tests/build green, no packaged JSON change
+- notes: Shipped then reverted — solid bars read clearer than gradient blends at any tested width
 
 ## insight-presence-heatmap
 - status: ready
 - parent: scaffold-project
 - goal: Insights matrix heatmap — country or contest year × episode month; presence or new-entries metric; sequential theme scale
 - done_when: Per `docs/tasks/insight-presence-heatmap.md` — packaged matrices, PresenceHeatmap, Country + Year tabs, tests/build green
-- notes: Distinct videos per cell (not slots); either or both with composition bars
+- notes: Distinct videos per cell (not slots); complements year composition bars
+
+## insight-episode-slot-schemes
+- status: backlog
+- parent: scaffold-project
+- goal: Epic — scheme-driven episode slot matrix (● rows); color/sort/glyph per metadata dimension; **Group** toggle + chart rank order; generalize year-composition PoC
+- done_when: Per `docs/tasks/insight-episode-slot-schemes.md` — packaged episode slots, SlotMatrixChart + registry, scheme UI, ≥2 new schemes, extensibility proven
+- notes: Start with `insight-episode-slots-data` spike; year scheme migrates into registry
+
+## insight-year-composition-tooltips
+- status: done
+- parent: scaffold-project
+- goal: Year composition per-● tooltips — episode month + one video title per slot (not multi-title segment tooltips)
+- done_when: Per `docs/tasks/insight-year-composition-tooltips.md` — packaged v2 `titles[]` per segment, per-slot hover, pipeline + site tests green
+- notes: Option A approved; per-● tooltips; missing/unknown ● → `Missing`; legend **Missing** only
 
 ## ui-filter-fulltext
 - status: done

@@ -48,6 +48,15 @@ Theme: **light**, **dark**, or **system** via the toggle (top-right). Choice per
 
 Omitted params use defaults (full range, no filter, `chart_points` desc). Filter edits update the URL via `history.replaceState` (range slider and search debounced ~200 ms; sort updates immediately).
 
+## Insights
+
+| Route | Data |
+|-------|------|
+| `/insights/` | Index of insight charts |
+| `/insights/year-composition/` | `packaged/insights/episode-year-composition.json` (v2: `segments[].titles[]` per slot), `year-colors.json` |
+
+`year-colors.json` is hand-maintained under `data/metadata/` (copied to packaged at `package`). Regenerate with `python3 pipeline/scripts/refresh_year_colors.py`.
+
 ## Deploy
 
 GitHub Pages at `https://ruslanbes.github.io/eurovision-top-20/` (`base: '/eurovision-top-20/'`).

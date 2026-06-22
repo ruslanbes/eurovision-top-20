@@ -1,0 +1,293 @@
+{
+  "colors": {
+    "1956": {
+      "hex": "#696c8c",
+      "source": "generated"
+    },
+    "1957": {
+      "hex": "#696c8c",
+      "source": "generated"
+    },
+    "1958": {
+      "hex": "#6a6d8c",
+      "source": "generated"
+    },
+    "1959": {
+      "hex": "#6a6d8c",
+      "source": "generated"
+    },
+    "1960": {
+      "hex": "#6a6d8d",
+      "source": "generated"
+    },
+    "1961": {
+      "hex": "#6a6d8d",
+      "source": "generated"
+    },
+    "1962": {
+      "hex": "#6a6d8d",
+      "source": "generated"
+    },
+    "1963": {
+      "hex": "#6b6e8d",
+      "source": "generated"
+    },
+    "1964": {
+      "hex": "#6b6e8e",
+      "source": "generated"
+    },
+    "1965": {
+      "hex": "#6b6e8e",
+      "source": "generated"
+    },
+    "1966": {
+      "hex": "#6b6e8e",
+      "source": "generated"
+    },
+    "1967": {
+      "hex": "#6c6e8f",
+      "source": "generated"
+    },
+    "1968": {
+      "hex": "#6c6f8f",
+      "source": "generated"
+    },
+    "1969": {
+      "hex": "#6c6f8f",
+      "source": "generated"
+    },
+    "1970": {
+      "hex": "#6c6f8f",
+      "source": "generated"
+    },
+    "1971": {
+      "hex": "#6c6f90",
+      "source": "generated"
+    },
+    "1972": {
+      "hex": "#6d6f90",
+      "source": "generated"
+    },
+    "1973": {
+      "hex": "#6d7090",
+      "source": "generated"
+    },
+    "1974": {
+      "hex": "#6d7090",
+      "source": "generated"
+    },
+    "1975": {
+      "hex": "#6d7091",
+      "source": "generated"
+    },
+    "1976": {
+      "hex": "#6d7091",
+      "source": "generated"
+    },
+    "1977": {
+      "hex": "#6e7191",
+      "source": "generated"
+    },
+    "1978": {
+      "hex": "#6e7191",
+      "source": "generated"
+    },
+    "1979": {
+      "hex": "#6e7192",
+      "source": "generated"
+    },
+    "1980": {
+      "hex": "#6e7192",
+      "source": "generated"
+    },
+    "1981": {
+      "hex": "#6f7292",
+      "source": "generated"
+    },
+    "1982": {
+      "hex": "#6f7292",
+      "source": "generated"
+    },
+    "1983": {
+      "hex": "#6f7292",
+      "source": "generated"
+    },
+    "1984": {
+      "hex": "#6f7293",
+      "source": "generated"
+    },
+    "1985": {
+      "hex": "#707393",
+      "source": "generated"
+    },
+    "1986": {
+      "hex": "#707393",
+      "source": "generated"
+    },
+    "1987": {
+      "hex": "#707393",
+      "source": "generated"
+    },
+    "1988": {
+      "hex": "#707393",
+      "source": "generated"
+    },
+    "1989": {
+      "hex": "#717494",
+      "source": "generated"
+    },
+    "1990": {
+      "hex": "#717494",
+      "source": "generated"
+    },
+    "1991": {
+      "hex": "#717494",
+      "source": "generated"
+    },
+    "1992": {
+      "hex": "#727494",
+      "source": "generated"
+    },
+    "1993": {
+      "hex": "#727595",
+      "source": "generated"
+    },
+    "1994": {
+      "hex": "#727595",
+      "source": "generated"
+    },
+    "1995": {
+      "hex": "#727595",
+      "source": "generated"
+    },
+    "1996": {
+      "hex": "#737695",
+      "source": "generated"
+    },
+    "1997": {
+      "hex": "#737695",
+      "source": "generated"
+    },
+    "1998": {
+      "hex": "#737696",
+      "source": "generated"
+    },
+    "1999": {
+      "hex": "#737696",
+      "source": "generated"
+    },
+    "2000": {
+      "hex": "#e6194b",
+      "source": "palette"
+    },
+    "2001": {
+      "hex": "#3cb44b",
+      "source": "palette"
+    },
+    "2002": {
+      "hex": "#ffe119",
+      "source": "palette"
+    },
+    "2003": {
+      "hex": "#4363d8",
+      "source": "palette"
+    },
+    "2004": {
+      "hex": "#f58231",
+      "source": "palette"
+    },
+    "2005": {
+      "hex": "#911eb4",
+      "source": "palette"
+    },
+    "2006": {
+      "hex": "#46f0f0",
+      "source": "palette"
+    },
+    "2007": {
+      "hex": "#f032e6",
+      "source": "palette"
+    },
+    "2008": {
+      "hex": "#bcf60c",
+      "source": "palette"
+    },
+    "2009": {
+      "hex": "#fabebe",
+      "source": "palette"
+    },
+    "2010": {
+      "hex": "#008080",
+      "source": "palette"
+    },
+    "2011": {
+      "hex": "#e6beff",
+      "source": "palette"
+    },
+    "2012": {
+      "hex": "#9a6324",
+      "source": "palette"
+    },
+    "2013": {
+      "hex": "#fffac8",
+      "source": "palette"
+    },
+    "2014": {
+      "hex": "#800000",
+      "source": "palette"
+    },
+    "2015": {
+      "hex": "#aaffc3",
+      "source": "palette"
+    },
+    "2016": {
+      "hex": "#808000",
+      "source": "palette"
+    },
+    "2017": {
+      "hex": "#ffd8b1",
+      "source": "palette"
+    },
+    "2018": {
+      "hex": "#000075",
+      "source": "palette"
+    },
+    "2019": {
+      "hex": "#7c4dff",
+      "source": "palette"
+    },
+    "2020": {
+      "hex": "#e6194b",
+      "source": "palette"
+    },
+    "2021": {
+      "hex": "#3cb44b",
+      "source": "palette"
+    },
+    "2022": {
+      "hex": "#ffe119",
+      "source": "palette"
+    },
+    "2023": {
+      "hex": "#4363d8",
+      "source": "palette"
+    },
+    "2024": {
+      "hex": "#f58231",
+      "source": "palette"
+    },
+    "2025": {
+      "hex": "#911eb4",
+      "source": "palette"
+    },
+    "2026": {
+      "hex": "#46f0f0",
+      "source": "palette"
+    },
+    "Unknown": {
+      "hex": "#71717a",
+      "source": "generated"
+    }
+  },
+  "version": 1
+}

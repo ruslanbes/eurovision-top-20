@@ -288,4 +288,4 @@ Optional later:
 
 - Filter rows (e.g. top 20 countries by `total_presence`)
 - Column clustering (reorder months for season alignment like contest-season-waves §B)
-- Share `country-colors.json` with bars for row label accents (heatmap cells stay sequential)
+- Share row color accents with composition charts where useful (heatmap cells stay sequential)

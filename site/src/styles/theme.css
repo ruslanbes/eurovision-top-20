@@ -14,6 +14,7 @@
   --chart-seq-low: 224 242 254;
   --chart-seq-high: 29 78 216;
   --chart-grid: 212 212 216;
+  --chart-missing: 212 212 216;
   --chart-highlight: 37 99 235;
 }
 
@@ -33,5 +34,6 @@
   --chart-seq-low: 30 58 138;
   --chart-seq-high: 191 219 254;
   --chart-grid: 63 63 70;
+  --chart-missing: 63 63 70;
   --chart-highlight: 96 165 250;
 }

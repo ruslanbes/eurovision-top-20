@@ -96,3 +96,11 @@ Hand-maintained allowlist of **fire-themed** Top-20 videos for the site **Fire s
 | `notes` | no | Editor comment; not emitted to packaged output |
 
 Sets packaged boolean **`fire`** on matching video rows and on song roll-ups when any member video is listed (~7 clips / 5 songs in the initial corpus).
+
+## Insight color maps
+
+Generated once via scripts; not run by `package`. `package` copies them to `data/packaged/insights/`.
+
+### `year-colors.json`
+
+Distinct hues per contest year (1956–2026) plus `Unknown`. Pre-2000 years share a muted base with tiny deltas; from 2000 onward, a fixed 20-color palette repeats every 20 years (`2000` ≡ `2020`). Edit `pipeline/scripts/generate_year_colors.py`, then `python3 pipeline/scripts/refresh_year_colors.py`. Hand-editable.

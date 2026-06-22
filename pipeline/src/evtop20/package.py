@@ -28,6 +28,7 @@ from evtop20.paths import (
     packaged_per_video_alltime_stats_path,
     processed_alltime_dir,
 )
+from evtop20.insights_composition import InsightsCompositionError, run_insights_composition
 from evtop20.query_index import run_query_index
 from evtop20.sort_keys import stats_row_sort_key
 from evtop20.song_stats import (
@@ -349,6 +350,10 @@ def run_package(repo_root: Path) -> str:
 
     message = _format_variant_summary(alltime)
     message += f"\n{query_result.summary}"
+    try:
+        message += f"\n{run_insights_composition(repo_root)}"
+    except InsightsCompositionError as exc:
+        raise PackageError(str(exc)) from exc
     for warning in warnings:
         message += f"\n{warning}"
     return message

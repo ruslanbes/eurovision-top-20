@@ -1,0 +1,13 @@
+---
+import { YearCompositionInsight } from "../../../components/insights/YearCompositionInsight";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  current="insights"
+  insightsSubpage="year-composition"
+  title="Year composition"
+  description="How each year's contestants represented in each Eurovision Top 20 episode."
+>
+  <YearCompositionInsight client:visible />
+</BaseLayout>
