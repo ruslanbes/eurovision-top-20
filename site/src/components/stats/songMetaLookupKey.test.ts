@@ -15,6 +15,12 @@ describe("songMetaLookupKey", () => {
       songMetaLookupKey("Alexander Rybak", "That\u2019s How You Write A Song"),
     );
   });
+
+  it("matches duet order and y vs and", () => {
+    expect(songMetaLookupKey("Amaia y Alfred", "Tu Canción")).toBe(
+      songMetaLookupKey("Alfred and Amaia", "Tu Canción"),
+    );
+  });
 });
 
 describe("querySongWindow", () => {

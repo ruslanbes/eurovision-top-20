@@ -3,6 +3,8 @@ from __future__ import annotations
 import re
 import unicodedata
 
+from evtop20.esc_results.normalize import normalize_join_artist
+
 _APOSTROPHE_TRANSLATION = str.maketrans(
     {
         "\u2018": "'",
@@ -29,8 +31,12 @@ def normalize_song_key_part(value: str) -> str:
     return re.sub(r"\s+", " ", unified).strip()
 
 
+def normalize_song_key_artist(value: str) -> str:
+    return normalize_join_artist(normalize_song_key_part(value))
+
+
 def normalized_song_key(artist: str, song: str) -> tuple[str, str]:
     return (
-        normalize_song_key_part(artist),
+        normalize_song_key_artist(artist),
         normalize_song_key_part(song),
     )

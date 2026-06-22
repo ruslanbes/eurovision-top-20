@@ -16,6 +16,20 @@
       "chart_points": 157
     },
     {
+      "artist": "Sunstroke Project",
+      "song": "Hey Mamma",
+      "flag": "🇲🇩",
+      "country": "Moldova",
+      "year": 2017,
+      "esc_final_place": 3,
+      "top1": 1,
+      "top3": 9,
+      "top5": 10,
+      "top10": 12,
+      "top20": 12,
+      "chart_points": 107
+    },
+    {
       "artist": "Jessy Matador",
       "song": "Allez Ola Olé",
       "flag": "🇫🇷",
@@ -28,20 +42,6 @@
       "top10": 8,
       "top20": 8,
       "chart_points": 106
-    },
-    {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma (LIVE feat. Epic Sax Guy)",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 1,
-      "top3": 6,
-      "top5": 7,
-      "top10": 8,
-      "top20": 8,
-      "chart_points": 74
     },
     {
       "artist": "Salvador Sobral",
@@ -168,20 +168,6 @@
       "top10": 5,
       "top20": 5,
       "chart_points": 39
-    },
-    {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 3,
-      "top5": 3,
-      "top10": 4,
-      "top20": 4,
-      "chart_points": 33
     },
     {
       "artist": "Jamala",

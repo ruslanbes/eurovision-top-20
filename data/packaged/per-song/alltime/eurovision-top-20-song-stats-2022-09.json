@@ -114,6 +114,20 @@
       "chart_points": 134
     },
     {
+      "artist": "Sunstroke Project",
+      "song": "Hey Mamma",
+      "flag": "🇲🇩",
+      "country": "Moldova",
+      "year": 2017,
+      "esc_final_place": 3,
+      "top1": 1,
+      "top3": 9,
+      "top5": 11,
+      "top10": 13,
+      "top20": 13,
+      "chart_points": 113
+    },
+    {
       "artist": "Jessy Matador",
       "song": "Allez Ola Olé",
       "flag": "🇫🇷",
@@ -198,20 +212,6 @@
       "chart_points": 81
     },
     {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma (LIVE feat. Epic Sax Guy)",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 1,
-      "top3": 6,
-      "top5": 8,
-      "top10": 9,
-      "top20": 9,
-      "chart_points": 80
-    },
-    {
       "artist": "Lordi",
       "song": "Hard Rock Hallelujah",
       "flag": "🇫🇮",
@@ -280,6 +280,20 @@
       "top10": 19,
       "top20": 19,
       "chart_points": 57
+    },
+    {
+      "artist": "Amaia y Alfred",
+      "song": "Tu Canción",
+      "flag": "🇪🇸",
+      "country": "Spain",
+      "year": 2018,
+      "esc_final_place": 23,
+      "top1": 1,
+      "top3": 3,
+      "top5": 4,
+      "top10": 9,
+      "top20": 9,
+      "chart_points": 56
     },
     {
       "artist": "Måns Zelmerlöw",
@@ -436,20 +450,6 @@
       "chart_points": 39
     },
     {
-      "artist": "Amaia y Alfred",
-      "song": "Tu Canción",
-      "flag": "🇪🇸",
-      "country": "Spain",
-      "year": 2018,
-      "esc_final_place": 23,
-      "top1": 0,
-      "top3": 2,
-      "top5": 3,
-      "top10": 7,
-      "top20": 7,
-      "chart_points": 38
-    },
-    {
       "artist": "Luca Hänni",
       "song": "She Got Me",
       "flag": "🇨🇭",
@@ -462,20 +462,6 @@
       "top10": 6,
       "top20": 6,
       "chart_points": 37
-    },
-    {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 3,
-      "top5": 3,
-      "top10": 4,
-      "top20": 4,
-      "chart_points": 33
     },
     {
       "artist": "Loreen",
@@ -576,6 +562,20 @@
       "chart_points": 26
     },
     {
+      "artist": "Subwoolfer",
+      "song": "Give That Wolf A Banana",
+      "flag": "🇳🇴",
+      "country": "Norway",
+      "year": 2022,
+      "esc_final_place": 10,
+      "top1": 0,
+      "top3": 0,
+      "top5": 1,
+      "top10": 6,
+      "top20": 9,
+      "chart_points": 24
+    },
+    {
       "artist": "Sam Ryder",
       "song": "SPACE MAN",
       "flag": "🇬🇧",
@@ -630,20 +630,6 @@
       "top10": 3,
       "top20": 3,
       "chart_points": 19
-    },
-    {
-      "artist": "Alfred and Amaia",
-      "song": "Tu Canción",
-      "flag": "🇪🇸",
-      "country": "Spain",
-      "year": 2018,
-      "esc_final_place": 23,
-      "top1": 1,
-      "top3": 1,
-      "top5": 1,
-      "top10": 2,
-      "top20": 2,
-      "chart_points": 18
     },
     {
       "artist": "Konstrakta",
@@ -786,20 +772,6 @@
       "chart_points": 13
     },
     {
-      "artist": "Subwoolfer",
-      "song": "Give That Wolf A Banana",
-      "flag": "🇳🇴",
-      "country": "Norway",
-      "year": 2022,
-      "esc_final_place": 10,
-      "top1": 0,
-      "top3": 0,
-      "top5": 1,
-      "top10": 3,
-      "top20": 4,
-      "chart_points": 13
-    },
-    {
       "artist": "Kristian Kostov",
       "song": "Beautiful Mess",
       "flag": "🇧🇬",
@@ -840,20 +812,6 @@
       "top10": 4,
       "top20": 4,
       "chart_points": 12
-    },
-    {
-      "artist": "Subwoolfer",
-      "song": "Give That Wolf A Banana (LIVE)",
-      "flag": "🇳🇴",
-      "country": "Norway",
-      "year": 2022,
-      "esc_final_place": 10,
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 3,
-      "top20": 5,
-      "chart_points": 11
     },
     {
       "artist": "Sergey Lazarev",

@@ -168,6 +168,45 @@ def test_parse_artist_song_strips_live_suffix() -> None:
     )
 
 
+def test_parse_artist_song_strips_live_feat_suffix_from_song() -> None:
+    assert parse_artist_song(
+        "Sunstroke Project - Hey Mamma (LIVE feat. Epic Sax Guy)"
+    ) == (
+        "Sunstroke Project",
+        "Hey Mamma",
+        True,
+    )
+
+
+def test_parse_artist_song_strips_repeated_live_suffixes() -> None:
+    assert parse_artist_song(
+        "Subwoolfer - Give That Wolf A Banana (LIVE) (LIVE)"
+    ) == (
+        "Subwoolfer",
+        "Give That Wolf A Banana",
+        True,
+    )
+
+
+@pytest.mark.parametrize(
+    ("title", "expected_song"),
+    [
+        (
+            "Sunstroke Project - Hey Mamma (LIVE feat. Epic Sax Guy) | Moldova 🇲🇩 | Grand Final | Eurovision 2017",
+            "Hey Mamma",
+        ),
+        (
+            "Subwoolfer - Give That Wolf A Banana (LIVE) (LIVE) | Norway 🇳🇴 | Grand Final | Eurovision 2022",
+            "Give That Wolf A Banana",
+        ),
+    ],
+)
+def test_parse_video_title_strips_live_suffixes_from_song(title: str, expected_song: str) -> None:
+    parsed = parse_video_title(title)
+    assert parsed is not None
+    assert parsed.song == expected_song
+
+
 def test_parse_country_flag_handles_flag_after_country() -> None:
     assert parse_country_flag("Estonia 🇪🇪") == ("Estonia", "🇪🇪")
 

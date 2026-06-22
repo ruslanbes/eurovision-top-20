@@ -28,3 +28,10 @@ def test_normalized_song_key_pairs_artist_and_song() -> None:
         "Aysel and Arash",
         "Always",
     )
+
+
+def test_normalized_song_key_treats_duet_order_and_y_as_equivalent() -> None:
+    assert normalized_song_key("Amaia y Alfred", "Tu Canción") == normalized_song_key(
+        "Alfred and Amaia",
+        "Tu Canción",
+    )

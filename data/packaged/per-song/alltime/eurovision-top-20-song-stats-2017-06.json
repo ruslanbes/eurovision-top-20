@@ -86,6 +86,20 @@
       "chart_points": 34
     },
     {
+      "artist": "Sunstroke Project",
+      "song": "Hey Mamma",
+      "flag": "🇲🇩",
+      "country": "Moldova",
+      "year": 2017,
+      "esc_final_place": 3,
+      "top1": 1,
+      "top3": 2,
+      "top5": 2,
+      "top10": 4,
+      "top20": 4,
+      "chart_points": 31
+    },
+    {
       "artist": "Jamala",
       "song": "1944",
       "flag": "🇺🇦",
@@ -170,20 +184,6 @@
       "chart_points": 19
     },
     {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma (LIVE feat. Epic Sax Guy)",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 1,
-      "top3": 1,
-      "top5": 1,
-      "top10": 2,
-      "top20": 2,
-      "chart_points": 18
-    },
-    {
       "artist": "Måns Zelmerlöw",
       "song": "Heroes",
       "flag": "🇸🇪",
@@ -196,20 +196,6 @@
       "top10": 6,
       "top20": 6,
       "chart_points": 18
-    },
-    {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 1,
-      "top5": 1,
-      "top10": 2,
-      "top20": 2,
-      "chart_points": 13
     },
     {
       "artist": "Levina",

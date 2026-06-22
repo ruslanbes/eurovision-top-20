@@ -184,6 +184,20 @@
       "chart_points": 142
     },
     {
+      "artist": "Sunstroke Project",
+      "song": "Hey Mamma",
+      "flag": "🇲🇩",
+      "country": "Moldova",
+      "year": 2017,
+      "esc_final_place": 3,
+      "top1": 1,
+      "top3": 9,
+      "top5": 11,
+      "top10": 13,
+      "top20": 13,
+      "chart_points": 113
+    },
+    {
       "artist": "Go_A",
       "song": "Shum",
       "flag": "🇺🇦",
@@ -308,20 +322,6 @@
       "top10": 21,
       "top20": 27,
       "chart_points": 84
-    },
-    {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma (LIVE feat. Epic Sax Guy)",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 1,
-      "top3": 6,
-      "top5": 8,
-      "top10": 9,
-      "top20": 9,
-      "chart_points": 80
     },
     {
       "artist": "Kalush Orchestra",
@@ -476,6 +476,20 @@
       "top10": 9,
       "top20": 9,
       "chart_points": 59
+    },
+    {
+      "artist": "Amaia y Alfred",
+      "song": "Tu Canción",
+      "flag": "🇪🇸",
+      "country": "Spain",
+      "year": 2018,
+      "esc_final_place": 23,
+      "top1": 1,
+      "top3": 3,
+      "top5": 4,
+      "top10": 9,
+      "top20": 9,
+      "chart_points": 56
     },
     {
       "artist": "Alessandra",
@@ -660,20 +674,6 @@
       "chart_points": 39
     },
     {
-      "artist": "Amaia y Alfred",
-      "song": "Tu Canción",
-      "flag": "🇪🇸",
-      "country": "Spain",
-      "year": 2018,
-      "esc_final_place": 23,
-      "top1": 0,
-      "top3": 2,
-      "top5": 3,
-      "top10": 7,
-      "top20": 7,
-      "chart_points": 38
-    },
-    {
       "artist": "Luca Hänni",
       "song": "She Got Me",
       "flag": "🇨🇭",
@@ -700,20 +700,6 @@
       "top10": 6,
       "top20": 10,
       "chart_points": 35
-    },
-    {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 3,
-      "top5": 3,
-      "top10": 4,
-      "top20": 4,
-      "chart_points": 33
     },
     {
       "artist": "Marina Satti",
@@ -842,6 +828,20 @@
       "chart_points": 27
     },
     {
+      "artist": "Subwoolfer",
+      "song": "Give That Wolf A Banana",
+      "flag": "🇳🇴",
+      "country": "Norway",
+      "year": 2022,
+      "esc_final_place": 10,
+      "top1": 0,
+      "top3": 0,
+      "top5": 1,
+      "top10": 6,
+      "top20": 12,
+      "chart_points": 27
+    },
+    {
       "artist": "Ronela Hajati",
       "song": "Sekret",
       "flag": "🇦🇱",
@@ -938,20 +938,6 @@
       "top10": 3,
       "top20": 3,
       "chart_points": 19
-    },
-    {
-      "artist": "Alfred and Amaia",
-      "song": "Tu Canción",
-      "flag": "🇪🇸",
-      "country": "Spain",
-      "year": 2018,
-      "esc_final_place": 23,
-      "top1": 1,
-      "top3": 1,
-      "top5": 1,
-      "top10": 2,
-      "top20": 2,
-      "chart_points": 18
     },
     {
       "artist": "Eden Golan",
@@ -1122,17 +1108,17 @@
       "chart_points": 14
     },
     {
-      "artist": "Subwoolfer",
-      "song": "Give That Wolf A Banana (LIVE)",
-      "flag": "🇳🇴",
-      "country": "Norway",
-      "year": 2022,
-      "esc_final_place": 10,
+      "artist": "Miriana Conte",
+      "song": "SERVING",
+      "flag": "🇲🇹",
+      "country": "Malta",
+      "year": 2025,
+      "esc_final_place": 17,
       "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 3,
-      "top20": 8,
+      "top3": 1,
+      "top5": 1,
+      "top10": 2,
+      "top20": 3,
       "chart_points": 14
     },
     {
@@ -1175,20 +1161,6 @@
       "top5": 1,
       "top10": 2,
       "top20": 2,
-      "chart_points": 13
-    },
-    {
-      "artist": "Subwoolfer",
-      "song": "Give That Wolf A Banana",
-      "flag": "🇳🇴",
-      "country": "Norway",
-      "year": 2022,
-      "esc_final_place": 10,
-      "top1": 0,
-      "top3": 0,
-      "top5": 1,
-      "top10": 3,
-      "top20": 4,
       "chart_points": 13
     },
     {
@@ -1260,20 +1232,6 @@
       "top10": 1,
       "top20": 10,
       "chart_points": 12
-    },
-    {
-      "artist": "Miriana Conte",
-      "song": "SERVING",
-      "flag": "🇲🇹",
-      "country": "Malta",
-      "year": 2025,
-      "esc_final_place": 17,
-      "top1": 0,
-      "top3": 1,
-      "top5": 1,
-      "top10": 1,
-      "top20": 2,
-      "chart_points": 11
     },
     {
       "artist": "Nebulossa",
@@ -2178,20 +2136,6 @@
       "country": "Lithuania",
       "year": 2025,
       "esc_final_place": 16,
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 1,
-      "chart_points": 3
-    },
-    {
-      "artist": "Kant",
-      "song": "Miriana Conte",
-      "flag": "🇲🇹",
-      "country": "Malta",
-      "year": 2025,
-      "esc_final_place": 17,
       "top1": 0,
       "top3": 0,
       "top5": 0,

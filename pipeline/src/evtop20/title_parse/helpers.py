@@ -16,6 +16,7 @@ YEAR_PATTERNS = (
     re.compile(r"(\d{4})\s+Eurovision(?: Song Contest)?", re.IGNORECASE),
 )
 LIVE_SUFFIX = re.compile(r"\s*\(LIVE\)\s*$", re.IGNORECASE)
+SONG_LIVE_PAREN_SUFFIX = re.compile(r"\s*\(LIVE\b[^)]*\)\s*$", re.IGNORECASE)
 PAREN_COUNTRY_PATTERN = re.compile(r"^(.+?)\s*\(([^)]+)\)\s*(.*)$", re.DOTALL)
 LIVE_SEGMENT = re.compile(r"^LIVE$", re.IGNORECASE)
 
@@ -43,6 +44,18 @@ def strip_year_phrases(text: str) -> str:
     return cleaned.replace("#", "").strip()
 
 
+def _strip_song_live_paren_suffixes(song: str) -> tuple[str, bool]:
+    live = False
+    cleaned = song.strip()
+    while True:
+        match = SONG_LIVE_PAREN_SUFFIX.search(cleaned)
+        if match is None:
+            break
+        live = True
+        cleaned = cleaned[: match.start()].strip()
+    return cleaned, live
+
+
 def parse_artist_song(segment: str) -> tuple[str, str, bool] | None:
     segment = segment.strip()
     live = bool(LIVE_SUFFIX.search(segment))
@@ -55,8 +68,12 @@ def parse_artist_song(segment: str) -> tuple[str, str, bool] | None:
         artist, song = segment.split(separator, 1)
         artist = artist.strip()
         song = song.strip()
-        if artist and song:
-            return artist, song, live
+        if not artist or not song:
+            continue
+        stripped_song, song_live = _strip_song_live_paren_suffixes(song)
+        if not stripped_song:
+            continue
+        return artist, stripped_song, live or song_live
     return None
 
 

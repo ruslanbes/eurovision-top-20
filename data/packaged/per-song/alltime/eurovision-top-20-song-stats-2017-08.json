@@ -16,6 +16,20 @@
       "chart_points": 106
     },
     {
+      "artist": "Sunstroke Project",
+      "song": "Hey Mamma",
+      "flag": "🇲🇩",
+      "country": "Moldova",
+      "year": 2017,
+      "esc_final_place": 3,
+      "top1": 1,
+      "top3": 5,
+      "top5": 5,
+      "top10": 7,
+      "top20": 7,
+      "chart_points": 61
+    },
+    {
       "artist": "Jessy Matador",
       "song": "Allez Ola Olé",
       "flag": "🇫🇷",
@@ -114,20 +128,6 @@
       "chart_points": 39
     },
     {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma (LIVE feat. Epic Sax Guy)",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 1,
-      "top3": 3,
-      "top5": 3,
-      "top10": 4,
-      "top20": 4,
-      "chart_points": 38
-    },
-    {
       "artist": "Lordi",
       "song": "Hard Rock Hallelujah",
       "flag": "🇫🇮",
@@ -182,20 +182,6 @@
       "top10": 8,
       "top20": 8,
       "chart_points": 24
-    },
-    {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 2,
-      "top5": 2,
-      "top10": 3,
-      "top20": 3,
-      "chart_points": 23
     },
     {
       "artist": "Dami Im",

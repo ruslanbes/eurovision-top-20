@@ -175,7 +175,7 @@ def test_joiner_matches_stage_name_via_song_fallback() -> None:
     )
 
 
-def test_joiner_country_year_override_maps_malta_mesc() -> None:
+def test_joiner_automatic_join_malta_mesc_with_manual_metadata() -> None:
     joiner = EscResultsJoiner(
         last_completed_contest_year=2025,
         entries=[
@@ -187,17 +187,45 @@ def test_joiner_country_year_override_maps_malta_mesc() -> None:
                 "song": "Serving",
             },
         ],
-        join_overrides={"VLCV0GV4g9A": (2025, "MT")},
     )
     assert (
         joiner.lookup(
             {
                 "year": 2025,
                 "country": "Malta",
-                "artist": "Kant",
-                "song": "Miriana Conte",
+                "artist": "Miriana Conte",
+                "song": "SERVING",
                 "video_title": "Kant - Miriana Conte | MESC 2025",
                 "youtube_video_id": "VLCV0GV4g9A",
+            }
+        )
+        == 17
+    )
+
+
+def test_joiner_country_year_override_when_metadata_cannot_match_vendor() -> None:
+    joiner = EscResultsJoiner(
+        last_completed_contest_year=2025,
+        entries=[
+            {
+                "artist": "Miriana Conte",
+                "contest_year": 2025,
+                "country_code": "MT",
+                "esc_final_place": 17,
+                "song": "Serving",
+            },
+        ],
+        join_overrides={"xxxxxxxxxxx": (2025, "MT")},
+    )
+    assert (
+        joiner.lookup(
+            {
+                "year": 2025,
+                "country": "Malta",
+                "artist": "Wrong Artist",
+                "song": "Wrong Song",
+                "video_title": "Unmatchable title",
+                "youtube_video_id": "xxxxxxxxxxx",
             }
         )
         == 17
@@ -395,6 +423,8 @@ def test_package_writes_esc_final_place() -> None:
     kant_mesc = next(
         row for row in rows if row.get("youtube_video_id") == "VLCV0GV4g9A"
     )
+    assert kant_mesc["artist"] == "Miriana Conte"
+    assert kant_mesc["song"] == "SERVING"
     assert kant_mesc["esc_final_place"] == 17
 
     samoylova = next(

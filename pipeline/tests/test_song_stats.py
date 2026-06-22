@@ -13,9 +13,11 @@ from evtop20.paths import (
 )
 from evtop20.query_index import build_song_hits, build_song_meta
 from evtop20.song_stats import (
+    is_competing_esc_entry,
     is_eligible_song_rollup_row,
     package_song_stats_payload,
     song_group_key,
+    validate_song_stats_payload,
     video_stats_basename_to_song_stats_basename,
 )
 from conftest import (
@@ -299,6 +301,80 @@ def test_package_song_stats_empty_rows_when_all_ineligible() -> None:
     assert payload["rows"] == []
     assert any("excluded from song roll-up" in warning for warning in warnings)
     assert any("produced no rows" in warning for warning in warnings)
+
+
+def test_is_competing_esc_entry_excludes_world() -> None:
+    assert is_competing_esc_entry(
+        {"country": "Spain", "year": 2018, "esc_final_place": 23}
+    )
+    assert not is_competing_esc_entry(
+        {"country": "World", "year": 2020, "esc_final_place": "NON_ENTRY"}
+    )
+    assert is_competing_esc_entry(
+        {"country": "Slovakia", "year": 2010, "esc_final_place": "DNQ"}
+    )
+    assert is_competing_esc_entry(
+        {"country": "Netherlands", "year": 2024, "esc_final_place": "DQ"}
+    )
+    assert not is_competing_esc_entry(
+        {"country": "Malta", "year": 2025, "esc_final_place": "NON_ENTRY"}
+    )
+    assert is_competing_esc_entry(
+        {"country": "Spain", "year": 2018, "esc_final_place": None}
+    )
+
+
+def test_validate_song_stats_rejects_duplicate_competing_country_year() -> None:
+    issues = validate_song_stats_payload(
+        {
+            "rows": [
+                {
+                    "artist": "Amaia y Alfred",
+                    "song": "Tu Canción",
+                    "country": "Spain",
+                    "year": 2018,
+                    "esc_final_place": 23,
+                },
+                {
+                    "artist": "Alfred and Amaia",
+                    "song": "Tu Canción",
+                    "country": "Spain",
+                    "year": 2018,
+                    "esc_final_place": 23,
+                },
+            ]
+        }
+    )
+
+    assert len(issues) == 1
+    assert "2018/Spain" in issues[0]
+    assert "Amaia y Alfred" in issues[0]
+    assert "Alfred and Amaia" in issues[0]
+
+
+def test_validate_song_stats_allows_world_non_entry_duplicates() -> None:
+    issues = validate_song_stats_payload(
+        {
+            "rows": [
+                {
+                    "artist": "Marija Šerifović",
+                    "song": "Molitva",
+                    "country": "World",
+                    "year": 2020,
+                    "esc_final_place": "NON_ENTRY",
+                },
+                {
+                    "artist": "Various Artists",
+                    "song": "Love Shine A Light",
+                    "country": "World",
+                    "year": 2020,
+                    "esc_final_place": "NON_ENTRY",
+                },
+            ]
+        }
+    )
+
+    assert issues == []
 
 
 @pytest.fixture

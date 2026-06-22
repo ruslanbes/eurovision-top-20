@@ -16,6 +16,20 @@
       "chart_points": 100
     },
     {
+      "artist": "Sunstroke Project",
+      "song": "Hey Mamma",
+      "flag": "🇲🇩",
+      "country": "Moldova",
+      "year": 2017,
+      "esc_final_place": 3,
+      "top1": 1,
+      "top3": 4,
+      "top5": 4,
+      "top10": 6,
+      "top20": 6,
+      "chart_points": 51
+    },
+    {
       "artist": "Kristina",
       "song": "Horehronie",
       "flag": "🇸🇰",
@@ -140,34 +154,6 @@
       "top10": 6,
       "top20": 6,
       "chart_points": 31
-    },
-    {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma (LIVE feat. Epic Sax Guy)",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 1,
-      "top3": 2,
-      "top5": 2,
-      "top10": 3,
-      "top20": 3,
-      "chart_points": 28
-    },
-    {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 2,
-      "top5": 2,
-      "top10": 3,
-      "top20": 3,
-      "chart_points": 23
     },
     {
       "artist": "Hadise",

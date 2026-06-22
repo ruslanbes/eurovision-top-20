@@ -772,24 +772,6 @@
       "song": "Choke Me"
     },
     {
-      "artist": "Alfred and Amaia",
-      "entries": [
-        {
-          "period": "2018-01",
-          "ranks": [
-            9
-          ]
-        },
-        {
-          "period": "2018-02",
-          "ranks": [
-            1
-          ]
-        }
-      ],
-      "song": "Tu Canción"
-    },
-    {
       "artist": "ALICJA",
       "entries": [
         {
@@ -1002,6 +984,18 @@
     {
       "artist": "Amaia y Alfred",
       "entries": [
+        {
+          "period": "2018-01",
+          "ranks": [
+            9
+          ]
+        },
+        {
+          "period": "2018-02",
+          "ranks": [
+            1
+          ]
+        },
         {
           "period": "2018-03",
           "ranks": [
@@ -4636,18 +4630,6 @@
       "song": "Stefania"
     },
     {
-      "artist": "Kant",
-      "entries": [
-        {
-          "period": "2025-02",
-          "ranks": [
-            7
-          ]
-        }
-      ],
-      "song": "Miriana Conte"
-    },
-    {
       "artist": "Katarsis",
       "entries": [
         {
@@ -7466,6 +7448,12 @@
       "artist": "Miriana Conte",
       "entries": [
         {
+          "period": "2025-02",
+          "ranks": [
+            7
+          ]
+        },
+        {
           "period": "2025-03",
           "ranks": [
             17
@@ -9637,18 +9625,6 @@
           ]
         },
         {
-          "period": "2022-06",
-          "ranks": [
-            16
-          ]
-        }
-      ],
-      "song": "Give That Wolf A Banana"
-    },
-    {
-      "artist": "Subwoolfer",
-      "entries": [
-        {
           "period": "2022-05",
           "ranks": [
             8
@@ -9657,7 +9633,8 @@
         {
           "period": "2022-06",
           "ranks": [
-            6
+            6,
+            16
           ]
         },
         {
@@ -9697,7 +9674,7 @@
           ]
         }
       ],
-      "song": "Give That Wolf A Banana (LIVE)"
+      "song": "Give That Wolf A Banana"
     },
     {
       "artist": "Sudden Lights",
@@ -9717,48 +9694,21 @@
         {
           "period": "2017-05",
           "ranks": [
-            6
-          ]
-        },
-        {
-          "period": "2017-06",
-          "ranks": [
-            2
-          ]
-        },
-        {
-          "period": "2017-07",
-          "ranks": [
-            2
-          ]
-        },
-        {
-          "period": "2017-10",
-          "ranks": [
-            2
-          ]
-        }
-      ],
-      "song": "Hey Mamma"
-    },
-    {
-      "artist": "Sunstroke Project",
-      "entries": [
-        {
-          "period": "2017-05",
-          "ranks": [
+            6,
             8
           ]
         },
         {
           "period": "2017-06",
           "ranks": [
-            1
+            1,
+            2
           ]
         },
         {
           "period": "2017-07",
           "ranks": [
+            2,
             3
           ]
         },
@@ -9770,6 +9720,12 @@
         },
         {
           "period": "2017-09",
+          "ranks": [
+            2
+          ]
+        },
+        {
+          "period": "2017-10",
           "ranks": [
             2
           ]
@@ -9799,7 +9755,7 @@
           ]
         }
       ],
-      "song": "Hey Mamma (LIVE feat. Epic Sax Guy)"
+      "song": "Hey Mamma"
     },
     {
       "artist": "Sunstroke Project & Olia Tira",

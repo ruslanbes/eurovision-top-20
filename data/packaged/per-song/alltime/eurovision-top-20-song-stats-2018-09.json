@@ -16,6 +16,20 @@
       "chart_points": 182
     },
     {
+      "artist": "Sunstroke Project",
+      "song": "Hey Mamma",
+      "flag": "🇲🇩",
+      "country": "Moldova",
+      "year": 2017,
+      "esc_final_place": 3,
+      "top1": 1,
+      "top3": 9,
+      "top5": 11,
+      "top10": 13,
+      "top20": 13,
+      "chart_points": 113
+    },
+    {
       "artist": "Jessy Matador",
       "song": "Allez Ola Olé",
       "flag": "🇫🇷",
@@ -58,20 +72,6 @@
       "chart_points": 90
     },
     {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma (LIVE feat. Epic Sax Guy)",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 1,
-      "top3": 6,
-      "top5": 8,
-      "top10": 9,
-      "top20": 9,
-      "chart_points": 80
-    },
-    {
       "artist": "Salvador Sobral",
       "song": "Amar Pelos Dois",
       "flag": "🇵🇹",
@@ -112,6 +112,20 @@
       "top10": 15,
       "top20": 15,
       "chart_points": 60
+    },
+    {
+      "artist": "Amaia y Alfred",
+      "song": "Tu Canción",
+      "flag": "🇪🇸",
+      "country": "Spain",
+      "year": 2018,
+      "esc_final_place": 23,
+      "top1": 1,
+      "top3": 3,
+      "top5": 4,
+      "top10": 9,
+      "top20": 9,
+      "chart_points": 56
     },
     {
       "artist": "Måns Zelmerlöw",
@@ -212,34 +226,6 @@
       "chart_points": 39
     },
     {
-      "artist": "Amaia y Alfred",
-      "song": "Tu Canción",
-      "flag": "🇪🇸",
-      "country": "Spain",
-      "year": 2018,
-      "esc_final_place": 23,
-      "top1": 0,
-      "top3": 2,
-      "top5": 3,
-      "top10": 7,
-      "top20": 7,
-      "chart_points": 38
-    },
-    {
-      "artist": "Sunstroke Project",
-      "song": "Hey Mamma",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2017,
-      "esc_final_place": 3,
-      "top1": 0,
-      "top3": 3,
-      "top5": 3,
-      "top10": 4,
-      "top20": 4,
-      "chart_points": 33
-    },
-    {
       "artist": "Jamala",
       "song": "1944",
       "flag": "🇺🇦",
@@ -294,20 +280,6 @@
       "top10": 3,
       "top20": 3,
       "chart_points": 19
-    },
-    {
-      "artist": "Alfred and Amaia",
-      "song": "Tu Canción",
-      "flag": "🇪🇸",
-      "country": "Spain",
-      "year": 2018,
-      "esc_final_place": 23,
-      "top1": 1,
-      "top3": 1,
-      "top5": 1,
-      "top10": 2,
-      "top20": 2,
-      "chart_points": 18
     },
     {
       "artist": "Lena",

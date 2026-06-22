@@ -1,11 +1,4 @@
 {
   "schema_version": 1,
-  "entries": [
-    {
-      "contest_year": 2025,
-      "country_code": "MT",
-      "notes": "MESC 2025 NF title is 'Kant - Miriana Conte'; manual metadata keeps producer/artist split for display.",
-      "youtube_video_id": "VLCV0GV4g9A"
-    }
-  ]
+  "entries": []
 }

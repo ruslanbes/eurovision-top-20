@@ -69,6 +69,7 @@ Edit `[CHANGELOG.md](../CHANGELOG.md)`:
 2. Add a new dated section, e.g. `## [0.2.0] - YYYY-MM-DD`.
 3. Move items from `[Unreleased]` into that section.
 4. Leave `[Unreleased]` empty (or with a placeholder comment) for the next cycle.
+5. Do NOT add "Completed task specs" line to the "Removed" section in CHANGELOG.md.
 
 Write for **readers of the repo and release notes**, not for internal task IDs. Link ADRs or FAQ where helpful.
 

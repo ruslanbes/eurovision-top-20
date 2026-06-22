@@ -33,6 +33,7 @@ from evtop20.query_index import run_query_index
 from evtop20.sort_keys import stats_row_sort_key
 from evtop20.song_stats import (
     package_song_stats_payload,
+    validate_song_stats_payload,
     video_stats_basename_to_song_stats_basename,
 )
 from evtop20.title_parse import parse_video_title
@@ -234,6 +235,14 @@ def _package_variant(
             packaged_payload,
             source=song_source,
         )
+        validation_issues = validate_song_stats_payload(
+            song_payload,
+            context=source_path.name,
+        )
+        if validation_issues:
+            detail = "\n".join(f"  {issue}" for issue in validation_issues)
+            msg = f"song stats validation failed:\n{detail}"
+            raise PackageError(msg)
         song_basename = video_stats_basename_to_song_stats_basename(source_path.name)
         write_episode_file(song_stats_path(repo_root, song_basename), song_payload)
 

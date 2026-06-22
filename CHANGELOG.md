@@ -6,19 +6,23 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [0.3.1] - 2026-06-22
 
-Song roll-up key normalization and song-table YouTube link fix since 0.3.0.
+Song roll-up fixes, duplicate-entry guards, and packaged data cleanup since 0.3.0.
 
 ### Added
 
 - **`evtop20 audit-song-keys`** — report on near-duplicate `(artist, song)` pairs on latest packaged alltime video snapshot (markdown or JSON). See [`commands.md`](docs/faq/commands.md).
+- **Song-stats validation in `package`** — hard error when two song rows share the same `(year, country)` unless `esc_final_place` is `NON_ENTRY` or country is `World`.
 
 ### Changed
 
-- **Song roll-up keys** — normalize `(artist, song)` before merge (casefold, apostrophe map, `&`/`and`, punctuation strip); merges 4 near-duplicate video pairs on latest alltime (226→222 song rows). Display strings unchanged (canonical member). `song_key_normalize.py`; `song-hits` labels aligned with `song-meta`.
+- **Song roll-up keys** — normalize `(artist, song)` before merge (casefold, apostrophe map, `&`/`and`, punctuation strip; duet artist order via `normalize_join_artist`). Display strings unchanged (canonical member). `song_key_normalize.py`; `song-hits` labels aligned with `song-meta`.
+- **Title parse** — strip `(LIVE…)` performance suffixes from the song field after artist/song split (e.g. `Hey Mamma (LIVE feat. …)` → `Hey Mamma`).
+- **Repackaged alltime song stats** — **218** song rows (226 before normalization; 222 after first pass; further merges from LIVE suffix parse, Malta/Serving manual metadata, and duet artist keys).
 
 ### Fixed
 
-- **Song table YouTube links** after key normalization — site joins `song-meta` with the same normalized key as the pipeline (`songMetaLookupKey.ts`).
+- **Song table YouTube links** after key normalization — site joins `song-meta` with the same normalized key as the pipeline (`songMetaLookupKey.ts`, including duet artist normalization).
+- **Duplicate ESC entries in song roll-up** — merged split rows for Moldova 2017 Hey Mamma (LIVE suffix), Malta 2025 Serving/MESC (`manual-video-metadata.json`; dropped `esc-join-overrides` entry), Spain 2018 Amaia y Alfred / Alfred and Amaia (duet artist key).
 
 
 ## [0.3.0] - 2026-06-22

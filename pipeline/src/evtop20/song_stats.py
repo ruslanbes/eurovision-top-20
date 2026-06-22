@@ -6,6 +6,7 @@ from evtop20.aggregate import TIER_COUNT_FIELDS, chart_points_from_tiers
 from evtop20.paths import ALLTIME_STATS_BASENAME, SONG_STATS_BASENAME
 from evtop20.song_key_normalize import normalized_song_key
 from evtop20.sort_keys import song_row_sort_key
+from evtop20.title_parse.countries import VIRTUAL_WORLD_COUNTRY
 
 SONG_METADATA_FIELDS = (
     "artist",
@@ -29,6 +30,47 @@ def is_eligible_song_rollup_row(row: dict) -> bool:
 
 def song_group_key(row: dict) -> tuple[str, str]:
     return normalized_song_key(row["artist"], row["song"])
+
+
+def is_competing_esc_entry(row: dict) -> bool:
+    if row.get("country") == VIRTUAL_WORLD_COUNTRY:
+        return False
+    return row.get("esc_final_place") != "NON_ENTRY"
+
+
+def validate_song_stats_payload(payload: dict, *, context: str = "") -> list[str]:
+    prefix = f"{context}: " if context else ""
+    rows = payload.get("rows")
+    if not isinstance(rows, list):
+        return [f"{prefix}rows must be a list"]
+
+    by_country_year: dict[tuple[int, str], list[dict]] = defaultdict(list)
+    issues: list[str] = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            issues.append(f"{prefix}rows[{index}] must be an object")
+            continue
+        if not is_competing_esc_entry(row):
+            continue
+        year = row.get("year")
+        country = row.get("country")
+        if not isinstance(year, int) or not isinstance(country, str):
+            issues.append(
+                f"{prefix}rows[{index}] competing entry requires integer year and country"
+            )
+            continue
+        by_country_year[(year, country)].append(row)
+
+    for (year, country), members in sorted(by_country_year.items()):
+        if len(members) < 2:
+            continue
+        labels = "; ".join(
+            f'{member["artist"]} — {member["song"]}' for member in members
+        )
+        issues.append(
+            f"{prefix}{year}/{country}: multiple competing song rows ({labels})"
+        )
+    return issues
 
 
 def _member_precedence_key(row: dict) -> tuple:
