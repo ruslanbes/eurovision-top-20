@@ -11,6 +11,12 @@ describe("normalizeSearchText", () => {
     expect(normalizeSearchText("FUeGO")).toBe("fuego");
     expect(normalizeSearchText("España")).toBe("espana");
   });
+
+  it("folds Scandinavian letters that NFD leaves intact", () => {
+    expect(normalizeSearchText("Søren")).toBe("soren");
+    expect(normalizeSearchText("Før Vi Går Hjem")).toBe("for vi gar hjem");
+    expect(normalizeSearchText("Æbleskiver")).toBe("aebleskiver");
+  });
 });
 
 describe("textMatchesQuery", () => {
@@ -38,6 +44,13 @@ describe("textMatchesQuery", () => {
 
   it("returns false when haystack does not contain the query", () => {
     expect(textMatchesQuery("Loreen — Tattoo", "fuego")).toBe(false);
+  });
+
+  it("matches Danish artist and song fragments without diacritics", () => {
+    const label = "Søren Torpegaard Lund — Før Vi Går Hjem";
+    expect(textMatchesQuery(label, "soren")).toBe(true);
+    expect(textMatchesQuery(label, "for")).toBe(true);
+    expect(textMatchesQuery(label, "gar")).toBe(true);
   });
 });
 

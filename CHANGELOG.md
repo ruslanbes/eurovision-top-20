@@ -23,6 +23,7 @@ Song roll-up fixes, duplicate-entry guards, and packaged data cleanup since 0.3.
 
 - **Song table YouTube links** after key normalization — site joins `song-meta` with the same normalized key as the pipeline (`songMetaLookupKey.ts`, including duet artist normalization).
 - **Duplicate ESC entries in song roll-up** — merged split rows for Moldova 2017 Hey Mamma (LIVE suffix), Malta 2025 Serving/MESC (`manual-video-metadata.json`; dropped `esc-join-overrides` entry), Spain 2018 Amaia y Alfred / Alfred and Amaia (duet artist key).
+- Søren Torpegaard Lund fix. 
 
 
 ## [0.3.0] - 2026-06-22
