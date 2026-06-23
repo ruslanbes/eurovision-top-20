@@ -38,7 +38,7 @@ uv run evtop20 new-episode 2026-06
 
 # 2. Fill ranks — copy from previous month or search the stats corpus
 uv run evtop20 add 2026-06 1 +1          # rank 1 ← previous month rank 2
-uv run evtop20 add 2026-06 3 netta toy   # fuzzy search (needs process first for corpus)
+uv run evtop20 add 2026-06 3 netta toy   # fuzzy search
 
 # 3. Regenerate downstream layers
 uv run evtop20 validate
