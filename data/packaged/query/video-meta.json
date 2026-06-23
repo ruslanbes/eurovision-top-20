@@ -2984,10 +2984,10 @@
     },
     {
       "artist": "Marija Šerifović",
-      "country": "World",
+      "country": "Serbia",
       "esc_final_place": "NON_ENTRY",
       "fire": false,
-      "flag": "🌍",
+      "flag": "🇷🇸",
       "metadata_extractor": "lookup_table_v1",
       "performance_category": "special",
       "song": "Molitva",
