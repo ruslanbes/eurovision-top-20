@@ -39,13 +39,6 @@ Regenerate vendor data: [`commands.md`](commands.md) (`evtop20 vendor-esc flatte
 
 Do **not** use `null` in vendored `entries.json`. `NON_ENTRY` and other overrides come from `data/metadata/esc-placement-overrides.json` and `esc-join-overrides.json`.
 
-### Avoid
-
-| Term | Use instead |
-| ---- | ----------- |
-| `NQ` | `DNQ` |
-| `0`, negative integers | numeric rank or `DNQ` / `null` |
-
 ## Virtual `World` country
 
 Non-national clips (interval acts, full-show streams) use **`World`** / `🌍` in manual metadata — display-only, not an ESC vendor country. Vendor join is skipped for `World`. See [`data/metadata/README.md`](../../data/metadata/README.md#virtual-world-country).

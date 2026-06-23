@@ -18,8 +18,7 @@ Used by `lookup_table_v1` in the title-parse extractor chain (after all title-pa
 | `video_title` | no | Copy from corpus; helps humans when editing |
 | `artist` | yes | Same shape as packaged output |
 | `song` | yes | |
-| `flag` | yes | Emoji, e.g. `🇨🇭` |
-| `country` | yes | Canonical name, e.g. `Switzerland` |
+| `country` | yes | Canonical name (or alias from `title_parse/countries.py`); flag emoji is derived at load time |
 | `performance_category` | yes | `final_live`, `national_final`, `official_video`, or `special` |
 | `year` | yes | Contest edition, integer |
 | `notes` | no | Editor comment; not emitted to packaged output |
@@ -33,9 +32,8 @@ For non-national clips (interval acts, full-show live streams, multi-artist spec
 | Field | Value |
 |-------|-------|
 | `country` | `World` |
-| `flag` | `🌍` |
 
-`World` lives in `title_parse/countries.py` only — **not** an ESC vendor country. Use `esc-placement-overrides.json` (`NON_ENTRY`) when the clip is not a competing entry.
+Flag `🌍` is derived from `country`. `World` lives in `title_parse/countries.py` only — **not** an ESC vendor country. Use `esc-placement-overrides.json` (`NON_ENTRY`) when the clip is not a competing entry.
 
 ## Format rules
 
@@ -52,7 +50,6 @@ For non-national clips (interval acts, full-show live streams, multi-artist spec
   "video_title": "Käärijä & Baby Lasagna - #eurodab - …",
   "artist": "Käärijä & Baby Lasagna",
   "song": "#eurodab",
-  "flag": "🌍",
   "country": "World",
   "performance_category": "special",
   "year": 2025

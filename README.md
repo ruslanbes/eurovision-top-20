@@ -1,6 +1,6 @@
 # Eurovision Top 20
 
-Stats explorer for the [Eurovision Song Contest YouTube channel](https://www.youtube.com/@Eurovision) “Most Watched” Top 20 — cumulative chart performance by video (and song roll-ups in packaged data).
+Stats explorer for the [Eurovision Song Contest YouTube channel](https://www.youtube.com/@EurovisionSongContest) “Most Watched” Top 20 — cumulative chart performance by video (and song roll-ups in packaged data).
 
 **Live site:** https://ruslanbes.github.io/eurovision-top-20/
 

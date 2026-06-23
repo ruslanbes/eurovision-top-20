@@ -22,8 +22,7 @@ flowchart TB
   site["static site<br/>packaged only"]
 
   raw -->|"validate → process"| processed
-  processed --> package["package"]
-  package --> packaged
+  processed -->|"package"| packaged
   packaged -->|"copy at build"| site
 ```
 

@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from evtop20.title_parse.helpers import lookup_country_name
 from evtop20.title_parse.models import ParsedVideoTitle
 
 from evtop20.performance_category import PERFORMANCE_CATEGORIES
@@ -11,7 +12,6 @@ LOOKUP_EXTRACTOR_NAME = "lookup_table_v1"
 METADATA_FIELDS = (
     "artist",
     "song",
-    "flag",
     "country",
     "performance_category",
     "year",
@@ -68,11 +68,18 @@ def load_manual_video_metadata(path: Path) -> dict[str, ParsedVideoTitle]:
                 raise ManualLookupError(msg)
             values[field] = value.strip()
 
+        country = str(values["country"])
+        country_flag = lookup_country_name(country)
+        if country_flag is None:
+            msg = f"{path}: entries[{index}].country {country!r} is unknown"
+            raise ManualLookupError(msg)
+        canonical_country, flag = country_flag
+
         parsed = ParsedVideoTitle(
             artist=str(values["artist"]),
             song=str(values["song"]),
-            flag=str(values["flag"]),
-            country=str(values["country"]),
+            flag=flag,
+            country=canonical_country,
             performance_category=str(values["performance_category"]),
             year=int(values["year"]),
             extractor=LOOKUP_EXTRACTOR_NAME,

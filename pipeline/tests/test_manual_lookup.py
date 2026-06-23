@@ -27,7 +27,6 @@ def test_load_manual_video_metadata_parses_entry(tmp_path: Path) -> None:
                         "youtube_video_id": "abc123xyz01",
                         "artist": "Example Artist",
                         "song": "Example Song",
-                        "flag": "🇫🇮",
                         "country": "Finland",
                         "performance_category": "final_live",
                         "year": 2024,
@@ -64,7 +63,6 @@ def test_load_manual_video_metadata_rejects_duplicate_ids(tmp_path: Path) -> Non
                         "youtube_video_id": "dup00000001",
                         "artist": "A",
                         "song": "S",
-                        "flag": "🇫🇮",
                         "country": "Finland",
                         "performance_category": "final_live",
                         "year": 2024,
@@ -73,7 +71,6 @@ def test_load_manual_video_metadata_rejects_duplicate_ids(tmp_path: Path) -> Non
                         "youtube_video_id": "dup00000001",
                         "artist": "B",
                         "song": "T",
-                        "flag": "🇪🇪",
                         "country": "Estonia",
                         "performance_category": "final_live",
                         "year": 2025,
@@ -88,6 +85,68 @@ def test_load_manual_video_metadata_rejects_duplicate_ids(tmp_path: Path) -> Non
         load_manual_video_metadata(path)
 
 
+def test_load_manual_video_metadata_derives_flag_from_country(tmp_path: Path) -> None:
+    path = tmp_path / "manual-video-metadata.json"
+    path.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "entries": [
+                    {
+                        "youtube_video_id": "world000001",
+                        "artist": "Various Artists",
+                        "song": "Special",
+                        "country": "World",
+                        "performance_category": "special",
+                        "year": 2020,
+                    },
+                    {
+                        "youtube_video_id": "alias00001",
+                        "artist": "Hadise",
+                        "song": "Düm Tek Tek",
+                        "country": "Türkiye",
+                        "performance_category": "official_video",
+                        "year": 2009,
+                    },
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    lookup = load_manual_video_metadata(path)
+
+    assert lookup["world000001"].flag == "🌍"
+    assert lookup["world000001"].country == "World"
+    assert lookup["alias00001"].flag == "🇹🇷"
+    assert lookup["alias00001"].country == "Turkey"
+
+
+def test_load_manual_video_metadata_rejects_unknown_country(tmp_path: Path) -> None:
+    path = tmp_path / "manual-video-metadata.json"
+    path.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "entries": [
+                    {
+                        "youtube_video_id": "bad00000001",
+                        "artist": "Artist",
+                        "song": "Song",
+                        "country": "Atlantis",
+                        "performance_category": "special",
+                        "year": 2025,
+                    }
+                ],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ManualLookupError, match="country 'Atlantis' is unknown"):
+        load_manual_video_metadata(path)
+
+
 def test_lookup_table_extractor_matches_youtube_video_id(tmp_path: Path) -> None:
     path = tmp_path / "manual-video-metadata.json"
     path.write_text(
@@ -99,7 +158,6 @@ def test_lookup_table_extractor_matches_youtube_video_id(tmp_path: Path) -> None
                         "youtube_video_id": "abc123xyz01",
                         "artist": "Example Artist",
                         "song": "Example Song",
-                        "flag": "🇫🇮",
                         "country": "Finland",
                         "performance_category": "final_live",
                         "year": 2024,
