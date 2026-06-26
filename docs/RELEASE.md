@@ -76,7 +76,7 @@ Write for **readers of the repo and release notes**, not for internal task IDs. 
 ### 5. Tag and deploy (optional)
 
 ```bash
-git tag -a v0.2.0 -m "Release 0.2.0"
+git tag -a v0.3.2 -m "Release 0.3.2"
 git push origin main --tags
 ```
 
