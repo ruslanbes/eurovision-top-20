@@ -8,6 +8,7 @@ import {
   yearEpisodesAsComposition,
   yearsInComposition,
 } from "./episodeComposition";
+import { useDimensionFocus } from "./useDimensionFocus";
 
 function missingColor(): string {
   if (typeof document === "undefined") {
@@ -20,6 +21,7 @@ function missingColor(): string {
 }
 
 export function YearCompositionInsight() {
+  const { focusedDimension, handleDimensionClick } = useDimensionFocus();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [composition, setComposition] = useState<Awaited<
@@ -97,7 +99,13 @@ export function YearCompositionInsight() {
         Each row is one Top 20 episode. Each ● is one slot.
       </p>
 
-      <CompositionLegend countries={legendYears} colorMap={colorMap} />
+      <CompositionLegend
+        countries={legendYears}
+        colorMap={colorMap}
+        missingColor={missingColor()}
+        focusedDimension={focusedDimension}
+        onDimensionClick={handleDimensionClick}
+      />
 
       <EpisodeCompositionChart
         episodes={chartEpisodes}
@@ -107,6 +115,8 @@ export function YearCompositionInsight() {
         dimensionLabel="Contest year"
         episodeGap
         slotStyle="circle"
+        focusedDimension={focusedDimension}
+        onDimensionClick={handleDimensionClick}
       />
     </div>
   );

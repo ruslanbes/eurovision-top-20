@@ -1,6 +1,6 @@
 # Status
 
-Last updated: 2026-06-22
+Last updated: 2026-06-24
 
 ## Current focus
 
@@ -20,4 +20,4 @@ Finish site-theming chart tokens or pick next backlog item (`insight-presence-he
 
 ## Session notes
 
-- **Released 0.3.1** — song key normalization, `audit-song-keys`, song-table YouTube link fix. See [`CHANGELOG.md`](../CHANGELOG.md).
+- **Released 0.3.2** — year composition click-to-focus, search diacritics, manual-metadata flag derivation, year palette + data fixes. See [`CHANGELOG.md`](../CHANGELOG.md).

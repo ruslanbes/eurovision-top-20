@@ -1,6 +1,6 @@
 # Release runbook
 
-Related: `[BACKLOG.md](BACKLOG.md)`, `[STATUS.md](STATUS.md)`, `[tasks/README.md](tasks/README.md)`, `[.cursor/rules/workflow.mdc](../.cursor/rules/workflow.mdc)`
+Related: [BACKLOG.md](BACKLOG.md), [STATUS.md](STATUS.md), [tasks/README.md](tasks/README.md), [.cursor/rules/workflow.mdc](../.cursor/rules/workflow.mdc)
 
 ---
 
@@ -9,7 +9,7 @@ Related: `[BACKLOG.md](BACKLOG.md)`, `[STATUS.md](STATUS.md)`, `[tasks/README.md
 Cut a release when:
 
 - One or more backlog items are `done` (all `done_when` criteria met).
-- `[CHANGELOG.md](../CHANGELOG.md)` `[Unreleased]` contains significant work chunk.
+- [CHANGELOG.md](../CHANGELOG.md) `[Unreleased]` contains significant work chunk.
 - Pipeline and site tests pass locally (or CI on `main` is green).
 
 Ad-hoc changelog updates without a version tag are fine anytime; this runbook is for **promoting `[Unreleased]` → `[X.Y.Z]`** and cleaning planning artifacts.
@@ -28,7 +28,7 @@ Ad-hoc changelog updates without a version tag are fine anytime; this runbook is
 
 ### 1. Clean the backlog
 
-In `[BACKLOG.md](BACKLOG.md)`:
+In [BACKLOG.md](BACKLOG.md):
 
 - **Remove** entries whose work is fully captured in the new changelog section.
 - Create missing CHANGELOG entries in the `[Unreleased]` section.
@@ -40,7 +40,7 @@ If a removed task is still referenced as `parent:` elsewhere, keep the ID in the
 
 ### 2. Analyze and cleanup task detail files
 
-Per `[tasks/README.md](tasks/README.md)`: delete `docs/tasks/<task-id>.md` for tasks shipped in this release or cancelled.
+Per [tasks/README.md](tasks/README.md): delete `docs/tasks/<task-id>.md` for tasks shipped in this release or cancelled.
 
 Keep the `docs/tasks/` folder and `tasks/README.md`. Behavior should live in CHANGELOG, ADRs, FAQ, and layer READMEs — not in deleted specs.
 
@@ -55,7 +55,7 @@ Keep the `docs/tasks/` folder and `tasks/README.md`. Behavior should live in CHA
 
 ### 3. Refresh session status
 
-Update `[STATUS.md](STATUS.md)`:
+Update [STATUS.md](STATUS.md):
 
 - Set **Current focus** / **Active task** to what’s next.
 - Clear or shorten **Session notes** for the released work (one line “Released X.Y.Z” is enough).
@@ -63,7 +63,7 @@ Update `[STATUS.md](STATUS.md)`:
 
 ### 4. Finalize the changelog
 
-Edit `[CHANGELOG.md](../CHANGELOG.md)`:
+Edit [CHANGELOG.md](../CHANGELOG.md):
 
 1. Review `[Unreleased]` — group under **Added** / **Changed** / **Removed** / **Fixed** (Keep a Changelog).
 2. Add a new dated section, e.g. `## [0.2.0] - YYYY-MM-DD`.
@@ -80,7 +80,7 @@ git tag -a v0.2.0 -m "Release 0.2.0"
 git push origin main --tags
 ```
 
-Push to `main` runs `[.github/workflows/deploy.yml](../.github/workflows/deploy.yml)`: validate → process → package → build → GitHub Pages.
+Push to `main` runs [.github/workflows/deploy.yml](../.github/workflows/deploy.yml): validate → process → package → build → GitHub Pages.
 
 Verify the live site after deploy if the release includes site or packaged-data changes.
 

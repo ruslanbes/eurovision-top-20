@@ -4,6 +4,25 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-06-24
+
+Year composition focus, search diacritics, manual-metadata cleanup, and data fixes.
+
+### Added
+
+- **Year composition click-to-focus** — on `/insights/year-composition/`, click ● to focus a contest year.
+
+### Changed
+
+- **Manual metadata `flag`** — derived from `country`.
+- **Year color palette** — slot 17 → `#3949ab` to distinguish 2009 from 2017 on the year composition chart.
+- Raw episode **2016-09** title corrected to match YouTube.
+- **Molitva (2020 Europe Shine A Light)** — changed from **World** → **Serbia**.
+
+### Fixed
+
+- **Søren Torpegaard Lund fix** — fold ø/æ/œ/ß/ł etc. in full-text search so ASCII queries match (e.g. `soren` → `Søren`).
+
 ## [0.3.1] - 2026-06-22
 
 Song roll-up fixes, duplicate-entry guards, and packaged data cleanup since 0.3.0.
@@ -23,7 +42,6 @@ Song roll-up fixes, duplicate-entry guards, and packaged data cleanup since 0.3.
 
 - **Song table YouTube links** after key normalization — site joins `song-meta` with the same normalized key as the pipeline (`songMetaLookupKey.ts`, including duet artist normalization).
 - **Duplicate ESC entries in song roll-up** — merged split rows for Moldova 2017 Hey Mamma (LIVE suffix), Malta 2025 Serving/MESC (`manual-video-metadata.json`; dropped `esc-join-overrides` entry), Spain 2018 Amaia y Alfred / Alfred and Amaia (duet artist key).
-- Søren Torpegaard Lund fix. 
 
 
 ## [0.3.0] - 2026-06-22
