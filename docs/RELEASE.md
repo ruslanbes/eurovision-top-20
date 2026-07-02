@@ -1,8 +1,6 @@
 # Release runbook
 
-Related: [BACKLOG.md](BACKLOG.md), [STATUS.md](STATUS.md), [tasks/README.md](tasks/README.md), [.cursor/rules/workflow.mdc](../.cursor/rules/workflow.mdc)
-
----
+Related: [BACKLOG.md](BACKLOG.md), [STATUS.md](STATUS.md), [tasks/README.md](tasks/README.md)
 
 ## When to release
 
@@ -14,17 +12,13 @@ Cut a release when:
 
 Ad-hoc changelog updates without a version tag are fine anytime; this runbook is for **promoting `[Unreleased]` → `[X.Y.Z]`** and cleaning planning artifacts.
 
----
-
 ## Pre-release checklist
 
 - [ ] `uv run pytest` (from `pipeline/`) green.
 - [ ] `npm test` and `npm run build` (from `site/`) green.
 - [ ] `uv run evtop20 validate && uv run evtop20 process && uv run evtop20 package` succeeds on current raw data.
 
----
-
-## Steps
+## Prepare the release
 
 ### 1. Clean the backlog
 
@@ -35,8 +29,6 @@ In [BACKLOG.md](BACKLOG.md):
 - Keep `backlog` / `ready` / `in_progress` / `blocked` items.
 - Remove cancelled tasks and their detail files.
 - Do **not** leave stale `done` rows after a release — the changelog is the archive of shipped work.
-
-If a removed task is still referenced as `parent:` elsewhere, keep the ID in the child’s notes or repoint the parent.
 
 ### 2. Analyze and cleanup task detail files
 
@@ -71,9 +63,11 @@ Edit [CHANGELOG.md](../CHANGELOG.md):
 4. Leave `[Unreleased]` empty (or with a placeholder comment) for the next cycle.
 5. Do NOT add "Completed task specs" line to the "Removed" section in CHANGELOG.md.
 
-Write for **readers of the repo and release notes**, not for internal task IDs. Link ADRs or FAQ where helpful.
+Write for **readers and users of the repo**, not for internal contributors. Link ADRs or FAQ where helpful.
 
-### 5. Tag and deploy (optional)
+## Execute the release 
+
+### 1. Tag and deploy
 
 ```bash
 git tag -a v0.3.2 -m "Release 0.3.2"
