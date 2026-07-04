@@ -32,8 +32,8 @@ const filled = (
 
 const ctx = {
   colorMap: {
-    Sweden: "rgb(var(--chart-country-halo))",
-    [UNKNOWN_COUNTRY_DIMENSION]: "rgb(var(--chart-country-unknown))",
+    Sweden: "rgb(var(--chart-other))",
+    [UNKNOWN_COUNTRY_DIMENSION]: "rgb(var(--chart-other))",
   },
   missingColor: "rgb(var(--chart-missing))",
   glyphMap: {
@@ -59,10 +59,10 @@ describe("countryScheme", () => {
 
   it("resolves entry colors from the map and missing bucket", () => {
     expect(countryEntryColor(filled("Sweden", "🇸🇪"), ctx)).toBe(
-      "rgb(var(--chart-country-halo))",
+      "rgb(var(--chart-other))",
     );
     expect(countryEntryColor(filled("", ""), ctx)).toBe(
-      "rgb(var(--chart-country-unknown))",
+      "rgb(var(--chart-other))",
     );
     expect(countryEntryColor({ missing: true, rank: 2 }, ctx)).toBe(
       "rgb(var(--chart-missing))",

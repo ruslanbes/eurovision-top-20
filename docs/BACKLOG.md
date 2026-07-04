@@ -24,13 +24,6 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 
 ---
 
-## unlikely-events-warnings
-- status: cancelled
-- parent: generate-song-stats
-- goal: Typed warning codes for rare domain cases (e.g. song merge country/year mismatch)
-- done_when: Per `docs/tasks/unlikely-events-warnings.md` — coded warnings replace generic merge messages
-- notes: Cancelled — keep generic `Warning:` strings in `song_stats` / ESC join; no global warning collector
-
 ## site-theming
 - status: in_progress
 - parent: scaffold-project

@@ -16,6 +16,7 @@ export default {
         border: "rgb(var(--color-border) / <alpha-value>)",
         accent: "rgb(var(--color-accent) / <alpha-value>)",
         "chart-missing": "rgb(var(--chart-missing) / <alpha-value>)",
+        "chart-other": "rgb(var(--chart-other) / <alpha-value>)",
       },
     },
   },

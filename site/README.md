@@ -54,7 +54,7 @@ Omitted params use defaults (full range, no filter, `chart_points` desc). Filter
 
 | Route | Data | Notes |
 |-------|------|-------|
-| `/episodes/` | `packaged/episodes/browser.json`, `year-colors.json` | Rank 1–20 grid; schemes: country (flags, default), year, ESC winners, fire; Group switch; click-to-focus |
+| `/episodes/` | `packaged/episodes/browser.json`, `year-colors.json` | Rank 1–20 grid with month label per row; schemes: country (flags, default), year, ESC winners, fire; Group switch; click-to-focus |
 
 `year-colors.json` is hand-maintained under `data/metadata/` (copied to packaged at `package`). Regenerate with `python3 pipeline/scripts/refresh_year_colors.py`.
 

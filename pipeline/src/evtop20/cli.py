@@ -265,7 +265,7 @@ def vendor_esc_flatten(
         resolve_path=True,
     ),
     release_tag: str = typer.Option(
-        "2026.4",
+        "2026.5",
         "--release-tag",
         help="Pinned EurovisionAPI release tag written to MANIFEST.json.",
     ),

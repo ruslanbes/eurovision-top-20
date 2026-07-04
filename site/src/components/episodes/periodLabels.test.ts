@@ -2,12 +2,21 @@ import { describe, expect, it } from "vitest";
 
 import {
   calendarYearFromPeriod,
+  monthAbbrevFromPeriod,
   yearLabelBeforeEpisode,
 } from "./periodLabels";
 
 describe("calendarYearFromPeriod", () => {
   it("returns the calendar year prefix", () => {
     expect(calendarYearFromPeriod("2019-12")).toBe("2019");
+  });
+});
+
+describe("monthAbbrevFromPeriod", () => {
+  it("returns a 3-letter English month abbreviation", () => {
+    expect(monthAbbrevFromPeriod("2016-09")).toBe("Sep");
+    expect(monthAbbrevFromPeriod("2020-01")).toBe("Jan");
+    expect(monthAbbrevFromPeriod("2019-05")).toBe("May");
   });
 });
 

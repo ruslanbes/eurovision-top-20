@@ -17,24 +17,28 @@ export function chartMissingColor(): string {
   return "rgb(var(--chart-missing))";
 }
 
+export function chartOtherColor(): string {
+  return "rgb(var(--chart-other))";
+}
+
 export function chartEscWinnerColor(): string {
   return "rgb(var(--chart-esc-winner))";
 }
 
 export function chartEscOtherColor(): string {
-  return "rgb(var(--chart-esc-other))";
+  return chartOtherColor();
 }
 
 export function chartFireOtherColor(): string {
-  return "rgb(var(--chart-fire-other))";
+  return chartOtherColor();
 }
 
 export function chartCountryHaloColor(): string {
-  return "rgb(var(--chart-country-halo))";
+  return chartOtherColor();
 }
 
 export function chartCountryUnknownColor(): string {
-  return "rgb(var(--chart-country-unknown))";
+  return chartOtherColor();
 }
 
 export function buildYearSchemeContext(

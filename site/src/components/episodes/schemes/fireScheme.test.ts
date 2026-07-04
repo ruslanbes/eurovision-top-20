@@ -29,8 +29,8 @@ const filled = (fire: boolean, rank = 1) => ({
 
 const ctx = {
   colorMap: {
-    [FIRE_DIMENSION]: "rgb(var(--chart-fire-other))",
-    [FIRE_OTHER_DIMENSION]: "rgb(var(--chart-fire-other))",
+    [FIRE_DIMENSION]: "rgb(var(--chart-other))",
+    [FIRE_OTHER_DIMENSION]: "rgb(var(--chart-other))",
   },
   missingColor: "rgb(var(--chart-missing))",
 };
@@ -50,8 +50,8 @@ describe("fireScheme", () => {
   });
 
   it("resolves entry colors from the map and missing bucket", () => {
-    expect(fireEntryColor(filled(true), ctx)).toBe("rgb(var(--chart-fire-other))");
-    expect(fireEntryColor(filled(false), ctx)).toBe("rgb(var(--chart-fire-other))");
+    expect(fireEntryColor(filled(true), ctx)).toBe("rgb(var(--chart-other))");
+    expect(fireEntryColor(filled(false), ctx)).toBe("rgb(var(--chart-other))");
     expect(fireEntryColor({ missing: true, rank: 2 }, ctx)).toBe(
       "rgb(var(--chart-missing))",
     );

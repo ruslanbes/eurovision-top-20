@@ -1,6 +1,6 @@
 import { Fragment, useMemo } from "react";
 
-import { yearLabelBeforeEpisode } from "./periodLabels";
+import { monthAbbrevFromPeriod, yearLabelBeforeEpisode } from "./periodLabels";
 import { ENTRY_CIRCLE } from "./constants";
 import { EntryCell } from "./EntryCell";
 import { entryTooltipLabel } from "./entryTooltip";
@@ -76,12 +76,19 @@ export function EpisodeEntryGrid({
                 <span className="h-px min-w-0 flex-1 bg-border" aria-hidden="true" />
               </div>
             ) : null}
-            <div className="flex h-6 w-full">
+            <div className="flex h-6 w-full items-center gap-2">
+              <span
+                className="w-8 shrink-0 text-sm text-text-muted"
+                aria-hidden="true"
+              >
+                {monthAbbrevFromPeriod(episode.period)}
+              </span>
+              <div className="flex min-w-0 flex-1">
               {entries.map((entry) => {
                 const dimensionKey = scheme.dimensionKey(entry);
                 const color = scheme.entryColor(entry, schemeContext);
                 const glyph = scheme.entryGlyph(entry);
-                const tooltip = entryTooltipLabel(episode.period, entry);
+                const tooltip = entryTooltipLabel(entry);
 
                 if (!interactive) {
                   return (
@@ -115,6 +122,7 @@ export function EpisodeEntryGrid({
                   />
                 );
               })}
+              </div>
             </div>
           </Fragment>
         );

@@ -1,7 +1,7 @@
 {
-  "flattened_at": "2026-06-18",
+  "flattened_at": "2026-07-04",
   "last_completed_contest_year": 2026,
-  "release_tag": "2026.4+pr1",
+  "release_tag": "2026.5",
   "source_repo": "https://github.com/EurovisionAPI/dataset",
   "upstream_credits": [
     "eschome.net",

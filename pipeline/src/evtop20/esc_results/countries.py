@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from evtop20.title_parse.countries import COUNTRY_ALIASES
 
-# EurovisionAPI/dataset `data/countries.json` (release 2026.4).
+# EurovisionAPI/dataset `data/countries.json` (release 2026.5).
 _CODE_TO_COUNTRY_NAME: dict[str, str] = {
     "AL": "Albania",
     "AD": "Andorra",

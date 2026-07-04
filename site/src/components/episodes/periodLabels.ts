@@ -3,6 +3,12 @@ export function calendarYearFromPeriod(period: string): string {
   return year ?? period;
 }
 
+export function monthAbbrevFromPeriod(period: string): string {
+  const [year, month] = period.split("-");
+  const date = new Date(Number(year), Number(month) - 1, 1);
+  return date.toLocaleString("en-US", { month: "short" });
+}
+
 export function yearLabelBeforeEpisode(
   index: number,
   periods: string[],

@@ -20,4 +20,4 @@ Finish site-theming chart tokens or pick next backlog item (`insight-presence-he
 
 ## Session notes
 
-- **Released 0.4.0** — `/episodes/` entry browser, four schemes, insights removal, header GitHub link. Changelog promoted; episode task specs cleaned up.
+- **Released 0.4.1** — month row labels, `--chart-other`, ESC vendor `2026.5`.

@@ -15,7 +15,7 @@ DQ_ALLOWLIST: frozenset[tuple[int, str, str]] = frozenset(
 )
 
 SOURCE_REPO = "https://github.com/EurovisionAPI/dataset"
-DEFAULT_RELEASE_TAG = "2026.4"
+DEFAULT_RELEASE_TAG = "2026.5"
 UPSTREAM_CREDITS = [
     "eschome.net",
     "EurovisionWorld",
@@ -141,7 +141,7 @@ def flatten_esc_dataset(
         msg = (
             f"missing senior data directory: {senior_dir}\n"
             "Clone EurovisionAPI/dataset and pass the repo root, e.g.:\n"
-            "  git clone --depth 1 --branch 2026.4 "
+            "  git clone --depth 1 --branch 2026.5 "
             "https://github.com/EurovisionAPI/dataset.git ~/EurovisionAPI-dataset\n"
             "  uv run evtop20 vendor-esc flatten --dataset-dir ~/EurovisionAPI-dataset"
         )
