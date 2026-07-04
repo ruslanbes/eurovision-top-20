@@ -1,0 +1,12 @@
+---
+import { EpisodesBrowser } from "../../components/episodes/EpisodesBrowser";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  current="episodes"
+  title="Episodes"
+  description="Eurovision Top 20 Episodes"
+>
+  <EpisodesBrowser client:visible />
+</BaseLayout>

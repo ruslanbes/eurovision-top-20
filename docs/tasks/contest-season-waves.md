@@ -89,7 +89,7 @@ Pick one primary view for v1; others as tabs or follow-ups. Stack: [ADR-002](../
 
 ### A. Season river (recommended sketch)
 
-**Stacked area chart** — x = episode months, y = count of top-20 slots filled by each contest year C (stacked colors = C).
+**Stacked area chart** — x = episode months, y = count of top-20 **entries** filled by each contest year C (stacked colors = C).
 
 - Shows **how much of the chart** each edition owns over time.
 - Peak May C reads as a **bulge** in that year’s band.

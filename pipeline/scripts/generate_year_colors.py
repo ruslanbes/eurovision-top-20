@@ -11,7 +11,7 @@ Regenerate after editing constants below:
     python3 pipeline/scripts/refresh_year_colors.py
 
 That writes `data/metadata/year-colors.json` and copies it to
-`data/packaged/insights/year-colors.json`. Or run only
+`data/packaged/episodes/year-colors.json`. Or run only
 `python3 pipeline/scripts/generate_year_colors.py` then `evtop20 package`.
 """
 

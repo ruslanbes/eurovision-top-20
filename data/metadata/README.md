@@ -94,9 +94,9 @@ Hand-maintained allowlist of **fire-themed** Top-20 videos for the site **Fire s
 
 Sets packaged boolean **`fire`** on matching video rows and on song roll-ups when any member video is listed (~7 clips / 5 songs in the initial corpus).
 
-## Insight color maps
+## Color maps
 
-Generated once via scripts; not run by `package`. `package` copies them to `data/packaged/insights/`.
+Generated once via scripts; not run by `package`. `package` copies `year-colors.json` to `data/packaged/episodes/`.
 
 ### `year-colors.json`
 

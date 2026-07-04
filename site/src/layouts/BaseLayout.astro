@@ -1,18 +1,16 @@
 ---
 import { StatsNav } from "../components/stats/StatsNav";
-import { InsightsSubNav } from "../components/insights/InsightsSubNav";
-import type { InsightsSubpage } from "../components/insights/InsightsSubNav";
+import SourceRepoLink from "../components/SourceRepoLink.astro";
 import { ThemeToggle } from "../components/ThemeToggle";
 import "../styles/global.css";
 
 type Props = {
   title: string;
   description: string;
-  current: "videos" | "songs" | "insights";
-  insightsSubpage?: InsightsSubpage;
+  current: "videos" | "songs" | "episodes";
 };
 
-const { title, description, current, insightsSubpage = "overview" } = Astro.props;
+const { title, description, current } = Astro.props;
 const pageTitle = `${title} · Eurovision Top 20`;
 ---
 
@@ -44,13 +42,13 @@ const pageTitle = `${title} · Eurovision Top 20`;
               {description}
             </p>
           </div>
-          <ThemeToggle client:load />
+          <div class="flex shrink-0 items-center gap-2">
+            <SourceRepoLink />
+            <ThemeToggle client:load />
+          </div>
         </div>
 
         <StatsNav client:load current={current} />
-        {current === "insights" ? (
-          <InsightsSubNav client:load current={insightsSubpage} />
-        ) : null}
       </header>
 
       <slot />

@@ -8,6 +8,9 @@ dist/
 # Copied from data/packaged at predev/prebuild — never commit
 public/data/
 
+# Generated from ../CHANGELOG.md at predev/prebuild — never commit
+src/generated/
+
 # Env (if added later)
 .env
 .env.*

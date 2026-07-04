@@ -1,6 +1,6 @@
 # insight-presence-heatmap
 
-**Matrix heatmap** on `/insights/` — episode presence over time for **country** or **contest year**. Complements per-episode slot-mix charts (e.g. year composition); either or both may ship.
+**Matrix heatmap** on `/insights/` — episode presence over time for **country** or **contest year**. Complements the episode **entry** browser at **`/episodes/`**; either or both may ship.
 
 Parent: empty Insights page (shipped scaffold)  
 Depends on: `data/raw/episodes/`, title parser ([`title_parse/`](../../pipeline/src/evtop20/title_parse/) in `package`), [`site-theming.md`](site-theming.md)  
@@ -43,7 +43,7 @@ User can toggle metric:
 | **Presence** | Distinct `video_title` with dimension K in top 20 in episode M | ✓ |
 | **New entries** | Distinct K-videos whose **first appearance** in top 20 is M | |
 
-**Important:** Heatmap counts **distinct videos** per cell, not slot occupancy. Bars task counts **slots** (same video twice = 2). Document in UI subtitle so users are not confused.
+**Important:** Heatmap counts **distinct videos** per cell, not entry occupancy. The episodes browser counts **entries** (same video at two ranks = 2). Document in UI subtitle so users are not confused.
 
 ---
 
@@ -197,7 +197,7 @@ Add to `evtop20 package` (can share walk with composition bars task):
 4. Emit dense row arrays + max values.
 5. Sort rows for output.
 
-**Reuse:** same raw-episode walk as slot-matrix insights where possible; different aggregation (distinct titles vs slot counts).
+**Reuse:** same raw-episode walk as the `/episodes/` browser builder where possible; different aggregation (distinct titles vs entry counts).
 
 ---
 
@@ -235,7 +235,7 @@ Or sub-routes `/insights/heatmap/` later if page grows.
 
 | | Composition bars | Presence heatmap |
 |---|------------------|------------------|
-| **Unit** | Slots (20 per episode) | Distinct videos |
+| **Unit** | Entries (20 per episode) | Distinct videos |
 | **Primary axis** | Episode (rows) | Entity (rows) |
 | **Secondary axis** | Country share (segments) | Episode month (columns) |
 | **Color** | Categorical per country | Sequential magnitude |

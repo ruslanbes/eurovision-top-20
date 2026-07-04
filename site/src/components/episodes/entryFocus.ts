@@ -1,16 +1,16 @@
 import type { CSSProperties } from "react";
 
-import { MISSING_COUNTRY } from "./episodeComposition";
+import { MISSING_DIMENSION } from "./constants";
 
-export const DIMMED_SLOT_OPACITY = 0.7;
+export const DIMMED_ENTRY_OPACITY = 0.7;
 
-export type CompositionSlotVisualState = "neutral" | "focused" | "dimmed";
+export type EntryVisualState = "neutral" | "focused" | "dimmed";
 
-export function toggleDimensionFocus(
+export function toggleEntryFocus(
   focusedDimension: string | null,
   clickedDimension: string,
 ): string | null {
-  if (clickedDimension === MISSING_COUNTRY) {
+  if (clickedDimension === MISSING_DIMENSION) {
     return null;
   }
   if (focusedDimension === clickedDimension) {
@@ -19,14 +19,14 @@ export function toggleDimensionFocus(
   return clickedDimension;
 }
 
-export function compositionSlotVisualState(
+export function entryVisualState(
   dimensionKey: string,
   focusedDimension: string | null,
-): CompositionSlotVisualState {
+): EntryVisualState {
   if (!focusedDimension) {
     return "neutral";
   }
-  if (dimensionKey === MISSING_COUNTRY) {
+  if (dimensionKey === MISSING_DIMENSION) {
     return "dimmed";
   }
   if (dimensionKey === focusedDimension) {
@@ -36,22 +36,22 @@ export function compositionSlotVisualState(
 }
 
 /** Same-color halo emphasis (preferred over border / shadow). */
-export function compositionSlotEmphasisStyle(color: string): CSSProperties {
+export function entryEmphasisStyle(color: string): CSSProperties {
   return {
     textShadow: `0 0 1px ${color}, 0 0 2px ${color}`,
   };
 }
 
-export function compositionSlotStyle(
+export function entryStyle(
   color: string,
-  state: CompositionSlotVisualState,
+  state: EntryVisualState,
 ): CSSProperties {
   const style: CSSProperties = { color };
   if (state === "dimmed") {
-    style.opacity = DIMMED_SLOT_OPACITY;
+    style.opacity = DIMMED_ENTRY_OPACITY;
   }
   if (state === "focused") {
-    Object.assign(style, compositionSlotEmphasisStyle(color));
+    Object.assign(style, entryEmphasisStyle(color));
   }
   return style;
 }

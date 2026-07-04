@@ -1,16 +1,21 @@
 import { useCallback, useState } from "react";
 
-import { toggleDimensionFocus } from "./compositionSlotFocus";
+import { toggleEntryFocus } from "./entryFocus";
 
-export function useDimensionFocus() {
+export function useEntryFocus() {
   const [focusedDimension, setFocusedDimension] = useState<string | null>(null);
 
   const handleDimensionClick = useCallback((dimensionKey: string) => {
-    setFocusedDimension((current) => toggleDimensionFocus(current, dimensionKey));
+    setFocusedDimension((current) => toggleEntryFocus(current, dimensionKey));
+  }, []);
+
+  const clearFocus = useCallback(() => {
+    setFocusedDimension(null);
   }, []);
 
   return {
     focusedDimension,
     handleDimensionClick,
+    clearFocus,
   };
 }

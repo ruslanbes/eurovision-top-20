@@ -15,6 +15,11 @@
   --chart-seq-high: 29 78 216;
   --chart-grid: 212 212 216;
   --chart-missing: 212 212 216;
+  --chart-esc-winner: 235 25 25;
+  --chart-esc-other: 228 228 231;
+  --chart-fire-other: 228 228 231;
+  --chart-country-halo: 228 228 231;
+  --chart-country-unknown: 228 228 231;
   --chart-highlight: 37 99 235;
 }
 
@@ -35,5 +40,10 @@
   --chart-seq-high: 191 219 254;
   --chart-grid: 63 63 70;
   --chart-missing: 63 63 70;
+  --chart-esc-winner: 255 55 55;
+  --chart-esc-other: 113 113 122;
+  --chart-fire-other: 113 113 122;
+  --chart-country-halo: 113 113 122;
+  --chart-country-unknown: 113 113 122;
   --chart-highlight: 96 165 250;
 }

@@ -19,7 +19,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 GENERATE = REPO_ROOT / "pipeline" / "scripts" / "generate_year_colors.py"
 METADATA = REPO_ROOT / "data" / "metadata" / "year-colors.json"
-PACKAGED = REPO_ROOT / "data" / "packaged" / "insights" / "year-colors.json"
+PACKAGED = REPO_ROOT / "data" / "packaged" / "episodes" / "year-colors.json"
 
 
 def main() -> None:

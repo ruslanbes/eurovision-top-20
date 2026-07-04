@@ -78,8 +78,7 @@ Always set `period.year` and `period.month` for the month the episode covers.
 2. Set `episode_title` to the full YouTube title.
 3. Set `period` (`year`, `month`) for the episode month.
 4. Set `youtube_video_id` for the episode video (`""` until known).
-5. Fill `video_title` for ranks 1–20 (exact video titles).
-6. Set `youtube_video_id` on each ranked entry (`""` until known).
+5. Fill all **20 `entries`** — each row is one **entry** (`rank`, `video_title`, `youtube_video_id`). Schema requires exactly 20 ranks per file. The packaged browser adds metadata and marks blank titles as missing entries — see [Episode browser](#episode-browser-packagedepisodes) below.
 
 Schema: `schemas/episode.schema.json`.
 
@@ -117,7 +116,7 @@ One file per raw episode month. Non-cumulative: only videos that appeared in tha
 }
 ```
 
-Rows sorted by `video_title`. Ranks 1–20 only; empty slots omitted.
+Rows sorted by `video_title`. Ranks 1–20 only; unfilled ranks omitted.
 
 
 | Includes                                   | Does not include                       |
@@ -142,14 +141,43 @@ May read **any source**: processed alltime, raw episodes, title parser (`title_p
 | Song stats                                                    | per-video rows + roll-up by normalized `(artist, song)` key; `[chart_points](../docs/faq/chart_points.md)` from summed tiers (`song_stats.py`, `song_key_normalize.py`); `package` fails if two song rows share the same `(year, country)` unless `esc_final_place` is `NON_ENTRY` or country is `World` |
 | Row order (video + song snapshots, query window)              | `[chart_points](../docs/faq/chart_points.md)` default sort via `sort_keys.py` / `queryWindow.ts`                                                 |
 | Window query index (`query/`)                                 | `processed/episode-index/` + latest packaged video enrichment                                                                                    |
-| Insight payloads (heatmaps, winner tables, …)                 | processed + raw + external                                                                                                                       |
+| Insight payloads (`insights/` — heatmaps, …)                | processed + raw + external                                                                                                                       |
+| Episode browser (`episodes/browser.json`)                   | raw `entries[]` + title parse / ESC join / fire — [`episodes_browser.py`](../pipeline/src/evtop20/episodes_browser.py)                             |
 | UI flags (e.g. fire filter)                                   | `metadata/fire.json` allowlist → packaged `fire` boolean                                                                                           |
 | Period index for scrubber                                     | `query/video-hits.json` `periods` array (via copy script → `periods-alltime.json`)                                                             |
 
 
-**Shipped:** `per-video/alltime`, `per-song/alltime`, `query/` (`video-hits`, `video-meta`, `song-hits`, `song-meta`), and `insights/` (`episode-year-composition.json` v2 + copied `year-colors.json`). Flexible period range UI on `/` and `/songs/`; year composition insight on `/insights/year-composition/`.
+**Shipped:** `per-video/alltime`, `per-song/alltime`, `query/` (`video-hits`, `video-meta`, `song-hits`, `song-meta`), and **`episodes/`** (`browser.json` + copied `year-colors.json` for the `/episodes` browser). Flexible period range UI on `/` and `/songs/`; **entry browser on `/episodes/`** — see [`site/README.md`](../site/README.md#episodes). Future insight payloads (e.g. heatmaps) will live under `packaged/insights/`.
 
-`year-colors.json` lives under `metadata/` (hand-maintained; regenerate with `pipeline/scripts/refresh_year_colors.py`). `episode-year-composition.json` is built in `package` from raw episodes + title parse (`insights_composition.py`); v2 segments include sorted `titles[]` per contest-year band for per-slot site tooltips.
+`year-colors.json` lives under `metadata/` (hand-maintained; regenerate with `pipeline/scripts/refresh_year_colors.py`). Copied at `package` to `packaged/episodes/year-colors.json`.
+
+### Episode browser (`packaged/episodes/`)
+
+Built in `package` from raw `entries[]` + title parse / ESC join / fire allowlist (`episodes_browser.py`). Served on **`/episodes/`** — see [`site/README.md`](../site/README.md#episodes).
+
+| File | Role |
+| ---- | ---- |
+| `browser.json` | Full timeline: each episode month has length-20 **`entries[]`** (rank 1 → 20) with joined metadata, or `{ "missing": true, "rank": N }` |
+| `year-colors.json` | Copy of `metadata/year-colors.json` for contest-year scheme colors |
+
+Top-level shape:
+
+```json
+{
+  "entry_capacity": 20,
+  "episodes": [
+    {
+      "entries": [ "…20 entry objects…" ],
+      "missing": 0,
+      "period": "2016-11"
+    }
+  ],
+  "periods": ["2016-09", "…"],
+  "version": 1
+}
+```
+
+Filled entry fields (alphabetical): `artist`, `country`, `esc_final_place`, `fire`, `flag`, `performance_category`, `rank`, `song`, `video_title`, `year`, `youtube_video_id`. No processed-layer artifact — packaged only (ADR-003).
 
 ### Query index (`packaged/query/`)
 

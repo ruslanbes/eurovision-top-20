@@ -57,11 +57,4 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 - parent: scaffold-project
 - goal: Insights matrix heatmap — country or contest year × episode month; presence or new-entries metric; sequential theme scale
 - done_when: Per `docs/tasks/insight-presence-heatmap.md` — packaged matrices, PresenceHeatmap, Country + Year tabs, tests/build green
-- notes: Distinct videos per cell (not slots); complements year composition bars
-
-## insight-episode-slot-schemes
-- status: backlog
-- parent: scaffold-project
-- goal: Epic — scheme-driven episode slot matrix (● rows); color/sort/glyph per metadata dimension; **Group** toggle + chart rank order; generalize year-composition PoC
-- done_when: Per `docs/tasks/insight-episode-slot-schemes.md` — packaged episode slots, SlotMatrixChart + registry, scheme UI, ≥2 new schemes, extensibility proven
-- notes: Start with `insight-episode-slots-data` spike; year scheme migrates into registry
+- notes: Distinct videos per cell (not entries); complements **`/episodes/`** entry browser

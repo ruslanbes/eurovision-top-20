@@ -122,9 +122,13 @@ def packaged_insights_dir(repo_root: Path) -> Path:
     return packaged_dir(repo_root) / "insights"
 
 
-def packaged_episode_year_composition_path(repo_root: Path) -> Path:
-    return packaged_insights_dir(repo_root) / "episode-year-composition.json"
+def packaged_episodes_dir(repo_root: Path) -> Path:
+    return packaged_dir(repo_root) / "episodes"
 
 
-def packaged_year_colors_path(repo_root: Path) -> Path:
-    return packaged_insights_dir(repo_root) / "year-colors.json"
+def packaged_episodes_browser_path(repo_root: Path) -> Path:
+    return packaged_episodes_dir(repo_root) / "browser.json"
+
+
+def packaged_episodes_year_colors_path(repo_root: Path) -> Path:
+    return packaged_episodes_dir(repo_root) / "year-colors.json"

@@ -13,10 +13,10 @@ npm run build    # production build to dist/
 npm run preview  # preview production build
 ```
 
-`predev` / `prebuild` run `scripts/copy-packaged.mjs`, which:
+`predev` / `prebuild` run:
 
-1. Copies `../data/packaged/` → `public/data/packaged/` (includes `query/` index)
-2. Writes `public/data/periods-alltime.json` from `query/video-hits.json` periods (fallback: alltime snapshot filenames)
+1. `scripts/copy-packaged.mjs` — copies `../data/packaged/` → `public/data/packaged/` (includes `query/` index) and writes `public/data/periods-alltime.json` from `query/video-hits.json` periods (fallback: alltime snapshot filenames)
+2. `scripts/read-changelog-release.mjs` — reads the latest **released** section from `../CHANGELOG.md` (skips `[Unreleased]`) → `src/generated/releaseMeta.json` for the header GitHub link tooltip
 
 ## Stack
 
@@ -27,7 +27,7 @@ npm run preview  # preview production build
 
 Videos (`/`) and songs (`/songs/`) each load the sparse query index (`video-hits` + `video-meta` or `song-hits` + `song-meta`) and aggregate stats client-side for the selected `[begin, end]` episode-month window. Default range = full corpus. Default row order matches [`chart_points`](../docs/faq/chart_points.md#default-sort) (tier counts → ESC place → year → name).
 
-Theme: **light**, **dark**, or **system** via the toggle (top-right). Choice persists in `localStorage`. Inline script in the layout avoids a flash of wrong theme on load.
+Theme: **light**, **dark**, or **system** via the toggle (top-right). **Source on GitHub** (octocat icon, left of theme toggle) shows version + release date on hover. Choice persists in `localStorage`. Inline script in the layout avoids a flash of wrong theme on load.
 
 **Table filters:** client-side AND/OR filters on window-aggregated rows — full-text search, country (searchable), year, ESC (dropdown: All / Winners / Not winners / Non-entries), and on videos only Category (four toggle buttons). Filter, episode-range, and table-sort state persist in the **URL query string** and survive navigation between `/` and `/songs/` (shared filters + range + sort synced; video-only Category preserved in the URL but hidden on the song page). Bare path = full corpus, no filters, default sort (`chart_points` desc).
 
@@ -50,12 +50,11 @@ Theme: **light**, **dark**, or **system** via the toggle (top-right). Choice per
 
 Omitted params use defaults (full range, no filter, `chart_points` desc). Filter edits update the URL via `history.replaceState` (range slider and search debounced ~200 ms; sort updates immediately).
 
-## Insights
+## Episodes
 
-| Route | Data |
-|-------|------|
-| `/insights/` | Index of insight charts |
-| `/insights/year-composition/` | `packaged/insights/episode-year-composition.json` (v2: `segments[].titles[]` per slot), `year-colors.json` |
+| Route | Data | Notes |
+|-------|------|-------|
+| `/episodes/` | `packaged/episodes/browser.json`, `year-colors.json` | Rank 1–20 grid; schemes: country (flags, default), year, ESC winners, fire; Group switch; click-to-focus |
 
 `year-colors.json` is hand-maintained under `data/metadata/` (copied to packaged at `package`). Regenerate with `python3 pipeline/scripts/refresh_year_colors.py`.
 
