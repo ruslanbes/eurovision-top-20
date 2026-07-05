@@ -208,9 +208,9 @@ export function StatsTable({
   const titleColumnId = "title";
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-800">
-      <table className="min-w-full divide-y divide-zinc-200 text-sm dark:divide-zinc-800">
-        <thead className="bg-zinc-50 dark:bg-zinc-900">
+    <div className="overflow-x-auto rounded-lg border border-border">
+      <table className="min-w-full divide-y divide-border text-sm">
+        <thead className="bg-surface-elevated">
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
@@ -220,13 +220,13 @@ export function StatsTable({
                 return (
                   <th
                     key={header.id}
-                    className="px-3 py-2 text-left font-semibold text-zinc-700 dark:text-zinc-300"
+                    className="px-3 py-2 text-left font-semibold text-text"
                   >
                     {header.isPlaceholder ? null : canSort ? (
                       <div className="inline-flex items-center gap-0.5">
                         <button
                           type="button"
-                          className="inline-flex items-center gap-1 hover:text-zinc-900 dark:hover:text-zinc-100"
+                          className="inline-flex items-center gap-1 hover:text-text"
                           title={meta.title}
                           onClick={header.column.getToggleSortingHandler()}
                         >
@@ -249,17 +249,17 @@ export function StatsTable({
             </tr>
           ))}
         </thead>
-        <tbody className="divide-y divide-zinc-100 bg-white dark:divide-zinc-900 dark:bg-zinc-950">
+        <tbody className="divide-y divide-border bg-surface">
           {table.getRowModel().rows.map((row) => (
             <tr
               key={statsRowKey(row.original, grain)}
-              className="hover:bg-zinc-50 dark:hover:bg-zinc-900/60"
+              className="hover:bg-surface-elevated"
             >
               {row.getVisibleCells().map((cell) => (
                 <td
                   key={cell.id}
                   className={[
-                    "px-3 py-2 text-zinc-800 dark:text-zinc-200",
+                    "px-3 py-2 text-text",
                     cell.column.id === titleColumnId
                       ? "min-w-[16rem] max-w-xl whitespace-normal"
                       : "whitespace-nowrap",

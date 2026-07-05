@@ -27,9 +27,9 @@ export function PeriodControls({
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+        <p className="text-sm text-text-muted">
           Episode range:{" "}
-          <span className="font-medium text-zinc-900 dark:text-zinc-100">
+          <span className="font-medium text-text">
             {begin && end
               ? `${formatPeriodLabel(begin)} – ${formatPeriodLabel(end)}`
               : "—"}
@@ -57,7 +57,7 @@ export function PeriodControls({
           }}
           aria-label="Episode month range"
         >
-          <Slider.Track className="relative h-1.5 grow rounded-full bg-zinc-200 dark:bg-zinc-800">
+          <Slider.Track className="relative h-1.5 grow rounded-full bg-border">
             <Slider.Range className="absolute h-full rounded-full bg-accent" />
           </Slider.Track>
           <Slider.Thumb
@@ -71,7 +71,7 @@ export function PeriodControls({
         </Slider.Root>
 
         {periods.length > 1 ? (
-          <div className="flex justify-between text-[11px] text-zinc-500 dark:text-zinc-500">
+          <div className="flex justify-between text-[11px] text-text-muted">
             <span>{formatPeriodLabel(periods[0])}</span>
             <span>{formatPeriodLabel(periods[periods.length - 1])}</span>
           </div>

@@ -83,7 +83,7 @@ export function EpisodesBrowser() {
 
   if (error || !payload) {
     return (
-      <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200">
+      <p className="rounded-lg border border-danger-border bg-danger-surface px-4 py-3 text-sm text-danger-text">
         {error ?? "Episode data unavailable"}
       </p>
     );

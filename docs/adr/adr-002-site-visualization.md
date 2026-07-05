@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-06-11
-- **Related:** [ADR-000](adr-000-tech-stack.md), [`site/README.md`](../../site/README.md), [`site-theming.md`](../tasks/site-theming.md)
+- **Related:** [ADR-000](adr-000-tech-stack.md), [`site/README.md`](../../site/README.md)
 
 ## Context
 
@@ -33,7 +33,7 @@ Use a **layered** front-end stack inside Astro **React islands**. One library pe
 | Non-animated summary charts (if needed) | **Observable Plot** |
 | Escape hatch | **D3** only if RacingBars or Plot cannot express a required chart — not for table sorting or grid behaviour |
 
-**Theming:** light and dark modes required; use Tailwind `dark:` + CSS custom properties for shared UI and chart palettes. Token detail: [`site-theming.md`](../tasks/site-theming.md).
+**Theming:** light and dark modes required; semantic CSS custom properties in [`theme.css`](../../site/src/styles/theme.css) mapped via Tailwind — see [`site/README.md`](../../site/README.md).
 
 **Accessibility:** respect `prefers-reduced-motion` for layout animations.
 
@@ -60,6 +60,4 @@ Use a **layered** front-end stack inside Astro **React islands**. One library pe
 
 ## Follow-up
 
-- [`site/README.md`](../../site/README.md) — site shell, stats explorer, CI publish
-- [`site-theming.md`](../tasks/site-theming.md) — tokens and toggle
-- [`contest-season-waves.md`](../tasks/contest-season-waves.md) — season visualizations using the same theme tokens
+- [`site/README.md`](../../site/README.md) — site shell, stats explorer, theme tokens, CI publish

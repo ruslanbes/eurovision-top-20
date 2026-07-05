@@ -29,6 +29,10 @@ Videos (`/`) and songs (`/songs/`) each load the sparse query index (`video-hits
 
 Theme: **light**, **dark**, or **system** via the toggle (top-right). **Source on GitHub** (octocat icon, left of theme toggle) shows version + release date on hover. Choice persists in `localStorage`. Inline script in the layout avoids a flash of wrong theme on load.
 
+**Theme tokens:** semantic colors live in [`src/styles/theme.css`](src/styles/theme.css) as RGB triplets (`--color-surface`, `--color-text`, `--color-border`, `--color-accent`, `--color-danger-*`, …). [`tailwind.config.mjs`](tailwind.config.mjs) maps them to Tailwind utilities (`bg-surface`, `text-text-muted`, `border-danger-border`, etc.). Chart-specific tokens use the `--chart-*` prefix (`--chart-missing`, `--chart-other`, `--chart-esc-winner`).
+
+**Chart color exceptions:** the episodes **year** scheme uses fixed hex values from packaged [`year-colors.json`](../data/metadata/year-colors.json) — one brand color per contest year, not remapped per light/dark theme. Country (flags), ESC winner, and fire schemes use theme tokens or fixed semantic colors as documented in the episodes components. To add a new theme-aware chart color: define `--chart-<name>` in `:root` and `.dark` in `theme.css`, add a Tailwind color entry if needed, then reference `rgb(var(--chart-<name>))` in scheme code.
+
 **Table filters:** client-side AND/OR filters on window-aggregated rows — full-text search, country (searchable), year, ESC (dropdown: All / Winners / Not winners / Non-entries), and on videos only Category (four toggle buttons). Filter, episode-range, and table-sort state persist in the **URL query string** and survive navigation between `/` and `/songs/` (shared filters + range + sort synced; video-only Category preserved in the URL but hidden on the song page). Bare path = full corpus, no filters, default sort (`chart_points` desc).
 
 **Column explainers:** `?` button in the **Chart Points** header opens a popover (formula + link to [`chart_points` FAQ](../docs/faq/chart_points.md)). Reusable pattern under `src/components/stats/help/`.

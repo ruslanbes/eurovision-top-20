@@ -1,14 +1,14 @@
 # Status
 
-Last updated: 2026-07-04
+Last updated: 2026-07-05
 
 ## Current focus
 
-`site-theming` in progress (chart token migration open).
+Released **0.4.2**; **`video-insights`** next (formulas doc pass).
 
 ## Active task
 
-[`site-theming`](docs/tasks/site-theming.md)
+_None_ — pick [`video-insights`](docs/tasks/video-insights.md).
 
 ## Blockers
 
@@ -16,8 +16,8 @@ _None._
 
 ## Next action
 
-Finish site-theming chart tokens or pick next backlog item (`insight-presence-heatmap`).
+Start **`video-insights`** (formulas-only doc pass).
 
 ## Session notes
 
-- **Released 0.4.1** — month row labels, `--chart-other`, ESC vendor `2026.5`.
+- Released **0.4.2** — site theming cleanup (stats tokens, danger banners, chart token prune).

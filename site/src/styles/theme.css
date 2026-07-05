@@ -5,19 +5,13 @@
   --color-text-muted: 82 82 91;
   --color-border: 228 228 231;
   --color-accent: 37 99 235;
+  --color-danger-border: 254 202 202;
+  --color-danger-surface: 254 242 242;
+  --color-danger-text: 153 27 27;
 
-  --chart-cat-1: 37 99 235;
-  --chart-cat-2: 234 88 12;
-  --chart-cat-3: 22 163 74;
-  --chart-cat-4: 168 85 247;
-  --chart-cat-5: 236 72 153;
-  --chart-seq-low: 224 242 254;
-  --chart-seq-high: 29 78 216;
-  --chart-grid: 212 212 216;
   --chart-missing: 212 212 216;
   --chart-other: 161 161 170;
   --chart-esc-winner: 235 25 25;
-  --chart-highlight: 37 99 235;
 }
 
 .dark {
@@ -27,17 +21,11 @@
   --color-text-muted: 161 161 170;
   --color-border: 39 39 42;
   --color-accent: 96 165 250;
+  --color-danger-border: 127 29 29;
+  --color-danger-surface: 69 10 10;
+  --color-danger-text: 254 202 202;
 
-  --chart-cat-1: 96 165 250;
-  --chart-cat-2: 251 146 60;
-  --chart-cat-3: 74 222 128;
-  --chart-cat-4: 192 132 252;
-  --chart-cat-5: 244 114 182;
-  --chart-seq-low: 30 58 138;
-  --chart-seq-high: 191 219 254;
-  --chart-grid: 63 63 70;
   --chart-missing: 63 63 70;
   --chart-other: 161 161 170;
   --chart-esc-winner: 255 55 55;
-  --chart-highlight: 96 165 250;
 }

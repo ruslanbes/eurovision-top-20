@@ -24,7 +24,7 @@ Insights will be grouped on the static site under four headings:
 |                         |                                                           | list of the most popular entries per county / year. Table of countries. for each country select the topmost entry. Same for year. Alternatively implement as a filter for the tables |
 
 
-**Related (not in this task):** contest-year **season wave** charts and year heatmap live under `[contest-season-waves.md](contest-season-waves.md)` — same **Year insights** site tab as a viz sibling, not a separate numbered insight here.
+**Related (not in this task):** contest-year season wave / presence heatmap viz — cancelled; formulas below remain reference only.
 
 ## Shared inputs
 
@@ -42,7 +42,7 @@ Insights will be grouped on the static site under four headings:
 
 ## Year insights
 
-Contest **edition year C** parsed from `video_title` (e.g. `#Eurovision2020`, “Eurovision 2020”). Shared parse rules with `[contest-season-waves.md](contest-season-waves.md)`.
+Contest **edition year C** parsed from `video_title` (e.g. `#Eurovision2020`, “Eurovision 2020”).
 
 ### year-classics
 
@@ -131,13 +131,13 @@ Optional derived:
 
 ### country-presence-heatmap
 
-**Question:** How does each **participating country** show up on the Most Watched chart over episode months — same compact heatmap as contest-year waves (`[contest-season-waves.md](contest-season-waves.md)` §C), but **rows = country** instead of contest year C.
+**Question:** How does each **participating country** show up on the Most Watched chart over episode months — compact heatmap with **rows = country** (not contest year C).
 
 **Why country:** contest-year heatmaps answer “when did ESC 2024 dominate?”; country heatmaps answer “when did **Ukraine** / **Sweden** / **Italy** dominate?” — useful for diaspora interest, winner spikes, and long-running national catalogues.
 
 **Country K** for a video: parsed from `video_title` via `[title_parse/](../../pipeline/src/evtop20/title_parse/)` in `package` — prefer human `**country`** name; fall back to flag emoji → country lookup if name missing. Unparsed titles → **unknown** bucket (optional separate row or excluded from heatmap).
 
-**Building blocks** (same episode timeline as year heatmap in contest-season-waves):
+**Building blocks** (episode timeline — only months with a raw episode file):
 
 
 | Building block             | Meaning                                                                    |
@@ -160,7 +160,7 @@ Episode months only — x-axis is **episode timeline**, not every calendar month
 | `total_presence[K]`       | \sum_M \texttt{presencebymonth}[K, M] — row sort key |
 
 
-**Heatmap (site viz — same encoding as year heatmap §C):**
+**Heatmap (site viz — reference encoding only; no shipped task):**
 
 
 | Axis        | Value                                                                                                     |
@@ -168,7 +168,7 @@ Episode months only — x-axis is **episode timeline**, not every calendar month
 | **Rows**    | Country K (sort: `total_presence` desc, then name)                                                        |
 | **Columns** | Episode month `YYYY-MM`                                                                                   |
 | **Color**   | `presence_by_month` (default) or toggle `**new_by_month`**                                                |
-| **Scale**   | Sequential theme tokens (`--chart-seq-low` → `--chart-seq-high`) per `[site-theming.md](site-theming.md)` |
+| **Scale**   | Sequential theme tokens per [`site/README.md`](../../site/README.md) (future viz — no shipped consumer yet) |
 
 
 **Procedure:**
@@ -176,7 +176,7 @@ Episode months only — x-axis is **episode timeline**, not every calendar month
 1. Walk all raw episodes in period order.
 2. For each entry with rank ≤ 20 and non-empty `video_title`, parse country K.
 3. Update `presence_by_month` and track `first_seen` per `video_title`.
-4. Emit matrix for site (or share `contest-season-waves.json` envelope with a `by_country` section).
+4. Emit matrix for site (future — no shipped viz task).
 
 **Output (future):** heatmap component + hover month → list top K-videos that month; optional filter (e.g. only `grand_final_live` uploads).
 
@@ -330,7 +330,7 @@ Use P_{k+1} = 0 if k = n (only one video). Suggested default: **g = 0.25** (25% 
 - Implementation CLI, site widgets, or CI
 - Song-grain versions of year / ESC winner insights (`other-multi-version-songs` is already song-key grouped)
 - Eurovision **final place** column → `[esc_final_place.md](../faq/esc_final_place.md)`
-- Contest-year **wave** viz (`[contest-season-waves.md](contest-season-waves.md)`) — separate task; shares **Year insights** site tab only
+- Contest-year **wave** / presence heatmap viz — cancelled; formulas in this doc only
 
 ## Done when (future task)
 
