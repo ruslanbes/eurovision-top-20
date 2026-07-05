@@ -2,12 +2,16 @@ import type { EpisodeScheme } from "./types";
 import { countryScheme } from "./countryScheme";
 import { escWinnerScheme } from "./escWinnerScheme";
 import { fireScheme } from "./fireScheme";
+import { songsScheme } from "./songsScheme";
+import { videosScheme } from "./videosScheme";
 import { yearScheme } from "./yearScheme";
 
 /** Stable picker order — append new schemes here when registering. */
 const SCHEME_ORDER: EpisodeScheme[] = [
   countryScheme,
   yearScheme,
+  videosScheme,
+  songsScheme,
   escWinnerScheme,
   fireScheme,
 ];

@@ -1,19 +1,17 @@
-import {
-  episodeMonthYearLabel,
-  youtubeWatchUrl,
-} from "../../episodes/periodLabels";
 import { songMetaLookupKey } from "../../stats/songMetaLookupKey";
 import type { SongStatsRow, VideoStatsRow } from "../../stats/types";
 import type { VideoHitsPayload } from "../../stats/queryWindow";
-import type { EpisodesBrowserPayload } from "../../episodes/types";
 import { songLinkFromSong } from "../formatters";
 import type {
   InsightContext,
   InsightDefinition,
-  InsightEpisodeLink,
+  InsightLabelEpisodesRow,
   InsightResult,
-  InsightSongEpisodesRow,
 } from "../types";
+import {
+  episodeLinksForPeriods,
+  episodeWatchUrlsByPeriod,
+} from "./episodeChartUtils";
 
 export type MultiVersionEpisodeParams = {
   minVersions: number;
@@ -39,22 +37,12 @@ function videoTitleSongLookup(
   return lookup;
 }
 
-function episodeWatchUrlsByPeriod(
-  browser: EpisodesBrowserPayload,
-): Map<string, string | null> {
-  const urls = new Map<string, string | null>();
-  for (const episode of browser.episodes) {
-    urls.set(episode.period, youtubeWatchUrl(episode.youtube_video_id));
-  }
-  return urls;
-}
-
 export function computeMultiVersionEpisodeRows(
   videoHits: VideoHitsPayload,
   videoLatest: VideoStatsRow[],
   episodeWatchUrls: Map<string, string | null>,
   params: MultiVersionEpisodeParams,
-): InsightSongEpisodesRow[] {
+): InsightLabelEpisodesRow[] {
   const titleToSong = videoTitleSongLookup(videoLatest);
   const songPeriodTitles = new Map<string, Map<string, Set<string>>>();
 
@@ -82,7 +70,7 @@ export function computeMultiVersionEpisodeRows(
     }
   }
 
-  const rows: InsightSongEpisodesRow[] = [];
+  const rows: InsightLabelEpisodesRow[] = [];
 
   for (const [songKey, byPeriod] of songPeriodTitles) {
     const qualifyingPeriods: string[] = [];
@@ -111,27 +99,21 @@ export function computeMultiVersionEpisodeRows(
       videoLatest,
     );
 
-    qualifyingPeriods.sort();
-    const episodes: InsightEpisodeLink[] = qualifyingPeriods.map((period) => ({
-      label: episodeMonthYearLabel(period),
-      href: episodeWatchUrls.get(period) ?? null,
-    }));
-
     rows.push({
       id: songKey,
-      songLabel: link.label,
-      songHref: link.href,
-      episodes,
+      label: link.label,
+      labelHref: link.href,
+      episodes: episodeLinksForPeriods(qualifyingPeriods.sort(), episodeWatchUrls),
     });
   }
 
-  return rows.sort((left, right) => left.songLabel.localeCompare(right.songLabel));
+  return rows.sort((left, right) => left.label.localeCompare(right.label));
 }
 
 export const multiVersionEpisode: InsightDefinition<MultiVersionEpisodeParams> = {
   id: "multi-version-episode",
   section: "other",
-  title: "Three versions, one episode",
+  title: "Hat-trick",
   grain: "song",
   defaultParams: {
     minVersions: 3,
@@ -156,11 +138,12 @@ export const multiVersionEpisode: InsightDefinition<MultiVersionEpisodeParams> =
 
     const result: InsightResult = {
       viewKind: "table",
-      tableKind: "song_episodes",
-      title: "Three versions, one episode",
-      lead: "Songs with three or more distinct uploads in the same monthly Top 20:",
+      tableKind: "label_episodes",
+      labelColumn: "Song",
+      title: "Hat-trick",
+      lead: "Songs with three or more distinct videos in the same monthly Top 20:",
       rows,
-      footnote: `Distinct uploads = different YouTube titles for the same song key. Episode links open the channel’s Top 20 roundup video (snapshot ${ctx.latestPeriod}).`,
+      footnote: `Distinct videos = different YouTube clips of the same song.`,
     };
 
     return result;

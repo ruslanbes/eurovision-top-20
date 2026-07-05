@@ -12,7 +12,7 @@ Client-computed analytics blocks for `/insights/`. Each insight is a small TypeS
 | `InsightsPage.tsx` | Load context, run registry, group blocks by section |
 | `insights/` | One module per insight (or insight family) |
 | `blocks/` | Renderers for each `viewKind` |
-| `formatters.ts` | Shared upload links, number formatting |
+| `formatters.ts` | Shared video links, number formatting |
 
 ## Plugin registry
 
@@ -52,7 +52,7 @@ Site reads **packaged JSON only** ([ADR-003](../../../../docs/adr/adr-003-data-l
 | `viewKind` | Component | Use |
 |------------|-----------|-----|
 | `highlight` | `HighlightBlock` | Lead sentence + named items (optional links and meta) |
-| `table` | `TableBlock` | Fixed columns (year, rank, hit symbol, upload link — as configured) |
+| `table` | `TableBlock` | Fixed columns (year, rank, hit symbol, video link — as configured) |
 | `matrix` | `MatrixBlock` | Row × column grid with a color scale |
 
 Pick the shape that matches the insight UI. `InsightBlock` dispatches on `viewKind`.
@@ -72,7 +72,7 @@ Pick the shape that matches the insight UI. `InsightBlock` dispatches on `viewKi
 - [ ] Unique `id` and correct `section`
 - [ ] Only the `needs` you actually use
 - [ ] `compute` returns `null` when there is nothing to show
-- [ ] Upload links use `uploadLinkFromVideo` / `uploadLinkFromSong` from `formatters.ts` when linking to YouTube
+- [ ] Video links use `videoLinkFromVideo` / `videoLinkFromSong` from `formatters.ts` when linking to YouTube
 - [ ] Block copy (`title`, `lead`, `footnote`) lives in the insight module, not in the block components
 
 ### Params

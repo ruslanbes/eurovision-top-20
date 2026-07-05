@@ -37,11 +37,19 @@ export type InsightEpisodeLink = {
   label: string;
 };
 
-export type InsightSongEpisodesRow = {
+export type InsightLabelEpisodesRow = {
+  contestYear?: number;
   episodes: InsightEpisodeLink[];
   id: string;
-  songHref: string | null;
-  songLabel: string;
+  label: string;
+  labelHref: string | null;
+};
+
+export type InsightCountLabelRow = {
+  count: number;
+  id: string;
+  label: string;
+  labelHref: string | null;
 };
 
 export type HighlightItem = {
@@ -92,10 +100,23 @@ export type InsightResult =
       viewKind: "table";
     }
   | {
+      countColumnLabel: string;
       footnote?: string;
+      labelColumn: string;
       lead?: ReactNode;
-      rows: InsightSongEpisodesRow[];
-      tableKind: "song_episodes";
+      rows: InsightCountLabelRow[];
+      tableKind: "count_label";
+      title: string;
+      viewKind: "table";
+    }
+  | {
+      episodeColumnLabel?: string;
+      footnote?: string;
+      labelColumn: string;
+      lead?: ReactNode;
+      rows: InsightLabelEpisodesRow[];
+      showYearColumn?: boolean;
+      tableKind: "label_episodes";
       title: string;
       viewKind: "table";
     };

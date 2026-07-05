@@ -54,6 +54,9 @@ describe("computeEscWinnerTableRows", () => {
   it("returns April ranks without hit classification", () => {
     const ctx = fixtureContext();
     const rows = computeEscWinnerTableRows(ctx, escAprilPulse.defaultParams);
+    const years = rows.map((row) => Number.parseInt(row.year, 10));
+    expect(years).toEqual([...years].sort((left, right) => left - right));
+
     const y2018 = rows.find((row) => row.year === "2018");
     const y2026 = rows.find((row) => row.year === "2026");
 

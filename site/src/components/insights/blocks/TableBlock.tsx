@@ -61,28 +61,71 @@ function LinkCell({
   return <span>{label}</span>;
 }
 
-function SongEpisodesTable({
+function CountLabelTable({
   result,
 }: {
-  result: Extract<InsightResult, { viewKind: "table"; tableKind: "song_episodes" }>;
+  result: Extract<InsightResult, { viewKind: "table"; tableKind: "count_label" }>;
 }) {
   return (
     <table className="min-w-full border-collapse text-sm">
       <thead>
         <tr>
           <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
-            Song
+            {result.countColumnLabel}
           </th>
           <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
-            Episodes
+            {result.labelColumn}
           </th>
         </tr>
       </thead>
       <tbody>
         {result.rows.map((row) => (
           <tr key={row.id}>
+            <td className="border border-border px-3 py-2 tabular-nums text-text">
+              {row.count}
+            </td>
             <td className="border border-border px-3 py-2 text-text">
-              <LinkCell href={row.songHref} label={row.songLabel} />
+              <LinkCell href={row.labelHref} label={row.label} />
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+function LabelEpisodesTable({
+  result,
+}: {
+  result: Extract<InsightResult, { viewKind: "table"; tableKind: "label_episodes" }>;
+}) {
+  return (
+    <table className="min-w-full border-collapse text-sm">
+      <thead>
+        <tr>
+          {result.showYearColumn ? (
+            <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
+              Year
+            </th>
+          ) : null}
+          <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
+            {result.labelColumn}
+          </th>
+          <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
+            {result.episodeColumnLabel ?? "Episodes"}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {result.rows.map((row) => (
+          <tr key={row.id}>
+            {result.showYearColumn ? (
+              <td className="border border-border px-3 py-2 tabular-nums text-text">
+                {row.contestYear ?? "—"}
+              </td>
+            ) : null}
+            <td className="border border-border px-3 py-2 text-text">
+              <LinkCell href={row.labelHref} label={row.label} />
             </td>
             <td className="border border-border px-3 py-2 text-text">
               <ul className="space-y-1">
@@ -105,7 +148,7 @@ function EscWinnerTable({
 }: {
   result: Extract<InsightResult, { viewKind: "table"; tableKind?: "esc_winner" }>;
 }) {
-  const linkColumnLabel = result.linkColumnLabel ?? "Upload";
+  const linkColumnLabel = result.linkColumnLabel ?? "Video";
 
   return (
     <table className="min-w-full border-collapse text-sm">
@@ -167,8 +210,10 @@ export function TableBlock({ result }: TableBlockProps) {
       <h3 className="text-lg font-semibold text-text">{result.title}</h3>
       {result.lead ? <p className="text-sm text-text">{result.lead}</p> : null}
       <div className="overflow-x-auto">
-        {result.tableKind === "song_episodes" ? (
-          <SongEpisodesTable result={result} />
+        {result.tableKind === "count_label" ? (
+          <CountLabelTable result={result} />
+        ) : result.tableKind === "label_episodes" ? (
+          <LabelEpisodesTable result={result} />
         ) : (
           <EscWinnerTable result={result} />
         )}

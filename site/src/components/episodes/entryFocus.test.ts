@@ -56,7 +56,7 @@ describe("entryStyle", () => {
   it("dims inactive entries", () => {
     expect(entryStyle("#3949ab", "dimmed")).toEqual({
       color: "#3949ab",
-      opacity: 0.7,
+      opacity: 0.4,
     });
   });
 });

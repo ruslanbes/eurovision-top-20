@@ -1,5 +1,6 @@
 import { ENTRY_CIRCLE, MISSING_DIMENSION, MISSING_ENTRY_LABEL } from "./constants";
 import { EntryCell } from "./EntryCell";
+import type { EntryHighlightState } from "./entryHighlight";
 
 type EpisodeLegendProps = {
   items: string[];
@@ -7,7 +8,7 @@ type EpisodeLegendProps = {
   missingColor: string;
   legendItemGlyph: (item: string) => string;
   legendItemAriaLabel: (item: string) => string;
-  focusedDimension?: string | null;
+  highlight: EntryHighlightState;
   onDimensionClick?: (dimensionKey: string) => void;
 };
 
@@ -17,7 +18,7 @@ export function EpisodeLegend({
   missingColor,
   legendItemGlyph,
   legendItemAriaLabel,
-  focusedDimension = null,
+  highlight,
   onDimensionClick,
 }: EpisodeLegendProps) {
   if (items.length === 0) {
@@ -34,7 +35,7 @@ export function EpisodeLegend({
             key={item}
             color={colorMap[item] ?? "transparent"}
             dimensionKey={item}
-            focusedDimension={focusedDimension ?? null}
+            highlight={highlight}
             onDimensionClick={onDimensionClick}
             glyph={legendItemGlyph(item)}
             className="inline-flex items-center gap-2"
@@ -60,7 +61,7 @@ export function EpisodeLegend({
         <EntryCell
           color={missingColor}
           dimensionKey={MISSING_DIMENSION}
-          focusedDimension={focusedDimension ?? null}
+          highlight={highlight}
           onDimensionClick={onDimensionClick}
           glyph={ENTRY_CIRCLE}
           className="inline-flex items-center gap-2 text-text-muted"

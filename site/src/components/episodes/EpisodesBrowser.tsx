@@ -10,7 +10,8 @@ import {
   getEpisodeScheme,
   listEpisodeSchemes,
 } from "./schemes/registry";
-import { useEntryFocus } from "./useEntryFocus";
+import { SearchFilter } from "../stats/filters/SearchFilter";
+import { useEntryHighlight } from "./useEntryHighlight";
 import { useEpisodesBrowserUiState } from "./useEpisodesBrowserUiState";
 
 export function EpisodesBrowser() {
@@ -18,7 +19,13 @@ export function EpisodesBrowser() {
   const defaultScheme = defaultEpisodeScheme();
   const { schemeId, groupEnabled, setSchemeId, setGroupEnabled } =
     useEpisodesBrowserUiState(defaultScheme.id);
-  const { focusedDimension, handleDimensionClick, clearFocus } = useEntryFocus();
+  const {
+    clearHighlight,
+    handleDimensionClick,
+    handleSearchChange,
+    highlight,
+    searchQuery,
+  } = useEntryHighlight();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [payload, setPayload] = useState<Awaited<
@@ -26,6 +33,7 @@ export function EpisodesBrowser() {
   > | null>(null);
 
   const scheme = getEpisodeScheme(schemeId) ?? defaultScheme;
+  const usesSearchHighlight = scheme.highlightMode === "search";
 
   useEffect(() => {
     let cancelled = false;
@@ -58,9 +66,9 @@ export function EpisodesBrowser() {
   const handleSchemeChange = useCallback(
     (id: string) => {
       setSchemeId(id);
-      clearFocus();
+      clearHighlight();
     },
-    [clearFocus, setSchemeId],
+    [clearHighlight, setSchemeId],
   );
 
   const schemeContext = useMemo(() => {
@@ -76,6 +84,18 @@ export function EpisodesBrowser() {
     }
     return scheme.legendItems(payload.browser.episodes);
   }, [payload, scheme]);
+
+  const legendHighlight = useMemo(
+    () =>
+      usesSearchHighlight
+        ? highlight
+        : {
+            ...highlight,
+            source: highlight.source === "click" ? "click" : "none",
+            searchQuery: "",
+          } as typeof highlight,
+    [highlight, usesSearchHighlight],
+  );
 
   if (loading) {
     return <p className="text-sm text-text-muted">Loading…</p>;
@@ -103,15 +123,19 @@ export function EpisodesBrowser() {
         onGroupChange={setGroupEnabled}
       />
 
-      <EpisodeLegend
-        items={legendItems}
-        colorMap={schemeContext.colorMap}
-        missingColor={schemeContext.missingColor}
-        legendItemGlyph={(item) => scheme.legendItemGlyph(item, schemeContext)}
-        legendItemAriaLabel={scheme.legendItemAriaLabel}
-        focusedDimension={focusedDimension}
-        onDimensionClick={handleDimensionClick}
-      />
+      {usesSearchHighlight ? (
+        <SearchFilter value={searchQuery} onChange={handleSearchChange} />
+      ) : (
+        <EpisodeLegend
+          items={legendItems}
+          colorMap={schemeContext.colorMap}
+          missingColor={schemeContext.missingColor}
+          legendItemGlyph={(item) => scheme.legendItemGlyph(item, schemeContext)}
+          legendItemAriaLabel={scheme.legendItemAriaLabel}
+          highlight={legendHighlight}
+          onDimensionClick={handleDimensionClick}
+        />
+      )}
 
       <EpisodeEntryGrid
         episodes={payload.browser.episodes}
@@ -119,7 +143,7 @@ export function EpisodesBrowser() {
         schemeContext={schemeContext}
         groupEnabled={groupEnabled}
         episodeGap
-        focusedDimension={focusedDimension}
+        highlight={usesSearchHighlight ? highlight : legendHighlight}
         onDimensionClick={handleDimensionClick}
       />
     </div>

@@ -1,6 +1,6 @@
 import { DEFAULT_VIDEO_SORT, sortStatsRows } from "../../stats/sort";
 import type { VideoStatsRow } from "../../stats/types";
-import { formatChartPoints, uploadLinkFromVideo } from "../formatters";
+import { formatChartPoints, videoLinkFromVideo } from "../formatters";
 import type { HighlightItem, InsightContext, InsightDefinition, InsightResult } from "../types";
 
 function bestTierLabel(row: VideoStatsRow): string {
@@ -33,11 +33,10 @@ export function computeAlwaysSecond(rows: VideoStatsRow[]): VideoStatsRow[] {
 
 function buildHighlightResult(
   leaders: VideoStatsRow[],
-  latestPeriod: string,
   title: string,
 ): InsightResult {
   const items: HighlightItem[] = leaders.map((row) => {
-    const link = uploadLinkFromVideo(row);
+    const link = videoLinkFromVideo(row);
     return {
       label: link.label,
       href: link.href,
@@ -48,9 +47,9 @@ function buildHighlightResult(
   return {
     viewKind: "highlight",
     title,
-    lead: "Strongest uploads that never reached rank 1 in any episode:",
+    lead: "Strongest videos that never reached rank 1 in any episode:",
     items,
-    footnote: `Eligible rows: top1 = 0. Sort matches the video stats table default (snapshot ${latestPeriod}).`,
+    footnote: ``,
   };
 }
 
@@ -66,6 +65,6 @@ export const alwaysSecondVideo: InsightDefinition<Record<string, never>> = {
     if (leaders.length === 0) {
       return null;
     }
-    return buildHighlightResult(leaders, ctx.latestPeriod, "Always second");
+    return buildHighlightResult(leaders, "Always second");
   },
 };

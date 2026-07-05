@@ -5,6 +5,7 @@ import { ENTRY_CIRCLE } from "./constants";
 import { EntryCell } from "./EntryCell";
 import { entryTooltipLabel } from "./entryTooltip";
 import { layoutEpisodeEntries } from "./entryLayout";
+import type { EntryHighlightState } from "./entryHighlight";
 import type { BrowserEpisode } from "./types";
 import type { EpisodeScheme, EpisodeSchemeContext } from "./schemes/types";
 
@@ -14,7 +15,7 @@ type EpisodeEntryGridProps = {
   schemeContext: EpisodeSchemeContext;
   groupEnabled?: boolean;
   episodeGap?: boolean;
-  focusedDimension?: string | null;
+  highlight: EntryHighlightState;
   onDimensionClick?: (dimensionKey: string) => void;
 };
 
@@ -24,7 +25,7 @@ export function EpisodeEntryGrid({
   schemeContext,
   groupEnabled = false,
   episodeGap = false,
-  focusedDimension = null,
+  highlight,
   onDimensionClick,
 }: EpisodeEntryGridProps) {
   const periods = useMemo(
@@ -106,6 +107,7 @@ export function EpisodeEntryGrid({
                 const color = scheme.entryColor(entry, schemeContext);
                 const glyph = scheme.entryGlyph(entry);
                 const tooltip = entryTooltipLabel(entry);
+                const searchHaystack = scheme.entrySearchHaystack?.(entry) ?? "";
 
                 if (!interactive) {
                   return (
@@ -130,7 +132,8 @@ export function EpisodeEntryGrid({
                     key={`${episode.period}-${entry.rank}`}
                     color={color}
                     dimensionKey={dimensionKey}
-                    focusedDimension={focusedDimension ?? null}
+                    highlight={highlight}
+                    searchHaystack={searchHaystack}
                     onDimensionClick={onDimensionClick}
                     glyph={glyph}
                     title={tooltip}

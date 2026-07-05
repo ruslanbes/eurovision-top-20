@@ -1,3 +1,4 @@
+import episodeSchemeColors from "../../generated/episodeSchemeColors.json";
 import type { BrowserEpisode, YearColors } from "./types";
 import { isFilledEntry, isMissingEntry } from "./types";
 import { UNKNOWN_COUNTRY_DIMENSION } from "./constants";
@@ -105,6 +106,20 @@ export function buildCountrySchemeContext(
   return { colorMap, missingColor, glyphMap };
 }
 
+export function buildVideosSchemeContext(missingColor: string): EpisodeSchemeContext {
+  return {
+    colorMap: episodeSchemeColors.videos,
+    missingColor,
+  };
+}
+
+export function buildSongsSchemeContext(missingColor: string): EpisodeSchemeContext {
+  return {
+    colorMap: episodeSchemeColors.songs,
+    missingColor,
+  };
+}
+
 export function buildSchemeContext(
   schemeId: string,
   payload: { yearColors: YearColors; browser: { episodes: BrowserEpisode[] } },
@@ -121,6 +136,12 @@ export function buildSchemeContext(
   }
   if (schemeId === "fire") {
     return buildFireSchemeContext(missingColor);
+  }
+  if (schemeId === "videos") {
+    return buildVideosSchemeContext(missingColor);
+  }
+  if (schemeId === "songs") {
+    return buildSongsSchemeContext(missingColor);
   }
   return { colorMap: {}, missingColor };
 }

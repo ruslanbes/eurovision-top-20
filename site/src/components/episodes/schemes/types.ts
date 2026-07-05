@@ -7,13 +7,15 @@ export type EpisodeSchemeContext = {
 };
 
 export type EpisodeScheme = {
-  id: string;
-  label: string;
   dimensionKey: (entry: BrowserEntry) => string;
   entryColor: (entry: BrowserEntry, ctx: EpisodeSchemeContext) => string;
   entryGlyph: (entry: BrowserEntry) => string;
+  entrySearchHaystack?: (entry: BrowserEntry) => string;
   groupSortKey: (entry: BrowserEntry) => string | number;
-  legendItems: (episodes: BrowserEpisode[]) => string[];
-  legendItemGlyph: (item: string, ctx: EpisodeSchemeContext) => string;
+  highlightMode?: "legend" | "search";
+  id: string;
+  label: string;
   legendItemAriaLabel: (item: string) => string;
+  legendItemGlyph: (item: string, ctx: EpisodeSchemeContext) => string;
+  legendItems: (episodes: BrowserEpisode[]) => string[];
 };

@@ -1,142 +1,137 @@
-import {
-  uploadLinkFromVideo,
-  formatChartPoints,
-  songLinkFromSong,
-} from "../formatters";
-import type { HighlightItem, InsightContext, InsightDefinition, InsightResult } from "../types";
-import type { SongStatsRow, StatsGrain, VideoStatsRow } from "../../stats/types";
+import { songMetaLookupKey } from "../../stats/songMetaLookupKey";
+import type { SongStatsRow, VideoStatsRow } from "../../stats/types";
+import type { VideoHitsPayload } from "../../stats/queryWindow";
+import { songLinkFromSong } from "../formatters";
+import type { InsightContext, InsightDefinition, InsightResult } from "../types";
 
 export type YearClassicsParams = {
-  /** Max contest edition year = snapshot calendar year − this value. */
-  minAgeYears: number;
-  /** Minimum cumulative Top 20 episode appearances. */
-  minTop20: number;
+  /** Minimum distinct calendar years with at least one Top 20 hit (any video). */
+  minDistinctYears: number;
   maxItems: number;
 };
 
 export type ClassicCandidate = {
   chart_points: number;
   contest_year: number;
+  distinct_years: number;
   label: string;
   top20: number;
   watchUrl: string | null;
 };
 
-type TierRow = {
-  chart_points: number;
-  top20: number;
-  year: number | null;
-};
+function videoRowByTitle(videoLatest: VideoStatsRow[]): Map<string, VideoStatsRow> {
+  return new Map(videoLatest.map((row) => [row.video_title, row]));
+}
 
-function snapshotCalendarYear(latestPeriod: string): number {
-  const year = Number.parseInt(latestPeriod.slice(0, 4), 10);
-  return Number.isFinite(year) ? year : new Date().getFullYear();
+export function chartYearsBySongKey(
+  hits: VideoHitsPayload,
+  videoLatest: VideoStatsRow[],
+): Map<string, Set<string>> {
+  const byTitle = videoRowByTitle(videoLatest);
+  const bySong = new Map<string, Set<string>>();
+
+  for (const hit of hits.hits) {
+    const row = byTitle.get(hit.video_title);
+    if (!row?.artist?.trim() || !row.song?.trim()) {
+      continue;
+    }
+
+    const key = songMetaLookupKey(row.artist, row.song);
+    let years = bySong.get(key);
+    if (!years) {
+      years = new Set();
+      bySong.set(key, years);
+    }
+
+    for (const entry of hit.entries) {
+      years.add(entry.period.slice(0, 4));
+    }
+  }
+
+  return bySong;
 }
 
 export function computeYearClassics(
-  rows: TierRow[],
-  latestPeriod: string,
+  hits: VideoHitsPayload,
+  videoLatest: VideoStatsRow[],
+  songLatest: SongStatsRow[],
   params: YearClassicsParams,
-  linkForRow: (row: TierRow) => { href: string | null; label: string },
 ): ClassicCandidate[] {
-  const maxContestYear = snapshotCalendarYear(latestPeriod) - params.minAgeYears;
+  const yearsByKey = chartYearsBySongKey(hits, videoLatest);
+  const candidates: ClassicCandidate[] = [];
 
-  return rows
-    .filter(
-      (row) =>
-        row.year != null &&
-        row.year <= maxContestYear &&
-        row.top20 >= params.minTop20,
-    )
-    .sort((left, right) => {
-      if (right.top20 !== left.top20) {
-        return right.top20 - left.top20;
-      }
-      return right.chart_points - left.chart_points;
-    })
-    .slice(0, params.maxItems)
-    .map((row) => {
-      const link = linkForRow(row);
-      return {
-        label: link.label,
-        contest_year: row.year!,
-        top20: row.top20,
-        chart_points: row.chart_points,
-        watchUrl: link.href,
-      };
+  for (const songRow of songLatest) {
+    const key = songMetaLookupKey(songRow.artist, songRow.song);
+    const years = yearsByKey.get(key);
+    if (!years || years.size < params.minDistinctYears) {
+      continue;
+    }
+
+    const link = songLinkFromSong(songRow, videoLatest);
+    candidates.push({
+      label: link.label,
+      contest_year: songRow.year,
+      distinct_years: years.size,
+      top20: songRow.top20,
+      chart_points: songRow.chart_points,
+      watchUrl: link.href,
     });
-}
-
-function buildHighlightResult(
-  classics: ClassicCandidate[],
-  grain: StatsGrain,
-  latestPeriod: string,
-  params: YearClassicsParams,
-  title: string,
-): InsightResult | null {
-  if (classics.length === 0) {
-    return null;
   }
 
-  const maxContestYear = snapshotCalendarYear(latestPeriod) - params.minAgeYears;
-  const noun = grain === "video" ? "uploads" : "songs";
-
-  const items: HighlightItem[] = classics.map((classic) => ({
-    label: classic.label,
-    href: classic.watchUrl,
-    meta: `${classic.top20} Top 20 episodes · ${formatChartPoints(classic.chart_points)} · ESC ${classic.contest_year}`,
-  }));
-
-  return {
-    viewKind: "highlight",
-    title,
-    lead: `Undying Eurovision classics — ${noun} from contest year ${maxContestYear} and earlier with at least ${params.minTop20} Top 20 appearances:`,
-    items,
-    footnote: `Contest year cutoff: calendar ${snapshotCalendarYear(latestPeriod)} − ${params.minAgeYears} years (snapshot ${latestPeriod}).`,
-  };
-}
-
-export function makeYearClassicsInsight(
-  grain: StatsGrain,
-): InsightDefinition<YearClassicsParams> {
-  const id = grain === "video" ? "year-classics-video" : "year-classics-song";
-  const title =
-    grain === "video"
-      ? "Undying Eurovision classics (uploads)"
-      : "Undying Eurovision classics (songs)";
-
-  return {
-    id,
-    section: "year",
-    title,
-    grain,
-    defaultParams: {
-      minAgeYears: 10,
-      minTop20: 40,
-      maxItems: 10,
-    },
-    needs: ["videoLatest", "songLatest", "periodsManifest"],
-    compute(ctx, params) {
-      if (grain === "video") {
-        const classics = computeYearClassics(
-          ctx.videoLatest,
-          ctx.latestPeriod,
-          params,
-          (row) => uploadLinkFromVideo(row as VideoStatsRow),
-        );
-        return buildHighlightResult(classics, grain, ctx.latestPeriod, params, title);
+  return candidates
+    .sort((left, right) => {
+      if (right.distinct_years !== left.distinct_years) {
+        return right.distinct_years - left.distinct_years;
       }
-
-      const classics = computeYearClassics(
-        ctx.songLatest,
-        ctx.latestPeriod,
-        params,
-        (row) => songLinkFromSong(row as SongStatsRow, ctx.videoLatest),
-      );
-      return buildHighlightResult(classics, grain, ctx.latestPeriod, params, title);
-    },
-  };
+      if (right.chart_points !== left.chart_points) {
+        return right.chart_points - left.chart_points;
+      }
+      return left.label.localeCompare(right.label);
+    })
+    .slice(0, params.maxItems);
 }
 
-export const yearClassicsVideo = makeYearClassicsInsight("video");
-export const yearClassicsSong = makeYearClassicsInsight("song");
+export const yearClassics: InsightDefinition<YearClassicsParams> = {
+  id: "year-classics",
+  section: "year",
+  title: "Undying Eurovision classics",
+  grain: "song",
+  defaultParams: {
+    minDistinctYears: 8,
+    maxItems: 10,
+  },
+  needs: ["videoLatest", "songLatest", "videoHits", "periodsManifest"],
+  compute(ctx, params) {
+    if (!ctx.videoHits) {
+      return null;
+    }
+
+    const classics = computeYearClassics(
+      ctx.videoHits,
+      ctx.videoLatest,
+      ctx.songLatest,
+      params,
+    );
+
+    if (classics.length === 0) {
+      return null;
+    }
+
+    const rows = classics.map((classic) => ({
+      id: `${classic.distinct_years}\0${classic.label}`,
+      count: classic.distinct_years,
+      label: classic.label,
+      labelHref: classic.watchUrl,
+    }));
+
+    return {
+      viewKind: "table",
+      tableKind: "count_label",
+      countColumnLabel: "Chart years",
+      labelColumn: "Song",
+      title: "Undying Eurovision classics",
+      lead: `Songs with Top 20 appearances in at least ${params.minDistinctYears} distinct calendar years (any video counts):`,
+      rows,
+    };
+  },
+};

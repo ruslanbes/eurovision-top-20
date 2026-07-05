@@ -2,7 +2,7 @@
 
 ## What it is
 
-`chart_points` is a **YouTube channel chart score** — a single number derived from how often an upload appeared in the Eurovision Top 20 Most Watched episodes.
+`chart_points` is a **YouTube channel chart score** — a single number derived from how often a video appeared in the Eurovision Top 20 Most Watched episodes.
 
 It measures **Top 20 performance**, not Eurovision Song Contest **final placement** or televote results.
 
@@ -13,11 +13,11 @@ Processed and packaged rows include cumulative tier counts per `video_title`:
 
 | Field   | Meaning                                   |
 | ------- | ----------------------------------------- |
-| `top1`  | Episodes where the upload ranked **1**    |
-| `top3`  | Episodes where the upload ranked **1–3**  |
-| `top5`  | Episodes where the upload ranked **1–5**  |
-| `top10` | Episodes where the upload ranked **1–10** |
-| `top20` | Episodes where the upload ranked **1–20** |
+| `top1`  | Episodes where the video ranked **1**    |
+| `top3`  | Episodes where the video ranked **1–3**  |
+| `top5`  | Episodes where the video ranked **1–5**  |
+| `top10` | Episodes where the video ranked **1–10** |
+| `top20` | Episodes where the video ranked **1–20** |
 
 
 Counts are **cumulative** over all episodes through the selected snapshot month.

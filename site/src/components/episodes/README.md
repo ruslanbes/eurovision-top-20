@@ -37,6 +37,8 @@ Each scheme implements `EpisodeScheme`:
 | `legendItems(episodes)` | Unique dimension values across the timeline |
 | `legendItemGlyph(item, ctx)` | Legend symbol for one item |
 | `legendItemAriaLabel(item)` | Accessible legend label |
+| `highlightMode` | `"legend"` (default) or `"search"` — search replaces legend |
+| `entrySearchHaystack` | Optional haystack for search highlight (Videos/Songs) |
 
 `schemes/registry.ts` holds `SCHEME_ORDER` — picker order and default (`country`). Export the scheme object from your module and append it there.
 
@@ -64,6 +66,7 @@ Site reads **packaged JSON only** ([ADR-003](../../../../docs/adr/adr-003-data-l
 |------|-----------|------|
 | `data/packaged/episodes/browser.json` | `data.ts` | Full episode timeline + enriched entries |
 | `data/packaged/episodes/year-colors.json` | `data.ts` | Contest-year hex palette for the year scheme |
+| `src/generated/episodeSchemeColors.json` | `schemeContext.ts` | Build-time hash colors for Videos/Songs schemes |
 
 Payload shape and pipeline source: [`data/README.md`](../../../../data/README.md#episode-browser-packagedepisodes).
 
@@ -74,12 +77,14 @@ Filled entry fields are on `BrowserFilledEntry` in `types.ts`. Missing ranks are
 `EpisodesBrowser` loads payload, resolves the active scheme from UI state, builds context, and renders:
 
 1. **Scheme controls** — segmented picker + **Group** switch
-2. **Legend** — items from `legendItems`; click toggles focus on a dimension
+2. **Legend** or **search** — legend for country/year/ESC/fire; search field for Videos/Songs
 3. **Entry grid** — one row per episode; cells use `entryColor` / `entryGlyph`
+
+**Videos / Songs:** colors from `scripts/generate-episode-colors.mjs` → `src/generated/episodeSchemeColors.json` (hash of video title, or canonical video title per song key). Search highlights all matches; click focuses one dimension; last action wins.
 
 **Group:** when enabled, `layoutEpisodeEntries` reorders each row by `groupSortKey` instead of rank 1→20.
 
-**Focus:** clicking a legend item or cell toggles highlight on one dimension; other entries dim (`entryFocus.ts`). Missing slots never receive focus. Changing scheme clears focus.
+**Focus / search:** legend click or cell click toggles highlight on one dimension (legend schemes). Videos/Songs use a search field instead of legend; typing highlights all matches, click focuses one row — last action wins. Missing slots never receive focus. Changing scheme clears highlight.
 
 UI state (`schemeId`, `groupEnabled`) lives in `useEpisodesBrowserUiState` — not persisted to the URL yet.
 

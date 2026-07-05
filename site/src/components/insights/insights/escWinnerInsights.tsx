@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
-import { uploadLinkLabel } from "../formatters";
+import { videoLinkLabel } from "../formatters";
 import {
   buildEpisodeRankIndex,
   contestYearsForEpisodeMonth,
-  primaryWinnerUpload,
-  winnerUploadsForYear,
+  primaryWinnerVideo,
+  winnerVideosForYear,
 } from "../escWinnerData";
 import type { VideoStatsRow } from "../../stats/types";
 import type {
@@ -23,7 +23,7 @@ type EvaluatedRow = {
   rank: number | null;
   status?: InsightTableStatus;
   statusTitle?: string;
-  upload: VideoStatsRow | null;
+  video: VideoStatsRow | null;
   year: number;
 };
 
@@ -34,7 +34,7 @@ function evaluateContestYear(
   episodeMonth: 4 | 5,
   rankIndex: ReturnType<typeof buildEpisodeRankIndex>,
 ): EvaluatedRow {
-  const winners = winnerUploadsForYear(ctx.videoLatest, contestYear);
+  const winners = winnerVideosForYear(ctx.videoLatest, contestYear);
 
   if (!ctx.periods.includes(period)) {
     return {
@@ -42,7 +42,7 @@ function evaluateContestYear(
       status: "unknown",
       statusTitle: "No episode",
       rank: null,
-      upload: primaryWinnerUpload(winners),
+      video: primaryWinnerVideo(winners),
     };
   }
 
@@ -50,34 +50,34 @@ function evaluateContestYear(
     return {
       year: contestYear,
       status: "unknown",
-      statusTitle: "No winner upload on channel",
+      statusTitle: "No winner video on channel",
       rank: null,
-      upload: null,
+      video: null,
     };
   }
 
   let bestRank: number | null = null;
-  let bestUpload: VideoStatsRow | null = null;
+  let bestVideo: VideoStatsRow | null = null;
   const ranksForPeriod = rankIndex.get(period);
 
-  for (const upload of winners) {
-    const rank = ranksForPeriod?.get(upload.video_title);
+  for (const video of winners) {
+    const rank = ranksForPeriod?.get(video.video_title);
     if (rank === undefined) {
       continue;
     }
     if (bestRank === null || rank < bestRank) {
       bestRank = rank;
-      bestUpload = upload;
+      bestVideo = video;
     }
   }
 
-  if (bestRank === null || bestUpload === null) {
+  if (bestRank === null || bestVideo === null) {
     return {
       year: contestYear,
       status: "no",
       statusTitle: "Not in Top 20",
       rank: null,
-      upload: primaryWinnerUpload(winners),
+      video: primaryWinnerVideo(winners),
     };
   }
 
@@ -85,7 +85,7 @@ function evaluateContestYear(
     return {
       year: contestYear,
       rank: bestRank,
-      upload: bestUpload,
+      video: bestVideo,
     };
   }
 
@@ -94,7 +94,7 @@ function evaluateContestYear(
       year: contestYear,
       status: "yes",
       rank: bestRank,
-      upload: bestUpload,
+      video: bestVideo,
     };
   }
 
@@ -103,7 +103,7 @@ function evaluateContestYear(
     status: "no",
     statusTitle: `Rank ${bestRank}`,
     rank: bestRank,
-    upload: bestUpload,
+    video: bestVideo,
   };
 }
 
@@ -133,8 +133,8 @@ export function computeEscWinnerTableRows(
       status: evaluated.status ?? "unknown",
       statusTitle: evaluated.statusTitle,
       rank: evaluated.rank,
-      linkLabel: evaluated.upload ? uploadLinkLabel(evaluated.upload) : null,
-      linkHref: evaluated.upload?.youtube_watch_url ?? null,
+      linkLabel: evaluated.video ? videoLinkLabel(evaluated.video) : null,
+      linkHref: evaluated.video?.youtube_watch_url ?? null,
     };
   });
 }
@@ -199,9 +199,9 @@ export const escAprilPulse = makeEscWinnerInsight(
   "April pulse",
   { episodeMonth: 4 },
   {
-    lead: "April chart rank of the ESC winner’s upload.",
+    lead: "April chart rank of the ESC winner’s video.",
     footnote:
-      "Rank = position in the April Most Watched episode. — = upload not in that month’s Top 20, or no April episode.",
+      "Rank = position in the April Most Watched episode. — = video not in that month’s Top 20, or no April episode.",
     showHitColumn: false,
     showRankColumn: true,
   },
@@ -212,7 +212,7 @@ export const escMayCrown = makeEscWinnerInsight(
   "May crown",
   { episodeMonth: 5 },
   {
-    lead: "Was the ESC winner’s upload at rank 1 in the May episode for that contest year?",
-    footnote: "✓ = winner upload at #1 in May; ✗ = miss; — = no episode or no winner upload.",
+    lead: "Was the ESC winner’s video at rank 1 in the May episode for that contest year?",
+    footnote: "✓ = winner video at #1 in May; ✗ = miss; — = no episode or no winner video.",
   },
 );

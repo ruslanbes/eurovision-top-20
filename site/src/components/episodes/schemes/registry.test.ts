@@ -12,6 +12,8 @@ describe("episode scheme registry", () => {
     expect(schemes.map((scheme) => scheme.id)).toEqual([
       "country",
       "year",
+      "videos",
+      "songs",
       "esc-winner",
       "fire",
     ]);

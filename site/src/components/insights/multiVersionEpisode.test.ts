@@ -10,7 +10,7 @@ import {
 } from "./insights/multiVersionEpisode";
 
 describe("computeMultiVersionEpisodeRows", () => {
-  it("lists songs with three uploads in the same episode month", () => {
+  it("lists songs with three videos in the same episode month", () => {
     const rows = computeMultiVersionEpisodeRows(
       {
         periods: ["2026-02"],
@@ -89,8 +89,8 @@ describe("computeMultiVersionEpisodeRows", () => {
     );
 
     expect(rows).toHaveLength(1);
-    expect(rows[0]?.songLabel).toBe("Artist — Song");
-    expect(rows[0]?.songHref).toBe("https://www.youtube.com/watch?v=a");
+    expect(rows[0]?.label).toBe("Artist — Song");
+    expect(rows[0]?.labelHref).toBe("https://www.youtube.com/watch?v=a");
     expect(rows[0]?.episodes).toEqual([
       { label: "Feb 2026", href: "https://www.youtube.com/watch?v=episode" },
     ]);
@@ -144,7 +144,7 @@ describe("multiVersionEpisode integration", () => {
     );
 
     expect(result?.viewKind).toBe("table");
-    if (result?.viewKind === "table" && result.tableKind === "song_episodes") {
+    if (result?.viewKind === "table" && result.tableKind === "label_episodes") {
       expect(result.rows.length).toBeGreaterThan(0);
       expect(result.rows[0]?.episodes[0]?.label).toMatch(/^[A-Z][a-z]{2} \d{4}$/);
     }

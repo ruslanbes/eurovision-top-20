@@ -2,19 +2,20 @@ import { alwaysSecondVideo } from "./insights/alwaysSecond";
 import { dominantLeadersSong, dominantLeadersVideo } from "./insights/dominantLeaders";
 import { escAprilPulse, escMayCrown } from "./insights/escWinnerInsights";
 import { multiVersionEpisode } from "./insights/multiVersionEpisode";
-import { yearClassicsSong, yearClassicsVideo } from "./insights/yearClassics";
+import { postMayDebut } from "./insights/postMayDebut";
+import { yearClassics } from "./insights/yearClassics";
 import type { InsightDefinition, InsightSection } from "./types";
 
 /** Stable page order — append new insights here when registering. */
 const INSIGHT_ORDER: InsightDefinition[] = [
-  yearClassicsVideo,
-  yearClassicsSong,
+  yearClassics,
   escAprilPulse,
   escMayCrown,
   dominantLeadersVideo,
   dominantLeadersSong,
   alwaysSecondVideo,
   multiVersionEpisode,
+  postMayDebut,
 ];
 
 const insightsById = Object.fromEntries(

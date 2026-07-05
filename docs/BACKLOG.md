@@ -23,5 +23,3 @@ Each task:
 Detail lives in `docs/tasks/<task-id>.md` when needed.
 
 ---
-
-_No open tasks._

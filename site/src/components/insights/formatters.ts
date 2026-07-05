@@ -4,21 +4,21 @@ import {
 } from "../stats/canonicalSongMember";
 import type { SongStatsRow, VideoStatsRow } from "../stats/types";
 
-export function uploadLinkLabel(upload: VideoStatsRow): string {
-  return upload.video_title;
+export function videoLinkLabel(video: VideoStatsRow): string {
+  return video.video_title;
 }
 
-export function uploadLinkFromVideo(row: VideoStatsRow): {
+export function videoLinkFromVideo(row: VideoStatsRow): {
   href: string | null;
   label: string;
 } {
   return {
-    label: uploadLinkLabel(row),
+    label: videoLinkLabel(row),
     href: row.youtube_watch_url,
   };
 }
 
-export function uploadLinkFromSong(
+export function videoLinkFromSong(
   songRow: SongStatsRow,
   videoLatest: VideoStatsRow[],
 ): {
@@ -28,7 +28,7 @@ export function uploadLinkFromSong(
   return songLinkFromSong(songRow, videoLatest);
 }
 
-/** `Artist — Song` linked to the member upload with the most chart points. */
+/** `Artist — Song` linked to the canonical member video with the most chart points. */
 export function songLinkFromSong(
   songRow: SongStatsRow,
   videoLatest: VideoStatsRow[],
@@ -45,10 +45,10 @@ export function songLinkFromSong(
     };
   }
 
-  const upload = pickCanonicalSongMember(members);
+  const video = pickCanonicalSongMember(members);
   return {
     label,
-    href: upload.youtube_watch_url,
+    href: video.youtube_watch_url,
   };
 }
 

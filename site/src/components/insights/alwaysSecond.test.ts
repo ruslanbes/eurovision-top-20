@@ -32,7 +32,7 @@ function videoRow(
 }
 
 describe("computeAlwaysSecond", () => {
-  it("excludes uploads that ever hit rank 1", () => {
+  it("excludes videos that ever hit rank 1", () => {
     const leaders = computeAlwaysSecond([
       videoRow({ video_title: "Winner replay", chart_points: 900, top1: 5 }),
       videoRow({ video_title: "Bridesmaid A", chart_points: 400, top3: 2 }),

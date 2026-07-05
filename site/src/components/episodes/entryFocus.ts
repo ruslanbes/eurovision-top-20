@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 
 import { MISSING_DIMENSION } from "./constants";
 
-export const DIMMED_ENTRY_OPACITY = 0.7;
+export const DIMMED_ENTRY_OPACITY = 0.4;
 
 export type EntryVisualState = "neutral" | "focused" | "dimmed";
 

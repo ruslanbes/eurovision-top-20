@@ -1,4 +1,4 @@
-import { uploadLinkFromVideo, formatChartPoints, songLinkFromSong } from "../formatters";
+import { videoLinkFromVideo, formatChartPoints, songLinkFromSong } from "../formatters";
 import type { InsightContext, InsightDefinition, InsightResult } from "../types";
 import type { SongStatsRow, StatsGrain, VideoStatsRow } from "../../stats/types";
 
@@ -59,13 +59,13 @@ function rowsForGrain(ctx: InsightContext, grain: StatsGrain): ChartPointsRow[] 
   return grain === "video" ? ctx.videoLatest : ctx.songLatest;
 }
 
-function uploadLinkForRow(
+function videoLinkForRow(
   row: ChartPointsRow,
   grain: StatsGrain,
   ctx: InsightContext,
 ): { href: string | null; label: string } {
   if (grain === "video") {
-    return uploadLinkFromVideo(row as VideoStatsRow);
+    return videoLinkFromVideo(row as VideoStatsRow);
   }
   return songLinkFromSong(row as SongStatsRow, ctx.videoLatest);
 }
@@ -76,21 +76,21 @@ function buildHighlightResult(
   ctx: InsightContext,
   title: string,
 ): InsightResult {
-  const noun = grain === "video" ? "uploads" : "songs";
+  const noun = grain === "video" ? "videos" : "songs";
 
   return {
     viewKind: "highlight",
     title,
     lead: `These ${noun} sit in a tight leader cluster with a large drop to the rest of the chart:`,
     items: match.cluster.map((row) => {
-      const link = uploadLinkForRow(row, grain, ctx);
+      const link = videoLinkForRow(row, grain, ctx);
       return {
         label: link.label,
         href: link.href,
         meta: formatChartPoints(row.chart_points),
       };
     }),
-    footnote: `Cut after rank ${match.cutRank}: ${formatChartPoints(match.gapToNext)} below the cluster (snapshot ${ctx.latestPeriod}).`,
+    footnote: `Cut after rank ${match.cutRank}: ${formatChartPoints(match.gapToNext)} below the cluster.`,
   };
 }
 
@@ -99,7 +99,7 @@ export function makeDominantLeadersInsight(
 ): InsightDefinition<DominantLeadersParams> {
   const id = grain === "video" ? "dominant-leaders-video" : "dominant-leaders-song";
   const title =
-    grain === "video" ? "Dominant leaders (uploads)" : "Dominant leaders (songs)";
+    grain === "video" ? "Dominant leaders (videos)" : "Dominant leaders (songs)";
 
   return {
     id,

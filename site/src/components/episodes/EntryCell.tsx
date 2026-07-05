@@ -1,13 +1,16 @@
 import type { CSSProperties, ReactNode } from "react";
 
-import { entryStyle, entryVisualState } from "./entryFocus";
+import type { EntryHighlightState } from "./entryHighlight";
+import { resolveEntryVisualState } from "./entryHighlight";
+import { entryStyle } from "./entryFocus";
 
 type EntryCellProps = {
   color: string;
   dimensionKey: string;
-  focusedDimension: string | null;
-  onDimensionClick: (dimensionKey: string) => void;
   glyph: string;
+  highlight: EntryHighlightState;
+  onDimensionClick: (dimensionKey: string) => void;
+  searchHaystack?: string;
   title?: string;
   ariaLabel?: string;
   className?: string;
@@ -18,8 +21,9 @@ type EntryCellProps = {
 export function EntryCell({
   color,
   dimensionKey,
-  focusedDimension,
+  highlight,
   onDimensionClick,
+  searchHaystack = "",
   glyph,
   title,
   ariaLabel,
@@ -27,7 +31,7 @@ export function EntryCell({
   bubbleClassName = "text-base",
   children,
 }: EntryCellProps) {
-  const state = entryVisualState(dimensionKey, focusedDimension);
+  const state = resolveEntryVisualState(dimensionKey, searchHaystack, highlight);
   const bubbleStyle: CSSProperties = entryStyle(color, state);
 
   return (

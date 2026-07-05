@@ -4,6 +4,23 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-07-05
+
+Episode browser Videos/Songs schemes, After May debut, classics rule refresh.
+
+### Added
+
+- **Videos** and **Songs** color schemes on `/episodes/` — colored ● per video title or per song; search field highlights matches.
+- **After May debut** — insight table of ESC songs whose first Top 20 chart appearance was after May (Jun–Apr window).
+
+### Changed
+
+- **Hat-trick** — renamed from “Three versions, one episode”.
+- **Undying Eurovision classics** — song-only; songs with Top 20 hits in ≥8 distinct calendar years.
+- **Insights** — copy and labels use **video** instead of **upload** for one YouTube clip per stats row.
+- **Episode browser** — non-highlighted entries dim more when search or legend focus is active.
+- Insight tables with a Year column sort ascending by contest year.
+
 ## [0.5.1] - 2026-07-05
 
 Insights polish, multi-version table.

@@ -20,7 +20,7 @@ export function buildEpisodeRankIndex(hits: VideoHitsPayload): EpisodeRankIndex 
   return index;
 }
 
-export function winnerUploadsForYear(
+export function winnerVideosForYear(
   videoLatest: VideoStatsRow[],
   contestYear: number,
 ): VideoStatsRow[] {
@@ -29,14 +29,14 @@ export function winnerUploadsForYear(
   );
 }
 
-export function primaryWinnerUpload(
-  uploads: VideoStatsRow[],
+export function primaryWinnerVideo(
+  videos: VideoStatsRow[],
 ): VideoStatsRow | null {
-  if (uploads.length === 0) {
+  if (videos.length === 0) {
     return null;
   }
 
-  return [...uploads].sort((left, right) => {
+  return [...videos].sort((left, right) => {
     if (right.chart_points !== left.chart_points) {
       return right.chart_points - left.chart_points;
     }
@@ -57,5 +57,5 @@ export function contestYearsForEpisodeMonth(
     }
   }
 
-  return [...years].sort((left, right) => right - left);
+  return [...years].sort((left, right) => left - right);
 }
