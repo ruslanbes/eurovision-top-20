@@ -24,9 +24,4 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 
 ---
 
-## video-insights
-- status: backlog
-- parent: generate-stats-table
-- goal: Formalize per-video analytics for four site sections (Year, Country, ESC winner, Other) — formulas + open questions only for now
-- done_when: Per `docs/tasks/video-insights.md` — each insight has id, section, formula + open questions; optional CLI/site still out of scope until a follow-up
-- notes: List-only for now; per-video grain; song variants later; includes `other-never-top1-leader`
+_No open tasks._

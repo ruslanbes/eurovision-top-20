@@ -4,6 +4,19 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-07-05
+
+Insights page.
+
+### Added
+
+- **`/insights/`** — back in site nav (Videos | Songs | Episodes | Insights).
+- **Undying Eurovision classics** — uploads and songs from older contest years that still appear in the Top 20 often.
+- **Dominant leaders** — tight leader cluster with a large drop in chart points to the rest of the field (uploads and songs).
+- **April pulse** — year-by-year April chart rank for each ESC winner’s upload.
+- **May crown** — whether the winner’s upload reached #1 in the May episode that year.
+- **Always second** — strongest upload that never reached rank 1 in any episode.
+
 ## [0.4.2] - 2026-07-05
 
 CSS style cleanup.

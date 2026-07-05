@@ -147,13 +147,13 @@ May read **any source**: processed alltime, raw episodes, title parser (`title_p
 | Period index for scrubber                                     | `query/video-hits.json` `periods` array (via copy script → `periods-alltime.json`)                                                             |
 
 
-**Shipped:** `per-video/alltime`, `per-song/alltime`, `query/` (`video-hits`, `video-meta`, `song-hits`, `song-meta`), and **`episodes/`** (`browser.json` + copied `year-colors.json` for the `/episodes` browser). Flexible period range UI on `/` and `/songs/`; **entry browser on `/episodes/`** — see [`site/README.md`](../site/README.md#episodes). Future insight payloads (e.g. heatmaps) will live under `packaged/insights/`.
+**Shipped:** `per-video/alltime`, `per-song/alltime`, `query/` (`video-hits`, `video-meta`, `song-hits`, `song-meta`), and **`episodes/`** (`browser.json` + copied `year-colors.json` for the `/episodes` browser). Flexible period range UI on `/` and `/songs/`; **entry browser on `/episodes/`** — site plugin: [`site/src/components/episodes/README.md`](../site/src/components/episodes/README.md). Future insight payloads (e.g. heatmaps) will live under `packaged/insights/`.
 
 `year-colors.json` lives under `metadata/` (hand-maintained; regenerate with `pipeline/scripts/refresh_year_colors.py`). Copied at `package` to `packaged/episodes/year-colors.json`.
 
 ### Episode browser (`packaged/episodes/`)
 
-Built in `package` from raw `entries[]` + title parse / ESC join / fire allowlist (`episodes_browser.py`). Served on **`/episodes/`** — see [`site/README.md`](../site/README.md#episodes).
+Built in `package` from raw `entries[]` + title parse / ESC join / fire allowlist (`episodes_browser.py`). Served on **`/episodes/`** — site plugin: [`site/src/components/episodes/README.md`](../site/src/components/episodes/README.md).
 
 | File | Role |
 | ---- | ---- |

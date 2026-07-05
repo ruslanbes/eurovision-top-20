@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { STATS_URL_CHANGE_EVENT } from "./useStatsUiState";
 
 type StatsNavProps = {
-  current: "videos" | "songs" | "episodes";
+  current: "videos" | "songs" | "episodes" | "insights";
 };
 
 function statsHref(grain: "videos" | "songs", search: string): string {
@@ -13,6 +13,10 @@ function statsHref(grain: "videos" | "songs", search: string): string {
 
 function episodesHref(): string {
   return `${import.meta.env.BASE_URL}episodes/`;
+}
+
+function insightsHref(): string {
+  return `${import.meta.env.BASE_URL}insights/`;
 }
 
 export function StatsNav({ current }: StatsNavProps) {
@@ -71,6 +75,13 @@ export function StatsNav({ current }: StatsNavProps) {
         className={linkClass(current === "episodes")}
       >
         Episodes
+      </a>
+      <a
+        href={insightsHref()}
+        aria-current={current === "insights" ? "page" : undefined}
+        className={linkClass(current === "insights")}
+      >
+        Insights
       </a>
     </nav>
   );

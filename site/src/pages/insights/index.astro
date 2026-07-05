@@ -1,0 +1,12 @@
+---
+import { InsightsPage } from "../../components/insights/InsightsPage";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  current="insights"
+  title="Insights"
+  description="Chart analytics — formulas computed from packaged stats."
+>
+  <InsightsPage client:visible />
+</BaseLayout>

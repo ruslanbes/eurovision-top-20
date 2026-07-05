@@ -4,11 +4,11 @@ Last updated: 2026-07-05
 
 ## Current focus
 
-Released **0.4.2**; **`video-insights`** next (formulas doc pass).
+**Release 0.5.0** — prepared, not tagged. Insights shipped on `/insights/`.
 
 ## Active task
 
-_None_ — pick [`video-insights`](docs/tasks/video-insights.md).
+_None._
 
 ## Blockers
 
@@ -16,8 +16,12 @@ _None._
 
 ## Next action
 
-Start **`video-insights`** (formulas-only doc pass).
+Execute [release 0.5.0](RELEASE.md#execute-the-release) when ready:
+
+1. Pre-release checklist (pytest, `npm test`, `npm run build`, validate/process/package).
+2. Commit release prep if not already committed.
+3. `git tag -a v0.5.0 -m "Release 0.5.0"` and push `main` with tags.
 
 ## Session notes
 
-- Released **0.4.2** — site theming cleanup (stats tokens, danger banners, chart token prune).
+- Prepared **0.5.0** — insights page + six blocks; removed `docs/tasks/video-insights.md`.
