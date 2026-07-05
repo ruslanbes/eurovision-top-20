@@ -18,7 +18,6 @@ from evtop20.window import (
     aggregate_song_hits,
     aggregate_video_hits,
     window_stats,
-    window_stats_from_cumulative,
     window_stats_from_episodes,
 )
 
@@ -100,9 +99,6 @@ def test_window_sources_match(
     from_episodes = window_stats_from_episodes(
         repo_root, begin=begin, end=end, periods=periods
     )
-    from_cumulative = window_stats_from_cumulative(
-        repo_root, begin=begin, end=end, periods=periods
-    )
     from_query = aggregate_video_hits(
         query_payloads["video_hits"],
         query_payloads["video_meta"],
@@ -110,7 +106,6 @@ def test_window_sources_match(
         end=end,
     )
 
-    _assert_window_rows_match(from_episodes, from_cumulative, grain="video")
     _assert_window_rows_match(from_episodes, from_query, grain="video")
 
 

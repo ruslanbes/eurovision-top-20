@@ -119,13 +119,8 @@ def _write_processed_snapshot(repo_root: Path, name: str, payload: dict) -> Path
     return path
 
 
-def test_run_package_writes_alltime_snapshots(repo_root: Path) -> None:
+def test_run_package_writes_alltime_latest(repo_root: Path) -> None:
     row = _processed_row()
-    _write_processed_snapshot(
-        repo_root,
-        "eurovision-top-20-alltime-2026-05.json",
-        _processed_payload(row),
-    )
     _write_processed_snapshot(
         repo_root,
         "eurovision-top-20-alltime-latest.json",
@@ -151,17 +146,10 @@ def test_run_package_writes_alltime_snapshots(repo_root: Path) -> None:
     message = run_package(repo_root)
 
     latest = json.loads(stale_path.read_text(encoding="utf-8"))
-    period = json.loads(
-        (
-            packaged_per_video_alltime_stats_latest_path(repo_root).with_name(
-                "eurovision-top-20-alltime-2026-05.json"
-            )
-        ).read_text(encoding="utf-8")
-    )
 
     assert latest["rows"][0]["artist"] == "Tommy Cash"
-    assert period["rows"][0]["performance_category"] == "official_video"
-    assert "performance_type" not in period["rows"][0]
+    assert latest["rows"][0]["performance_category"] == "official_video"
+    assert "performance_type" not in latest["rows"][0]
     assert not stale_period.exists()
     assert "Title metadata (alltime latest): 1/1 rows parsed" in message
     assert "query/video-hits.json" in message
@@ -169,11 +157,6 @@ def test_run_package_writes_alltime_snapshots(repo_root: Path) -> None:
 
 def test_run_package_writes_query_index(repo_root: Path) -> None:
     row = _processed_row()
-    _write_processed_snapshot(
-        repo_root,
-        "eurovision-top-20-alltime-2026-05.json",
-        _processed_payload(row),
-    )
     _write_processed_snapshot(
         repo_root,
         "eurovision-top-20-alltime-latest.json",

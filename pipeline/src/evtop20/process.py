@@ -6,7 +6,6 @@ from evtop20.aggregate import run_aggregate
 from evtop20.episode_index import run_episode_index
 from evtop20.paths import (
     processed_alltime_stats_latest_path,
-    processed_alltime_stats_period_path,
     processed_episode_index_dir,
 )
 from evtop20.validate import (
@@ -38,23 +37,14 @@ def run_process(repo_root: Path) -> str:
     except ValueError as exc:
         raise ProcessError(str(exc)) from exc
 
-    first_path = _display_path(
-        processed_alltime_stats_period_path(repo_root, *result.start_period),
-        repo_root,
-    )
-    last_path = _display_path(
-        processed_alltime_stats_period_path(repo_root, *result.end_period),
-        repo_root,
-    )
     latest_path = _display_path(
         processed_alltime_stats_latest_path(repo_root), repo_root
     )
     index_dir = _display_path(processed_episode_index_dir(repo_root), repo_root)
 
     message = (
-        f"Wrote {first_path} … {last_path} ({result.snapshot_count} snapshots)\n"
         f"Wrote {latest_path} ({result.video_count} videos from "
-        f"{result.episode_count} episodes)\n"
+        f"{result.episode_count} episodes, {result.snapshot_count} episode months)\n"
         f"Wrote {index_dir}/{index_result.first_period}.json … "
         f"{index_result.last_period}.json ({index_result.episode_count} episode files)"
     )

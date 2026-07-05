@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
@@ -26,7 +27,7 @@ from evtop20.paths import (
     packaged_per_video_alltime_dir,
     packaged_per_video_alltime_stats_latest_path,
     packaged_per_video_alltime_stats_path,
-    processed_alltime_dir,
+    processed_alltime_stats_latest_path,
 )
 from evtop20.episodes_browser import EpisodesBrowserError, run_episodes_browser
 from evtop20.query_index import run_query_index
@@ -168,17 +169,17 @@ def package_alltime_payload(
     )
 
 
-def list_processed_snapshot_paths(repo_root: Path) -> list[Path]:
-    return sorted(
-        processed_alltime_dir(repo_root).glob(f"{ALLTIME_STATS_BASENAME}-*.json")
-    )
+def _period_snapshot_pattern(stats_basename: str) -> re.Pattern[str]:
+    return re.compile(rf"^{re.escape(stats_basename)}-\d{{4}}-\d{{2}}\.json$")
 
 
-def _remove_stale_snapshots(directory: Path, stats_basename: str, kept: set[str]) -> None:
+def _remove_period_snapshots(directory: Path, stats_basename: str) -> None:
+    """Drop per-month alltime files; packaged layer ships `-latest` only."""
     if not directory.is_dir():
         return
-    for path in directory.glob(f"{stats_basename}-*.json"):
-        if path.name not in kept:
+    pattern = _period_snapshot_pattern(stats_basename)
+    for path in directory.iterdir():
+        if path.is_file() and pattern.match(path.name):
             path.unlink()
 
 
@@ -205,74 +206,62 @@ def _package_variant(
     esc_joiner: EscResultsJoiner | None = None,
     fire_allowlist: frozenset[str] | None = None,
 ) -> PackageVariantResult | None:
-    source_paths = list_processed_snapshot_paths(repo_root)
-    if not source_paths:
+    latest_source_path = processed_alltime_stats_latest_path(repo_root)
+    if not latest_source_path.is_file():
         return None
 
     video_out_dir.mkdir(parents=True, exist_ok=True)
     song_out_dir.mkdir(parents=True, exist_ok=True)
 
-    kept_video_basenames: set[str] = set()
-    kept_song_basenames: set[str] = set()
-    latest_parsed_count = 0
-    latest_unparsed_titles: set[str] = set()
-    latest_row_count = 0
-    latest_song_row_count = 0
-    song_warnings: list[str] = []
+    processed_payload = json.loads(latest_source_path.read_text(encoding="utf-8"))
+    packaged_payload, parsed_count, unparsed_titles = package_video_payload(
+        processed_payload,
+        source=processed_source,
+        esc_joiner=esc_joiner,
+        fire_allowlist=fire_allowlist,
+    )
 
-    for source_path in source_paths:
-        processed_payload = json.loads(source_path.read_text(encoding="utf-8"))
-        packaged_payload, parsed_count, unparsed_titles = package_video_payload(
-            processed_payload,
-            source=processed_source,
-            esc_joiner=esc_joiner,
-            fire_allowlist=fire_allowlist,
-        )
+    latest_video_basename = f"{stats_basename}-latest.json"
+    write_episode_file(
+        video_stats_path(repo_root, latest_video_basename),
+        packaged_payload,
+    )
 
-        write_episode_file(video_stats_path(repo_root, source_path.name), packaged_payload)
+    song_payload, song_warnings = package_song_stats_payload(
+        packaged_payload,
+        source=song_source,
+    )
+    validation_issues = validate_song_stats_payload(
+        song_payload,
+        context=latest_video_basename,
+    )
+    if validation_issues:
+        detail = "\n".join(f"  {issue}" for issue in validation_issues)
+        msg = f"song stats validation failed:\n{detail}"
+        raise PackageError(msg)
+    latest_song_basename = video_stats_basename_to_song_stats_basename(latest_video_basename)
+    write_episode_file(
+        song_stats_path(repo_root, latest_song_basename),
+        song_payload,
+    )
 
-        song_payload, snapshot_warnings = package_song_stats_payload(
-            packaged_payload,
-            source=song_source,
-        )
-        validation_issues = validate_song_stats_payload(
-            song_payload,
-            context=source_path.name,
-        )
-        if validation_issues:
-            detail = "\n".join(f"  {issue}" for issue in validation_issues)
-            msg = f"song stats validation failed:\n{detail}"
-            raise PackageError(msg)
-        song_basename = video_stats_basename_to_song_stats_basename(source_path.name)
-        write_episode_file(song_stats_path(repo_root, song_basename), song_payload)
+    _remove_period_snapshots(video_out_dir, stats_basename)
+    _remove_period_snapshots(song_out_dir, SONG_STATS_BASENAME)
 
-        kept_video_basenames.add(source_path.name)
-        kept_song_basenames.add(song_basename)
-        song_warnings.extend(snapshot_warnings)
-        if source_path.name == f"{stats_basename}-latest.json":
-            latest_parsed_count = parsed_count
-            latest_unparsed_titles = unparsed_titles
-            latest_row_count = len(packaged_payload["rows"])
-            latest_song_row_count = len(song_payload["rows"])
-
-    _remove_stale_snapshots(video_out_dir, stats_basename, kept_video_basenames)
-    _remove_stale_snapshots(song_out_dir, SONG_STATS_BASENAME, kept_song_basenames)
+    latest_video_path = video_latest_path(repo_root)
+    latest_song_path = song_latest_path(repo_root)
 
     return PackageVariantResult(
         label=label,
-        snapshot_count=len(source_paths),
-        first_path=_display_path(
-            video_stats_path(repo_root, source_paths[0].name), repo_root
-        ),
-        last_path=_display_path(
-            video_stats_path(repo_root, source_paths[-1].name), repo_root
-        ),
-        latest_video_path=_display_path(video_latest_path(repo_root), repo_root),
-        latest_song_path=_display_path(song_latest_path(repo_root), repo_root),
-        latest_parsed_count=latest_parsed_count,
-        latest_row_count=latest_row_count,
-        latest_song_row_count=latest_song_row_count,
-        latest_unparsed_titles=latest_unparsed_titles,
+        snapshot_count=1,
+        first_path=_display_path(latest_video_path, repo_root),
+        last_path=_display_path(latest_video_path, repo_root),
+        latest_video_path=_display_path(latest_video_path, repo_root),
+        latest_song_path=_display_path(latest_song_path, repo_root),
+        latest_parsed_count=parsed_count,
+        latest_row_count=len(packaged_payload["rows"]),
+        latest_song_row_count=len(song_payload["rows"]),
+        latest_unparsed_titles=unparsed_titles,
         warnings=song_warnings,
     )
 
@@ -284,10 +273,6 @@ def _format_variant_summary(result: PackageVariantResult) -> str:
         else 0.0
     )
     lines = [
-        (
-            f"Wrote {result.first_path} … {result.last_path} "
-            f"({result.snapshot_count} {result.label} snapshots)"
-        ),
         f"Wrote {result.latest_video_path}",
         (
             f"Title metadata ({result.label} latest): "
@@ -295,8 +280,8 @@ def _format_variant_summary(result: PackageVariantResult) -> str:
             f"({coverage:.1%})"
         ),
         (
-            f"Wrote {result.label} song stats ({result.snapshot_count} snapshots); "
-            f"latest: {result.latest_song_path} ({result.latest_song_row_count} songs)"
+            f"Wrote {result.label} song stats latest: {result.latest_song_path} "
+            f"({result.latest_song_row_count} songs)"
         ),
     ]
     if result.latest_unparsed_titles:
@@ -334,8 +319,8 @@ def run_package(repo_root: Path) -> str:
     )
     if alltime is None:
         msg = (
-            "no processed alltime snapshots found under "
-            f"{_display_path(processed_alltime_dir(repo_root), repo_root)}; "
+            "no processed alltime latest snapshot at "
+            f"{_display_path(processed_alltime_stats_latest_path(repo_root), repo_root)}; "
             "run process first"
         )
         raise PackageError(msg)

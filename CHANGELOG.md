@@ -4,6 +4,15 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-07-05
+
+Smaller packaged/processed data footprint — alltime `-latest` only.
+
+### Changed
+
+- **Packaged alltime** — `package` ships `-latest.json` only per video and song grain (drops unused per-month snapshots.
+- **Processed alltime** — `process` ships `-latest.json` only.
+
 ## [0.6.0] - 2026-07-05
 
 Episode browser Videos/Songs schemes, After May debut, classics rule refresh.

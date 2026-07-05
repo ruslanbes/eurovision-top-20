@@ -3,7 +3,6 @@ import {
   existsSync,
   mkdirSync,
   readFileSync,
-  readdirSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
@@ -16,27 +15,21 @@ const repoRoot = join(siteRoot, "..");
 const srcPackaged = join(repoRoot, "data", "packaged");
 const destPublicData = join(siteRoot, "public", "data");
 const destPackaged = join(destPublicData, "packaged");
-const alltimeDir = join(destPackaged, "per-video", "alltime");
 const queryHitsPath = join(destPackaged, "query", "video-hits.json");
-const periodPattern = /^eurovision-top-20-alltime-(\d{4}-\d{2})\.json$/;
 
 rmSync(destPackaged, { recursive: true, force: true });
 mkdirSync(destPublicData, { recursive: true });
 cpSync(srcPackaged, destPackaged, { recursive: true });
 
-let periods;
-if (existsSync(queryHitsPath)) {
-  const queryHits = JSON.parse(readFileSync(queryHitsPath, "utf-8"));
-  periods = queryHits.periods;
-} else {
-  periods = readdirSync(alltimeDir)
-    .filter((name) => periodPattern.test(name))
-    .map((name) => name.match(periodPattern)[1])
-    .sort();
+if (!existsSync(queryHitsPath)) {
+  throw new Error("Missing query/video-hits.json after copy — run package first");
 }
 
+const queryHits = JSON.parse(readFileSync(queryHitsPath, "utf-8"));
+const periods = queryHits.periods;
+
 if (!Array.isArray(periods) || periods.length === 0) {
-  throw new Error("No episode periods found in query index or alltime snapshots");
+  throw new Error("query/video-hits.json has no periods");
 }
 
 const manifest = {

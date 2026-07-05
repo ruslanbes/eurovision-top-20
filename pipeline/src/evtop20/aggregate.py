@@ -11,7 +11,6 @@ from evtop20.paths import (
     ALLTIME_STATS_BASENAME,
     processed_alltime_dir,
     processed_alltime_stats_latest_path,
-    processed_alltime_stats_period_path,
     raw_episodes_dir,
 )
 from evtop20.validate import list_episode_files, load_episode_file
@@ -188,14 +187,12 @@ def _period_from_stats_filename(name: str) -> Period | None:
     return int(match.group(1)), int(match.group(2))
 
 
-def _remove_stale_period_snapshots(
-    repo_root: Path, kept_periods: set[Period]
-) -> None:
+def _remove_period_snapshots(repo_root: Path) -> None:
+    """Drop per-month alltime files; processed layer ships `-latest` only."""
     for path in processed_alltime_dir(repo_root).glob(
         f"{ALLTIME_STATS_BASENAME}-*.json"
     ):
-        period = _period_from_stats_filename(path.name)
-        if period is not None and period not in kept_periods:
+        if _period_from_stats_filename(path.name) is not None:
             path.unlink()
 
 
@@ -269,7 +266,6 @@ def run_aggregate(repo_root: Path) -> AggregateResult:
 
     processed_alltime_dir(repo_root).mkdir(parents=True, exist_ok=True)
 
-    kept_periods: set[Period] = set()
     for period, payload in snapshots:
         period_label = f"{period[0]:04d}-{period[1]:02d}"
         issues = validate_stats_payload(payload, context=period_label)
@@ -277,17 +273,12 @@ def run_aggregate(repo_root: Path) -> AggregateResult:
             detail = "\n".join(f"  {issue}" for issue in issues)
             msg = f"stats validation failed:\n{detail}"
             raise ValueError(msg)
-        write_stats_payload(
-            processed_alltime_stats_period_path(repo_root, *period), payload
-        )
-        kept_periods.add(period)
-
-    _remove_stale_period_snapshots(repo_root, kept_periods)
 
     _, final_payload = snapshots[-1]
     write_stats_payload(
         processed_alltime_stats_latest_path(repo_root), final_payload
     )
+    _remove_period_snapshots(repo_root)
 
     return AggregateResult(
         snapshot_count=len(snapshots),

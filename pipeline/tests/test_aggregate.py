@@ -7,7 +7,9 @@ import pytest
 
 from evtop20.aggregate import (
     aggregate_video_stats,
+    build_period_snapshots,
     chart_points_from_tiers,
+    load_episodes,
     run_aggregate,
     tiers_for_rank,
     validate_stats_payload,
@@ -356,7 +358,7 @@ def test_process_writes_stats_after_validation(repo_root: Path) -> None:
     )
     message = run_process(repo_root)
     assert "eurovision-top-20-alltime-latest.json" in message
-    assert "1 snapshots" in message
+    assert "1 episode months" in message
     assert "1 videos from 1 episodes" in message
     assert processed_alltime_stats_latest_path(repo_root).is_file()
 
@@ -418,12 +420,13 @@ def test_process_writes_episode_index(repo_root: Path) -> None:
     }
 
 
-def _read_snapshot(repo_root: Path, year: int, month: int) -> dict:
-    path = processed_alltime_stats_period_path(repo_root, year, month)
-    return json.loads(path.read_text(encoding="utf-8"))
+def _read_latest(repo_root: Path) -> dict:
+    return json.loads(
+        processed_alltime_stats_latest_path(repo_root).read_text(encoding="utf-8")
+    )
 
 
-def test_partial_snapshots_grow_with_each_episode(repo_root: Path) -> None:
+def test_latest_grows_with_each_episode(repo_root: Path) -> None:
     for month, title in [(1, "Jan"), (2, "Feb"), (3, "Mar")]:
         _write_episode(
             repo_root,
@@ -438,14 +441,12 @@ def test_partial_snapshots_grow_with_each_episode(repo_root: Path) -> None:
         )
     run_aggregate(repo_root)
 
-    assert len(_read_snapshot(repo_root, 2022, 1)["rows"]) == 1
-    assert len(_read_snapshot(repo_root, 2022, 2)["rows"]) == 2
-    assert len(_read_snapshot(repo_root, 2022, 3)["rows"]) == 3
-    assert processed_alltime_stats_period_path(repo_root, 2022, 1).is_file()
-    assert processed_alltime_stats_period_path(repo_root, 2022, 2).is_file()
+    latest = _read_latest(repo_root)
+    assert len(latest["rows"]) == 3
+    assert not processed_alltime_stats_period_path(repo_root, 2022, 1).exists()
 
 
-def test_partial_gap_month_writes_no_snapshot(repo_root: Path) -> None:
+def test_gap_month_removes_stale_period_file(repo_root: Path) -> None:
     _write_episode(
         repo_root,
         "2022-01.json",
@@ -464,15 +465,14 @@ def test_partial_gap_month_writes_no_snapshot(repo_root: Path) -> None:
             entries_by_rank={1: {"video_title": "Song Mar", "youtube_video_id": ""}},
         ),
     )
-    # Stale gap-month file from an older generate run.
     gap_path = processed_alltime_stats_period_path(repo_root, 2022, 2)
     gap_path.parent.mkdir(parents=True, exist_ok=True)
     gap_path.write_text('{"rows": []}\n', encoding="utf-8")
 
     run_aggregate(repo_root)
 
-    assert processed_alltime_stats_period_path(repo_root, 2022, 2).is_file() is False
-    assert len(_read_snapshot(repo_root, 2022, 3)["rows"]) == 2
+    assert not gap_path.is_file()
+    assert len(_read_latest(repo_root)["rows"]) == 2
 
 
 def test_latest_matches_final_period_snapshot(repo_root: Path) -> None:
@@ -494,16 +494,16 @@ def test_latest_matches_final_period_snapshot(repo_root: Path) -> None:
             entries_by_rank={2: {"video_title": "Other", "youtube_video_id": ""}},
         ),
     )
+
+    episodes = load_episodes(repo_root)
+    snapshots, _ = build_period_snapshots(episodes)
+    _, final_payload = snapshots[-1]
     run_aggregate(repo_root)
 
-    final = _read_snapshot(repo_root, 2022, 3)
-    latest = json.loads(
-        processed_alltime_stats_latest_path(repo_root).read_text(encoding="utf-8")
-    )
-    assert latest == final
+    assert _read_latest(repo_root) == final_payload
 
 
-def test_partial_snapshots_only_for_episode_months(repo_root: Path) -> None:
+def test_run_aggregate_writes_latest_only(repo_root: Path) -> None:
     _write_episode(
         repo_root,
         "2022-01.json",
@@ -524,10 +524,10 @@ def test_partial_snapshots_only_for_episode_months(repo_root: Path) -> None:
     )
     result = run_aggregate(repo_root)
     assert result.snapshot_count == 2
-    assert processed_alltime_stats_period_path(repo_root, 2022, 1).is_file()
-    assert processed_alltime_stats_period_path(repo_root, 2026, 1).is_file()
-    assert processed_alltime_stats_period_path(repo_root, 2022, 2).is_file() is False
-    assert processed_alltime_stats_period_path(repo_root, 2025, 12).is_file() is False
+    assert processed_alltime_stats_latest_path(repo_root).is_file()
+    assert not processed_alltime_stats_period_path(repo_root, 2022, 1).exists()
+    assert not processed_alltime_stats_period_path(repo_root, 2026, 1).exists()
+    assert not processed_alltime_stats_period_path(repo_root, 2022, 2).exists()
 
 
 def test_validate_stats_payload_accepts_monotonic_tiers() -> None:

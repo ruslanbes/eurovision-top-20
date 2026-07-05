@@ -441,7 +441,7 @@ def test_run_package_writes_song_stats_snapshots(repo_root: Path) -> None:
     assert len(song_latest["rows"]) == 1
     assert song_latest["rows"][0]["song"] == "Espresso Macchiato"
     assert "generated_at" not in song_latest
-    assert "Wrote alltime song stats" in message
+    assert "Wrote alltime song stats latest" in message
 
 
 def test_build_song_hits_uses_canonical_display_matching_song_meta() -> None:

@@ -43,9 +43,9 @@ flowchart TB
 | Path                                        | Role                                                                              | Command                              | Produced by       | Consumed by                                              |
 | ------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------ | ----------------- | -------------------------------------------------------- |
 | `raw/episodes/`                             | **Source of truth.** One JSON file per Top 20 episode. Edit by hand.              | `uv run evtop20 new-episode YYYY-MM` | Editors           | Pipeline                                                 |
-| `processed/alltime/`                        | Generated stats (do not edit). Cumulative snapshots per episode month.            | `uv run evtop20 process`             | `evtop20 process` | `add` (alltime corpus), notebooks, **input to packaged** |
+| `processed/alltime/`                        | Generated stats (do not edit). Cumulative **`-latest.json`** only.            | `uv run evtop20 process`             | `evtop20 process` | `add` (search corpus), **input to packaged** |
 | `processed/episode-index/`                  | Per-episode Top 20 rank contributions (not cumulative). One file per episode month. | `uv run evtop20 process`             | `evtop20 process` | `package` (window query index)                           |
-| `packaged/per-video/`, `packaged/per-song/` | UI-ready JSON (not hand-edited). `per-{video,song}/alltime/`.                     | `uv run evtop20 package`             | `evtop20 package` | Tools, reference; site uses `query/` for tables          |
+| `packaged/per-video/`, `packaged/per-song/` | UI-ready JSON (not hand-edited). `per-{video,song}/alltime/*-latest.json` only. | `uv run evtop20 package`             | `evtop20 package` | Site insights (`-latest`); reference for tools              |
 | `packaged/query/`                           | Sparse window query index + static row metadata for flexible period ranges.       | `uv run evtop20 package`             | `evtop20 package` | Site (flexible range UI)                                 |
 | `metadata/`                                 | Hand-maintained lookup tables (e.g. manual video metadata by `youtube_video_id`). | —                                    | Editors           | `package`                                                |
 | `external/esc-results/`                     | Vendored ESC results join table (flattened from pinned [EurovisionAPI/dataset](https://github.com/EurovisionAPI/dataset) release). Not hand-edited. | — (flatten script TBD)               | Maintainers       | `package`                                                |
@@ -89,15 +89,14 @@ Schema: `schemas/episode.schema.json`.
 ```text
 data/processed/
   alltime/
-    eurovision-top-20-alltime-YYYY-MM.json
     eurovision-top-20-alltime-latest.json
   episode-index/
     YYYY-MM.json
 ```
 
-### Alltime snapshots
+### Alltime latest
 
-Cumulative stats: every episode with `period <=` snapshot month; one file per episode month plus `-latest` (no gap-month files).
+Cumulative stats through the latest episode month: one **`-latest.json`** file (no per-month files on disk). Tier aggregation still validates every episode month during `process`.
 
 **Row shape (video grain):** `video_title`, `top1` … `top20`, `chart_points`, `youtube_video_id` — ids not URLs. See `[chart_points.md](../docs/faq/chart_points.md)` for formula and tier meaning.
 
@@ -147,7 +146,7 @@ May read **any source**: processed alltime, raw episodes, title parser (`title_p
 | Period index for scrubber                                     | `query/video-hits.json` `periods` array (via copy script → `periods-alltime.json`)                                                             |
 
 
-**Shipped:** `per-video/alltime`, `per-song/alltime`, `query/` (`video-hits`, `video-meta`, `song-hits`, `song-meta`), and **`episodes/`** (`browser.json` + copied `year-colors.json` for the `/episodes` browser). Flexible period range UI on `/` and `/songs/`; **entry browser on `/episodes/`** — site plugin: [`site/src/components/episodes/README.md`](../site/src/components/episodes/README.md). Future insight payloads (e.g. heatmaps) will live under `packaged/insights/`.
+**Shipped:** `per-video/alltime/*-latest.json`, `per-song/alltime/*-song-stats-latest.json`, `query/` (`video-hits`, `video-meta`, `song-hits`, `song-meta`), and **`episodes/`** (`browser.json` + copied `year-colors.json` for the `/episodes` browser). Flexible period range UI on `/` and `/songs/` uses `query/`; **entry browser on `/episodes/`** — site plugin: [`site/src/components/episodes/README.md`](../site/src/components/episodes/README.md). Future insight payloads (e.g. heatmaps) will live under `packaged/insights/`.
 
 `year-colors.json` lives under `metadata/` (hand-maintained; regenerate with `pipeline/scripts/refresh_year_colors.py`). Copied at `package` to `packaged/episodes/year-colors.json`.
 
@@ -209,6 +208,8 @@ Third-party snapshots vendored in git for reproducible `package` runs — **no n
 - Prebuild copies packaged JSON into static assets (`site/scripts/copy-packaged.mjs`).
 - Islands read **packaged** data only. They may compute derived stats (tier counts, `chart_points`, window aggregation) from packaged payloads when a widget needs it—e.g. `queryWindow.ts` over `packaged/query/` (golden-tested against pipeline).
 - Alltime table snapshots under `per-*/alltime/` remain packaged for reference/tools; the site table uses the query index.
+
+Packaged alltime ships **`-latest.json` only** per grain (enriched video rows + song roll-up). Processed alltime also ships **`-latest` only**; flexible ranges use `query/` + client aggregation.
 
 ---
 
