@@ -143,9 +143,6 @@ const PERFORMANCE_CATEGORY_DEF: FilterDefinition<VideoFilterableRow> = {
     (selected as string[]).includes(row.performance_category),
 };
 
-/** @deprecated use filterDefsForGrain */
-export const STATS_FILTER_DEFS = SHARED_FILTER_DEFS;
-
 export function filterDefsForGrain(
   grain: StatsGrain,
 ): FilterDefinition<FilterableRow>[] {

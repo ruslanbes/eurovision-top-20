@@ -4,6 +4,10 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.6.2] - 2026-07-05
+
+Maintenance release after the 0.6.1 alltime data layout change. No user-visible site or data changes.
+
 ## [0.6.1] - 2026-07-05
 
 Smaller packaged/processed data footprint — alltime `-latest` only.

@@ -66,10 +66,11 @@ Edit [CHANGELOG.md](../CHANGELOG.md):
 
 ## Execute the release 
 
-### 1. Commit, Tag and deploy
+1. Stage the changes.
+2. Publish the changes:
 
 ```bash
-git commit -am "Release 0.3.2"
+git commit -m "Release 0.3.2"
 git tag -a v0.3.2 -m "Release 0.3.2"
 git push origin main --tags
 ```

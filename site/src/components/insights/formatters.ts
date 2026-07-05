@@ -18,16 +18,6 @@ export function videoLinkFromVideo(row: VideoStatsRow): {
   };
 }
 
-export function videoLinkFromSong(
-  songRow: SongStatsRow,
-  videoLatest: VideoStatsRow[],
-): {
-  href: string | null;
-  label: string;
-} {
-  return songLinkFromSong(songRow, videoLatest);
-}
-
 /** `Artist — Song` linked to the canonical member video with the most chart points. */
 export function songLinkFromSong(
   songRow: SongStatsRow,

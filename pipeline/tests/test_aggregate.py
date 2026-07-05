@@ -15,8 +15,8 @@ from evtop20.aggregate import (
     validate_stats_payload,
 )
 from evtop20.paths import (
+    processed_alltime_dir,
     processed_alltime_stats_latest_path,
-    processed_alltime_stats_period_path,
     processed_episode_index_dir,
 )
 from evtop20.process import ProcessError, run_process
@@ -443,36 +443,6 @@ def test_latest_grows_with_each_episode(repo_root: Path) -> None:
 
     latest = _read_latest(repo_root)
     assert len(latest["rows"]) == 3
-    assert not processed_alltime_stats_period_path(repo_root, 2022, 1).exists()
-
-
-def test_gap_month_removes_stale_period_file(repo_root: Path) -> None:
-    _write_episode(
-        repo_root,
-        "2022-01.json",
-        _episode(
-            year=2022,
-            month=1,
-            entries_by_rank={1: {"video_title": "Song Jan", "youtube_video_id": ""}},
-        ),
-    )
-    _write_episode(
-        repo_root,
-        "2022-03.json",
-        _episode(
-            year=2022,
-            month=3,
-            entries_by_rank={1: {"video_title": "Song Mar", "youtube_video_id": ""}},
-        ),
-    )
-    gap_path = processed_alltime_stats_period_path(repo_root, 2022, 2)
-    gap_path.parent.mkdir(parents=True, exist_ok=True)
-    gap_path.write_text('{"rows": []}\n', encoding="utf-8")
-
-    run_aggregate(repo_root)
-
-    assert not gap_path.is_file()
-    assert len(_read_latest(repo_root)["rows"]) == 2
 
 
 def test_latest_matches_final_period_snapshot(repo_root: Path) -> None:
@@ -525,9 +495,11 @@ def test_run_aggregate_writes_latest_only(repo_root: Path) -> None:
     result = run_aggregate(repo_root)
     assert result.snapshot_count == 2
     assert processed_alltime_stats_latest_path(repo_root).is_file()
-    assert not processed_alltime_stats_period_path(repo_root, 2022, 1).exists()
-    assert not processed_alltime_stats_period_path(repo_root, 2026, 1).exists()
-    assert not processed_alltime_stats_period_path(repo_root, 2022, 2).exists()
+    stats_files = sorted(
+        path.name
+        for path in processed_alltime_dir(repo_root).glob("*.json")
+    )
+    assert stats_files == ["eurovision-top-20-alltime-latest.json"]
 
 
 def test_validate_stats_payload_accepts_monotonic_tiers() -> None:

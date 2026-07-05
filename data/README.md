@@ -11,7 +11,7 @@ flowchart TB
   raw["data/raw/episodes<br/>golden source · hand-edited"]
 
   subgraph processed["data/processed · raw-derived analytics"]
-    alltime["alltime/<br/>cumulative snapshots per episode month"]
+    alltime["alltime/<br/>cumulative -latest.json only"]
     episode_index["episode-index/<br/>per-episode rank contributions"]
   end
 

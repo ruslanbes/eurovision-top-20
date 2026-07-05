@@ -41,15 +41,6 @@ def processed_alltime_stats_latest_path(repo_root: Path) -> Path:
     )
 
 
-def processed_alltime_stats_period_path(
-    repo_root: Path, year: int, month: int
-) -> Path:
-    return (
-        processed_alltime_dir(repo_root)
-        / f"{ALLTIME_STATS_BASENAME}-{year:04d}-{month:02d}.json"
-    )
-
-
 def packaged_dir(repo_root: Path) -> Path:
     return repo_root / "data" / "packaged"
 

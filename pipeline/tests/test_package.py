@@ -129,8 +129,6 @@ def test_run_package_writes_alltime_latest(repo_root: Path) -> None:
     stale_path = packaged_per_video_alltime_stats_latest_path(repo_root)
     stale_path.parent.mkdir(parents=True, exist_ok=True)
     stale_path.write_text('{"rows": []}\n', encoding="utf-8")
-    stale_period = stale_path.with_name("eurovision-top-20-alltime-2025-12.json")
-    stale_period.write_text('{"rows": []}\n', encoding="utf-8")
     write_episode_index_snapshot(
         repo_root,
         "2026-05",
@@ -150,7 +148,6 @@ def test_run_package_writes_alltime_latest(repo_root: Path) -> None:
     assert latest["rows"][0]["artist"] == "Tommy Cash"
     assert latest["rows"][0]["performance_category"] == "official_video"
     assert "performance_type" not in latest["rows"][0]
-    assert not stale_period.exists()
     assert "Title metadata (alltime latest): 1/1 rows parsed" in message
     assert "query/video-hits.json" in message
 

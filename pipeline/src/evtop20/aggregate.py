@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -8,7 +7,6 @@ from evtop20.models import youtube_id_is_set
 from evtop20.normalize import write_episode_file
 from evtop20.sort_keys import stats_row_sort_key
 from evtop20.paths import (
-    ALLTIME_STATS_BASENAME,
     processed_alltime_dir,
     processed_alltime_stats_latest_path,
     raw_episodes_dir,
@@ -58,11 +56,6 @@ def episode_period(data: dict) -> Period:
 
 def _empty_row() -> dict[str, int]:
     return {field_name: 0 for field_name in TIER_FIELDS.values()}
-
-
-_STATS_PERIOD_RE = re.compile(
-    rf"^{re.escape(ALLTIME_STATS_BASENAME)}-(\d{{4}})-(\d{{2}})\.json$"
-)
 
 
 def episode_periods_in_order(episodes: list[tuple[Path, dict]]) -> list[Period]:
@@ -180,22 +173,6 @@ def build_period_snapshots(
     return snapshots, accumulator
 
 
-def _period_from_stats_filename(name: str) -> Period | None:
-    match = _STATS_PERIOD_RE.match(name)
-    if match is None:
-        return None
-    return int(match.group(1)), int(match.group(2))
-
-
-def _remove_period_snapshots(repo_root: Path) -> None:
-    """Drop per-month alltime files; processed layer ships `-latest` only."""
-    for path in processed_alltime_dir(repo_root).glob(
-        f"{ALLTIME_STATS_BASENAME}-*.json"
-    ):
-        if _period_from_stats_filename(path.name) is not None:
-            path.unlink()
-
-
 def aggregate_video_stats(repo_root: Path) -> tuple[dict, AggregateResult]:
     """Aggregate all episodes (final snapshot only; for tests and direct use)."""
     episodes = load_episodes(repo_root)
@@ -278,7 +255,6 @@ def run_aggregate(repo_root: Path) -> AggregateResult:
     write_stats_payload(
         processed_alltime_stats_latest_path(repo_root), final_payload
     )
-    _remove_period_snapshots(repo_root)
 
     return AggregateResult(
         snapshot_count=len(snapshots),

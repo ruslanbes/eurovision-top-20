@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 from evtop20.aggregate import (
@@ -11,17 +10,13 @@ from evtop20.aggregate import (
     load_episodes,
     tiers_for_rank,
 )
-from evtop20.paths import (
-    ALLTIME_STATS_BASENAME,
-    processed_alltime_dir,
-)
 from evtop20.song_key_normalize import normalized_song_key
 from evtop20.song_stats import (
     is_eligible_song_rollup_row,
     song_group_key,
 )
 from evtop20.sort_keys import song_row_sort_key, stats_row_sort_key
-from evtop20.periods import format_period, period_before, period_in_range
+from evtop20.periods import format_period, period_in_range
 
 
 def _empty_tiers() -> dict[str, int]:
@@ -37,39 +32,6 @@ def _tiers_from_rank(rank: int) -> dict[str, int]:
 
 def _add_tiers(left: dict[str, int], right: dict[str, int]) -> dict[str, int]:
     return {field: left.get(field, 0) + right.get(field, 0) for field in TIER_COUNT_FIELDS}
-
-
-def _subtract_tiers(end: dict[str, int], begin: dict[str, int]) -> dict[str, int]:
-    return {
-        field: end.get(field, 0) - begin.get(field, 0) for field in TIER_COUNT_FIELDS
-    }
-
-
-def _rows_by_video_title(payload: dict) -> dict[str, dict]:
-    rows = payload.get("rows")
-    if not isinstance(rows, list):
-        return {}
-    indexed: dict[str, dict] = {}
-    for row in rows:
-        if not isinstance(row, dict):
-            continue
-        title = row.get("video_title")
-        if isinstance(title, str) and title:
-            indexed[title] = row
-    return indexed
-
-
-def load_processed_snapshot(repo_root: Path, period_label: str | None) -> dict:
-    if period_label is None:
-        return {"rows": []}
-    path = (
-        processed_alltime_dir(repo_root)
-        / f"{ALLTIME_STATS_BASENAME}-{period_label}.json"
-    )
-    if not path.is_file():
-        msg = f"missing processed snapshot {path.name}; run process first"
-        raise FileNotFoundError(msg)
-    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def window_stats_from_episodes(
@@ -88,45 +50,6 @@ def window_stats_from_episodes(
 
     rows = accumulator.to_rows()
     return [row for row in rows if any(row[field] for field in TIER_COUNT_FIELDS)]
-
-
-def window_stats_from_cumulative(
-    repo_root: Path,
-    *,
-    begin: str,
-    end: str,
-    periods: list[str],
-) -> list[dict]:
-    end_payload = load_processed_snapshot(repo_root, end)
-    begin_minus_one = period_before(begin, periods)
-    begin_payload = load_processed_snapshot(repo_root, begin_minus_one)
-    end_rows = _rows_by_video_title(end_payload)
-    begin_rows = _rows_by_video_title(begin_payload)
-
-    titles = set(end_rows) | set(begin_rows)
-    window_rows: list[dict] = []
-    for title in titles:
-        end_row = end_rows.get(title, _empty_tiers())
-        begin_row = begin_rows.get(title, _empty_tiers())
-        tiers = _subtract_tiers(
-            {field: end_row.get(field, 0) for field in TIER_COUNT_FIELDS},
-            {field: begin_row.get(field, 0) for field in TIER_COUNT_FIELDS},
-        )
-        if not any(tiers.values()):
-            continue
-        window_rows.append(
-            {
-                "video_title": title,
-                **tiers,
-                "chart_points": chart_points_from_tiers(tiers),
-                "youtube_video_id": end_row.get("youtube_video_id", "")
-                if isinstance(end_row.get("youtube_video_id"), str)
-                else "",
-            }
-        )
-
-    window_rows.sort(key=stats_row_sort_key)
-    return window_rows
 
 
 def aggregate_video_hits(
@@ -297,14 +220,6 @@ def window_stats(
             msg = "episode source supports video grain only"
             raise ValueError(msg)
         return window_stats_from_episodes(
-            repo_root, begin=begin, end=end, periods=periods
-        )
-
-    if source == "cumulative":
-        if grain != "video":
-            msg = "cumulative source supports video grain only"
-            raise ValueError(msg)
-        return window_stats_from_cumulative(
             repo_root, begin=begin, end=end, periods=periods
         )
 

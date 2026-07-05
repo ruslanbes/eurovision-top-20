@@ -72,7 +72,7 @@ Pick the shape that matches the insight UI. `InsightBlock` dispatches on `viewKi
 - [ ] Unique `id` and correct `section`
 - [ ] Only the `needs` you actually use
 - [ ] `compute` returns `null` when there is nothing to show
-- [ ] Video links use `videoLinkFromVideo` / `videoLinkFromSong` from `formatters.ts` when linking to YouTube
+- [ ] Video links use `videoLinkFromVideo` / `songLinkFromSong` from `formatters.ts` when linking to YouTube
 - [ ] Block copy (`title`, `lead`, `footnote`) lives in the insight module, not in the block components
 
 ### Params
