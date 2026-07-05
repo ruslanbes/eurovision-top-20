@@ -6,14 +6,11 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [0.4.2] - 2026-07-05
 
-Stats UI semantic tokens and chart-color policy cleanup.
+CSS style cleanup.
 
 ### Changed
 
 - **Stats table and period slider** — semantic theme tokens (`surface`, `text`, `border`) replace hard-coded `zinc-*` pairs.
-- **Error banners** — `--color-danger-*` tokens (stats and episodes).
-- **Chart tokens** — removed unused `--chart-cat-*` and `--chart-seq-*` from `theme.css`.
-- **`site/README.md`** — documents theme token locations and year-scheme hex exception.
 
 ## [0.4.1] - 2026-07-04
 
