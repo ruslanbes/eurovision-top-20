@@ -33,6 +33,8 @@ export type BrowserEpisode = {
   entries: BrowserEntry[];
   missing: number;
   period: string;
+  /** YouTube id of the Top 20 roundup video for this episode month. */
+  youtube_video_id?: string;
 };
 
 export type EpisodesBrowserPayload = {

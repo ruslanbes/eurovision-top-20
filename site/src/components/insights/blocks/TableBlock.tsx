@@ -39,69 +39,139 @@ function StatusCell({
   );
 }
 
+function LinkCell({
+  href,
+  label,
+}: {
+  href: string | null;
+  label: string;
+}) {
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-accent hover:underline"
+      >
+        {label}
+      </a>
+    );
+  }
+  return <span>{label}</span>;
+}
+
+function SongEpisodesTable({
+  result,
+}: {
+  result: Extract<InsightResult, { viewKind: "table"; tableKind: "song_episodes" }>;
+}) {
+  return (
+    <table className="min-w-full border-collapse text-sm">
+      <thead>
+        <tr>
+          <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
+            Song
+          </th>
+          <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
+            Episodes
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {result.rows.map((row) => (
+          <tr key={row.id}>
+            <td className="border border-border px-3 py-2 text-text">
+              <LinkCell href={row.songHref} label={row.songLabel} />
+            </td>
+            <td className="border border-border px-3 py-2 text-text">
+              <ul className="space-y-1">
+                {row.episodes.map((episode) => (
+                  <li key={episode.label}>
+                    <LinkCell href={episode.href} label={episode.label} />
+                  </li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+function EscWinnerTable({
+  result,
+}: {
+  result: Extract<InsightResult, { viewKind: "table"; tableKind?: "esc_winner" }>;
+}) {
+  const linkColumnLabel = result.linkColumnLabel ?? "Upload";
+
+  return (
+    <table className="min-w-full border-collapse text-sm">
+      <thead>
+        <tr>
+          <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
+            Year
+          </th>
+          {result.showHitColumn !== false ? (
+            <th className="border border-border bg-surface-elevated px-3 py-2 text-center font-semibold text-text">
+              Hit
+            </th>
+          ) : null}
+          {result.showRankColumn ? (
+            <th className="border border-border bg-surface-elevated px-3 py-2 text-center font-semibold text-text">
+              Rank
+            </th>
+          ) : null}
+          <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
+            {linkColumnLabel}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {result.rows.map((row) => (
+          <tr key={row.year}>
+            <td className="border border-border px-3 py-2 tabular-nums text-text">
+              {row.year}
+            </td>
+            {result.showHitColumn !== false ? (
+              <td className="border border-border px-3 py-2 text-center">
+                <StatusCell status={row.status} title={row.statusTitle} />
+              </td>
+            ) : null}
+            {result.showRankColumn ? (
+              <td className="border border-border px-3 py-2 text-center tabular-nums text-text">
+                {row.rank ?? <span className="text-text-muted">—</span>}
+              </td>
+            ) : null}
+            <td className="border border-border px-3 py-2 text-text">
+              {row.linkHref && row.linkLabel ? (
+                <LinkCell href={row.linkHref} label={row.linkLabel} />
+              ) : row.linkLabel ? (
+                row.linkLabel
+              ) : (
+                <span className="text-text-muted">—</span>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 export function TableBlock({ result }: TableBlockProps) {
   return (
     <article className="space-y-3 rounded-lg border border-border bg-surface p-4">
       <h3 className="text-lg font-semibold text-text">{result.title}</h3>
       {result.lead ? <p className="text-sm text-text">{result.lead}</p> : null}
       <div className="overflow-x-auto">
-        <table className="min-w-full border-collapse text-sm">
-          <thead>
-            <tr>
-              <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
-                Year
-              </th>
-              {result.showHitColumn !== false ? (
-                <th className="border border-border bg-surface-elevated px-3 py-2 text-center font-semibold text-text">
-                  Hit
-                </th>
-              ) : null}
-              {result.showRankColumn ? (
-                <th className="border border-border bg-surface-elevated px-3 py-2 text-center font-semibold text-text">
-                  Rank
-                </th>
-              ) : null}
-              <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
-                ESC winner
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {result.rows.map((row) => (
-              <tr key={row.year}>
-                <td className="border border-border px-3 py-2 tabular-nums text-text">
-                  {row.year}
-                </td>
-                {result.showHitColumn !== false ? (
-                  <td className="border border-border px-3 py-2 text-center">
-                    <StatusCell status={row.status} title={row.statusTitle} />
-                  </td>
-                ) : null}
-                {result.showRankColumn ? (
-                  <td className="border border-border px-3 py-2 text-center tabular-nums text-text">
-                    {row.rank ?? <span className="text-text-muted">—</span>}
-                  </td>
-                ) : null}
-                <td className="border border-border px-3 py-2 text-text">
-                  {row.linkHref && row.linkLabel ? (
-                    <a
-                      href={row.linkHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent hover:underline"
-                    >
-                      {row.linkLabel}
-                    </a>
-                  ) : row.linkLabel ? (
-                    row.linkLabel
-                  ) : (
-                    <span className="text-text-muted">—</span>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {result.tableKind === "song_episodes" ? (
+          <SongEpisodesTable result={result} />
+        ) : (
+          <EscWinnerTable result={result} />
+        )}
       </div>
       {result.footnote ? (
         <p className="text-xs text-text-muted">{result.footnote}</p>

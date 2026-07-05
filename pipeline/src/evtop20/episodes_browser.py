@@ -142,10 +142,13 @@ def build_episode_browser_rows(
         )
         raise EpisodesBrowserError(msg)
 
+    episode_video_id = _normalize_video_id(data.get("youtube_video_id"))
+
     return {
         "entries": episode_entries,
         "missing": missing_count,
         "period": period_label,
+        "youtube_video_id": episode_video_id,
     }
 
 

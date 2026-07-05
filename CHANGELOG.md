@@ -4,6 +4,14 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-07-05
+
+Insights polish, multi-version table.
+
+### Added
+
+- **Three versions, one episode** — insight table of songs with three or more distinct uploads in the same monthly Top 20.
+
 ## [0.5.0] - 2026-07-05
 
 Insights page.

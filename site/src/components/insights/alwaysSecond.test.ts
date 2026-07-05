@@ -89,6 +89,7 @@ describe("alwaysSecond integration", () => {
 
     const result = alwaysSecondVideo.compute(
       {
+        episodesBrowser: null,
         latestPeriod: "2026-06",
         periods: [],
         songLatest: [],

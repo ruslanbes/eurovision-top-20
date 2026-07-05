@@ -1,6 +1,7 @@
 import { alwaysSecondVideo } from "./insights/alwaysSecond";
 import { dominantLeadersSong, dominantLeadersVideo } from "./insights/dominantLeaders";
 import { escAprilPulse, escMayCrown } from "./insights/escWinnerInsights";
+import { multiVersionEpisode } from "./insights/multiVersionEpisode";
 import { yearClassicsSong, yearClassicsVideo } from "./insights/yearClassics";
 import type { InsightDefinition, InsightSection } from "./types";
 
@@ -13,6 +14,7 @@ const INSIGHT_ORDER: InsightDefinition[] = [
   dominantLeadersVideo,
   dominantLeadersSong,
   alwaysSecondVideo,
+  multiVersionEpisode,
 ];
 
 const insightsById = Object.fromEntries(

@@ -144,7 +144,7 @@ function buildTableResult(
   title: string,
   lead: ReactNode,
   footnote: string,
-  options: { showHitColumn?: boolean; showRankColumn?: boolean } = {},
+  options: { showHitColumn?: boolean; showRankColumn?: boolean; linkColumnLabel?: string } = {},
 ): InsightResult | null {
   if (rows.length === 0) {
     return null;
@@ -158,6 +158,8 @@ function buildTableResult(
     footnote,
     showHitColumn: options.showHitColumn,
     showRankColumn: options.showRankColumn,
+    linkColumnLabel: options.linkColumnLabel,
+    tableKind: "esc_winner",
   };
 }
 
@@ -186,6 +188,7 @@ export function makeEscWinnerInsight(
       return buildTableResult(rows, title, options.lead, options.footnote, {
         showHitColumn: options.showHitColumn,
         showRankColumn: options.showRankColumn,
+        linkColumnLabel: "ESC winner",
       });
     },
   };

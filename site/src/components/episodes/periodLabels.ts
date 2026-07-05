@@ -9,6 +9,20 @@ export function monthAbbrevFromPeriod(period: string): string {
   return date.toLocaleString("en-US", { month: "short" });
 }
 
+export function episodeMonthYearLabel(period: string): string {
+  const [year, month] = period.split("-");
+  const date = new Date(Number(year), Number(month) - 1, 1);
+  return date.toLocaleString("en-US", { month: "short", year: "numeric" });
+}
+
+export function youtubeWatchUrl(videoId: string | null | undefined): string | null {
+  const id = videoId?.trim();
+  if (!id) {
+    return null;
+  }
+  return `https://www.youtube.com/watch?v=${id}`;
+}
+
 export function yearLabelBeforeEpisode(
   index: number,
   periods: string[],

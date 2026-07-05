@@ -131,6 +131,7 @@ def test_build_episode_browser_rows_pads_missing_ranks(repo_root: Path) -> None:
     episode = build_episode_browser_rows(path, json.loads(path.read_text(encoding="utf-8")))
 
     assert episode["period"] == "2026-01"
+    assert episode["youtube_video_id"] == "episode-id"
     assert episode["missing"] == 18
     assert len(episode["entries"]) == ENTRY_CAPACITY
     assert episode["entries"][0]["rank"] == 1

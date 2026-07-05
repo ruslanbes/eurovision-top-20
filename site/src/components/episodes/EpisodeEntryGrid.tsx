@@ -1,6 +1,6 @@
 import { Fragment, useMemo } from "react";
 
-import { monthAbbrevFromPeriod, yearLabelBeforeEpisode } from "./periodLabels";
+import { monthAbbrevFromPeriod, yearLabelBeforeEpisode, youtubeWatchUrl } from "./periodLabels";
 import { ENTRY_CIRCLE } from "./constants";
 import { EntryCell } from "./EntryCell";
 import { entryTooltipLabel } from "./entryTooltip";
@@ -77,12 +77,29 @@ export function EpisodeEntryGrid({
               </div>
             ) : null}
             <div className="flex h-6 w-full items-center gap-2">
-              <span
-                className="w-8 shrink-0 text-sm text-text-muted"
-                aria-hidden="true"
-              >
-                {monthAbbrevFromPeriod(episode.period)}
-              </span>
+              {(() => {
+                const episodeHref = youtubeWatchUrl(episode.youtube_video_id);
+                const monthLabel = monthAbbrevFromPeriod(episode.period);
+                return (
+                  <span className="w-8 shrink-0 text-sm">
+                    {episodeHref ? (
+                      <a
+                        href={episodeHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent hover:underline"
+                        title={`Open ${monthLabel} Top 20 episode on YouTube`}
+                      >
+                        {monthLabel}
+                      </a>
+                    ) : (
+                      <span className="text-text-muted" aria-hidden="true">
+                        {monthLabel}
+                      </span>
+                    )}
+                  </span>
+                );
+              })()}
               <div className="flex min-w-0 flex-1">
               {entries.map((entry) => {
                 const dimensionKey = scheme.dimensionKey(entry);

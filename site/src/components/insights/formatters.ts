@@ -25,17 +25,29 @@ export function uploadLinkFromSong(
   href: string | null;
   label: string;
 } {
+  return songLinkFromSong(songRow, videoLatest);
+}
+
+/** `Artist — Song` linked to the member upload with the most chart points. */
+export function songLinkFromSong(
+  songRow: SongStatsRow,
+  videoLatest: VideoStatsRow[],
+): {
+  href: string | null;
+  label: string;
+} {
+  const label = `${songRow.artist} — ${songRow.song}`;
   const members = videoRowsForSongKey(songRow.artist, songRow.song, videoLatest);
   if (members.length === 0) {
     return {
-      label: `${songRow.artist} — ${songRow.song}`,
+      label,
       href: null,
     };
   }
 
   const upload = pickCanonicalSongMember(members);
   return {
-    label: uploadLinkLabel(upload),
+    label,
     href: upload.youtube_watch_url,
   };
 }

@@ -1,3 +1,4 @@
+import type { EpisodesBrowserPayload } from "../episodes/types";
 import type { VideoHitsPayload } from "../stats/queryWindow";
 import type { SongStatsSnapshot, VideoStatsSnapshot } from "../stats/types";
 import type { DataNeed, InsightContext, PeriodsManifest } from "./types";
@@ -18,6 +19,7 @@ export async function loadInsightContext(needs: Set<DataNeed>): Promise<InsightC
   let videoLatest: InsightContext["videoLatest"] = [];
   let songLatest: InsightContext["songLatest"] = [];
   let videoHits: InsightContext["videoHits"] = null;
+  let episodesBrowser: InsightContext["episodesBrowser"] = null;
 
   const tasks: Promise<void>[] = [];
 
@@ -61,9 +63,19 @@ export async function loadInsightContext(needs: Set<DataNeed>): Promise<InsightC
     );
   }
 
+  if (needs.has("episodesBrowser")) {
+    tasks.push(
+      fetchJson<EpisodesBrowserPayload>(
+        `${dataBase}/packaged/episodes/browser.json`,
+      ).then((payload) => {
+        episodesBrowser = payload;
+      }),
+    );
+  }
+
   await Promise.all(tasks);
 
-  return { latestPeriod, periods, songLatest, videoHits, videoLatest };
+  return { episodesBrowser, latestPeriod, periods, songLatest, videoHits, videoLatest };
 }
 
 export function collectDataNeeds(

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { EpisodesBrowserPayload } from "../episodes/types";
 import type { VideoHitsPayload } from "../stats/queryWindow";
 import type {
   SongStatsRow,
@@ -11,6 +12,7 @@ export type InsightSection = "year" | "esc_winner" | "other";
 export type InsightGrain = StatsGrain;
 
 export type DataNeed =
+  | "episodesBrowser"
   | "periodsManifest"
   | "songLatest"
   | "videoHits"
@@ -22,11 +24,24 @@ export type PeriodsManifest = {
 };
 
 export type InsightContext = {
+  episodesBrowser: EpisodesBrowserPayload | null;
   latestPeriod: string;
   periods: string[];
   songLatest: SongStatsRow[];
   videoHits: VideoHitsPayload | null;
   videoLatest: VideoStatsRow[];
+};
+
+export type InsightEpisodeLink = {
+  href: string | null;
+  label: string;
+};
+
+export type InsightSongEpisodesRow = {
+  episodes: InsightEpisodeLink[];
+  id: string;
+  songHref: string | null;
+  songLabel: string;
 };
 
 export type HighlightItem = {
@@ -68,9 +83,19 @@ export type InsightResult =
   | {
       footnote?: string;
       lead?: ReactNode;
+      linkColumnLabel?: string;
       rows: InsightTableRow[];
       showHitColumn?: boolean;
       showRankColumn?: boolean;
+      tableKind?: "esc_winner";
+      title: string;
+      viewKind: "table";
+    }
+  | {
+      footnote?: string;
+      lead?: ReactNode;
+      rows: InsightSongEpisodesRow[];
+      tableKind: "song_episodes";
       title: string;
       viewKind: "table";
     };

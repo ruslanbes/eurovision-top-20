@@ -1,4 +1,4 @@
-import { uploadLinkFromSong, uploadLinkFromVideo, formatChartPoints } from "../formatters";
+import { uploadLinkFromVideo, formatChartPoints, songLinkFromSong } from "../formatters";
 import type { InsightContext, InsightDefinition, InsightResult } from "../types";
 import type { SongStatsRow, StatsGrain, VideoStatsRow } from "../../stats/types";
 
@@ -67,7 +67,7 @@ function uploadLinkForRow(
   if (grain === "video") {
     return uploadLinkFromVideo(row as VideoStatsRow);
   }
-  return uploadLinkFromSong(row as SongStatsRow, ctx.videoLatest);
+  return songLinkFromSong(row as SongStatsRow, ctx.videoLatest);
 }
 
 function buildHighlightResult(

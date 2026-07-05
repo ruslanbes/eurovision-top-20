@@ -68,9 +68,10 @@ Write for **readers and users of the repo**, not for internal contributors. Link
 
 ## Execute the release 
 
-### 1. Tag and deploy
+### 1. Commit, Tag and deploy
 
 ```bash
+git commit -am "Release 0.3.2"
 git tag -a v0.3.2 -m "Release 0.3.2"
 git push origin main --tags
 ```

@@ -24,6 +24,7 @@ function fixtureContext(): InsightContext {
   ) as VideoHitsPayload;
 
   return {
+    episodesBrowser: null,
     latestPeriod: videoHits.periods[videoHits.periods.length - 1] ?? "",
     periods: videoHits.periods,
     videoLatest: videoRows,

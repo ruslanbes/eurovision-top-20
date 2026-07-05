@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { uploadLinkFromSong, uploadLinkFromVideo } from "./formatters";
+import { uploadLinkFromVideo, songLinkFromSong } from "./formatters";
 import type { SongStatsRow, VideoStatsRow } from "../stats/types";
 import {
   computeYearClassics,
@@ -84,10 +84,10 @@ describe("yearClassics integration", () => {
       songRows,
       "2026-06",
       DEFAULT_PARAMS,
-      (row) => uploadLinkFromSong(row as SongStatsRow, videoRows),
+      (row) => songLinkFromSong(row as SongStatsRow, videoRows),
     );
     const fairytale = songClassics.find((item) => item.label.includes("Fairytale"));
     expect(fairytale?.watchUrl).toMatch(/youtube\.com/);
-    expect(fairytale?.label).toContain("|");
+    expect(fairytale?.label).toMatch(/ — Fairytale$/);
   });
 });

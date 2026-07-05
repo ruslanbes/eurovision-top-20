@@ -1,7 +1,7 @@
 import {
-  uploadLinkFromSong,
   uploadLinkFromVideo,
   formatChartPoints,
+  songLinkFromSong,
 } from "../formatters";
 import type { HighlightItem, InsightContext, InsightDefinition, InsightResult } from "../types";
 import type { SongStatsRow, StatsGrain, VideoStatsRow } from "../../stats/types";
@@ -131,7 +131,7 @@ export function makeYearClassicsInsight(
         ctx.songLatest,
         ctx.latestPeriod,
         params,
-        (row) => uploadLinkFromSong(row as SongStatsRow, ctx.videoLatest),
+        (row) => songLinkFromSong(row as SongStatsRow, ctx.videoLatest),
       );
       return buildHighlightResult(classics, grain, ctx.latestPeriod, params, title);
     },
