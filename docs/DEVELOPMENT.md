@@ -54,7 +54,7 @@ Then rebuild or refresh the site (`cd site && npm run dev` or `npm run build`).
 
 Manual title overrides for odd videos: `data/metadata/manual-video-metadata.json`.
 
-Episode format and field rules: [`data/README.md`](data/README.md). Full CLI reference: [`docs/faq/commands.md`](docs/faq/commands.md).
+Episode format and field rules: [`data/README.md`](../data/README.md). Full CLI reference: [`docs/faq/commands.md`](./faq/commands.md).
 
 Pushes to `main` run the same validate → process → package → build pipeline and deploy to GitHub Pages.
 
