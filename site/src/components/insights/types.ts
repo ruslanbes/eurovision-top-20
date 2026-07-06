@@ -35,6 +35,7 @@ export type InsightContext = {
 export type InsightEpisodeLink = {
   href: string | null;
   label: string;
+  period: string;
 };
 
 export type InsightLabelEpisodesRow = {
@@ -43,6 +44,7 @@ export type InsightLabelEpisodesRow = {
   id: string;
   label: string;
   labelHref: string | null;
+  rowNote?: string;
 };
 
 export type InsightCountLabelRow = {
@@ -64,6 +66,7 @@ export type InsightTableRow = {
   linkHref: string | null;
   linkLabel: string | null;
   rank: number | null;
+  rowNote?: string;
   status: InsightTableStatus;
   statusTitle?: string;
   year: string;

@@ -99,11 +99,14 @@ export function computeMultiVersionEpisodeRows(
       videoLatest,
     );
 
+    const sortedPeriods = qualifyingPeriods.sort();
+    const episodes = episodeLinksForPeriods(sortedPeriods, episodeWatchUrls);
+
     rows.push({
       id: songKey,
       label: link.label,
       labelHref: link.href,
-      episodes: episodeLinksForPeriods(qualifyingPeriods.sort(), episodeWatchUrls),
+      episodes,
     });
   }
 

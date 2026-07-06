@@ -8,6 +8,7 @@ import {
   computeMultiVersionEpisodeRows,
   multiVersionEpisode,
 } from "./insights/multiVersionEpisode";
+import { applyFootnotesToInsightResult, getFootnoteRules } from "./footnoteRules";
 
 describe("computeMultiVersionEpisodeRows", () => {
   it("lists songs with three videos in the same episode month", () => {
@@ -92,7 +93,11 @@ describe("computeMultiVersionEpisodeRows", () => {
     expect(rows[0]?.label).toBe("Artist — Song");
     expect(rows[0]?.labelHref).toBe("https://www.youtube.com/watch?v=a");
     expect(rows[0]?.episodes).toEqual([
-      { label: "Feb 2026", href: "https://www.youtube.com/watch?v=episode" },
+      {
+        period: "2026-02",
+        label: "Feb 2026",
+        href: "https://www.youtube.com/watch?v=episode",
+      },
     ]);
   });
 });
@@ -147,6 +152,16 @@ describe("multiVersionEpisode integration", () => {
     if (result?.viewKind === "table" && result.tableKind === "label_episodes") {
       expect(result.rows.length).toBeGreaterThan(0);
       expect(result.rows[0]?.episodes[0]?.label).toMatch(/^[A-Z][a-z]{2} \d{4}$/);
+
+      const salvador = result.rows.find((row) =>
+        row.label.includes("Salvador Sobral"),
+      );
+      const withFootnotes = applyFootnotesToInsightResult("multi-version-episode", result).rows;
+      const salvadorWithNote = withFootnotes.find((row) =>
+        row.label.includes("Salvador Sobral"),
+      );
+      expect(salvador).toBeDefined();
+      expect(salvadorWithNote?.rowNote).toMatch(/semi-final and grand-final/i);
     }
   });
 });

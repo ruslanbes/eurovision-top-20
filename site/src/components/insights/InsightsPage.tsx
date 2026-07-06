@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { collectDataNeeds, loadInsightContext } from "./context";
 import { InsightBlock } from "./blocks/InsightBlock";
+import { applyFootnotesToInsightResult } from "./footnoteRules";
 import { listInsights, listInsightsBySection } from "./registry";
 import { INSIGHT_SECTION_LABEL, type InsightContext, type InsightResult } from "./types";
 
@@ -44,7 +45,10 @@ export function InsightsPage() {
     for (const definition of definitions) {
       const result = definition.compute(ctx, definition.defaultParams);
       if (result) {
-        blocks.push({ id: definition.id, result });
+        blocks.push({
+          id: definition.id,
+          result: applyFootnotesToInsightResult(definition.id, result),
+        });
       }
     }
     return blocks;

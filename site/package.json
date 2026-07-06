@@ -3,13 +3,13 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "predev": "node scripts/copy-packaged.mjs && node scripts/read-changelog-release.mjs && node scripts/generate-episode-colors.mjs",
+    "predev": "node scripts/copy-packaged.mjs && node scripts/read-changelog-release.mjs && node scripts/read-insight-footnotes.mjs && node scripts/generate-episode-colors.mjs",
     "dev": "astro dev",
-    "prebuild": "node scripts/copy-packaged.mjs && node scripts/read-changelog-release.mjs && node scripts/generate-episode-colors.mjs",
+    "prebuild": "node scripts/copy-packaged.mjs && node scripts/read-changelog-release.mjs && node scripts/read-insight-footnotes.mjs && node scripts/generate-episode-colors.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "test": "vitest run",
-    "pretest": "node scripts/generate-episode-colors.mjs"
+    "pretest": "node scripts/read-insight-footnotes.mjs && node scripts/generate-episode-colors.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^4.2.1",

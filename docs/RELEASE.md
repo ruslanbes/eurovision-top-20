@@ -63,6 +63,7 @@ Edit [CHANGELOG.md](../CHANGELOG.md):
 4. Leave `[Unreleased]` empty (or with a placeholder comment) for the next cycle.
 5. Rephrase the changes to omit techical details and focus on the user-facing behavior. Write for **readers and users of the repo**, not for internal contributors. Link ADRs or FAQ where needed.
 6. Do NOT add "Completed task specs" line to the "Removed" section in CHANGELOG.md.
+7. Do NOT stage the changes as part of the release preparation.
 
 ## Execute the release 
 

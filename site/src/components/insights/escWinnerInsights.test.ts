@@ -7,6 +7,7 @@ import {
   escAprilPulse,
   escMayCrown,
 } from "./insights/escWinnerInsights";
+import { applyFootnotesToInsightResult } from "./footnoteRules";
 import type { VideoHitsPayload } from "../stats/queryWindow";
 import type { VideoStatsRow } from "../stats/types";
 import type { InsightContext } from "./types";
@@ -63,6 +64,22 @@ describe("computeEscWinnerTableRows", () => {
     expect(y2018?.rank).toBe(1);
     expect(y2018?.linkHref).toMatch(/youtube\.com/);
     expect(y2026?.rank).toBe(19);
+
+    const y2019 = rows.find((row) => row.year === "2019");
+    expect(y2019?.status).toBe("unknown");
+    expect(y2019?.statusTitle).toBe("No episode");
+    expect(y2019?.rank).toBeNull();
+    expect(y2019?.linkLabel).toMatch(/Duncan Laurence/);
+
+    const april = escAprilPulse.compute(ctx, escAprilPulse.defaultParams);
+    const aprilWithNotes = applyFootnotesToInsightResult("esc-april-pulse", april!);
+    if (
+      aprilWithNotes?.viewKind === "table" &&
+      aprilWithNotes.tableKind === "esc_winner"
+    ) {
+      const y2019Note = aprilWithNotes.rows.find((row) => row.year === "2019");
+      expect(y2019Note?.rowNote).toMatch(/No April 2019 episode/);
+    }
   });
 
   it("marks May rank-1 hits", () => {

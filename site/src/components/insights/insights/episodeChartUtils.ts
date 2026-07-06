@@ -51,6 +51,7 @@ export function episodeLinksForPeriods(
   episodeWatchUrls: Map<string, string | null>,
 ): InsightEpisodeLink[] {
   return periods.map((period) => ({
+    period,
     label: episodeMonthYearLabel(period),
     href: episodeWatchUrls.get(period) ?? null,
   }));

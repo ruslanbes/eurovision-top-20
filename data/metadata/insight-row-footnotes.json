@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "rules": [
+    {
+      "id": "april-pulse-2019-no-episode",
+      "insight_ids": ["esc-april-pulse"],
+      "table_kind": "esc_winner",
+      "match": {
+        "contest_year": 2019
+      },
+      "note": "No April 2019 episode — the channel skipped from February to May that year."
+    },
+    {
+      "id": "hat-trick-salvador-amar-2017-05",
+      "insight_ids": ["multi-version-episode"],
+      "table_kind": "label_episodes",
+      "match": {
+        "artist": "Salvador Sobral",
+        "song": "Amar Pelos Dois",
+        "periods_any": ["2017-05"]
+      },
+      "note": "Semi-final and grand-final charted as separate videos; later episodes merge final performances."
+    }
+  ]
+}

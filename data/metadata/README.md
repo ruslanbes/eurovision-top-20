@@ -94,6 +94,42 @@ Hand-maintained allowlist of **fire-themed** Top-20 videos for the site **Fire s
 
 Sets packaged boolean **`fire`** on matching video rows and on song roll-ups when any member video is listed (~7 clips / 5 songs in the initial corpus).
 
+## `insight-row-footnotes.json`
+
+Hand-edited footnote rules for the **insights** table rows (`/insights/`). Read by the site at build time (copied to `site/src/generated/insightRowFootnotes.json`); not used by `package`.
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| `schema_version` | yes | Currently `1` |
+| `rules` | yes | Array of rule objects |
+
+Each **rule**:
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| `id` | yes | Stable kebab-case id |
+| `insight_ids` | yes | `InsightDefinition.id` values (e.g. `multi-version-episode`) |
+| `table_kind` | yes | `label_episodes` or `esc_winner` |
+| `match` | yes | See below per `table_kind` |
+| `note` | yes | Short text under the row’s primary link column |
+
+**`label_episodes`** (`match`):
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| `match.artist` | yes | Matched via `songMetaLookupKey` against the row |
+| `match.song` | yes | Same |
+| `match.periods_any` | no | Row matches if any listed `YYYY-MM` period is in the row’s episode list |
+| `match.periods_all` | no | Row matches only if all listed periods are present |
+
+**`esc_winner`** (`match`):
+
+| Field | Required | Notes |
+|-------|----------|-------|
+| `match.contest_year` | yes | Integer or array of integers; matched against the row’s `year` |
+
+Do not set both `periods_any` and `periods_all` on one `label_episodes` rule. Sort rules by `id` for stable diffs.
+
 ## Color maps
 
 Generated once via scripts; not run by `package`. `package` copies `year-colors.json` to `data/packaged/episodes/`.

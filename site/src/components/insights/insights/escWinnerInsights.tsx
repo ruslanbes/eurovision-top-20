@@ -17,6 +17,8 @@ import type {
 
 export type EscWinnerInsightParams = {
   episodeMonth: 4 | 5;
+  /** Contest years to include even when that month’s episode is missing from the corpus. */
+  extraContestYears?: number[];
 };
 
 type EvaluatedRow = {
@@ -117,7 +119,12 @@ export function computeEscWinnerTableRows(
 
   const rankIndex = buildEpisodeRankIndex(ctx.videoHits);
   const periodSuffix = `-${String(params.episodeMonth).padStart(2, "0")}`;
-  const years = contestYearsForEpisodeMonth(ctx.periods, params.episodeMonth);
+  const years = [
+    ...new Set([
+      ...contestYearsForEpisodeMonth(ctx.periods, params.episodeMonth),
+      ...(params.extraContestYears ?? []),
+    ]),
+  ].sort((left, right) => left - right);
 
   return years.map((year) => {
     const evaluated = evaluateContestYear(
@@ -197,7 +204,7 @@ export function makeEscWinnerInsight(
 export const escAprilPulse = makeEscWinnerInsight(
   "esc-april-pulse",
   "April pulse",
-  { episodeMonth: 4 },
+  { episodeMonth: 4, extraContestYears: [2019] },
   {
     lead: "April chart rank of the ESC winner’s video.",
     footnote:

@@ -161,7 +161,11 @@ describe("computePostMayDebutRows", () => {
     );
 
     expect(rows[0]?.episodes).toEqual([
-      { label: "Jun 2017", href: "https://www.youtube.com/watch?v=jun17" },
+      {
+        period: "2017-06",
+        label: "Jun 2017",
+        href: "https://www.youtube.com/watch?v=jun17",
+      },
     ]);
   });
 

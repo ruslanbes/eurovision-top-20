@@ -126,11 +126,16 @@ function LabelEpisodesTable({
             ) : null}
             <td className="border border-border px-3 py-2 text-text">
               <LinkCell href={row.labelHref} label={row.label} />
+              {row.rowNote ? (
+                <p className="mt-1 text-xs leading-snug text-text-muted">
+                  {row.rowNote}
+                </p>
+              ) : null}
             </td>
             <td className="border border-border px-3 py-2 text-text">
               <ul className="space-y-1">
                 {row.episodes.map((episode) => (
-                  <li key={episode.label}>
+                  <li key={episode.period}>
                     <LinkCell href={episode.href} label={episode.label} />
                   </li>
                 ))}
@@ -196,6 +201,11 @@ function EscWinnerTable({
               ) : (
                 <span className="text-text-muted">—</span>
               )}
+              {row.rowNote ? (
+                <p className="mt-1 text-xs leading-snug text-text-muted">
+                  {row.rowNote}
+                </p>
+              ) : null}
             </td>
           </tr>
         ))}

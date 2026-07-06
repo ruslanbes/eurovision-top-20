@@ -74,6 +74,7 @@ Pick the shape that matches the insight UI. `InsightBlock` dispatches on `viewKi
 - [ ] `compute` returns `null` when there is nothing to show
 - [ ] Video links use `videoLinkFromVideo` / `songLinkFromSong` from `formatters.ts` when linking to YouTube
 - [ ] Block copy (`title`, `lead`, `footnote`) lives in the insight module, not in the block components
+- [ ] Row footnotes for insight tables live in `data/metadata/insight-row-footnotes.json` (`label_episodes` and `esc_winner`; applied in `InsightsPage` via `footnoteRules.ts`)
 
 ### Params
 
