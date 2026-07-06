@@ -116,7 +116,7 @@ Song roll-up fixes, duplicate-entry guards, and packaged data cleanup since 0.3.
 
 ### Added
 
-- `evtop20 audit-song-keys` — report on near-duplicate `(artist, song)` pairs on latest packaged alltime video snapshot (markdown or JSON). See `[commands.md](docs/faq/commands.md)`.
+- `evtop20 audit-song-keys` — report on near-duplicate `(artist, song)` pairs on latest packaged alltime video snapshot (markdown or JSON). See [commands.md](docs/faq/commands.md).
 - **Song-stats validation in** `package` — hard error when two song rows share the same `(year, country)` unless `esc_final_place` is `NON_ENTRY` or country is `World`.
 
 ### Changed

@@ -2,7 +2,7 @@
 
 Implementation detail for [ADR-003](../docs/adr/adr-003-data-layers.md): paths, pipeline wiring, layer contracts, and example shapes. **Paths and field names here may change** — ADR-003 states principles only.
 
-Related: [ADR-000](../docs/adr/adr-000-tech-stack.md), [AGENTS.md](../AGENTS.md), `[site/README.md](../site/README.md)`, `[commands.md](../docs/faq/commands.md)`
+Related: [ADR-000](../docs/adr/adr-000-tech-stack.md), [AGENTS.md](../AGENTS.md), [site/README.md](../site/README.md), [commands.md](../docs/faq/commands.md)
 
 ## Layout & pipeline
 
@@ -98,7 +98,7 @@ data/processed/
 
 Cumulative stats through the latest episode month: one **`-latest.json`** file (no per-month files on disk). Tier aggregation still validates every episode month during `process`.
 
-**Row shape (video grain):** `video_title`, `top1` … `top20`, `chart_points`, `youtube_video_id` — ids not URLs. See `[chart_points.md](../docs/faq/chart_points.md)` for formula and tier meaning.
+**Row shape (video grain):** `video_title`, `top1` … `top20`, `chart_points`, `youtube_video_id` — ids not URLs. See [chart_points.md](../docs/faq/chart_points.md) for formula and tier meaning.
 
 ### Episode index
 
@@ -125,7 +125,7 @@ Rows sorted by `video_title`. Ranks 1–20 only; unfilled ranks omitted.
 |                                            | Parsed display labels, ESC final place |
 
 
-`add` CLI: search corpus = latest processed alltime snapshot only. See `[commands.md](../docs/faq/commands.md)`.
+`add` CLI: search corpus = latest processed alltime snapshot only. See [commands.md](../docs/faq/commands.md).
 
 ---
 
@@ -137,8 +137,8 @@ May read **any source**: processed alltime, raw episodes, title parser (`title_p
 | Typical content                                               | Sources                                                                                                                                          |
 | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Augmented alltime video rows (watch URLs, parsed metadata, …) | processed alltime + title parser                                                                                                                 |
-| Song stats                                                    | per-video rows + roll-up by normalized `(artist, song)` key; `[chart_points](../docs/faq/chart_points.md)` from summed tiers (`song_stats.py`, `song_key_normalize.py`); `package` fails if two song rows share the same `(year, country)` unless `esc_final_place` is `NON_ENTRY` or country is `World` |
-| Row order (video + song snapshots, query window)              | `[chart_points](../docs/faq/chart_points.md)` default sort via `sort_keys.py` / `queryWindow.ts`                                                 |
+| Song stats                                                    | per-video rows + roll-up by normalized `(artist, song)` key; [chart_points](../docs/faq/chart_points.md) from summed tiers (`song_stats.py`, `song_key_normalize.py`); `package` fails if two song rows share the same `(year, country)` unless `esc_final_place` is `NON_ENTRY` or country is `World` |
+| Row order (video + song snapshots, query window)              | [chart_points](../docs/faq/chart_points.md) default sort via `sort_keys.py` / `queryWindow.ts`                                                 |
 | Window query index (`query/`)                                 | `processed/episode-index/` + latest packaged video enrichment                                                                                    |
 | Insight payloads (`insights/` — heatmaps, …)                | processed + raw + external                                                                                                                       |
 | Episode browser (`episodes/browser.json`)                   | raw `entries[]` + title parse / ESC join / fire — [`episodes_browser.py`](../pipeline/src/evtop20/episodes_browser.py)                             |

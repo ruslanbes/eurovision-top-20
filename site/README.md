@@ -25,7 +25,7 @@ npm run preview  # preview production build
 - TanStack Table v8
 - Radix Slider (dual-thumb episode range)
 
-Videos (`/`) and songs (`/songs/`) each load the sparse query index (`video-hits` + `video-meta` or `song-hits` + `song-meta`) and aggregate stats client-side for the selected `[begin, end]` episode-month window. Default range = full corpus. Default row order matches [`chart_points`](../docs/faq/chart_points.md#default-sort) (tier counts → ESC place → year → name).
+Videos (`/`) and songs (`/songs/`) each load the sparse query index (`video-hits` + `video-meta` or `song-hits` + `song-meta`) and aggregate stats client-side for the selected `[begin, end]` episode-month window. Default range = full corpus. Default row order matches [chart_points](../docs/faq/chart_points.md#default-sort) (tier counts → ESC place → year → name).
 
 Theme: **light**, **dark**, or **system** via the toggle (top-right). **Source on GitHub** (octocat icon, left of theme toggle) shows version + release date on hover. Choice persists in `localStorage`. Inline script in the layout avoids a flash of wrong theme on load.
 
