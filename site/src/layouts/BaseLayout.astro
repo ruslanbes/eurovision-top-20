@@ -13,6 +13,7 @@ type Props = {
 
 const { title, description, current } = Astro.props;
 const pageTitle = `${title} · Eurovision Top 20`;
+const iconBase = import.meta.env.BASE_URL;
 ---
 
 <html lang="en">
@@ -21,6 +22,13 @@ const pageTitle = `${title} · Eurovision Top 20`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{pageTitle}</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href={`${iconBase}favicon-32x32.png`}
+    />
+    <link rel="apple-touch-icon" href={`${iconBase}apple-touch-icon.png`} />
     <script is:inline>
       (function () {
         var key = "theme";
