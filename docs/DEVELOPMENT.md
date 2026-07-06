@@ -4,14 +4,14 @@
 
 Requires [uv](https://docs.astral.sh/uv/) (Python 3.14+) and Node.js 22+.
 
-```bash
+```sh
 cd pipeline && uv sync --all-groups
 cd ../site && npm install
 ```
 
 ## Run the site locally
 
-```bash
+```sh
 cd site
 npm run dev
 ```
@@ -26,7 +26,7 @@ Production build: `npm run build` (output in `site/dist/`).
 
 Typical monthly workflow to add a new episode:
 
-```bash
+```sh
 cd pipeline
 
 # 1. New month

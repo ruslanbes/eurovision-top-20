@@ -2,7 +2,7 @@
 
 See [`docs/faq/commands.md`](../docs/faq/commands.md) for full CLI reference.
 
-```bash
+```sh
 cd pipeline
 uv sync --all-groups
 uv run evtop20 validate

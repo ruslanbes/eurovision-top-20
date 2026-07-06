@@ -69,7 +69,7 @@ Edit [CHANGELOG.md](../CHANGELOG.md):
 1. Stage the changes.
 2. Publish the changes:
 
-```bash
+```sh
 git commit -m "Release 0.3.2"
 git tag -a v0.3.2 -m "Release 0.3.2"
 git push origin main --tags

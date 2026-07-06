@@ -6,7 +6,7 @@ Static Astro site for packaged chart statistics.
 
 From `site/` — full reference: [`docs/faq/commands.md`](../docs/faq/commands.md).
 
-```bash
+```sh
 npm install
 npm run dev      # prebuild copies data/packaged → public/data/
 npm run build    # production build to dist/
