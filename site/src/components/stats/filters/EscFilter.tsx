@@ -1,5 +1,6 @@
 import { useId } from "react";
 import {
+  ESC_DNQ,
   ESC_NON_ENTRIES,
   ESC_NOT_WINNERS,
   ESC_WINNERS,
@@ -18,6 +19,7 @@ type EscFilterProps = {
 const ESC_VALUES = new Set<string>([
   ESC_WINNERS,
   ESC_NOT_WINNERS,
+  ESC_DNQ,
   ESC_NON_ENTRIES,
 ]);
 

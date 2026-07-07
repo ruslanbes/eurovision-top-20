@@ -8,3 +8,7 @@ Stats explorer for the [Eurovision Song Contest YouTube channel](https://www.you
 ## Contribute new episodes
 
 See [DEVELOPMENT.md](./docs/DEVELOPMENT.md#add-new-episode) for details.
+
+## Data sources
+
+- **ESC Grand Final placement** — [EurovisionAPI Eurovision Song Contest Dataset](https://github.com/EurovisionAPI/dataset).

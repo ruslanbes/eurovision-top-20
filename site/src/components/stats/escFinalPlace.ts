@@ -47,4 +47,4 @@ export function escFinalPlaceSortKey(value: EscFinalPlace): number {
 }
 
 export const ESC_FINAL_PLACE_COLUMN_TITLE =
-  "ESC Grand Final placement (not YouTube chart performance)";
+  "ESC Grand Final placement";

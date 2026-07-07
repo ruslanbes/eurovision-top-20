@@ -57,6 +57,15 @@ Site reads **packaged JSON only** ([ADR-003](../../../../docs/adr/adr-003-data-l
 
 Pick the shape that matches the insight UI. `InsightBlock` dispatches on `viewKind`.
 
+## ESC winner section (`esc_winner`)
+
+| Insight | Id | Notes |
+|---------|-----|-------|
+| April pulse | `esc-april-pulse` | April chart rank per winner; `esc_winner` table |
+| Uncrowned | `esc-uncrowned` | Winners since 2017 who never hit #1 in any episode; best rank column |
+
+Shared helpers: `escWinnerData.ts` (rank index, winner lookup, `bestRankForWinnerVideos`).
+
 ## Adding an insight
 
 1. **Add a module** under `insights/` — export a pure compute helper if useful for tests, then an `InsightDefinition` (see `yearClassics.ts` or `dominantLeaders.ts` for single-grain vs dual-grain patterns).

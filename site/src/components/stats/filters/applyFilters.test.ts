@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { applyFilters } from "./applyFilters";
 import {
+  ESC_DNQ,
   ESC_NON_ENTRIES,
   ESC_NOT_WINNERS,
   ESC_WINNERS,
@@ -158,6 +159,14 @@ describe("applyFilters", () => {
     const result = applyFilters(rows, state, sharedDefs);
     expect(result).toHaveLength(1);
     expect(result[0]?.esc_final_place).toBe("NON_ENTRY");
+  });
+
+  it("filters DNQ only", () => {
+    const state: FilterState = { esc: [ESC_DNQ] };
+    const result = applyFilters(ROWS, state, sharedDefs);
+    expect(result).toHaveLength(1);
+    expect(result[0]?.esc_final_place).toBe("DNQ");
+    expect(result[0]?.country).toBe("Sweden");
   });
 
   it("filters performance category on video grain", () => {

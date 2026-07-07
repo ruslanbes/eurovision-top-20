@@ -6,4 +6,7 @@ export default defineConfig({
   site: "https://ruslanbes.github.io",
   base: "/eurovision-top-20/",
   integrations: [react(), tailwind({ applyBaseStyles: false })],
+  server: {
+    port: 3420,
+  },
 });

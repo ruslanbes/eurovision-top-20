@@ -1,6 +1,6 @@
 import { alwaysSecondVideo } from "./insights/alwaysSecond";
 import { dominantLeadersSong, dominantLeadersVideo } from "./insights/dominantLeaders";
-import { escAprilPulse, escMayCrown } from "./insights/escWinnerInsights";
+import { escAprilPulse, escUncrowned } from "./insights/escWinnerInsights";
 import { multiVersionEpisode } from "./insights/multiVersionEpisode";
 import { postMayDebut } from "./insights/postMayDebut";
 import { yearClassics } from "./insights/yearClassics";
@@ -10,7 +10,7 @@ import type { InsightDefinition, InsightSection } from "./types";
 const INSIGHT_ORDER: InsightDefinition[] = [
   yearClassics,
   escAprilPulse,
-  escMayCrown,
+  escUncrowned,
   dominantLeadersVideo,
   dominantLeadersSong,
   alwaysSecondVideo,

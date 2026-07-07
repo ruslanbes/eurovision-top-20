@@ -4,8 +4,9 @@ import { describe, expect, it } from "vitest";
 import { buildEpisodeRankIndex } from "./escWinnerData";
 import {
   computeEscWinnerTableRows,
+  computeUncrownedRows,
   escAprilPulse,
-  escMayCrown,
+  escUncrowned,
 } from "./insights/escWinnerInsights";
 import { applyFootnotesToInsightResult } from "./footnoteRules";
 import type { VideoHitsPayload } from "../stats/queryWindow";
@@ -81,37 +82,108 @@ describe("computeEscWinnerTableRows", () => {
       expect(y2019Note?.rowNote).toMatch(/No April 2019 episode/);
     }
   });
+});
 
-  it("marks May rank-1 hits", () => {
+describe("computeUncrownedRows", () => {
+  it("lists 2017+ winners who never hit #1 on packaged data", () => {
     const ctx = fixtureContext();
-    const rows = computeEscWinnerTableRows(ctx, escMayCrown.defaultParams);
-    const y2024 = rows.find((row) => row.year === "2024");
-    const y2025 = rows.find((row) => row.year === "2025");
+    const rows = computeUncrownedRows(ctx);
 
-    expect(y2024?.status).toBe("yes");
-    expect(y2025?.status).toBe("no");
-    expect(y2025?.statusTitle).toMatch(/Rank 2/);
+    expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject({
+      year: "2025",
+      rank: 2,
+      linkLabel: expect.stringMatching(/JJ/),
+    });
+    expect(rows[0]?.linkHref).toMatch(/youtube\.com/);
+    expect(rows.some((row) => row.year === "2024")).toBe(false);
+  });
+
+  it("returns empty when every winner has topped the chart", () => {
+    const rows = computeUncrownedRows({
+      episodesBrowser: null,
+      latestPeriod: "2024-05",
+      periods: ["2024-05"],
+      videoLatest: [
+        {
+          video_title: "Winner LIVE",
+          chart_points: 10,
+          youtube_video_id: "abc",
+          youtube_watch_url: "https://www.youtube.com/watch?v=abc",
+          artist: "A",
+          song: "B",
+          top1: 1,
+          top3: 1,
+          top5: 1,
+          top10: 1,
+          top20: 1,
+          esc_final_place: 1,
+          fire: false,
+          flag: "🇸🇪",
+          country: "Sweden",
+          performance_category: "final_live",
+          year: 2024,
+          metadata_extractor: null,
+        },
+      ],
+      songLatest: [],
+      videoHits: {
+        periods: ["2024-05"],
+        hits: [
+          {
+            video_title: "Winner LIVE",
+            youtube_video_id: "abc",
+            entries: [{ period: "2024-05", rank: 1 }],
+          },
+        ],
+      },
+    });
+
+    expect(rows).toEqual([]);
   });
 });
 
 describe("esc winner insight blocks", () => {
-  it("returns table results with three columns worth of row data", () => {
+  it("returns table results for April pulse and Uncrowned", () => {
     const ctx = fixtureContext();
     const april = escAprilPulse.compute(ctx, escAprilPulse.defaultParams);
-    const may = escMayCrown.compute(ctx, escMayCrown.defaultParams);
+    const uncrowned = escUncrowned.compute(ctx, escUncrowned.defaultParams);
 
     expect(april?.viewKind).toBe("table");
-    expect(may?.viewKind).toBe("table");
-    if (april?.viewKind === "table" && may?.viewKind === "table") {
+    expect(uncrowned?.viewKind).toBe("table");
+    if (
+      april?.viewKind === "table" &&
+      uncrowned?.viewKind === "table" &&
+      april.tableKind === "esc_winner" &&
+      uncrowned.tableKind === "esc_winner"
+    ) {
       expect(april.showRankColumn).toBe(true);
       expect(april.showHitColumn).toBe(false);
-      expect(may.showHitColumn).not.toBe(false);
+      expect(uncrowned.showHitColumn).toBe(false);
+      expect(uncrowned.showRankColumn).toBe(true);
+      expect(uncrowned.rankColumnLabel).toBe("Best rank");
       expect(april.rows.length).toBeGreaterThan(0);
-      expect(april.rows[0]).toMatchObject({
-        year: expect.any(String),
-        status: expect.stringMatching(/yes|no|unknown/),
+      expect(uncrowned.rows).toHaveLength(1);
+      expect(uncrowned.rows[0]).toMatchObject({
+        year: "2025",
+        rank: 2,
       });
-      expect(may.rows.some((row) => row.status === "yes")).toBe(true);
     }
+  });
+
+  it("returns null for Uncrowned when no qualifying years", () => {
+    const result = escUncrowned.compute(
+      {
+        episodesBrowser: null,
+        latestPeriod: "2024-05",
+        periods: ["2024-05"],
+        videoLatest: [],
+        songLatest: [],
+        videoHits: { periods: ["2024-05"], hits: [] },
+      },
+      {},
+    );
+
+    expect(result).toBeNull();
   });
 });

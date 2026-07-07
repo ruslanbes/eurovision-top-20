@@ -23,3 +23,9 @@ Each task:
 Detail lives in `docs/tasks/<task-id>.md` when needed.
 
 ---
+
+## april-prank
+- status: backlog
+- goal: April Fools’ emoji titles on Videos/Songs tables — song-keyed manual map, click-to-reveal, Apr 1 auto or query override.
+- done_when: See `docs/tasks/april-prank.md`.
+- notes: Isolated metadata + module; no changes to packaged stats or insights.

@@ -62,7 +62,8 @@ Pushes to `main` run the same validate → process → package → build pipelin
 
 - Breaking API changes are acceptable.
 - Don't care about backwards compatibility.
-- For the static site UI you must design the the data model first. Before implementing anything UI-related always check if the data model is already designed and the samples are generated. 
+- Use mermaid diagrams when creating documentation
+- For the static site UI you must design the data model first. Before implementing anything UI-related always check if the data model is already designed and the samples are generated. 
 - When designing data model prefer sorting fields alphabetically unless there is a specific reason to do otherwise.
 - Before starting to implement a task, check if there are missing decisions, clarify them first instead of doing the implementation.
 - When cutting a version or cleaning shipped work, follow `docs/RELEASE.md` (changelog promotion, backlog + task-file cleanup).

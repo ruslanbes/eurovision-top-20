@@ -1,5 +1,6 @@
 import type { StatsGrain, StatsRow } from "../types";
 import {
+  ESC_DNQ,
   ESC_NON_ENTRIES,
   ESC_NOT_WINNERS,
   ESC_WINNERS,
@@ -109,6 +110,7 @@ const SHARED_FILTER_DEFS: FilterDefinition<FilterableRow>[] = [
     getOptions: () => [
       { value: ESC_WINNERS, label: "Winners only" },
       { value: ESC_NOT_WINNERS, label: "Not winners" },
+      { value: ESC_DNQ, label: "DNQ" },
       { value: ESC_NON_ENTRIES, label: "Non-entries" },
     ],
     match: (row, selected) => escMatch(row.esc_final_place, selected),

@@ -8,7 +8,7 @@ From `site/` — full reference: [`docs/faq/commands.md`](../docs/faq/commands.m
 
 ```sh
 npm install
-npm run dev      # prebuild copies data/packaged → public/data/
+npm run dev      # http://localhost:3420/eurovision-top-20/ (prebuild copies data/packaged → public/data/)
 npm run build    # production build to dist/
 npm run preview  # preview production build
 ```
@@ -31,7 +31,7 @@ Theme: **light**, **dark**, or **system** via the toggle (top-right). **Source o
 
 **Chart tokens:** semantic colors live in [`src/styles/theme.css`](src/styles/theme.css) as RGB triplets (`--color-surface`, `--color-text`, `--color-border`, `--color-accent`, `--color-danger-*`, …). [`tailwind.config.mjs`](tailwind.config.mjs) maps them to Tailwind utilities (`bg-surface`, `text-text-muted`, `border-danger-border`, etc.). Chart-specific tokens use the `--chart-*` prefix — see [`src/components/episodes/README.md`](src/components/episodes/README.md) for scheme wiring.
 
-**Table filters:** client-side AND/OR filters on window-aggregated rows — full-text search, country (searchable), year, ESC (dropdown: All / Winners / Not winners / Non-entries), and on videos only Category (four toggle buttons). Filter, episode-range, and table-sort state persist in the **URL query string** and survive navigation between `/` and `/songs/` (shared filters + range + sort synced; video-only Category preserved in the URL but hidden on the song page). Bare path = full corpus, no filters, default sort (`chart_points` desc).
+**Table filters:** client-side AND/OR filters on window-aggregated rows — full-text search, country (searchable), year, ESC (dropdown: All / Winners / Not winners / DNQ / Non-entries), and on videos only Category (four toggle buttons). Filter, episode-range, and table-sort state persist in the **URL query string** and survive navigation between `/` and `/songs/` (shared filters + range + sort synced; video-only Category preserved in the URL but hidden on the song page). Bare path = full corpus, no filters, default sort (`chart_points` desc).
 
 **Column explainers:** `?` button in the **Chart Points** header opens a popover (formula + link to [`chart_points` FAQ](../docs/faq/chart_points.md)). Reusable pattern under `src/components/stats/help/`.
 
@@ -43,7 +43,7 @@ Theme: **light**, **dark**, or **system** via the toggle (top-right). **Source o
 | `end` | `end=2024-12` | Episode-month range end |
 | `country` | `country=Sweden,Norway` | Comma-separated |
 | `year` | `year=2024,2023` | Comma-separated contest years |
-| `esc` | `esc=winners` | `winners`, `not_winners`, or `non_entries`; omit = All |
+| `esc` | `esc=winners` | `winners`, `not_winners`, `dnq`, or `non_entries`; omit = All |
 | `fire` | `fire=1` | 🔥 emoji toggle — fire-themed songs only; omit = off |
 | `q` | `q=dum+tek+tek` | Full-text search on titles (video title or `artist — song`); case- and diacritic-insensitive |
 | `sort` | `sort=year` | Primary sort column — requires `order`; shared ids: `title`, `chart_points`, `top1`…`top20`, `esc_final_place`, `country`, `year` |

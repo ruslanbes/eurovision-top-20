@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  ESC_DNQ,
   ESC_NON_ENTRIES,
   ESC_NOT_WINNERS,
   ESC_WINNERS,
@@ -93,6 +94,13 @@ describe("parseStatsUiState", () => {
     expect(state.filters.esc).toEqual([ESC_NON_ENTRIES]);
     const serialized = serializeStatsUiState(state, PERIODS);
     expect(serialized).toBe("esc=non_entries");
+  });
+
+  it("parses and serializes esc dnq", () => {
+    const state = parseStatsUiState("?esc=dnq", PERIODS);
+    expect(state.filters.esc).toEqual([ESC_DNQ]);
+    const serialized = serializeStatsUiState(state, PERIODS);
+    expect(serialized).toBe("esc=dnq");
   });
 
   it("parses performance_category and strips invalid values", () => {

@@ -1,4 +1,5 @@
 import {
+  ESC_DNQ,
   ESC_NON_ENTRIES,
   ESC_NOT_WINNERS,
   ESC_WINNERS,
@@ -45,12 +46,14 @@ const ESC_URL_VALUES: Record<string, EscMode> = {
   "not-winners": ESC_NOT_WINNERS,
   non_entries: ESC_NON_ENTRIES,
   "non-entries": ESC_NON_ENTRIES,
+  dnq: ESC_DNQ,
 };
 
 const ESC_TO_URL: Record<EscMode, string> = {
   [ESC_WINNERS]: "winners",
   [ESC_NOT_WINNERS]: "not_winners",
   [ESC_NON_ENTRIES]: "non_entries",
+  [ESC_DNQ]: "dnq",
 };
 
 export function defaultStatsUiState(periods: readonly string[]): StatsUiState {

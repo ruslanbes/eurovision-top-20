@@ -4,6 +4,22 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.6.4] - 2026-07-07
+
+Insights, stats filters.
+
+### Added
+
+- **Uncrowned** — insight table of ESC winners (2017+) whose videos never reached #1 on the Top 20.
+- **ESC Place filter: DNQ** — filter Videos and Songs to semi-final non-qualifiers.
+- **Data sources** in README and site footer credit for [EurovisionAPI Eurovision Song Contest Dataset](https://github.com/EurovisionAPI/dataset).
+
+### Changed
+
+- **May crown** insight removed; use **Uncrowned** and **April pulse** instead.
+- Site header layout — dropped per-page subtitles; spacing between title and nav.
+- Local dev server port **3420** (was Astro default 4321).
+
 ## [0.6.3] - 2026-07-06
 
 Insight table footnotes.

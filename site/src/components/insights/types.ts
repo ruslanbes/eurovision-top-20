@@ -95,6 +95,7 @@ export type InsightResult =
       footnote?: string;
       lead?: ReactNode;
       linkColumnLabel?: string;
+      rankColumnLabel?: string;
       rows: InsightTableRow[];
       showHitColumn?: boolean;
       showRankColumn?: boolean;

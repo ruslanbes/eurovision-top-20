@@ -169,7 +169,7 @@ function EscWinnerTable({
           ) : null}
           {result.showRankColumn ? (
             <th className="border border-border bg-surface-elevated px-3 py-2 text-center font-semibold text-text">
-              Rank
+              {result.rankColumnLabel ?? "Rank"}
             </th>
           ) : null}
           <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">

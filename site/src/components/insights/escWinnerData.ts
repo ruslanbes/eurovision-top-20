@@ -44,6 +44,39 @@ export function primaryWinnerVideo(
   })[0] ?? null;
 }
 
+export type BestRankForWinners = {
+  bestRank: number | null;
+  bestVideo: VideoStatsRow | null;
+  everTop1: boolean;
+};
+
+export function bestRankForWinnerVideos(
+  rankIndex: EpisodeRankIndex,
+  winners: VideoStatsRow[],
+): BestRankForWinners {
+  let bestRank: number | null = null;
+  let bestVideo: VideoStatsRow | null = null;
+  let everTop1 = false;
+
+  for (const video of winners) {
+    for (const byTitle of rankIndex.values()) {
+      const rank = byTitle.get(video.video_title);
+      if (rank === undefined) {
+        continue;
+      }
+      if (rank === 1) {
+        everTop1 = true;
+      }
+      if (bestRank === null || rank < bestRank) {
+        bestRank = rank;
+        bestVideo = video;
+      }
+    }
+  }
+
+  return { bestRank, bestVideo, everTop1 };
+}
+
 export function contestYearsForEpisodeMonth(
   periods: string[],
   month: number,

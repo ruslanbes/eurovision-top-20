@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { videoLinkLabel } from "../formatters";
 import {
+  bestRankForWinnerVideos,
   buildEpisodeRankIndex,
   contestYearsForEpisodeMonth,
   primaryWinnerVideo,
@@ -15,8 +16,10 @@ import type {
   InsightTableStatus,
 } from "../types";
 
+export const UNCROWNED_MIN_CONTEST_YEAR = 2017;
+
 export type EscWinnerInsightParams = {
-  episodeMonth: 4 | 5;
+  episodeMonth: 4;
   /** Contest years to include even when that month’s episode is missing from the corpus. */
   extraContestYears?: number[];
 };
@@ -33,7 +36,6 @@ function evaluateContestYear(
   ctx: InsightContext,
   contestYear: number,
   period: string,
-  episodeMonth: 4 | 5,
   rankIndex: ReturnType<typeof buildEpisodeRankIndex>,
 ): EvaluatedRow {
   const winners = winnerVideosForYear(ctx.videoLatest, contestYear);
@@ -58,9 +60,9 @@ function evaluateContestYear(
     };
   }
 
+  const ranksForPeriod = rankIndex.get(period);
   let bestRank: number | null = null;
   let bestVideo: VideoStatsRow | null = null;
-  const ranksForPeriod = rankIndex.get(period);
 
   for (const video of winners) {
     const rank = ranksForPeriod?.get(video.video_title);
@@ -83,27 +85,8 @@ function evaluateContestYear(
     };
   }
 
-  if (episodeMonth === 4) {
-    return {
-      year: contestYear,
-      rank: bestRank,
-      video: bestVideo,
-    };
-  }
-
-  if (bestRank === 1) {
-    return {
-      year: contestYear,
-      status: "yes",
-      rank: bestRank,
-      video: bestVideo,
-    };
-  }
-
   return {
     year: contestYear,
-    status: "no",
-    statusTitle: `Rank ${bestRank}`,
     rank: bestRank,
     video: bestVideo,
   };
@@ -131,7 +114,6 @@ export function computeEscWinnerTableRows(
       ctx,
       year,
       `${year}${periodSuffix}`,
-      params.episodeMonth,
       rankIndex,
     );
 
@@ -146,12 +128,66 @@ export function computeEscWinnerTableRows(
   });
 }
 
+function contestYearsWithWinners(
+  videoLatest: VideoStatsRow[],
+  minYear: number,
+): number[] {
+  const years = new Set<number>();
+  for (const row of videoLatest) {
+    if (row.year != null && row.year >= minYear && row.esc_final_place === 1) {
+      years.add(row.year);
+    }
+  }
+  return [...years].sort((left, right) => left - right);
+}
+
+export function computeUncrownedRows(ctx: InsightContext): InsightTableRow[] {
+  if (!ctx.videoHits) {
+    return [];
+  }
+
+  const rankIndex = buildEpisodeRankIndex(ctx.videoHits);
+  const rows: InsightTableRow[] = [];
+
+  for (const year of contestYearsWithWinners(
+    ctx.videoLatest,
+    UNCROWNED_MIN_CONTEST_YEAR,
+  )) {
+    const winners = winnerVideosForYear(ctx.videoLatest, year);
+    if (winners.length === 0) {
+      continue;
+    }
+
+    const { bestRank, everTop1 } = bestRankForWinnerVideos(rankIndex, winners);
+    if (everTop1) {
+      continue;
+    }
+
+    const video = primaryWinnerVideo(winners);
+    rows.push({
+      year: String(year),
+      status: bestRank === null ? "unknown" : "no",
+      statusTitle: bestRank === null ? "Not in Top 20" : undefined,
+      rank: bestRank,
+      linkLabel: video ? videoLinkLabel(video) : null,
+      linkHref: video?.youtube_watch_url ?? null,
+    });
+  }
+
+  return rows;
+}
+
 function buildTableResult(
   rows: InsightTableRow[],
   title: string,
   lead: ReactNode,
   footnote: string,
-  options: { showHitColumn?: boolean; showRankColumn?: boolean; linkColumnLabel?: string } = {},
+  options: {
+    showHitColumn?: boolean;
+    showRankColumn?: boolean;
+    linkColumnLabel?: string;
+    rankColumnLabel?: string;
+  } = {},
 ): InsightResult | null {
   if (rows.length === 0) {
     return null;
@@ -166,6 +202,7 @@ function buildTableResult(
     showHitColumn: options.showHitColumn,
     showRankColumn: options.showRankColumn,
     linkColumnLabel: options.linkColumnLabel,
+    rankColumnLabel: options.rankColumnLabel,
     tableKind: "esc_winner",
   };
 }
@@ -175,6 +212,7 @@ type EscWinnerInsightOptions = {
   lead: ReactNode;
   showHitColumn?: boolean;
   showRankColumn?: boolean;
+  rankColumnLabel?: string;
 };
 
 export function makeEscWinnerInsight(
@@ -195,6 +233,7 @@ export function makeEscWinnerInsight(
       return buildTableResult(rows, title, options.lead, options.footnote, {
         showHitColumn: options.showHitColumn,
         showRankColumn: options.showRankColumn,
+        rankColumnLabel: options.rankColumnLabel,
         linkColumnLabel: "ESC winner",
       });
     },
@@ -214,12 +253,26 @@ export const escAprilPulse = makeEscWinnerInsight(
   },
 );
 
-export const escMayCrown = makeEscWinnerInsight(
-  "esc-may-crown",
-  "May crown",
-  { episodeMonth: 5 },
-  {
-    lead: "Was the ESC winner’s video at rank 1 in the May episode for that contest year?",
-    footnote: "✓ = winner video at #1 in May; ✗ = miss; — = no episode or no winner video.",
+export const escUncrowned: InsightDefinition<Record<string, never>> = {
+  id: "esc-uncrowned",
+  section: "esc_winner",
+  title: "Uncrowned",
+  grain: "video",
+  defaultParams: {},
+  needs: ["videoLatest", "videoHits", "periodsManifest"],
+  compute(ctx) {
+    const rows = computeUncrownedRows(ctx);
+    return buildTableResult(
+      rows,
+      "Uncrowned",
+      "ESC winners who never reached #1 on the Top 20",
+      "Year 2017 onward",
+      {
+        showHitColumn: false,
+        showRankColumn: true,
+        rankColumnLabel: "Best rank",
+        linkColumnLabel: "ESC winner",
+      },
+    );
   },
-);
+};
