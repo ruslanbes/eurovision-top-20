@@ -25,4 +25,4 @@ Execute [release 0.6.4](RELEASE.md#execute-the-release):
 ## Session notes
 
 - Prepared **0.6.4** — Uncrowned insight, DNQ filter, footer/README credits, header/layout, dev port 3420.
-- Backlog: **`april-prank`** (task doc only).
+- Backlog: **`the-other-top-20`** (approved), **`april-prank`**.

@@ -24,6 +24,12 @@ Detail lives in `docs/tasks/<task-id>.md` when needed.
 
 ---
 
+## the-other-top-20
+- status: backlog
+- goal: Insight table “The other Top 20” — top 20 songs by chart points among DNQ or GF place 21+ ESC entries.
+- done_when: See `docs/tasks/the-other-top-20.md`.
+- notes: Song-grain; approved lead + 4-column table; snapshot in task doc.
+
 ## april-prank
 - status: backlog
 - goal: April Fools’ emoji titles on Videos/Songs tables — song-keyed manual map, click-to-reveal, Apr 1 auto or query override.
