@@ -33,11 +33,8 @@ describe("parseFootnoteRules", () => {
     const rules = parseFootnoteRules(payload, {
       knownInsightIds: listInsights().map((insight) => insight.id),
     });
-    expect(rules).toHaveLength(2);
-    expect(rules.map((rule) => rule.id).sort()).toEqual([
-      "april-pulse-2019-no-episode",
-      "hat-trick-salvador-amar-2017-05",
-    ]);
+    expect(rules).toHaveLength(1);
+    expect(rules.map((rule) => rule.id)).toEqual(["hat-trick-salvador-amar-2017-05"]);
   });
 
   it("rejects duplicate rule ids", () => {
@@ -135,17 +132,17 @@ describe("applyLabelEpisodesRowFootnotes", () => {
 });
 
 describe("applyEscWinnerRowFootnotes", () => {
-  const april2019Rule = {
-    id: "april-pulse-2019-no-episode",
-    insight_ids: ["esc-april-pulse"],
+  const exampleRule = {
+    id: "example-esc-winner-note",
+    insight_ids: ["esc-uncrowned"],
     table_kind: "esc_winner" as const,
     match: { contest_year: 2019 },
-    note: "No April 2019 episode — the channel skipped from February to May that year.",
+    note: "Example footnote for contest year 2019.",
   };
 
   it("attaches rowNote for matching contest year", () => {
     const [updated] = applyEscWinnerRowFootnotes(
-      "esc-april-pulse",
+      "esc-uncrowned",
       [
         {
           year: "2019",
@@ -156,25 +153,25 @@ describe("applyEscWinnerRowFootnotes", () => {
           linkHref: "https://www.youtube.com/watch?v=example",
         },
       ],
-      [april2019Rule],
+      [exampleRule],
     );
-    expect(updated?.rowNote).toMatch(/No April 2019 episode/);
+    expect(updated?.rowNote).toMatch(/Example footnote/);
   });
 
   it("leaves row unchanged when insight id does not match", () => {
     const [updated] = applyEscWinnerRowFootnotes(
       "esc-may-crown",
       [{ year: "2019", status: "yes", rank: 1, linkLabel: null, linkHref: null }],
-      [april2019Rule],
+      [exampleRule],
     );
     expect(updated?.rowNote).toBeUndefined();
   });
 
   it("leaves row unchanged when contest year does not match", () => {
     const [updated] = applyEscWinnerRowFootnotes(
-      "esc-april-pulse",
+      "esc-uncrowned",
       [{ year: "2018", status: "unknown", rank: null, linkLabel: null, linkHref: null }],
-      [april2019Rule],
+      [exampleRule],
     );
     expect(updated?.rowNote).toBeUndefined();
   });

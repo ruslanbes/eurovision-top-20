@@ -227,6 +227,7 @@ describe("postMayDebut integration", () => {
       latestPeriod: videoHits.periods[videoHits.periods.length - 1] ?? "",
       periods: videoHits.periods,
       songLatest: [],
+      songHits: null,
       videoHits,
       videoLatest: videoRows,
     };

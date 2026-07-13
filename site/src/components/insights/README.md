@@ -41,6 +41,7 @@ Site reads **packaged JSON only** ([ADR-003](../../../../docs/adr/adr-003-data-l
 | `DataNeed` | Loaded from |
 |------------|-------------|
 | `periodsManifest` | `data/periods-alltime.json` |
+| `songHits` | `data/packaged/query/song-hits.json` |
 | `videoLatest` | `data/packaged/per-video/alltime/eurovision-top-20-alltime-latest.json` |
 | `songLatest` | `data/packaged/per-song/alltime/eurovision-top-20-song-stats-latest.json` |
 | `videoHits` | `data/packaged/query/video-hits.json` |
@@ -61,7 +62,7 @@ Pick the shape that matches the insight UI. `InsightBlock` dispatches on `viewKi
 
 | Insight | Id | Notes |
 |---------|-----|-------|
-| April pulse | `esc-april-pulse` | April chart rank per winner; `esc_winner` table |
+| Build-up rank | `esc-build-up-rank` | Build-up window rank `n of m` per winner, linked to Songs (2022+) |
 | Uncrowned | `esc-uncrowned` | Winners since 2017 who never hit #1 in any episode; best rank column |
 
 Shared helpers: `escWinnerData.ts` (rank index, winner lookup, `bestRankForWinnerVideos`).

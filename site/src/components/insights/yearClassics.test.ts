@@ -192,6 +192,7 @@ describe("yearClassics integration", () => {
         latestPeriod: videoHits.periods[videoHits.periods.length - 1] ?? "",
         periods: videoHits.periods,
         songLatest: songRows,
+        songHits: null,
         videoHits,
         videoLatest: videoRows,
       },

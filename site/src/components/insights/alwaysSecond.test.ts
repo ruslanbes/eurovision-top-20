@@ -93,6 +93,7 @@ describe("alwaysSecond integration", () => {
         latestPeriod: "2026-06",
         periods: [],
         songLatest: [],
+        songHits: null,
         videoHits: null,
         videoLatest: videoRows,
       },

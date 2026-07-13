@@ -1,5 +1,5 @@
 import type { EpisodesBrowserPayload } from "../episodes/types";
-import type { VideoHitsPayload } from "../stats/queryWindow";
+import type { SongHitsPayload, VideoHitsPayload } from "../stats/queryWindow";
 import type { SongStatsSnapshot, VideoStatsSnapshot } from "../stats/types";
 import type { DataNeed, InsightContext, PeriodsManifest } from "./types";
 
@@ -17,6 +17,7 @@ export async function loadInsightContext(needs: Set<DataNeed>): Promise<InsightC
   let latestPeriod = "";
   let periods: string[] = [];
   let videoLatest: InsightContext["videoLatest"] = [];
+  let songHits: InsightContext["songHits"] = null;
   let songLatest: InsightContext["songLatest"] = [];
   let videoHits: InsightContext["videoHits"] = null;
   let episodesBrowser: InsightContext["episodesBrowser"] = null;
@@ -40,6 +41,17 @@ export async function loadInsightContext(needs: Set<DataNeed>): Promise<InsightC
         `${dataBase}/packaged/per-video/alltime/eurovision-top-20-alltime-latest.json`,
       ).then((snapshot) => {
         videoLatest = snapshot.rows;
+      }),
+    );
+  }
+
+  if (needs.has("songHits")) {
+    tasks.push(
+      fetchJson<SongHitsPayload>(`${dataBase}/packaged/query/song-hits.json`).then((payload) => {
+        songHits = payload;
+        if (periods.length === 0) {
+          periods = payload.periods;
+        }
       }),
     );
   }
@@ -75,7 +87,7 @@ export async function loadInsightContext(needs: Set<DataNeed>): Promise<InsightC
 
   await Promise.all(tasks);
 
-  return { episodesBrowser, latestPeriod, periods, songLatest, videoHits, videoLatest };
+  return { episodesBrowser, latestPeriod, periods, songHits, songLatest, videoHits, videoLatest };
 }
 
 export function collectDataNeeds(

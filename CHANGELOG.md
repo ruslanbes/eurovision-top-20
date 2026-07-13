@@ -4,6 +4,14 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.6.5] - 2026-07-13
+
+Build-up rank insight.
+
+### Changed
+
+- **Build-up rank** — Shows where the ESC winner ranks among other contestants before the contest instead of **April pulse**.
+
 ## [0.6.4] - 2026-07-07
 
 Insights, stats filters.

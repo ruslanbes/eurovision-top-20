@@ -190,7 +190,23 @@ function EscWinnerTable({
             ) : null}
             {result.showRankColumn ? (
               <td className="border border-border px-3 py-2 text-center tabular-nums text-text">
-                {row.rank ?? <span className="text-text-muted">—</span>}
+                {row.rankLabel ? (
+                  row.rankHref ? (
+                    <a
+                      href={row.rankHref}
+                      className="text-accent hover:underline"
+                      title={row.rankLinkTitle}
+                    >
+                      {row.rankLabel}
+                    </a>
+                  ) : (
+                    row.rankLabel
+                  )
+                ) : row.rank != null ? (
+                  row.rank
+                ) : (
+                  <span className="text-text-muted">—</span>
+                )}
               </td>
             ) : null}
             <td className="border border-border px-3 py-2 text-text">

@@ -24,6 +24,32 @@ export function isPreMayChartPeriod(period: string, contestYear: number): boolea
   return year === contestYear && month < 5;
 }
 
+/** May (Y−1) through April (Y) — build-up chart window for contest year Y. */
+export function isBuildUpChartPeriod(period: string, contestYear: number): boolean {
+  const [year, month] = period.split("-").map(Number);
+  const startYear = contestYear - 1;
+  if (year < startYear || year > contestYear) {
+    return false;
+  }
+  if (year === startYear && month < 5) {
+    return false;
+  }
+  if (year === contestYear && month >= 5) {
+    return false;
+  }
+  return true;
+}
+
+export function buildUpWindowBounds(contestYear: number): {
+  begin: string;
+  end: string;
+} {
+  return {
+    begin: `${contestYear - 1}-05`,
+    end: `${contestYear}-04`,
+  };
+}
+
 export function isMayChartPeriod(period: string, contestYear: number): boolean {
   return period === mayPeriod(contestYear);
 }

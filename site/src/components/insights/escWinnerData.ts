@@ -76,19 +76,3 @@ export function bestRankForWinnerVideos(
 
   return { bestRank, bestVideo, everTop1 };
 }
-
-export function contestYearsForEpisodeMonth(
-  periods: string[],
-  month: number,
-): number[] {
-  const suffix = `-${String(month).padStart(2, "0")}`;
-  const years = new Set<number>();
-
-  for (const period of periods) {
-    if (period.endsWith(suffix)) {
-      years.add(Number.parseInt(period.slice(0, 4), 10));
-    }
-  }
-
-  return [...years].sort((left, right) => left - right);
-}

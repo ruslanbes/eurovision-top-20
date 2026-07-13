@@ -3,14 +3,13 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { buildEpisodeRankIndex } from "./escWinnerData";
 import {
-  computeEscWinnerTableRows,
+  computeBuildUpRankRows,
   computeUncrownedRows,
-  escAprilPulse,
+  escBuildUpRank,
   escUncrowned,
 } from "./insights/escWinnerInsights";
-import { applyFootnotesToInsightResult } from "./footnoteRules";
 import type { VideoHitsPayload } from "../stats/queryWindow";
-import type { VideoStatsRow } from "../stats/types";
+import type { SongStatsRow, VideoStatsRow } from "../stats/types";
 import type { InsightContext } from "./types";
 
 function fixtureContext(): InsightContext {
@@ -21,16 +20,26 @@ function fixtureContext(): InsightContext {
       "utf-8",
     ),
   ).rows as VideoStatsRow[];
+  const songRows = JSON.parse(
+    readFileSync(
+      join(repoRoot, "data/packaged/per-song/alltime/eurovision-top-20-song-stats-latest.json"),
+      "utf-8",
+    ),
+  ).rows as SongStatsRow[];
   const videoHits = JSON.parse(
     readFileSync(join(repoRoot, "data/packaged/query/video-hits.json"), "utf-8"),
   ) as VideoHitsPayload;
+  const songHits = JSON.parse(
+    readFileSync(join(repoRoot, "data/packaged/query/song-hits.json"), "utf-8"),
+  );
 
   return {
     episodesBrowser: null,
     latestPeriod: videoHits.periods[videoHits.periods.length - 1] ?? "",
     periods: videoHits.periods,
     videoLatest: videoRows,
-    songLatest: [],
+    songLatest: songRows,
+    songHits,
     videoHits,
   };
 }
@@ -49,38 +58,6 @@ describe("buildEpisodeRankIndex", () => {
     });
 
     expect(index.get("2024-05")?.get("Winner LIVE")).toBe(1);
-  });
-});
-
-describe("computeEscWinnerTableRows", () => {
-  it("returns April ranks without hit classification", () => {
-    const ctx = fixtureContext();
-    const rows = computeEscWinnerTableRows(ctx, escAprilPulse.defaultParams);
-    const years = rows.map((row) => Number.parseInt(row.year, 10));
-    expect(years).toEqual([...years].sort((left, right) => left - right));
-
-    const y2018 = rows.find((row) => row.year === "2018");
-    const y2026 = rows.find((row) => row.year === "2026");
-
-    expect(y2018?.rank).toBe(1);
-    expect(y2018?.linkHref).toMatch(/youtube\.com/);
-    expect(y2026?.rank).toBe(19);
-
-    const y2019 = rows.find((row) => row.year === "2019");
-    expect(y2019?.status).toBe("unknown");
-    expect(y2019?.statusTitle).toBe("No episode");
-    expect(y2019?.rank).toBeNull();
-    expect(y2019?.linkLabel).toMatch(/Duncan Laurence/);
-
-    const april = escAprilPulse.compute(ctx, escAprilPulse.defaultParams);
-    const aprilWithNotes = applyFootnotesToInsightResult("esc-april-pulse", april!);
-    if (
-      aprilWithNotes?.viewKind === "table" &&
-      aprilWithNotes.tableKind === "esc_winner"
-    ) {
-      const y2019Note = aprilWithNotes.rows.find((row) => row.year === "2019");
-      expect(y2019Note?.rowNote).toMatch(/No April 2019 episode/);
-    }
   });
 });
 
@@ -127,6 +104,7 @@ describe("computeUncrownedRows", () => {
         },
       ],
       songLatest: [],
+      songHits: null,
       videoHits: {
         periods: ["2024-05"],
         hits: [
@@ -144,25 +122,26 @@ describe("computeUncrownedRows", () => {
 });
 
 describe("esc winner insight blocks", () => {
-  it("returns table results for April pulse and Uncrowned", () => {
+  it("returns table results for Build-up rank and Uncrowned", () => {
     const ctx = fixtureContext();
-    const april = escAprilPulse.compute(ctx, escAprilPulse.defaultParams);
+    const buildUp = escBuildUpRank.compute(ctx, escBuildUpRank.defaultParams);
     const uncrowned = escUncrowned.compute(ctx, escUncrowned.defaultParams);
 
-    expect(april?.viewKind).toBe("table");
+    expect(buildUp?.viewKind).toBe("table");
     expect(uncrowned?.viewKind).toBe("table");
     if (
-      april?.viewKind === "table" &&
+      buildUp?.viewKind === "table" &&
       uncrowned?.viewKind === "table" &&
-      april.tableKind === "esc_winner" &&
+      buildUp.tableKind === "esc_winner" &&
       uncrowned.tableKind === "esc_winner"
     ) {
-      expect(april.showRankColumn).toBe(true);
-      expect(april.showHitColumn).toBe(false);
+      expect(buildUp.showHitColumn).toBe(false);
+      expect(buildUp.showRankColumn).toBe(true);
+      expect(buildUp.rankColumnLabel).toBe("Build-up rank");
       expect(uncrowned.showHitColumn).toBe(false);
       expect(uncrowned.showRankColumn).toBe(true);
       expect(uncrowned.rankColumnLabel).toBe("Best rank");
-      expect(april.rows.length).toBeGreaterThan(0);
+      expect(buildUp.rows.length).toBe(5);
       expect(uncrowned.rows).toHaveLength(1);
       expect(uncrowned.rows[0]).toMatchObject({
         year: "2025",
@@ -179,11 +158,26 @@ describe("esc winner insight blocks", () => {
         periods: ["2024-05"],
         videoLatest: [],
         songLatest: [],
+        songHits: null,
         videoHits: { periods: ["2024-05"], hits: [] },
       },
       {},
     );
 
     expect(result).toBeNull();
+  });
+});
+
+describe("computeBuildUpRankRows integration", () => {
+  it("matches packaged data ranks (song-hits window, May Y-1 through Apr Y)", () => {
+    const rows = computeBuildUpRankRows(fixtureContext());
+    const byYear = Object.fromEntries(rows.map((row) => [row.year, row.rankLabel]));
+    expect(byYear).toEqual({
+      "2022": "2 of 17",
+      "2023": "3 of 20",
+      "2024": "5 of 22",
+      "2025": "5 of 20",
+      "2026": "5 of 21",
+    });
   });
 });

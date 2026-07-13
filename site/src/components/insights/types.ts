@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { EpisodesBrowserPayload } from "../episodes/types";
-import type { VideoHitsPayload } from "../stats/queryWindow";
+import type { SongHitsPayload, VideoHitsPayload } from "../stats/queryWindow";
 import type {
   SongStatsRow,
   StatsGrain,
@@ -14,6 +14,7 @@ export type InsightGrain = StatsGrain;
 export type DataNeed =
   | "episodesBrowser"
   | "periodsManifest"
+  | "songHits"
   | "songLatest"
   | "videoHits"
   | "videoLatest";
@@ -27,6 +28,7 @@ export type InsightContext = {
   episodesBrowser: EpisodesBrowserPayload | null;
   latestPeriod: string;
   periods: string[];
+  songHits: SongHitsPayload | null;
   songLatest: SongStatsRow[];
   videoHits: VideoHitsPayload | null;
   videoLatest: VideoStatsRow[];
@@ -66,6 +68,9 @@ export type InsightTableRow = {
   linkHref: string | null;
   linkLabel: string | null;
   rank: number | null;
+  rankHref?: string | null;
+  rankLabel?: string;
+  rankLinkTitle?: string;
   rowNote?: string;
   status: InsightTableStatus;
   statusTitle?: string;
