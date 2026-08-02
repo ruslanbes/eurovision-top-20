@@ -3,7 +3,7 @@
 Optional deep-dive notes for a backlog item. One file per task ID:
 
 ```
-docs/tasks/<task-id>.md
+dev/tasks/<task-id>.md
 ```
 
 Use when a task needs examples, sample data, decision notes, or acceptance detail that would clutter `BACKLOG.md`.

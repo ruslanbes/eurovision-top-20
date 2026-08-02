@@ -44,6 +44,8 @@ uv run evtop20 package
 
 Then rebuild or refresh the site (`cd site && npm run dev` or `npm run build`).
 
+If all looks good, push to `main`. If you are on a fork, create a Pull Request to the main repository.
+
 ## Further reading
 
 | Step | What it does |
@@ -60,13 +62,14 @@ Pushes to `main` run the same validate → process → package → build pipelin
 
 ## Ground rules for development of new features and fixing bugs
 
+- Track your work using the tasks folder in `dev/tasks/`.
 - Breaking API changes are acceptable.
 - Don't care about backwards compatibility.
 - Use mermaid diagrams when creating documentation
 - For the static site UI you must design the data model first. Before implementing anything UI-related always check if the data model is already designed and the samples are generated. 
 - When designing data model prefer sorting fields alphabetically unless there is a specific reason to do otherwise.
 - Before starting to implement a task, check if there are missing decisions, clarify them first instead of doing the implementation.
-- When cutting a version or cleaning shipped work, follow `docs/RELEASE.md` (changelog promotion, backlog + task-file cleanup).
+- When cutting a version or cleaning shipped work, follow `dev/RELEASE.md` (changelog promotion, backlog + task-file cleanup).
 
 ## Reference docs
 
@@ -78,4 +81,5 @@ Pushes to `main` run the same validate → process → package → build pipelin
 - `docs/faq/esc_final_place.md` (`esc_final_place` codes and join)
 - `docs/faq/commands.md` (CLI commands)
 - `CHANGELOG.md` (shipped features)
-- `docs/RELEASE.md` (release runbook)
+- `dev/RELEASE.md` (release runbook)
+- `dev/BACKLOG.md` / `dev/STATUS.md` / `dev/tasks/` (planning artifacts)

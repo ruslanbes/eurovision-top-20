@@ -32,9 +32,9 @@ In [BACKLOG.md](BACKLOG.md):
 
 ### 2. Analyze and cleanup task detail files
 
-Per [tasks/README.md](tasks/README.md): delete `docs/tasks/<task-id>.md` for tasks shipped in this release or cancelled.
+Per [tasks/README.md](tasks/README.md): delete `dev/tasks/<task-id>.md` for tasks shipped in this release or cancelled.
 
-Keep the `docs/tasks/` folder and `tasks/README.md`. Behavior should live in CHANGELOG, ADRs, FAQ, and layer READMEs — not in deleted specs.
+Keep the `dev/tasks/` folder and `tasks/README.md`. Behavior should live in CHANGELOG, ADRs, FAQ, and layer READMEs — not in deleted specs.
 
 #### 2.1 Handling detailed task docs
 

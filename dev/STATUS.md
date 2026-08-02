@@ -24,5 +24,6 @@ Execute [release 0.6.5](RELEASE.md#execute-the-release):
 
 ## Session notes
 
+- Moved temporary planning docs to root `dev/` (`BACKLOG`, `STATUS`, `RELEASE`, `tasks/`).
 - Prepared **0.6.5** — Build-up rank insight, April pulse removal, ESC winner table rank-link support.
 - Backlog: **`the-other-top-20`** (approved), **`april-prank`**.
