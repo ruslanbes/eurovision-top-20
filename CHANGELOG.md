@@ -4,6 +4,10 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+### Added
+
+- **`robots.txt` and sitemap** for search-engine crawling (`/eurovision-top-20/robots.txt`, `/eurovision-top-20/sitemap-index.xml`).
+
 ## [0.6.5] - 2026-07-13
 
 Build-up rank insight.
