@@ -4,7 +4,7 @@ Last updated: 2026-08-07
 
 ## Current focus
 
-**Release 0.7.0** — prepared, not tagged.
+**Episodes SEO size fix** — compact title index under Bing’s ~1 MB soft limit (unreleased).
 
 ## Active task
 
@@ -16,12 +16,10 @@ _None._
 
 ## Next action
 
-Execute [release 0.7.0](RELEASE.md#execute-the-release):
-
-1. Stage + commit release prep.
-2. `git tag -a v0.7.0 -m "Release 0.7.0"` and push `main` with tags.
+Ship unreleased Episodes crawlable-HTML change when ready (changelog already under `[Unreleased]`).
 
 ## Session notes
 
-- Prepared **0.7.0** — crawlable default HTML on all main pages; robots.txt + sitemap.
+- **0.7.0** shipped — crawlable defaults + robots/sitemap.
+- Unreleased: Episodes compact SEO index (not full-grid SSR).
 - Backlog: **`the-other-top-20`**, **`april-prank`**.

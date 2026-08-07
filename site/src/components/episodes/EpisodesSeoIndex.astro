@@ -1,0 +1,25 @@
+---
+import type { EpisodesSeoEpisode } from "./buildEpisodesSeoIndex";
+
+type Props = {
+  episodes: EpisodesSeoEpisode[];
+};
+
+const { episodes } = Astro.props;
+---
+
+<section class="sr-only" aria-label="Eurovision Top 20 episode chart index">
+  <h2>Eurovision Top 20 episode index</h2>
+  {
+    episodes.map((episode) => (
+      <article>
+        <h3>{episode.period}</h3>
+        <ol>
+          {episode.entries.map((entry) => (
+            <li value={entry.rank}>{entry.title}</li>
+          ))}
+        </ol>
+      </article>
+    ))
+  }
+</section>

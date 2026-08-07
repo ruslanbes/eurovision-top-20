@@ -1,9 +1,12 @@
 ---
+import { buildEpisodesSeoIndex } from "../../components/episodes/buildEpisodesSeoIndex";
 import { EpisodesBrowser } from "../../components/episodes/EpisodesBrowser";
+import EpisodesSeoIndex from "../../components/episodes/EpisodesSeoIndex.astro";
 import { loadEpisodesBrowserDataFromFs } from "../../components/episodes/loadEpisodesBrowserDataFromFs";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const initialData = loadEpisodesBrowserDataFromFs();
+const { browser } = loadEpisodesBrowserDataFromFs();
+const seoEpisodes = buildEpisodesSeoIndex(browser);
 
 const episodesDescription =
   "Browse every Eurovision Song Contest YouTube Top 20 episode month — color by country, contest year, winners, and more — from the official Most Watched charts.";
@@ -14,5 +17,6 @@ const episodesDescription =
   description={episodesDescription}
   title="Episodes"
 >
-  <EpisodesBrowser client:visible initialData={initialData} />
+  <EpisodesSeoIndex episodes={seoEpisodes} />
+  <EpisodesBrowser client:visible />
 </BaseLayout>

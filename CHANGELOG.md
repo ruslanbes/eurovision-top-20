@@ -4,6 +4,10 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+### Changed
+
+- **Episodes crawlable HTML** — compact month-by-month title index instead of a full grid in the page source.
+
 ## [0.7.0] - 2026-08-07
 
 Search-friendly site pages and crawler files.

@@ -8,12 +8,14 @@ Rank 1–20 grid for `/episodes/`. Each row is one Top 20 episode month; each �
 |------|------|
 | `types.ts` | `BrowserEntry`, `BrowserEpisode`, payload types |
 | `data.ts` | Fetch packaged `browser.json` + `year-colors.json` |
-| `loadEpisodesBrowserDataFromFs.ts` | Build-time / Node load of the same files |
+| `loadEpisodesBrowserDataFromFs.ts` | Build-time / Node load of the same files (SEO index) |
+| `buildEpisodesSeoIndex.ts` | Compact month × title list for crawlable HTML |
+| `EpisodesSeoIndex.astro` | `sr-only` semantic index on `/episodes/` |
 | `schemes/types.ts` | `EpisodeScheme`, `EpisodeSchemeContext` |
 | `schemes/registry.ts` | Ordered list of registered schemes |
 | `schemes/*.ts` | One module per scheme |
 | `schemeContext.ts` | Build per-scheme `colorMap` / `glyphMap` from payload |
-| `EpisodesBrowser.tsx` | Wire scheme + UI; may receive build-time data for first paint |
+| `EpisodesBrowser.tsx` | Wire scheme + UI; loads data in the browser |
 | `EpisodeEntryGrid.tsx` | Rows of ● cells; optional Group reorder |
 | `EpisodeLegend.tsx` | Clickable legend; shared with focus |
 | `EpisodeSchemeControls.tsx` | Scheme picker + Group switch |
@@ -25,7 +27,7 @@ Rank 1–20 grid for `/episodes/`. Each row is one Top 20 episode month; each �
 
 ## Build-time HTML
 
-`/episodes/` loads packaged episode data at build and passes it into `<EpisodesBrowser client:visible />` so the full month × rank grid (titles in cell attributes) is in the HTML. The island still fetches packaged JSON after hydrate for a live refresh. The page is large (full grid); that is expected.
+`/episodes/` embeds a compact **`sr-only`** semantic index (every month’s ranked video titles) so crawlers see real chart content without a multi‑MB button grid. The interactive grid loads in the browser via `<EpisodesBrowser client:visible />` (same fetch as before). Keep the HTML under ~1 MB so search engines can cache the page.
 
 ## Plugin registry
 

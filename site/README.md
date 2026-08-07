@@ -56,7 +56,7 @@ Omitted params use defaults (full range, no filter, `chart_points` desc). Filter
 
 | Route | Data | Notes |
 |-------|------|-------|
-| `/episodes/` | `browser.json`, `year-colors.json` | Full episode grid in the HTML at build time; schemes / Group / search after hydrate — [`episodes/README.md`](src/components/episodes/README.md) |
+| `/episodes/` | `browser.json`, `year-colors.json` | Compact title index in the HTML for crawlers; interactive grid after hydrate — [`episodes/README.md`](src/components/episodes/README.md) |
 
 `year-colors.json` is hand-maintained under `data/metadata/` (copied to packaged at `package`). Regenerate with `python3 pipeline/scripts/refresh_year_colors.py`.
 
