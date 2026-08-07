@@ -2,6 +2,15 @@
 
 Client-computed analytics blocks for `/insights/`. Each insight is a small TypeScript plugin: load packaged JSON, run `compute`, render a block.
 
+## Build-time HTML
+
+At `astro build`, the page loads packaged data from disk (`loadInsightContextFromFs`), runs the registry (`computeRenderedInsights`), and passes the results into `<InsightsPage client:visible />`. The default HTML therefore includes real insight tables (no `Loading…`). The island hydrates with those results and does not re-fetch on the default URL.
+
+| Module | Role |
+|--------|------|
+| `loadInsightContextFromFs.ts` | Node read of the same packaged paths as `context.ts` |
+| `computeRenderedInsights.ts` | Registry compute + footnotes for the build |
+
 ## Layout
 
 | Path | Role |

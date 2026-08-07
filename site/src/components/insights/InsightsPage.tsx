@@ -1,22 +1,28 @@
 import { useEffect, useMemo, useState } from "react";
+import type { RenderedInsight } from "./computeRenderedInsights";
 import { collectDataNeeds, loadInsightContext } from "./context";
 import { InsightBlock } from "./blocks/InsightBlock";
 import { applyFootnotesToInsightResult } from "./footnoteRules";
 import { listInsights, listInsightsBySection } from "./registry";
-import { INSIGHT_SECTION_LABEL, type InsightContext, type InsightResult } from "./types";
+import { INSIGHT_SECTION_LABEL, type InsightContext } from "./types";
 
-type RenderedInsight = {
-  id: string;
-  result: InsightResult;
+export type InsightsPageProps = {
+  /** Precomputed at build. When set, skips fetch and Loading…. */
+  initialResults?: RenderedInsight[];
 };
 
-export function InsightsPage() {
+export function InsightsPage({ initialResults }: InsightsPageProps = {}) {
+  const hasInitial = initialResults != null;
   const [ctx, setCtx] = useState<InsightContext | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const definitions = useMemo(() => listInsights(), []);
 
   useEffect(() => {
+    if (hasInitial) {
+      return;
+    }
+
     let cancelled = false;
 
     loadInsightContext(collectDataNeeds(definitions))
@@ -34,9 +40,12 @@ export function InsightsPage() {
     return () => {
       cancelled = true;
     };
-  }, [definitions]);
+  }, [definitions, hasInitial]);
 
   const rendered = useMemo<RenderedInsight[]>(() => {
+    if (hasInitial) {
+      return initialResults;
+    }
     if (!ctx) {
       return [];
     }
@@ -52,7 +61,7 @@ export function InsightsPage() {
       }
     }
     return blocks;
-  }, [ctx, definitions]);
+  }, [ctx, definitions, hasInitial, initialResults]);
 
   const sections = useMemo(() => {
     const renderedById = new Map(rendered.map((item) => [item.id, item]));
@@ -75,7 +84,7 @@ export function InsightsPage() {
     );
   }
 
-  if (!ctx) {
+  if (!hasInitial && !ctx) {
     return <p className="text-sm text-text-muted">Loading…</p>;
   }
 

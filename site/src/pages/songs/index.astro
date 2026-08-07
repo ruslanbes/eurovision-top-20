@@ -1,11 +1,23 @@
 ---
+import { buildDefaultStatsRows } from "../../components/stats/buildDefaultStatsRows";
 import { StatsExplorer } from "../../components/stats/StatsExplorer";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const { rows: initialRows, periods: initialPeriods } = buildDefaultStatsRows("song");
+
+const songsDescription =
+  "Browse Eurovision song chart stats from the official YouTube Top 20 — chart points rolled up per song across monthly Most Watched episodes, with filters and period range.";
 ---
 
 <BaseLayout
   current="songs"
+  description={songsDescription}
   title="Songs"
 >
-  <StatsExplorer client:visible grain="song" />
+  <StatsExplorer
+    client:visible
+    grain="song"
+    initialPeriods={initialPeriods}
+    initialRows={initialRows}
+  />
 </BaseLayout>

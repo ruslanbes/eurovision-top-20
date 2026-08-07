@@ -1,11 +1,18 @@
 ---
 import { EpisodesBrowser } from "../../components/episodes/EpisodesBrowser";
+import { loadEpisodesBrowserDataFromFs } from "../../components/episodes/loadEpisodesBrowserDataFromFs";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const initialData = loadEpisodesBrowserDataFromFs();
+
+const episodesDescription =
+  "Browse every Eurovision Song Contest YouTube Top 20 episode month — color by country, contest year, winners, and more — from the official Most Watched charts.";
 ---
 
 <BaseLayout
   current="episodes"
+  description={episodesDescription}
   title="Episodes"
 >
-  <EpisodesBrowser client:visible />
+  <EpisodesBrowser client:visible initialData={initialData} />
 </BaseLayout>

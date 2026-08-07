@@ -7,12 +7,13 @@ Rank 1–20 grid for `/episodes/`. Each row is one Top 20 episode month; each �
 | Path | Role |
 |------|------|
 | `types.ts` | `BrowserEntry`, `BrowserEpisode`, payload types |
-| `data.ts` | Load packaged `browser.json` + `year-colors.json` |
+| `data.ts` | Fetch packaged `browser.json` + `year-colors.json` |
+| `loadEpisodesBrowserDataFromFs.ts` | Build-time / Node load of the same files |
 | `schemes/types.ts` | `EpisodeScheme`, `EpisodeSchemeContext` |
 | `schemes/registry.ts` | Ordered list of registered schemes |
 | `schemes/*.ts` | One module per scheme |
 | `schemeContext.ts` | Build per-scheme `colorMap` / `glyphMap` from payload |
-| `EpisodesBrowser.tsx` | Load data, wire scheme + UI state, render grid |
+| `EpisodesBrowser.tsx` | Wire scheme + UI; may receive build-time data for first paint |
 | `EpisodeEntryGrid.tsx` | Rows of ● cells; optional Group reorder |
 | `EpisodeLegend.tsx` | Clickable legend; shared with focus |
 | `EpisodeSchemeControls.tsx` | Scheme picker + Group switch |
@@ -21,6 +22,10 @@ Rank 1–20 grid for `/episodes/`. Each row is one Top 20 episode month; each �
 | `entryTooltip.ts` | Hover label for filled entries |
 | `periodLabels.ts` | Month abbrev + year dividers between rows |
 | `constants.ts` | Shared dimension ids and glyphs |
+
+## Build-time HTML
+
+`/episodes/` loads packaged episode data at build and passes it into `<EpisodesBrowser client:visible />` so the full month × rank grid (titles in cell attributes) is in the HTML. The island still fetches packaged JSON after hydrate for a live refresh. The page is large (full grid); that is expected.
 
 ## Plugin registry
 

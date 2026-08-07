@@ -15,11 +15,16 @@ import {
   tableSortToSortingState,
 } from "./sortUrl";
 import { StatsTable } from "./StatsTable";
+import { defaultStatsUiState } from "./statsUiState";
 import type { SongStatsRow, StatsGrain, VideoStatsRow } from "./types";
 import { useStatsUiState } from "./useStatsUiState";
 
-type StatsExplorerProps = {
+export type StatsExplorerProps = {
   grain: StatsGrain;
+  /** Precomputed full-corpus rows from build. Skips Loading… on first paint. */
+  initialRows?: VideoStatsRow[] | SongStatsRow[];
+  /** Episode periods matching `initialRows` window bounds. */
+  initialPeriods?: string[];
 };
 
 const GRAIN_LABEL: Record<StatsGrain, string> = {
@@ -27,15 +32,22 @@ const GRAIN_LABEL: Record<StatsGrain, string> = {
   song: "songs",
 };
 
-export function StatsExplorer({ grain }: StatsExplorerProps) {
+export function StatsExplorer({
+  grain,
+  initialRows,
+  initialPeriods,
+}: StatsExplorerProps) {
+  const hasInitial =
+    initialRows != null && initialPeriods != null && initialPeriods.length > 0;
   const defaultRankSort = grain === "video" ? DEFAULT_VIDEO_SORT : DEFAULT_SONG_SORT;
 
-  const [periods, setPeriods] = useState<string[]>([]);
+  const [periods, setPeriods] = useState<string[]>(() => initialPeriods ?? []);
   const [queryData, setQueryData] = useState<QueryData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!hasInitial);
   const [error, setError] = useState<string | null>(null);
 
-  const { window, filters, sort, setWindow, updateFilters, setSort } = useStatsUiState(periods);
+  const { window, filters, sort, setWindow, updateFilters, setSort } =
+    useStatsUiState(periods);
   const { begin, end } = window;
   const sorting = useMemo(() => tableSortToSortingState(sort), [sort]);
   const userSorted = sort !== null;
@@ -44,7 +56,9 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
     let cancelled = false;
 
     async function init() {
-      setLoading(true);
+      if (!hasInitial) {
+        setLoading(true);
+      }
       setError(null);
       try {
         const data = await loadQueryData(grain);
@@ -72,36 +86,40 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
     return () => {
       cancelled = true;
     };
-  }, [grain]);
+  }, [grain, hasInitial]);
 
   const baseRows = useMemo(() => {
-    if (!queryData || !begin || !end) {
-      return [];
-    }
-    if (grain === "video") {
-      return queryVideoWindow(
+    if (queryData && begin && end) {
+      if (grain === "video") {
+        return queryVideoWindow(
+          queryData.hits,
+          queryData.meta,
+          begin,
+          end,
+        ) as VideoStatsRow[];
+      }
+      return querySongWindow(
         queryData.hits,
         queryData.meta,
         begin,
         end,
-      ) as VideoStatsRow[];
+      ) as SongStatsRow[];
     }
-    return querySongWindow(
-      queryData.hits,
-      queryData.meta,
-      begin,
-      end,
-    ) as SongStatsRow[];
-  }, [queryData, begin, end, grain]);
+
+    if (hasInitial && initialRows && begin && end && periods.length > 0) {
+      const defaults = defaultStatsUiState(periods).window;
+      if (begin === defaults.begin && end === defaults.end) {
+        return initialRows;
+      }
+    }
+
+    return [] as VideoStatsRow[] | SongStatsRow[];
+  }, [queryData, begin, end, grain, hasInitial, initialRows, periods]);
 
   const filterDefs = useMemo(() => filterDefsForGrain(grain), [grain]);
 
   const filteredRows = useMemo(() => {
-    return applyFilters(
-      baseRows,
-      filters,
-      filterDefs,
-    ) as typeof baseRows;
+    return applyFilters(baseRows, filters, filterDefs) as typeof baseRows;
   }, [baseRows, filters, filterDefs]);
 
   const filtersActive = hasActiveFilters(filters);
@@ -128,27 +146,33 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
     [setWindow, setSort, userSorted],
   );
 
-  const handleAddFilter = useCallback((filterId: string, value: FilterValue) => {
-    updateFilters((prev) => {
-      const current = prev[filterId] ?? [];
-      if (current.includes(value)) {
-        return prev;
-      }
-      return { ...prev, [filterId]: [...current, value] };
-    });
-  }, [updateFilters]);
+  const handleAddFilter = useCallback(
+    (filterId: string, value: FilterValue) => {
+      updateFilters((prev) => {
+        const current = prev[filterId] ?? [];
+        if (current.includes(value)) {
+          return prev;
+        }
+        return { ...prev, [filterId]: [...current, value] };
+      });
+    },
+    [updateFilters],
+  );
 
-  const handleRemoveFilter = useCallback((filterId: string, value: FilterValue) => {
-    updateFilters((prev) => {
-      const current = prev[filterId] ?? [];
-      const next = current.filter((item) => item !== value);
-      if (next.length === 0) {
-        const { [filterId]: _removed, ...rest } = prev;
-        return rest;
-      }
-      return { ...prev, [filterId]: next };
-    });
-  }, [updateFilters]);
+  const handleRemoveFilter = useCallback(
+    (filterId: string, value: FilterValue) => {
+      updateFilters((prev) => {
+        const current = prev[filterId] ?? [];
+        const next = current.filter((item) => item !== value);
+        if (next.length === 0) {
+          const { [filterId]: _removed, ...rest } = prev;
+          return rest;
+        }
+        return { ...prev, [filterId]: next };
+      });
+    },
+    [updateFilters],
+  );
 
   const handleSetExclusiveFilter = useCallback(
     (filterId: string, value: FilterValue | null) => {
@@ -176,7 +200,7 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
     [updateFilters],
   );
 
-  if (error && !queryData) {
+  if (error && !queryData && !hasInitial) {
     return (
       <p className="rounded-lg border border-danger-border bg-danger-surface px-4 py-3 text-sm text-danger-text">
         {error}
@@ -189,6 +213,9 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
       ? `${filteredRows.length} of ${baseRows.length}`
       : String(filteredRows.length);
 
+  const queryReady = queryData != null;
+  const controlsDisabled = !queryReady;
+
   return (
     <div className="space-y-6">
       <PeriodControls
@@ -196,14 +223,14 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
         begin={begin}
         end={end}
         onRangeChange={handleRangeChange}
-        disabled={loading}
+        disabled={controlsDisabled}
       />
 
       <FilterBar
         grain={grain}
         rows={baseRows}
         state={filters}
-        disabled={loading || baseRows.length === 0}
+        disabled={controlsDisabled || baseRows.length === 0}
         onAdd={handleAddFilter}
         onRemove={handleRemoveFilter}
         onSetExclusive={handleSetExclusiveFilter}
@@ -214,7 +241,7 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
         <p>
           {countLabel} {GRAIN_LABEL[grain]}
         </p>
-        {loading ? <p>Loading…</p> : null}
+        {loading && !hasInitial ? <p>Loading…</p> : null}
       </div>
 
       {error ? (
@@ -223,7 +250,7 @@ export function StatsExplorer({ grain }: StatsExplorerProps) {
         </p>
       ) : null}
 
-      {!loading && filteredRows.length > 0 ? (
+      {filteredRows.length > 0 && (!loading || hasInitial) ? (
         <StatsTable
           grain={grain}
           rows={filteredRows}

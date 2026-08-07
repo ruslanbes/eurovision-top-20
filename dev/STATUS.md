@@ -1,10 +1,10 @@
 # Status
 
-Last updated: 2026-07-13
+Last updated: 2026-08-07
 
 ## Current focus
 
-**Release 0.6.5** — prepared, not tagged.
+**Release 0.7.0** — prepared, not tagged.
 
 ## Active task
 
@@ -16,14 +16,12 @@ _None._
 
 ## Next action
 
-Execute [release 0.6.5](RELEASE.md#execute-the-release):
+Execute [release 0.7.0](RELEASE.md#execute-the-release):
 
-1. Pre-release checklist (pytest, `npm test`, `npm run build`, validate/process/package).
-2. Commit release prep changes.
-3. `git tag -a v0.6.5 -m "Release 0.6.5"` and push `main` with tags.
+1. Stage + commit release prep.
+2. `git tag -a v0.7.0 -m "Release 0.7.0"` and push `main` with tags.
 
 ## Session notes
 
-- Moved temporary planning docs to root `dev/` (`BACKLOG`, `STATUS`, `RELEASE`, `tasks/`).
-- Prepared **0.6.5** — Build-up rank insight, April pulse removal, ESC winner table rank-link support.
-- Backlog: **`the-other-top-20`** (approved), **`april-prank`**.
+- Prepared **0.7.0** — crawlable default HTML on all main pages; robots.txt + sitemap.
+- Backlog: **`the-other-top-20`**, **`april-prank`**.

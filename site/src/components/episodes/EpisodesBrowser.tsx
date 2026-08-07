@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { loadEpisodesBrowserData } from "./data";
+import type { EpisodesBrowserData } from "./loadEpisodesBrowserDataFromFs";
 import { EpisodeEntryGrid } from "./EpisodeEntryGrid";
 import { EpisodeLegend } from "./EpisodeLegend";
 import { EpisodeSchemeControls } from "./EpisodeSchemeControls";
@@ -14,7 +15,16 @@ import { SearchFilter } from "../stats/filters/SearchFilter";
 import { useEntryHighlight } from "./useEntryHighlight";
 import { useEpisodesBrowserUiState } from "./useEpisodesBrowserUiState";
 
-export function EpisodesBrowser() {
+export type EpisodesBrowserProps = {
+  /**
+   * Full browser + year-colors from build so the grid is in the HTML.
+   * First paint shows the full grid; client still refreshes via fetch.
+   */
+  initialData?: EpisodesBrowserData;
+};
+
+export function EpisodesBrowser({ initialData }: EpisodesBrowserProps) {
+  const hasInitial = initialData != null;
   const schemes = listEpisodeSchemes();
   const defaultScheme = defaultEpisodeScheme();
   const { schemeId, groupEnabled, setSchemeId, setGroupEnabled } =
@@ -26,11 +36,11 @@ export function EpisodesBrowser() {
     highlight,
     searchQuery,
   } = useEntryHighlight();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!hasInitial);
   const [error, setError] = useState<string | null>(null);
-  const [payload, setPayload] = useState<Awaited<
-    ReturnType<typeof loadEpisodesBrowserData>
-  > | null>(null);
+  const [payload, setPayload] = useState<EpisodesBrowserData | null>(
+    () => initialData ?? null,
+  );
 
   const scheme = getEpisodeScheme(schemeId) ?? defaultScheme;
   const usesSearchHighlight = scheme.highlightMode === "search";
@@ -39,7 +49,9 @@ export function EpisodesBrowser() {
     let cancelled = false;
 
     async function init() {
-      setLoading(true);
+      if (!hasInitial) {
+        setLoading(true);
+      }
       setError(null);
       try {
         const data = await loadEpisodesBrowserData();
@@ -61,7 +73,7 @@ export function EpisodesBrowser() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [hasInitial]);
 
   const handleSchemeChange = useCallback(
     (id: string) => {
@@ -97,11 +109,19 @@ export function EpisodesBrowser() {
     [highlight, usesSearchHighlight],
   );
 
-  if (loading) {
+  if (loading && !hasInitial) {
     return <p className="text-sm text-text-muted">Loading…</p>;
   }
 
-  if (error || !payload) {
+  if ((error || !payload) && !hasInitial) {
+    return (
+      <p className="rounded-lg border border-danger-border bg-danger-surface px-4 py-3 text-sm text-danger-text">
+        {error ?? "Episode data unavailable"}
+      </p>
+    );
+  }
+
+  if (!payload) {
     return (
       <p className="rounded-lg border border-danger-border bg-danger-surface px-4 py-3 text-sm text-danger-text">
         {error ?? "Episode data unavailable"}
@@ -114,6 +134,12 @@ export function EpisodesBrowser() {
       <p className="text-sm text-text-muted">
         Each row is one Top 20 episode. Each ● is one entry (rank 1 → 20).
       </p>
+
+      {error ? (
+        <p className="rounded-lg border border-danger-border bg-danger-surface px-4 py-3 text-sm text-danger-text">
+          {error}
+        </p>
+      ) : null}
 
       <EpisodeSchemeControls
         schemes={schemes}

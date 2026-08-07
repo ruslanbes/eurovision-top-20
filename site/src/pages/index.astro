@@ -1,11 +1,23 @@
 ---
+import { buildDefaultStatsRows } from "../components/stats/buildDefaultStatsRows";
 import { StatsExplorer } from "../components/stats/StatsExplorer";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const { rows: initialRows, periods: initialPeriods } = buildDefaultStatsRows("video");
+
+const videosDescription =
+  "Browse Eurovision Song Contest YouTube Top 20 video stats — chart points, ranks, and filters across every monthly Most Watched episode on the official channel.";
 ---
 
 <BaseLayout
   current="videos"
+  description={videosDescription}
   title="Videos"
 >
-  <StatsExplorer client:visible grain="video" />
+  <StatsExplorer
+    client:visible
+    grain="video"
+    initialPeriods={initialPeriods}
+    initialRows={initialRows}
+  />
 </BaseLayout>

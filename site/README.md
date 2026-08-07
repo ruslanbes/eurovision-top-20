@@ -25,7 +25,7 @@ npm run preview  # preview production build
 - TanStack Table v8
 - Radix Slider (dual-thumb episode range)
 
-Videos (`/`) and songs (`/songs/`) each load the sparse query index (`video-hits` + `video-meta` or `song-hits` + `song-meta`) and aggregate stats client-side for the selected `[begin, end]` episode-month window. Default range = full corpus. Default row order matches [chart_points](../docs/faq/chart_points.md#default-sort) (tier counts → ESC place → year → name).
+Videos (`/`) and songs (`/songs/`) load the sparse query index and aggregate for `[begin, end]`. The **default** full-corpus table is rendered into the HTML at build time; the island still fetches query JSON so range and filters stay interactive. Default sort matches [chart_points](../docs/faq/chart_points.md#default-sort).
 
 Theme: **light**, **dark**, or **system** via the toggle (top-right). **Source on GitHub** (octocat icon, left of theme toggle) shows version + release date on hover. Choice persists in `localStorage`. Inline script in the layout avoids a flash of wrong theme on load.
 
@@ -56,7 +56,7 @@ Omitted params use defaults (full range, no filter, `chart_points` desc). Filter
 
 | Route | Data | Notes |
 |-------|------|-------|
-| `/episodes/` | `packaged/episodes/browser.json`, `year-colors.json` | Entry grid — [`src/components/episodes/README.md`](src/components/episodes/README.md) |
+| `/episodes/` | `browser.json`, `year-colors.json` | Full episode grid in the HTML at build time; schemes / Group / search after hydrate — [`episodes/README.md`](src/components/episodes/README.md) |
 
 `year-colors.json` is hand-maintained under `data/metadata/` (copied to packaged at `package`). Regenerate with `python3 pipeline/scripts/refresh_year_colors.py`.
 
@@ -64,7 +64,7 @@ Omitted params use defaults (full range, no filter, `chart_points` desc). Filter
 
 | Route | Data | Notes |
 |-------|------|-------|
-| `/insights/` | `packaged/per-video/alltime/...-latest.json`, `packaged/per-song/alltime/...-song-stats-latest.json`, `periods-alltime.json` | Client-computed blocks — [`src/components/insights/README.md`](src/components/insights/README.md) |
+| `/insights/` | packaged alltime + query hits as needed | Insight tables in the HTML at build time — [`insights/README.md`](src/components/insights/README.md) |
 
 ## Deploy
 
