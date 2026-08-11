@@ -7,6 +7,7 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 ### Changed
 
 - **Episodes crawlable HTML** — compact month-by-month title index instead of a full grid in the page source.
+- **Site brand** — header and page titles use **Eurovision Top 20: Most Watched** (matches the official YouTube series name).
 
 ## [0.7.0] - 2026-08-07
 

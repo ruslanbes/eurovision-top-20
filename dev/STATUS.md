@@ -1,10 +1,10 @@
 # Status
 
-Last updated: 2026-08-07
+Last updated: 2026-08-11
 
 ## Current focus
 
-**Episodes SEO size fix** — compact title index under Bing’s ~1 MB soft limit (unreleased).
+Unreleased: Episodes SEO size fix + site brand “Most Watched”.
 
 ## Active task
 
@@ -16,10 +16,9 @@ _None._
 
 ## Next action
 
-Ship unreleased Episodes crawlable-HTML change when ready (changelog already under `[Unreleased]`).
+Ship unreleased site changes when ready (changelog under `[Unreleased]`).
 
 ## Session notes
 
-- **0.7.0** shipped — crawlable defaults + robots/sitemap.
-- Unreleased: Episodes compact SEO index (not full-grid SSR).
+- Unreleased: Episodes compact SEO index; brand → **Eurovision Top 20: Most Watched**.
 - Backlog: **`the-other-top-20`**, **`april-prank`**.

@@ -1,4 +1,4 @@
-# Eurovision Top 20 site
+# Eurovision Top 20: Most Watched site
 
 Static Astro site for packaged chart statistics.
 

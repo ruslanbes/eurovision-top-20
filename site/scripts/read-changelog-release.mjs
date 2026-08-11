@@ -15,7 +15,7 @@ const content = readFileSync(changelogPath, "utf-8");
 const { version, releaseDate } = parseLatestRelease(content);
 
 const meta = {
-  name: "Eurovision Top 20",
+  name: "Eurovision Top 20: Most Watched",
   version,
   releaseDate,
   repoUrl: REPO_URL,

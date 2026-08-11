@@ -7,13 +7,14 @@ import "../styles/global.css";
 
 type Props = {
   title: string;
-  /** Overrides default meta description (`{title} · Eurovision Top 20`). */
+  /** Overrides default meta description (`{title} · Eurovision Top 20: Most Watched`). */
   description?: string;
   current: "videos" | "songs" | "episodes" | "insights";
 };
 
 const { title, description, current } = Astro.props;
-const pageTitle = `${title} · Eurovision Top 20`;
+const brand = "Eurovision Top 20: Most Watched";
+const pageTitle = `${title} · ${brand}`;
 const pageDescription = description ?? pageTitle;
 const iconBase = import.meta.env.BASE_URL;
 ---
@@ -57,7 +58,7 @@ const iconBase = import.meta.env.BASE_URL;
               class="h-9 w-9 shrink-0"
               decoding="async"
             />
-            Eurovision Top 20
+            {brand}
           </h1>
           <div class="flex shrink-0 items-center gap-2">
             <SourceRepoLink />
