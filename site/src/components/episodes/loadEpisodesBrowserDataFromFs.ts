@@ -11,7 +11,7 @@ function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, "utf-8")) as T;
 }
 
-/** Prefer `public/data` after copy-packaged; fall back to repo `data/packaged`. */
+/** Prefer `public/data` after deliver-packaged; fall back to repo `data/packaged`. */
 export function resolveEpisodesDataRoot(cwd = process.cwd()): string {
   const publicEpisodes = join(cwd, "public", "data", "packaged", "episodes");
   if (existsSync(join(publicEpisodes, "browser.json"))) {
@@ -22,7 +22,7 @@ export function resolveEpisodesDataRoot(cwd = process.cwd()): string {
     return repoEpisodes;
   }
   throw new Error(
-    "Episodes packaged data not found — run site copy-packaged or pipeline package",
+    "Episodes packaged data not found — run site deliver-packaged or pipeline package",
   );
 }
 

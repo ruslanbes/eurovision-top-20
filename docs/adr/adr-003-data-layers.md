@@ -23,7 +23,7 @@ flowchart TB
 
   raw -->|"validate → process"| processed
   processed -->|"package"| packaged
-  packaged -->|"copy at build"| site
+  packaged -->|"deliver"| site
 ```
 
 | Layer | Role | Produced by | Consumed by |

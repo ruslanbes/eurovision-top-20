@@ -22,7 +22,7 @@ mkdirSync(destPublicData, { recursive: true });
 cpSync(srcPackaged, destPackaged, { recursive: true });
 
 if (!existsSync(queryHitsPath)) {
-  throw new Error("Missing query/video-hits.json after copy — run package first");
+  throw new Error("Missing query/video-hits.json after deliver — run package first");
 }
 
 const queryHits = JSON.parse(readFileSync(queryHitsPath, "utf-8"));
@@ -44,5 +44,5 @@ writeFileSync(
 );
 
 console.log(
-  `Copied packaged data; ${periods.length} episode periods (latest ${manifest.latest})`,
+  `Delivered packaged data; ${periods.length} episode periods (latest ${manifest.latest})`,
 );

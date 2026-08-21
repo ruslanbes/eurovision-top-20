@@ -16,7 +16,7 @@ cd site
 npm run dev
 ```
 
-Open the URL shown in the terminal. `npm run dev` copies `data/packaged/` into the site before starting (see `site/scripts/copy-packaged.mjs`).
+Open the URL shown in the terminal. `npm run dev` delivers `data/packaged/` into the site before starting (see `site/scripts/deliver-packaged.mjs`).
 
 Production build: `npm run build` (output in `site/dist/`).
 

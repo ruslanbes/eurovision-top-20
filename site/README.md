@@ -8,14 +8,14 @@ From `site/` — full reference: [`docs/faq/commands.md`](../docs/faq/commands.m
 
 ```sh
 npm install
-npm run dev      # http://localhost:3420/eurovision-top-20/ (prebuild copies data/packaged → public/data/)
+npm run dev      # http://localhost:3420/eurovision-top-20/ (predev delivers data/packaged → public/data/)
 npm run build    # production build to dist/
 npm run preview  # preview production build
 ```
 
 `predev` / `prebuild` run:
 
-1. `scripts/copy-packaged.mjs` — copies `../data/packaged/` → `public/data/packaged/` (includes `query/` index) and writes `public/data/periods-alltime.json` from `query/video-hits.json` periods (fallback: alltime snapshot filenames)
+1. `scripts/deliver-packaged.mjs` — delivers `../data/packaged/` → `public/data/packaged/` (filesystem copy; includes `query/` index) and writes `public/data/periods-alltime.json` from `query/video-hits.json` periods (fallback: alltime snapshot filenames)
 2. `scripts/read-changelog-release.mjs` — reads the latest **released** section from `../CHANGELOG.md` (skips `[Unreleased]`) → `src/generated/releaseMeta.json` for the header GitHub link tooltip
 
 ## Stack

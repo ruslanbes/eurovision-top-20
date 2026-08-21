@@ -40,7 +40,7 @@ From `site/`:
 | Dev server | `npm run dev` |
 | Build | `npm run build` |
 
-`predev` / `prebuild` copy packaged data into static assets — see [`site/README.md`](../../site/README.md).
+`predev` / `prebuild` deliver packaged data into static assets — see [`site/README.md`](../../site/README.md).
 
 ## Typical workflow
 

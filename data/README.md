@@ -28,13 +28,13 @@ flowchart TB
     end
   end
 
-  prebuild["site/scripts/copy-packaged.mjs"]
+  deliver["site/scripts/deliver-packaged.mjs"]
   site["site static assets<br/>reads packaged only"]
 
   raw -->|"validate → process"| processed
   processed --> package
   package --> packaged
-  packaged --> prebuild --> site
+  packaged -->|"deliver"| deliver --> site
 ```
 
 
@@ -54,7 +54,7 @@ flowchart TB
 
 **Regeneration:** raw change → validate → process → package.
 
-**CI publish:** validate → process → package → `npm run build` (copy packaged → site static assets) → deploy.
+**CI publish:** validate → process → package → `npm run build` (deliver packaged → site static assets) → deploy.
 
 ---
 
@@ -205,7 +205,7 @@ Third-party snapshots vendored in git for reproducible `package` runs — **no n
 
 ## Site contract
 
-- Prebuild copies packaged JSON into static assets (`site/scripts/copy-packaged.mjs`).
+- Predev / prebuild **deliver** packaged JSON into static assets (`site/scripts/deliver-packaged.mjs` — copies `data/packaged/` → `public/data/packaged/`).
 - Islands read **packaged** data only. They may compute derived stats (tier counts, `chart_points`, window aggregation) from packaged payloads when a widget needs it—e.g. `queryWindow.ts` over `packaged/query/` (golden-tested against pipeline).
 - Alltime table snapshots under `per-*/alltime/` remain packaged for reference/tools; the site table uses the query index.
 

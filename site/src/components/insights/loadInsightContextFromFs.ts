@@ -9,7 +9,7 @@ function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, "utf-8")) as T;
 }
 
-/** Prefer `public/data` after copy-packaged; fall back to repo `data/packaged` for tests. */
+/** Prefer `public/data` after deliver-packaged; fall back to repo `data/packaged` for tests. */
 export function resolveInsightDataRoot(cwd = process.cwd()): string {
   const publicData = join(cwd, "public", "data");
   if (existsSync(join(publicData, "packaged", "query", "video-hits.json"))) {
@@ -20,7 +20,7 @@ export function resolveInsightDataRoot(cwd = process.cwd()): string {
     return join(cwd, "..", "data");
   }
   throw new Error(
-    "Insight packaged data not found — run site copy-packaged (public/data) or pipeline package",
+    "Insight packaged data not found — run site deliver-packaged (public/data) or pipeline package",
   );
 }
 
