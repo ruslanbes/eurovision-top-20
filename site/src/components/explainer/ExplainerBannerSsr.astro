@@ -1,0 +1,37 @@
+---
+/** Static banner for first paint / no-JS / crawlers. React replaces with interactive version. */
+const youtubeUrl = "https://www.youtube.com/@EurovisionSongContest";
+---
+
+<aside
+  data-explainer-banner
+  data-explainer-ssr
+  class="rounded-lg border border-border bg-surface-elevated/60 px-4 py-3"
+  aria-label="About these stats"
+>
+  <p class="text-sm font-medium text-text">About these stats</p>
+  <div class="mt-2 space-y-3 text-sm leading-relaxed text-text">
+    <p>
+      This site tracks the official Eurovision Song Contest{" "}
+      <a
+        href={youtubeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-accent hover:underline"
+      >
+        YouTube channel’s
+      </a>{" "}
+      monthly <strong>Top 20: Most Watched</strong> charts.
+    </p>
+    <p>
+      <strong>Videos</strong> rank the performance of individual clips in the chart.{" "}
+      <strong>Songs</strong> aggregate that data per song.{" "}
+      <strong>Chart points</strong> measure how high and how often a video or song ranks
+      in the chart.
+    </p>
+    <p>
+      <strong>Episodes</strong> shows each month’s Top 20 as a row.{" "}
+      <strong>Insights</strong> are hand-picked highlights from the data.
+    </p>
+  </div>
+</aside>

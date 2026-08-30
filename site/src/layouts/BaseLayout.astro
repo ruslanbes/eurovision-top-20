@@ -2,6 +2,8 @@
 import { StatsNav } from "../components/stats/StatsNav";
 import SourceRepoLink from "../components/SourceRepoLink.astro";
 import { ThemeToggle } from "../components/ThemeToggle";
+import { SiteStatsExplainer } from "../components/explainer/SiteStatsExplainer";
+import ExplainerBannerSsr from "../components/explainer/ExplainerBannerSsr.astro";
 import eurovisionHeart from "../assets/brand/eurovision-70-heart.webp";
 import "../styles/global.css";
 
@@ -35,15 +37,24 @@ const iconBase = import.meta.env.BASE_URL;
     <link rel="apple-touch-icon" href={`${iconBase}apple-touch-icon.png`} />
     <script is:inline>
       (function () {
-        var key = "theme";
-        var stored = localStorage.getItem(key);
+        var themeKey = "theme";
+        var stored = localStorage.getItem(themeKey);
         var dark =
           stored === "dark" ||
           (stored !== "light" &&
             window.matchMedia("(prefers-color-scheme: dark)").matches);
         document.documentElement.classList.toggle("dark", dark);
+
+        if (localStorage.getItem("site-stats-explainer-dismissed") === "1") {
+          document.documentElement.classList.add("site-stats-explainer-dismissed");
+        }
       })();
     </script>
+    <style is:global>
+      html.site-stats-explainer-dismissed #site-stats-explainer-banner-slot {
+        display: none !important;
+      }
+    </style>
   </head>
   <body class="min-h-screen">
     <main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -61,6 +72,7 @@ const iconBase = import.meta.env.BASE_URL;
             {brand}
           </h1>
           <div class="flex shrink-0 items-center gap-2">
+            <SiteStatsExplainer client:load />
             <SourceRepoLink />
             <ThemeToggle client:load />
           </div>
@@ -68,6 +80,10 @@ const iconBase = import.meta.env.BASE_URL;
 
         <div class="mt-3">
           <StatsNav client:load current={current} />
+        </div>
+
+        <div id="site-stats-explainer-banner-slot" class="mt-4">
+          <ExplainerBannerSsr />
         </div>
       </header>
 

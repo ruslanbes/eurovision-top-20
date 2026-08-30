@@ -1,10 +1,10 @@
 # Status
 
-Last updated: 2026-08-11
+Last updated: 2026-08-30
 
 ## Current focus
 
-Unreleased: Episodes SEO size fix + site brand “Most Watched”.
+Unreleased site work ready to ship when you want a release.
 
 ## Active task
 
@@ -16,9 +16,9 @@ _None._
 
 ## Next action
 
-Ship unreleased site changes when ready (changelog under `[Unreleased]`).
+Ship unreleased changes, or pick **`the-other-top-20`** / **`april-prank`**.
 
 ## Session notes
 
-- Unreleased: Episodes compact SEO index; brand → **Eurovision Top 20: Most Watched**.
+- Implemented **`site-stats-explainer`** (hybrid banner + header **i** sheet; `localStorage` dismiss). Task file kept until release cleanup.
 - Backlog: **`the-other-top-20`**, **`april-prank`**.

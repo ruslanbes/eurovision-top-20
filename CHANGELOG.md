@@ -4,6 +4,10 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+### Added
+
+- **About these stats** — dismissible intro under the header on all pages (remembered in the browser); reopen anytime from the header **i** button.
+
 ### Changed
 
 - **Episodes crawlable HTML** — compact month-by-month title index instead of a full grid in the page source.
