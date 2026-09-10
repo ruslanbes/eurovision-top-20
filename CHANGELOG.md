@@ -4,9 +4,12 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-09-10
+
 ### Added
 
-- **About these stats** — dismissible intro under the header on all pages (remembered in the browser); reopen anytime from the header **i** button.
+- **About these stats** intro.
+- [2026-08](https://www.youtube.com/watch?v=Lgazf5M6QIQ) episode
 
 ### Changed
 
@@ -19,8 +22,9 @@ Search-friendly site pages and crawler files.
 
 ### Added
 
-- **Crawlable default pages** — Videos, Songs, Insights, and Episodes ship real chart content in the HTML (titles, tables, episode grid), so search engines and no-JS views see more than a loading shell. Filters, schemes, and other controls still work after the page loads.
-- **`robots.txt` and sitemap** — help crawlers find the site (`/eurovision-top-20/robots.txt`, `/eurovision-top-20/sitemap-index.xml`).
+- **Crawlable default pages** — Videos, Songs, Insights, and Episodes ship real chart content in the HTML.
+- **`robots.txt` and sitemap** — help crawlers find the site.
+- **Episode 2026-07**.
 
 ## [0.6.5] - 2026-07-13
 
