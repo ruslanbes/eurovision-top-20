@@ -1,3 +1,3 @@
 # Agents
 
-Follow `docs/DEVELOPMENT.md`.
+Follow `dev/README.md`.

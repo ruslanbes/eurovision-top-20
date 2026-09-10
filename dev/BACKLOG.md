@@ -1,8 +1,8 @@
 # Backlog
 
-Flat task list. Status values: `backlog` | `ready` | `in_progress` | `blocked` | `cancelled`.
+Flat task list. Status values: `backlog` | `ready` | `in_progress` | `blocked` | `done` | `cancelled`.
 
-On release, move shipped work to [`CHANGELOG.md`](../CHANGELOG.md) and clean the backlog — see [`RELEASE.md`](RELEASE.md).
+On cleanup, move shipped work to [`CHANGELOG.md`](../CHANGELOG.md) and clean the backlog — see [`CLEANUP.md`](CLEANUP.md).
 
 Reorder freely. Cancel by setting status to `cancelled`. Unexpected work becomes a new task with its own ID.
 
@@ -23,6 +23,12 @@ Each task:
 Detail lives in `dev/tasks/<task-id>.md` when needed.
 
 ---
+
+## stale-stats-cache
+- status: ready
+- goal: Fix Firefox (and similar) showing stale Videos stats after a new episode deploy.
+- done_when: See `dev/tasks/stale-stats-cache.md`.
+- notes: Locked — option 1 only (extend window on period growth); keep SSG; apply to Songs too; manual live verify.
 
 ## the-other-top-20
 - status: backlog

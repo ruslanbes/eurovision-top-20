@@ -4,6 +4,10 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+### Changed
+
+- Upgraded development process to the latest `Scaffold.md` version
+
 ## [0.7.1] - 2026-09-10
 
 ### Added

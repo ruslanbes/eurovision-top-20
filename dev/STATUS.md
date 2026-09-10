@@ -1,10 +1,10 @@
 # Status
 
-Last updated: 2026-08-30
+Last updated: 2026-09-10
 
 ## Current focus
 
-Unreleased site work ready to ship when you want a release.
+**`stale-stats-cache`** — decisions locked; not started.
 
 ## Active task
 
@@ -16,9 +16,9 @@ _None._
 
 ## Next action
 
-Ship unreleased changes, or pick **`the-other-top-20`** / **`april-prank`**.
+Implement option 1 when ready (`dev/tasks/stale-stats-cache.md`).
 
 ## Session notes
 
-- Implemented **`site-stats-explainer`** (hybrid banner + header **i** sheet; `localStorage` dismiss). Task file kept until release cleanup.
-- Backlog: **`the-other-top-20`**, **`april-prank`**.
+- Locked **`stale-stats-cache`**: option 1 only; keep SSG; code fix covers Songs; observed bug was `/` only; manual Firefox verify after deploy.
+- Backlog: **`stale-stats-cache`** (ready), **`the-other-top-20`**, **`april-prank`**.

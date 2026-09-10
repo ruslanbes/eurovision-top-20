@@ -7,7 +7,7 @@ Stats explorer for the [Eurovision Song Contest YouTube channel](https://www.you
 
 ## Contribute new episodes
 
-See [DEVELOPMENT.md](./docs/DEVELOPMENT.md#add-new-episode) for details.
+See [dev/README.md](./dev/README.md#add-new-episode) for details.
 
 ## Data sources
 
