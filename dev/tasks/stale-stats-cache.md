@@ -1,7 +1,7 @@
 # Stale Videos page after deploy (browser cache)
 
 - **Task ID:** `stale-stats-cache`
-- **Status:** ready
+- **Status:** backlog (deferred 2026-10-09)
 - **Parent / blocked by:** —
 
 ## Problem
@@ -60,6 +60,28 @@ A + B alone explain “JSON might be new but UI still old.” C alone explains f
 
 No custom `Cache-Control` in-repo. Asset/HTML caching is whatever Pages + the browser do. Cache-busting must be in **URLs** or **stop relying on baked rows**.
 
+### Incident 2 (0.8.0 deploy, 2026-10-09) — fresh HTML, stale JSON
+
+Firefox on `/` right after deploy (Pages `last-modified` 20:30:36 UTC; report ~20:41 UTC):
+
+- Label **Sep 2016 – Sep 2026**, slider max **Aug 2026**, **0 videos**, slider range bar empty (looks greyed). Songs fine.
+- Saved page = new HTML (336 videos, Region column) → **HTML fresh**.
+- Live JSON at the time = new (`video-hits.json` periods end `2026-09`). Every Pages file: `cache-control: max-age=600`, ETag.
+
+Mechanism (layer C, inverse of incident 1):
+
+1. HTML `initialPeriods` ends `2026-09` → `useStatsUiState` hydrates `end = 2026-09`, locks `hydratedRef`.
+2. `fetch(video-hits.json)` served from Firefox HTTP cache (copy loaded < 10 min **before** deploy, still "fresh" under `max-age=600`, no revalidation) → `periods` end `2026-08`.
+3. `setPeriods(stale)`; window not re-reconciled → `end = 2026-09` not in `periods`.
+4. `queryWindow` `indexOf(end) = -1` → empty window → **0 rows**. `PeriodControls` clamps both thumbs to index 0 → empty range bar. Label shows state, slider ticks show `periods` → mismatch.
+
+Songs OK because `song-hits.json` was not in cache from that pre-deploy window. Self-heals after ≤ 10 min (confirmed by reporter: normal reload ~22:45 local showed Sep 2026), but the UI breaks instead of showing older data. Decision: no fix for now.
+
+Implications:
+
+- Option 1 alone (extend `end` when periods **grow**) does **not** fix this: periods **shrank** relative to the HTML.
+- Need (a) reconcile window whenever `periods` change, incl. `begin`/`end` not in `periods`; and (b) keep HTML and JSON from the same build — option 2 (cache-bust token baked into HTML, or `fetch(…, { cache: "no-cache" })` → ETag 304 when unchanged).
+
 ## Open questions
 
 Do not implement if any row is `open`. Flip to `locked` when the user accepts.
@@ -67,7 +89,7 @@ Do not implement if any row is `open`. Flip to `locked` when the user accepts.
 | # | Topic | Status | Decision |
 |---|--------|--------|----------|
 | 1 | Affected routes (observed) | locked | **`/` only** in the wild; Songs not reported |
-| 2 | Fix strategy (v1) | locked | **Option 1** — extend window when `periods` grow; ship and verify on live before more |
+| 2 | Fix strategy (v1) | open | Was **Option 1** only; incident 2 shows stale JSON + fresh HTML → revisit: window reconcile on any `periods` change **+** option 2 |
 | 3 | Drop SSG default tables | locked | **No** for now — keep Videos/Songs baked `initialRows` |
 | 4 | Code scope | locked | **Apply to Songs too** (same `StatsExplorer` / `useStatsUiState`) |
 | 5 | Reproduce | locked | **Manual** only (Firefox after deploy); no automated repro in v1 |

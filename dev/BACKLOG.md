@@ -31,10 +31,10 @@ Detail lives in `dev/tasks/<task-id>.md` when needed.
 - notes: Shipped in [Unreleased] — `region` (europe/asia) from title markers, Asia title extractor, Philippines, Asia = `PENDING`, Region column + filter, “Contest Place”, insights by (region, year). Task file kept until cleanup.
 
 ## stale-stats-cache
-- status: ready
+- status: backlog
 - goal: Fix Firefox (and similar) showing stale Videos stats after a new episode deploy.
 - done_when: See `dev/tasks/stale-stats-cache.md`.
-- notes: Locked — option 1 only (extend window on period growth); keep SSG; apply to Songs too; manual live verify.
+- notes: Deferred 2026-10-09 — incident 2 (fresh HTML + cached JSON, 0 videos) self-healed within the 10-minute `max-age`; no fix for now. OQ2 reopened (option 1 alone is insufficient).
 
 ## the-other-top-20
 - status: backlog
