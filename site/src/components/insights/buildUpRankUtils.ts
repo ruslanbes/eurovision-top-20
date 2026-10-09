@@ -9,6 +9,7 @@ import {
   normalizeWindow,
   statsUiStateSearch,
 } from "../stats/statsUiState";
+import { formatRegion, type Region } from "../stats/region";
 import type { SongStatsRow } from "../stats/types";
 import { buildUpWindowBounds } from "./insights/episodeChartUtils";
 
@@ -20,6 +21,7 @@ export function songMetaFromSongLatest(rows: SongStatsRow[]): SongMetaPayload {
       esc_final_place: row.esc_final_place,
       fire: row.fire,
       flag: row.flag,
+      region: row.region,
       song: row.song,
       year: row.year,
       youtube_video_id: row.youtube_video_id,
@@ -37,6 +39,7 @@ function isContestEntry(row: WindowSongRow): boolean {
 }
 
 export function buildUpSongsPageHref(
+  region: Region,
   contestYear: number,
   periods: readonly string[],
 ): string {
@@ -45,7 +48,7 @@ export function buildUpSongsPageHref(
   const query = statsUiStateSearch(
     {
       window,
-      filters: { year: [contestYear] },
+      filters: { region: [region], year: [contestYear] },
       sort: null,
     },
     periods,
@@ -53,8 +56,8 @@ export function buildUpSongsPageHref(
   return `${import.meta.env.BASE_URL}songs/${query}`;
 }
 
-export function buildUpRankLinkTitle(contestYear: number): string {
-  return `Open Songs table: May ${contestYear - 1} – Apr ${contestYear}, contest year ${contestYear}`;
+export function buildUpRankLinkTitle(region: Region, contestYear: number): string {
+  return `Open Songs table: May ${contestYear - 1} – Apr ${contestYear}, ${formatRegion(region)} contest year ${contestYear}`;
 }
 
 export type BuildUpWinnerRank = {
@@ -66,6 +69,7 @@ export function winnerRankInBuildUpPool(
   songHits: SongHitsPayload,
   songMeta: SongMetaPayload,
   periods: readonly string[],
+  region: Region,
   contestYear: number,
   winnerArtist: string,
   winnerSong: string,
@@ -74,7 +78,11 @@ export function winnerRankInBuildUpPool(
   const window = normalizeWindow(begin, end, periods);
   const windowSongs = querySongWindow(songHits, songMeta, window.begin, window.end);
   const pool = windowSongs.filter(
-    (row) => row.year === contestYear && row.chart_points > 0 && isContestEntry(row),
+    (row) =>
+      row.region === region &&
+      row.year === contestYear &&
+      row.chart_points > 0 &&
+      isContestEntry(row),
   );
   const winnerKey = songMetaLookupKey(winnerArtist, winnerSong);
   const rankIndex = pool.findIndex(

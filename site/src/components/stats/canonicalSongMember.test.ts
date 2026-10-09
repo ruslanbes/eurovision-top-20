@@ -16,6 +16,7 @@ function videoRow(overrides: Partial<VideoStatsRow> & Pick<VideoStatsRow, "video
     chart_points: 0,
     esc_final_place: null,
     fire: false,
+    region: "europe",
     youtube_video_id: "",
     youtube_watch_url: null,
     artist: "Artist A",

@@ -24,8 +24,10 @@ from evtop20.paths import (
 )
 from evtop20.episodes_browser import EpisodesBrowserError, run_episodes_browser
 from evtop20.query_index import run_query_index
+from evtop20.region import region_from_title
 from evtop20.sort_keys import stats_row_sort_key
 from evtop20.song_stats import (
+    SongStatsError,
     package_song_stats_payload,
     validate_song_stats_payload,
 )
@@ -66,6 +68,7 @@ def augment_stats_row(
     packaged["fire"] = row_is_fire(video_id, allowlist)
 
     video_title = row.get("video_title")
+    packaged["region"] = region_from_title(video_title)
     if not isinstance(video_title, str):
         packaged.update(_empty_metadata())
         packaged["esc_final_place"] = None
@@ -188,10 +191,13 @@ def _package_alltime(
     )
     write_episode_file(latest_video_path, packaged_payload)
 
-    song_payload, song_warnings = package_song_stats_payload(
-        packaged_payload,
-        source="packaged/per-video/alltime",
-    )
+    try:
+        song_payload, song_warnings = package_song_stats_payload(
+            packaged_payload,
+            source="packaged/per-video/alltime",
+        )
+    except SongStatsError as exc:
+        raise PackageError(f"song stats validation failed: {exc}") from exc
     validation_issues = validate_song_stats_payload(
         song_payload,
         context=f"{ALLTIME_STATS_BASENAME}-latest.json",

@@ -12,6 +12,7 @@ export const URL_SORT_COLUMNS = new Set([
   "chart_points",
   "country",
   "esc_final_place",
+  "region",
   "title",
   "top1",
   "top10",

@@ -19,6 +19,7 @@ const filled = (
   country: "Country",
   esc_final_place,
   fire: false,
+  region: "europe",
   flag: "🏳️",
   performance_category: "official_video",
   rank,

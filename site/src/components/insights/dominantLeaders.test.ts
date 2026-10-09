@@ -29,6 +29,7 @@ function row(title: string, chartPoints: number): ChartPointsRow {
     top20: 0,
     esc_final_place: null,
     fire: false,
+    region: "europe",
     youtube_video_id: "",
     flag: null,
     country: null,
@@ -101,7 +102,7 @@ describe("dominantLeaders insight integration", () => {
 
     const match = computeDominantLeaders(snapshot.rows, DEFAULT_PARAMS);
     expect(match?.cutRank).toBe(2);
-    expect(match?.gapToNext).toBe(174);
+    expect(match?.gapToNext).toBe(199);
   });
 
   it("links song-grain items via canonical member watch URLs", () => {

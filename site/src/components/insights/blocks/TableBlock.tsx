@@ -162,6 +162,11 @@ function EscWinnerTable({
           <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
             Year
           </th>
+          {result.showRegionColumn ? (
+            <th className="border border-border bg-surface-elevated px-3 py-2 text-left font-semibold text-text">
+              Region
+            </th>
+          ) : null}
           {result.showHitColumn !== false ? (
             <th className="border border-border bg-surface-elevated px-3 py-2 text-center font-semibold text-text">
               Hit
@@ -179,10 +184,15 @@ function EscWinnerTable({
       </thead>
       <tbody>
         {result.rows.map((row) => (
-          <tr key={row.year}>
+          <tr key={`${row.year}-${row.region ?? ""}`}>
             <td className="border border-border px-3 py-2 tabular-nums text-text">
               {row.year}
             </td>
+            {result.showRegionColumn ? (
+              <td className="border border-border px-3 py-2 text-text">
+                {row.region ?? <span className="text-text-muted">—</span>}
+              </td>
+            ) : null}
             {result.showHitColumn !== false ? (
               <td className="border border-border px-3 py-2 text-center">
                 <StatusCell status={row.status} title={row.statusTitle} />

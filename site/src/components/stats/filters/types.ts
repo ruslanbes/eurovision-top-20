@@ -1,3 +1,5 @@
+import type { Region } from "../region";
+
 export type FilterValue = string | number;
 
 export type FilterOption = {
@@ -33,6 +35,7 @@ export type FilterableRow = {
   esc_final_place: number | string | null;
   fire: boolean;
   flag: string | null;
+  region: Region;
   year: number | null;
 };
 

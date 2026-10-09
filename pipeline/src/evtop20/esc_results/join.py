@@ -8,6 +8,7 @@ from evtop20.esc_results.countries import country_to_code
 from evtop20.esc_results.normalize import normalize_join_artist, normalize_join_text
 from evtop20.esc_results.paths import esc_results_entries_path, esc_results_manifest_path
 from evtop20.paths import esc_join_overrides_path, esc_placement_overrides_path
+from evtop20.region import REGION_ASIA
 from evtop20.title_parse.countries import VIRTUAL_WORLD_COUNTRY
 
 
@@ -85,6 +86,11 @@ class EscResultsJoiner:
             override = self.placement_overrides.get(video_id)
             if override is not None:
                 return override
+
+        if row.get("region") == REGION_ASIA:
+            return "PENDING"
+
+        if isinstance(video_id, str):
             join_key = self.join_overrides.get(video_id)
             if join_key is not None:
                 place = self._lookup_country_year(join_key[0], join_key[1])

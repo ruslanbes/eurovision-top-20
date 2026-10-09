@@ -17,6 +17,7 @@ const ROWS: FilterableRow[] = [
     year: 2024,
     esc_final_place: 1,
     fire: false,
+    region: "europe" as const,
   },
   {
     country: "Norway",
@@ -24,6 +25,7 @@ const ROWS: FilterableRow[] = [
     year: 2024,
     esc_final_place: 2,
     fire: false,
+    region: "europe" as const,
   },
   {
     country: "Sweden",
@@ -31,6 +33,7 @@ const ROWS: FilterableRow[] = [
     year: 2023,
     esc_final_place: "DNQ",
     fire: true,
+    region: "europe" as const,
   },
   {
     country: "Germany",
@@ -38,8 +41,9 @@ const ROWS: FilterableRow[] = [
     year: 2024,
     esc_final_place: null,
     fire: false,
+    region: "europe" as const,
   },
-  { country: null, flag: null, year: 2022, esc_final_place: null, fire: false },
+  { country: null, flag: null, year: 2022, esc_final_place: null, fire: false, region: "europe" },
 ];
 
 const VIDEO_ROWS: VideoFilterableRow[] = [
@@ -49,6 +53,7 @@ const VIDEO_ROWS: VideoFilterableRow[] = [
     year: 2024,
     esc_final_place: 1,
     fire: false,
+    region: "europe" as const,
     performance_category: "final_live",
   },
   {
@@ -57,6 +62,7 @@ const VIDEO_ROWS: VideoFilterableRow[] = [
     year: 2024,
     esc_final_place: 15,
     fire: true,
+    region: "europe" as const,
     performance_category: "official_video",
   },
   {
@@ -65,6 +71,7 @@ const VIDEO_ROWS: VideoFilterableRow[] = [
     year: 2024,
     esc_final_place: 15,
     fire: false,
+    region: "europe" as const,
     performance_category: "final_live",
   },
 ];
@@ -99,6 +106,7 @@ describe("applyFilters", () => {
         year: 2024,
         esc_final_place: 1,
         fire: false,
+        region: "europe" as const,
       },
       {
         country: "Norway",
@@ -106,6 +114,7 @@ describe("applyFilters", () => {
         year: 2024,
         esc_final_place: 2,
         fire: false,
+        region: "europe" as const,
       },
     ]);
   });
@@ -120,6 +129,7 @@ describe("applyFilters", () => {
         year: 2024,
         esc_final_place: null,
         fire: false,
+        region: "europe" as const,
       },
     ]);
   });
@@ -127,7 +137,7 @@ describe("applyFilters", () => {
   it("matches year even when country is null", () => {
     const yearState: FilterState = { year: [2022] };
     expect(applyFilters(ROWS, yearState, sharedDefs)).toEqual([
-      { country: null, flag: null, year: 2022, esc_final_place: null, fire: false },
+      { country: null, flag: null, year: 2022, esc_final_place: null, fire: false, region: "europe" },
     ]);
   });
 
@@ -153,6 +163,7 @@ describe("applyFilters", () => {
         year: 2024,
         esc_final_place: "NON_ENTRY",
         fire: false,
+        region: "europe" as const,
       },
     ];
     const state: FilterState = { esc: [ESC_NON_ENTRIES] };
@@ -177,6 +188,34 @@ describe("applyFilters", () => {
     expect(result[0]?.performance_category).toBe("official_video");
   });
 
+  it("filters by region", () => {
+    const rows: FilterableRow[] = [
+      ...ROWS,
+      {
+        country: "Philippines",
+        flag: "🇵🇭",
+        year: 2026,
+        esc_final_place: "PENDING",
+        fire: false,
+        region: "asia",
+      },
+    ];
+    expect(
+      applyFilters(rows, { region: ["asia"] }, sharedDefs).map((row) => row.country),
+    ).toEqual(["Philippines"]);
+    expect(applyFilters(rows, { region: ["europe"] }, sharedDefs)).toHaveLength(
+      ROWS.length,
+    );
+  });
+
+  it("orders the region filter before the place filter", () => {
+    const ids = filterDefsForGrain("video").map((def) => def.id);
+    expect(ids.indexOf("region")).toBe(ids.indexOf("esc") - 1);
+    expect(filterDefsForGrain("song").find((def) => def.id === "esc")?.label).toBe(
+      "Contest Place",
+    );
+  });
+
   it("filters fire songs when toggle is on", () => {
     const state: FilterState = { fire: [FIRE_FILTER_ON] };
     const result = applyFilters(ROWS, state, sharedDefs);
@@ -194,6 +233,7 @@ describe("applyFilters", () => {
         year: 2009,
         esc_final_place: 4,
         fire: false,
+        region: "europe" as const,
       },
       {
         artist: "Loreen",
@@ -203,6 +243,7 @@ describe("applyFilters", () => {
         year: 2023,
         esc_final_place: 1,
         fire: false,
+        region: "europe" as const,
       },
     ];
     const state: FilterState = { search: ["dum tek tek"] };
@@ -221,6 +262,7 @@ describe("applyFilters", () => {
         year: 2009,
         esc_final_place: 4,
         fire: false,
+        region: "europe" as const,
       },
       {
         artist: "Loreen",
@@ -230,6 +272,7 @@ describe("applyFilters", () => {
         year: 2023,
         esc_final_place: 1,
         fire: false,
+        region: "europe" as const,
       },
     ];
     const state: FilterState = { search: ["tattoo"], country: ["Sweden"] };
@@ -247,6 +290,7 @@ describe("applyFilters", () => {
         year: 2018,
         esc_final_place: 2,
         fire: true,
+        region: "europe" as const,
         performance_category: "final_live",
       },
       {
@@ -256,6 +300,7 @@ describe("applyFilters", () => {
         year: 2023,
         esc_final_place: 1,
         fire: false,
+        region: "europe" as const,
         performance_category: "final_live",
       },
     ];

@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { bestRankForWinnerVideos, buildEpisodeRankIndex } from "./escWinnerData";
+import {
+  bestRankForWinnerVideos,
+  buildEpisodeRankIndex,
+  winnerVideosForYear,
+} from "./escWinnerData";
 import type { VideoStatsRow } from "../stats/types";
 
 function winnerRow(title: string, overrides: Partial<VideoStatsRow> = {}): VideoStatsRow {
@@ -17,6 +21,7 @@ function winnerRow(title: string, overrides: Partial<VideoStatsRow> = {}): Video
     top20: 0,
     esc_final_place: 1,
     fire: false,
+    region: "europe",
     flag: null,
     country: null,
     performance_category: null,
@@ -102,5 +107,16 @@ describe("bestRankForWinnerVideos", () => {
 
     expect(result.bestRank).toBe(1);
     expect(result.everTop1).toBe(true);
+  });
+});
+
+describe("winnerVideosForYear", () => {
+  it("matches on region and year", () => {
+    const europe = winnerRow("Europe winner", { year: 2027 });
+    const asia = winnerRow("Asia winner", { year: 2027, region: "asia" });
+    const rows = [europe, asia, winnerRow("Older", { year: 2026 })];
+
+    expect(winnerVideosForYear(rows, "europe", 2027)).toEqual([europe]);
+    expect(winnerVideosForYear(rows, "asia", 2027)).toEqual([asia]);
   });
 });

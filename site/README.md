@@ -31,7 +31,9 @@ Theme: **light**, **dark**, or **system** via the toggle (top-right). **Source o
 
 **Chart tokens:** semantic colors live in [`src/styles/theme.css`](src/styles/theme.css) as RGB triplets (`--color-surface`, `--color-text`, `--color-border`, `--color-accent`, `--color-danger-*`, …). [`tailwind.config.mjs`](tailwind.config.mjs) maps them to Tailwind utilities (`bg-surface`, `text-text-muted`, `border-danger-border`, etc.). Chart-specific tokens use the `--chart-*` prefix — see [`src/components/episodes/README.md`](src/components/episodes/README.md) for scheme wiring.
 
-**Table filters:** client-side AND/OR filters on window-aggregated rows — full-text search, country (searchable), year, ESC (dropdown: All / Winners / Not winners / DNQ / Non-entries), and on videos only Category (four toggle buttons). Filter, episode-range, and table-sort state persist in the **URL query string** and survive navigation between `/` and `/songs/` (shared filters + range + sort synced; video-only Category preserved in the URL but hidden on the song page). Bare path = full corpus, no filters, default sort (`chart_points` desc).
+**About these stats:** site-wide explainer in `BaseLayout` (`src/components/explainer/`). First visits see a dismissible banner (in the HTML for first paint and crawlers); the header `i` icon reopens the same copy in a dialog. Dismiss persists in `localStorage` (`site-stats-explainer-dismissed`); an inline layout script hides the banner before paint for returning visitors. Separate from the Chart Points `?` popover.
+
+**Table filters:** client-side AND/OR filters on window-aggregated rows — full-text search, region (dropdown: All / Europe / Asia), country (searchable), year, Contest Place (dropdown: All / Winners / Not winners / DNQ / Non-entries), and on videos only Category (four toggle buttons). Filter, episode-range, and table-sort state persist in the **URL query string** and survive navigation between `/` and `/songs/` (shared filters + range + sort synced; video-only Category preserved in the URL but hidden on the song page). Bare path = full corpus, no filters, default sort (`chart_points` desc).
 
 **Column explainers:** `?` button in the **Chart Points** header opens a popover (formula + link to [`chart_points` FAQ](../docs/faq/chart_points.md)). Reusable pattern under `src/components/stats/help/`.
 
@@ -43,10 +45,11 @@ Theme: **light**, **dark**, or **system** via the toggle (top-right). **Source o
 | `end` | `end=2024-12` | Episode-month range end |
 | `country` | `country=Sweden,Norway` | Comma-separated |
 | `year` | `year=2024,2023` | Comma-separated contest years |
-| `esc` | `esc=winners` | `winners`, `not_winners`, `dnq`, or `non_entries`; omit = All |
+| `region` | `region=asia` | `europe` or `asia`; omit = All |
+| `esc` | `esc=winners` | Contest Place: `winners`, `not_winners`, `dnq`, or `non_entries`; omit = All |
 | `fire` | `fire=1` | 🔥 emoji toggle — fire-themed songs only; omit = off |
 | `q` | `q=dum+tek+tek` | Full-text search on titles (video title or `artist — song`); case- and diacritic-insensitive |
-| `sort` | `sort=year` | Primary sort column — requires `order`; shared ids: `title`, `chart_points`, `top1`…`top20`, `esc_final_place`, `country`, `year` |
+| `sort` | `sort=year` | Primary sort column — requires `order`; shared ids: `title`, `chart_points`, `top1`…`top20`, `region`, `esc_final_place`, `country`, `year` |
 | `order` | `order=asc` | `asc` or `desc` — required whenever `sort` is set |
 | `performance_category` | `performance_category=final_live` | Video-only control; kept in URL on song page |
 

@@ -14,6 +14,7 @@ function videoRow(overrides: Partial<VideoStatsRow>): VideoStatsRow {
     top20: 1,
     esc_final_place: 5,
     fire: false,
+    region: "europe",
     youtube_video_id: "abc",
     youtube_watch_url: null,
     artist: null,

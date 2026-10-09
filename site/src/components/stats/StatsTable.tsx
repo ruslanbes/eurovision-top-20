@@ -13,6 +13,7 @@ import {
   escFinalPlaceSortKey,
   formatEscFinalPlace,
 } from "./escFinalPlace";
+import { formatRegion, type Region } from "./region";
 import type {
   SongStatsRow,
   StatsGrain,
@@ -89,8 +90,13 @@ function sharedStatColumns<T extends StatsRow>(): ColumnDef<T>[] {
       header: "Top 20",
     },
     {
+      accessorKey: "region",
+      header: "Region",
+      cell: ({ getValue }) => formatRegion(getValue() as Region),
+    },
+    {
       accessorKey: "esc_final_place",
-      header: "ESC Place",
+      header: "Contest Place",
       meta: { title: ESC_FINAL_PLACE_COLUMN_TITLE },
       sortingFn: (rowA, rowB, columnId) =>
         escFinalPlaceSortKey(rowA.getValue(columnId)) -

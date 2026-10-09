@@ -12,6 +12,7 @@ import {
   songMetaFromSongLatest,
   winnerRankInBuildUpPool,
 } from "../buildUpRankUtils";
+import { formatRegion, REGION_ORDER, type Region } from "../../stats/region";
 import type { VideoStatsRow } from "../../stats/types";
 import type {
   InsightContext,
@@ -23,17 +24,26 @@ import type {
 export const UNCROWNED_MIN_CONTEST_YEAR = 2017;
 export const BUILD_UP_RANK_MIN_CONTEST_YEAR = 2022;
 
-function contestYearsWithWinners(
+type WinnerContest = { region: Region; year: number };
+
+function contestsWithWinners(
   videoLatest: VideoStatsRow[],
   minYear: number,
-): number[] {
-  const years = new Set<number>();
+): WinnerContest[] {
+  const contests = new Map<string, WinnerContest>();
   for (const row of videoLatest) {
     if (row.year != null && row.year >= minYear && row.esc_final_place === 1) {
-      years.add(row.year);
+      contests.set(`${row.region}\0${row.year}`, {
+        region: row.region,
+        year: row.year,
+      });
     }
   }
-  return [...years].sort((left, right) => left - right);
+  return [...contests.values()].sort(
+    (left, right) =>
+      left.year - right.year ||
+      REGION_ORDER.indexOf(left.region) - REGION_ORDER.indexOf(right.region),
+  );
 }
 
 export function computeUncrownedRows(ctx: InsightContext): InsightTableRow[] {
@@ -44,11 +54,11 @@ export function computeUncrownedRows(ctx: InsightContext): InsightTableRow[] {
   const rankIndex = buildEpisodeRankIndex(ctx.videoHits);
   const rows: InsightTableRow[] = [];
 
-  for (const year of contestYearsWithWinners(
+  for (const { region, year } of contestsWithWinners(
     ctx.videoLatest,
     UNCROWNED_MIN_CONTEST_YEAR,
   )) {
-    const winners = winnerVideosForYear(ctx.videoLatest, year);
+    const winners = winnerVideosForYear(ctx.videoLatest, region, year);
     if (winners.length === 0) {
       continue;
     }
@@ -61,6 +71,7 @@ export function computeUncrownedRows(ctx: InsightContext): InsightTableRow[] {
     const video = primaryWinnerVideo(winners);
     rows.push({
       year: String(year),
+      region: formatRegion(region),
       status: bestRank === null ? "unknown" : "no",
       statusTitle: bestRank === null ? "Not in Top 20" : undefined,
       rank: bestRank,
@@ -80,11 +91,11 @@ export function computeBuildUpRankRows(ctx: InsightContext): InsightTableRow[] {
   const songMeta = songMetaFromSongLatest(ctx.songLatest);
   const rows: InsightTableRow[] = [];
 
-  for (const year of contestYearsWithWinners(
+  for (const { region, year } of contestsWithWinners(
     ctx.videoLatest,
     BUILD_UP_RANK_MIN_CONTEST_YEAR,
   )) {
-    const winners = winnerVideosForYear(ctx.videoLatest, year);
+    const winners = winnerVideosForYear(ctx.videoLatest, region, year);
     const video = primaryWinnerVideo(winners);
     if (!video?.artist?.trim() || !video.song?.trim()) {
       continue;
@@ -94,6 +105,7 @@ export function computeBuildUpRankRows(ctx: InsightContext): InsightTableRow[] {
       ctx.songHits,
       songMeta,
       ctx.periods,
+      region,
       year,
       video.artist,
       video.song,
@@ -104,11 +116,12 @@ export function computeBuildUpRankRows(ctx: InsightContext): InsightTableRow[] {
 
     rows.push({
       year: String(year),
+      region: formatRegion(region),
       status: "unknown",
       rank: null,
       rankLabel,
-      rankHref: rankLabel ? buildUpSongsPageHref(year, ctx.periods) : null,
-      rankLinkTitle: rankLabel ? buildUpRankLinkTitle(year) : undefined,
+      rankHref: rankLabel ? buildUpSongsPageHref(region, year, ctx.periods) : null,
+      rankLinkTitle: rankLabel ? buildUpRankLinkTitle(region, year) : undefined,
       linkLabel: videoLinkLabel(video),
       linkHref: video.youtube_watch_url ?? null,
     });
@@ -125,6 +138,7 @@ function buildTableResult(
   options: {
     showHitColumn?: boolean;
     showRankColumn?: boolean;
+    showRegionColumn?: boolean;
     linkColumnLabel?: string;
     rankColumnLabel?: string;
   } = {},
@@ -141,6 +155,7 @@ function buildTableResult(
     footnote,
     showHitColumn: options.showHitColumn,
     showRankColumn: options.showRankColumn,
+    showRegionColumn: options.showRegionColumn,
     linkColumnLabel: options.linkColumnLabel,
     rankColumnLabel: options.rankColumnLabel,
     tableKind: "esc_winner",
@@ -164,6 +179,7 @@ export const escBuildUpRank: InsightDefinition<Record<string, never>> = {
       {
         showHitColumn: false,
         showRankColumn: true,
+        showRegionColumn: true,
         rankColumnLabel: "Build-up rank",
         linkColumnLabel: "ESC winner",
       },
@@ -188,6 +204,7 @@ export const escUncrowned: InsightDefinition<Record<string, never>> = {
       {
         showHitColumn: false,
         showRankColumn: true,
+        showRegionColumn: true,
         rankColumnLabel: "Best rank",
         linkColumnLabel: "ESC winner",
       },

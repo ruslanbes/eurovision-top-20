@@ -1,4 +1,5 @@
 import { escFinalPlaceSortKey } from "./escFinalPlace";
+import { REGION_EUROPE, type Region } from "./region";
 import { songMetaLookupKey } from "./songMetaLookupKey";
 
 export type VideoHitEntry = {
@@ -25,6 +26,7 @@ export type VideoMetaRow = {
   flag: string | null;
   metadata_extractor: string | null;
   performance_category: string | null;
+  region: Region;
   song: string | null;
   video_title: string;
   year: number | null;
@@ -58,6 +60,7 @@ export type SongMetaRow = {
   esc_final_place: number | string | null;
   fire: boolean;
   flag: string;
+  region: Region;
   song: string;
   year: number;
   youtube_video_id: string;
@@ -77,6 +80,7 @@ export type WindowVideoRow = {
   flag: string | null;
   metadata_extractor: string | null;
   performance_category: string | null;
+  region: Region;
   song: string | null;
   top1: number;
   top3: number;
@@ -96,6 +100,7 @@ export type WindowSongRow = {
   esc_final_place: number | string | null;
   fire: boolean;
   flag: string;
+  region: Region;
   song: string;
   top1: number;
   top3: number;
@@ -226,6 +231,7 @@ export function queryVideoWindow(
       flag: meta?.flag ?? null,
       country: meta?.country ?? null,
       performance_category: meta?.performance_category ?? null,
+      region: meta?.region ?? REGION_EUROPE,
       year: meta?.year ?? null,
       esc_final_place: meta?.esc_final_place ?? null,
       fire: meta?.fire ?? false,
@@ -284,6 +290,7 @@ export function querySongWindow(
       year: meta?.year ?? 0,
       esc_final_place: meta?.esc_final_place ?? null,
       fire: meta?.fire ?? false,
+      region: meta?.region ?? REGION_EUROPE,
       youtube_video_id: meta?.youtube_video_id ?? "",
       youtube_watch_url: meta?.youtube_watch_url ?? null,
       ...tiers,

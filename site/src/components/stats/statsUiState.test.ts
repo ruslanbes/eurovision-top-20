@@ -114,6 +114,13 @@ describe("parseStatsUiState", () => {
     });
   });
 
+  it("parses and serializes region, ignoring unknown values", () => {
+    const state = parseStatsUiState("?region=asia", PERIODS);
+    expect(state.filters).toEqual({ region: ["asia"] });
+    expect(serializeStatsUiState(state, PERIODS)).toBe("region=asia");
+    expect(parseStatsUiState("?region=africa", PERIODS).filters).toEqual({});
+  });
+
   it("parses fire toggle when fire=1", () => {
     expect(parseStatsUiState("?fire=1", PERIODS).filters).toEqual({
       fire: ["1"],

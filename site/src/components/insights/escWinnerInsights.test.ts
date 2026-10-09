@@ -96,6 +96,7 @@ describe("computeUncrownedRows", () => {
           top20: 1,
           esc_final_place: 1,
           fire: false,
+          region: "europe",
           flag: "🇸🇪",
           country: "Sweden",
           performance_category: "final_live",
@@ -121,6 +122,63 @@ describe("computeUncrownedRows", () => {
   });
 });
 
+describe("computeUncrownedRows per region", () => {
+  function winner(region: "europe" | "asia", title: string): VideoStatsRow {
+    return {
+      video_title: title,
+      chart_points: 10,
+      youtube_video_id: title,
+      youtube_watch_url: `https://www.youtube.com/watch?v=${title}`,
+      artist: title,
+      song: "Song",
+      top1: 0,
+      top3: 1,
+      top5: 1,
+      top10: 1,
+      top20: 1,
+      esc_final_place: 1,
+      fire: false,
+      region,
+      flag: "🏳️",
+      country: "Country",
+      performance_category: "final_live",
+      year: 2027,
+      metadata_extractor: null,
+    };
+  }
+
+  it("lists Europe and Asia winners of the same year as separate rows", () => {
+    const rows = computeUncrownedRows({
+      episodesBrowser: null,
+      latestPeriod: "2027-06",
+      periods: ["2027-06"],
+      videoLatest: [winner("asia", "asiaWin"), winner("europe", "euWin")],
+      songLatest: [],
+      songHits: null,
+      videoHits: {
+        periods: ["2027-06"],
+        hits: [
+          {
+            video_title: "euWin",
+            youtube_video_id: "euWin",
+            entries: [{ period: "2027-06", rank: 2 }],
+          },
+          {
+            video_title: "asiaWin",
+            youtube_video_id: "asiaWin",
+            entries: [{ period: "2027-06", rank: 7 }],
+          },
+        ],
+      },
+    });
+
+    expect(rows.map((row) => [row.year, row.region, row.rank])).toEqual([
+      ["2027", "Europe", 2],
+      ["2027", "Asia", 7],
+    ]);
+  });
+});
+
 describe("esc winner insight blocks", () => {
   it("returns table results for Build-up rank and Uncrowned", () => {
     const ctx = fixtureContext();
@@ -141,6 +199,9 @@ describe("esc winner insight blocks", () => {
       expect(uncrowned.showHitColumn).toBe(false);
       expect(uncrowned.showRankColumn).toBe(true);
       expect(uncrowned.rankColumnLabel).toBe("Best rank");
+      expect(buildUp.showRegionColumn).toBe(true);
+      expect(uncrowned.showRegionColumn).toBe(true);
+      expect(buildUp.rows.every((row) => row.region === "Europe")).toBe(true);
       expect(buildUp.rows.length).toBe(5);
       expect(uncrowned.rows).toHaveLength(1);
       expect(uncrowned.rows[0]).toMatchObject({

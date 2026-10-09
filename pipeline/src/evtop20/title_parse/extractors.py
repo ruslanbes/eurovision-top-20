@@ -5,13 +5,17 @@ from typing import Protocol
 from evtop20.performance_category import category_from_segment
 from evtop20.title_parse.helpers import (
     derive_performance_segment_from_tail,
+    extract_asia_year,
     extract_year,
     parse_artist_song,
     parse_country_flag,
     parse_glued_country_tail,
     split_dash_segments,
     split_pipe_segments,
+    strip_asia_year_phrase,
 )
+
+ASIA_DEFAULT_PERFORMANCE_CATEGORY = "national_final"
 from evtop20.title_parse.models import ParsedVideoTitle
 
 
@@ -95,6 +99,45 @@ class PipeFourSegmentExtractor:
             parts[3],
             extractor=self.name,
         )
+
+
+class PipeFourSegmentAsiaExtractor:
+    """``Artist - Song | Country flag | Eurovision Song Contest Asia YYYY | tail``."""
+
+    name = "pipe_four_segment_asia_v1"
+
+    def try_parse(
+        self, title: str, _youtube_video_id: str
+    ) -> ParsedVideoTitle | None:
+        parts = split_pipe_segments(title)
+        if len(parts) != 4:
+            return None
+
+        year = extract_asia_year(parts[2])
+        artist_song = parse_artist_song(parts[0])
+        country_flag = parse_country_flag(parts[1])
+        if year is None or artist_song is None or country_flag is None:
+            return None
+
+        artist, song, _live = artist_song
+        country, flag = country_flag
+        performance_category = (
+            category_from_segment(strip_asia_year_phrase(parts[2]))
+            or category_from_segment(parts[3])
+            or ASIA_DEFAULT_PERFORMANCE_CATEGORY
+        )
+        result = ParsedVideoTitle(
+            artist=artist,
+            song=song,
+            flag=flag,
+            country=country,
+            performance_category=performance_category,
+            year=year,
+            extractor=self.name,
+        )
+        if not result.is_complete():
+            return None
+        return result
 
 
 class PipeThreeSegmentExtractor:
@@ -208,6 +251,7 @@ class DashFiveSegmentExtractor:
 
 
 DEFAULT_EXTRACTORS: tuple[TitleExtractor, ...] = (
+    PipeFourSegmentAsiaExtractor(),
     PipeFourSegmentExtractor(),
     PipeThreeSegmentExtractor(),
     PipeTwoSegmentGluedExtractor(),

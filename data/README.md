@@ -137,7 +137,7 @@ May read **any source**: processed alltime, raw episodes, title parser (`title_p
 | Typical content                                               | Sources                                                                                                                                          |
 | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Augmented alltime video rows (watch URLs, parsed metadata, …) | processed alltime + title parser                                                                                                                 |
-| Song stats                                                    | per-video rows + roll-up by normalized `(artist, song)` key; [chart_points](../docs/faq/chart_points.md) from summed tiers (`song_stats.py`, `song_key_normalize.py`); `package` fails if two song rows share the same `(year, country)` unless `esc_final_place` is `NON_ENTRY` or country is `World` |
+| Song stats                                                    | per-video rows + roll-up by normalized `(artist, song)` key; [chart_points](../docs/faq/chart_points.md) from summed tiers (`song_stats.py`, `song_key_normalize.py`); `package` fails if two song rows share the same `(region, year, country)` unless `esc_final_place` is `NON_ENTRY` or country is `World`, or if one song's videos span both regions |
 | Row order (video + song snapshots, query window)              | [chart_points](../docs/faq/chart_points.md) default sort via `sort_keys.py` / `queryWindow.ts`                                                 |
 | Window query index (`query/`)                                 | `processed/episode-index/` + latest packaged video enrichment                                                                                    |
 | Insight payloads (`insights/` — heatmaps, …)                | processed + raw + external                                                                                                                       |
@@ -176,7 +176,7 @@ Top-level shape:
 }
 ```
 
-Filled entry fields (alphabetical): `artist`, `country`, `esc_final_place`, `fire`, `flag`, `performance_category`, `rank`, `song`, `video_title`, `year`, `youtube_video_id`. No processed-layer artifact — packaged only (ADR-003).
+Filled entry fields (alphabetical): `artist`, `country`, `esc_final_place`, `fire`, `flag`, `performance_category`, `rank`, `region`, `song`, `video_title`, `year`, `youtube_video_id`. No processed-layer artifact — packaged only (ADR-003).
 
 ### Query index (`packaged/query/`)
 
@@ -191,7 +191,9 @@ Built from `processed/episode-index/` plus latest packaged video rows for enrich
 
 Client aggregates a `[begin, end]` window from these files via `site/src/components/stats/queryWindow.ts` (golden-tested against pipeline).
 
-Processed row shape remains unchanged. ESC final place is joined in `package` — [`esc_final_place.md`](../docs/faq/esc_final_place.md). Video `performance_category` (`final_live`, `national_final`, `official_video`, `special`) is set at title parse from YouTube title segments; unparseable titles use `metadata/manual-video-metadata.json`.
+Processed row shape remains unchanged. ESC final place is joined in `package` — [`esc_final_place.md`](../docs/faq/esc_final_place.md). Video `performance_category` (`final_live`, `national_final`, `official_video`, `special`) is set at title parse from YouTube title segments; unparseable titles use `metadata/manual-video-metadata.json`. Eurovision Song Contest Asia titles without a type segment default to `national_final`.
+
+`region` (`europe` / `asia`) is on packaged video rows, song rows, query meta, and browser entries — set from the title, see [`esc_final_place.md`](../docs/faq/esc_final_place.md#region-europe--asia).
 
 ---
 

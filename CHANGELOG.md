@@ -4,9 +4,19 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-10-09
+
+### Added
+
+- **Eurovision Song Contest Asia**.
+- **Region** column and filter.
+- [2026-09](https://www.youtube.com/watch?v=VKTrU7dRBnM) episode
+
 ### Changed
 
 - Upgraded development process to the latest `Scaffold.md` version
+- **ESC Place → Contest Place** — relabel.
+- **After May debut** lists European ESC songs only.
 
 ## [0.7.1] - 2026-09-10
 

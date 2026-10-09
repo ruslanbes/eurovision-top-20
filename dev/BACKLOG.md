@@ -24,6 +24,12 @@ Detail lives in `dev/tasks/<task-id>.md` when needed.
 
 ---
 
+## esc-asia-2026
+- status: done
+- goal: Map breakage from Eurovision Asia 2026 chart entries and lock how to integrate them into pipeline/site.
+- done_when: See `dev/tasks/esc-asia-2026.md`.
+- notes: Shipped in [Unreleased] — `region` (europe/asia) from title markers, Asia title extractor, Philippines, Asia = `PENDING`, Region column + filter, “Contest Place”, insights by (region, year). Task file kept until cleanup.
+
 ## stale-stats-cache
 - status: ready
 - goal: Fix Firefox (and similar) showing stale Videos stats after a new episode deploy.

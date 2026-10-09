@@ -15,6 +15,7 @@ function videoRow(
     country: null,
     esc_final_place: null,
     fire: false,
+    region: "europe",
     flag: null,
     metadata_extractor: null,
     performance_category: null,

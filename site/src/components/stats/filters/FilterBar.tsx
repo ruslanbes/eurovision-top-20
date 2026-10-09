@@ -1,13 +1,12 @@
 import { useMemo } from "react";
 import { CountryFilter } from "./CountryFilter";
 import { EnumSelectFilter } from "./EnumSelectFilter";
-import { EscFilter } from "./EscFilter";
+import { ExclusiveSelectFilter } from "./ExclusiveSelectFilter";
 import { FireToggleFilter } from "./FireToggleFilter";
 import { SearchFilter } from "./SearchFilter";
 import { SEARCH_FILTER_ID } from "./searchFilterMatch";
 import { FIRE_FILTER_ON } from "./fireFilter";
 import { ToggleGroupFilter } from "./ToggleGroupFilter";
-import type { EscMode } from "./esc";
 import { filterDefsForGrain } from "./defs";
 import type {
   FilterDefinition,
@@ -156,17 +155,15 @@ export function FilterBar<TRow extends FilterableRow>({
             );
           }
 
-          if (def.type === "enum-exclusive" && def.id === "esc") {
+          if (def.type === "enum-exclusive") {
             return (
-              <EscFilter
+              <ExclusiveSelectFilter
                 key={def.id}
                 label={def.label}
                 options={options}
                 selected={selected}
                 disabled={disabled}
-                onChange={(value: EscMode | null) =>
-                  onSetExclusive(def.id, value)
-                }
+                onChange={(value) => onSetExclusive(def.id, value)}
               />
             );
           }

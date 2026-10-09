@@ -15,6 +15,7 @@ YEAR_PATTERNS = (
     re.compile(r"#Eurovision(\d{4})", re.IGNORECASE),
     re.compile(r"(\d{4})\s+Eurovision(?: Song Contest)?", re.IGNORECASE),
 )
+ASIA_YEAR_PATTERN = re.compile(r"Eurovision Song Contest Asia\s*(\d{4})", re.IGNORECASE)
 LIVE_SUFFIX = re.compile(r"\s*\(LIVE\)\s*$", re.IGNORECASE)
 SONG_LIVE_PAREN_SUFFIX = re.compile(r"\s*\(LIVE\b[^)]*\)\s*$", re.IGNORECASE)
 PAREN_COUNTRY_PATTERN = re.compile(r"^(.+?)\s*\(([^)]+)\)\s*(.*)$", re.DOTALL)
@@ -35,6 +36,17 @@ def extract_year(text: str) -> int | None:
         if match:
             return int(match.group(1))
     return None
+
+
+def extract_asia_year(text: str) -> int | None:
+    match = ASIA_YEAR_PATTERN.search(text)
+    if match is None:
+        return None
+    return int(match.group(1))
+
+
+def strip_asia_year_phrase(text: str) -> str:
+    return ASIA_YEAR_PATTERN.sub("", text).strip()
 
 
 def strip_year_phrases(text: str) -> str:

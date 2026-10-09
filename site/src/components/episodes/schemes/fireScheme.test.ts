@@ -19,6 +19,7 @@ const filled = (fire: boolean, rank = 1) => ({
   esc_final_place: 1,
   fire,
   flag: "🏳️",
+  region: "europe" as const,
   performance_category: "official_video",
   rank,
   song: "Song",

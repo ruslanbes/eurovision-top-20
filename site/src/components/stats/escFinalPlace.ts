@@ -47,4 +47,4 @@ export function escFinalPlaceSortKey(value: EscFinalPlace): number {
 }
 
 export const ESC_FINAL_PLACE_COLUMN_TITLE =
-  "ESC Grand Final placement";
+  "Grand Final placement in the entry's contest (Europe or Asia)";

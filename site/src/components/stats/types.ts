@@ -1,3 +1,5 @@
+import type { Region } from "./region";
+
 export type PeriodManifest = {
   periods: string[];
   latest: string;
@@ -11,6 +13,7 @@ export type SongStatsRow = {
   year: number;
   esc_final_place: number | string | null;
   fire: boolean;
+  region: Region;
   top1: number;
   top3: number;
   top5: number;
@@ -43,6 +46,7 @@ export type VideoStatsRow = {
   flag: string | null;
   country: string | null;
   performance_category: string | null;
+  region: Region;
   year: number | null;
   metadata_extractor: string | null;
 };

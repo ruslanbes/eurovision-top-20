@@ -1,3 +1,4 @@
+import { formatRegion, REGION_ORDER } from "../region";
 import type { StatsGrain, StatsRow } from "../types";
 import {
   ESC_DNQ,
@@ -40,6 +41,7 @@ export const FILTER_SCOPES: Record<string, FilterScope> = {
   esc: "shared",
   fire: "shared",
   performance_category: "video",
+  region: "shared",
   search: "shared",
   year: "shared",
 };
@@ -103,9 +105,18 @@ function searchFilterDef(grain: StatsGrain): FilterDefinition<FilterableRow> {
 
 const SHARED_FILTER_DEFS: FilterDefinition<FilterableRow>[] = [
   {
+    id: "region",
+    type: "enum-exclusive",
+    label: "Region",
+    showChips: false,
+    getOptions: () =>
+      REGION_ORDER.map((value) => ({ value, label: formatRegion(value) })),
+    match: (row, selected) => row.region === selected[0],
+  },
+  {
     id: "esc",
     type: "enum-exclusive",
-    label: "ESC Place",
+    label: "Contest Place",
     showChips: false,
     getOptions: () => [
       { value: ESC_WINNERS, label: "Winners only" },

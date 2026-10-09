@@ -1,5 +1,6 @@
-import type { VideoHitsPayload } from "../../stats/queryWindow";
-import type { VideoStatsRow } from "../../stats/types";
+import type { VideoHitsPayload } from "../stats/queryWindow";
+import type { Region } from "../stats/region";
+import type { VideoStatsRow } from "../stats/types";
 
 export type EpisodeRankIndex = Map<string, Map<string, number>>;
 
@@ -22,10 +23,14 @@ export function buildEpisodeRankIndex(hits: VideoHitsPayload): EpisodeRankIndex 
 
 export function winnerVideosForYear(
   videoLatest: VideoStatsRow[],
+  region: Region,
   contestYear: number,
 ): VideoStatsRow[] {
   return videoLatest.filter(
-    (row) => row.year === contestYear && row.esc_final_place === 1,
+    (row) =>
+      row.region === region &&
+      row.year === contestYear &&
+      row.esc_final_place === 1,
   );
 }
 

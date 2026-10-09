@@ -1,4 +1,5 @@
 import { songMetaLookupKey } from "../../stats/songMetaLookupKey";
+import { REGION_EUROPE } from "../../stats/region";
 import type { VideoStatsRow } from "../../stats/types";
 import type { VideoHitsPayload } from "../../stats/queryWindow";
 import { songLinkFromSong } from "../formatters";
@@ -26,7 +27,11 @@ function parseSongChartId(id: string): { contestYear: number; songKey: string } 
 }
 
 function isEscContestEntry(row: VideoStatsRow): boolean {
-  return row.country != null && row.country !== "World";
+  return (
+    row.region === REGION_EUROPE &&
+    row.country != null &&
+    row.country !== "World"
+  );
 }
 
 function videoRowByTitle(videoLatest: VideoStatsRow[]): Map<string, VideoStatsRow> {

@@ -1,10 +1,10 @@
 # Status
 
-Last updated: 2026-09-10
+Last updated: 2026-10-09
 
 ## Current focus
 
-**`stale-stats-cache`** — decisions locked; not started.
+Release **0.8.0** prepared (not committed / tagged).
 
 ## Active task
 
@@ -16,9 +16,11 @@ _None._
 
 ## Next action
 
-Implement option 1 when ready (`dev/tasks/stale-stats-cache.md`).
+Commit, tag `v0.8.0`, push (see `dev/RELEASE.md` → Execute the release). Then `stale-stats-cache` (ready).
 
 ## Session notes
 
-- Locked **`stale-stats-cache`**: option 1 only; keep SSG; code fix covers Songs; observed bug was `/` only; manual Firefox verify after deploy.
+- **0.8.0:** Eurovision Song Contest Asia support (`region`, Region column + filter, Contest Place), 2026-09 episode. `make data` / `make test` / `make build` green.
+- `esc-asia-2026` task doc and its `done` backlog row kept on request; remove in a later cleanup.
+- `site-stats-explainer` task doc removed; explainer contract now in `site/README.md`.
 - Backlog: **`stale-stats-cache`** (ready), **`the-other-top-20`**, **`april-prank`**.

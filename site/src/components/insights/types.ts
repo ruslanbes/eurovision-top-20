@@ -71,6 +71,7 @@ export type InsightTableRow = {
   rankHref?: string | null;
   rankLabel?: string;
   rankLinkTitle?: string;
+  region?: string;
   rowNote?: string;
   status: InsightTableStatus;
   statusTitle?: string;
@@ -104,6 +105,7 @@ export type InsightResult =
       rows: InsightTableRow[];
       showHitColumn?: boolean;
       showRankColumn?: boolean;
+      showRegionColumn?: boolean;
       tableKind?: "esc_winner";
       title: string;
       viewKind: "table";

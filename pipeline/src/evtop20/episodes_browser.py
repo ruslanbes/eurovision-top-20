@@ -24,6 +24,7 @@ BROWSER_ENTRY_FIELDS = (
     "flag",
     "performance_category",
     "rank",
+    "region",
     "song",
     "video_title",
     "year",

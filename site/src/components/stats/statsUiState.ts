@@ -7,6 +7,7 @@ import {
 } from "./filters/esc";
 import { FIRE_FILTER_ON } from "./filters/fireFilter";
 import { SEARCH_FILTER_ID } from "./filters/searchFilterMatch";
+import { isRegion } from "./region";
 import type { FilterState, FilterValue } from "./filters/types";
 import {
   parseUrlSort,
@@ -29,6 +30,7 @@ export const STATS_URL_PARAMS = [
   "order",
   "performance_category",
   "q",
+  "region",
   "sort",
   "year",
 ] as const;
@@ -216,6 +218,11 @@ export function parseStatsUiState(
     filters.performance_category = categories;
   }
 
+  const region = params.get("region")?.trim();
+  if (isRegion(region)) {
+    filters.region = [region];
+  }
+
   if (params.get("fire") === "1") {
     filters.fire = [FIRE_FILTER_ON];
   }
@@ -283,6 +290,11 @@ export function serializeStatsUiState(
       PERFORMANCE_CATEGORY_VALUES.has(String(value)),
     ),
   );
+
+  const region = state.filters.region?.[0];
+  if (isRegion(region)) {
+    parts.push(`region=${region}`);
+  }
 
   if (state.filters.fire?.includes(FIRE_FILTER_ON)) {
     parts.push("fire=1");

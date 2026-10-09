@@ -1,3 +1,5 @@
+import type { Region } from "../stats/region";
+
 export type ColorMapEntry = {
   hex: string;
   source: string;
@@ -21,6 +23,7 @@ export type BrowserFilledEntry = {
   flag: string;
   performance_category: string;
   rank: number;
+  region: Region;
   song: string;
   video_title: string;
   year: number | null;

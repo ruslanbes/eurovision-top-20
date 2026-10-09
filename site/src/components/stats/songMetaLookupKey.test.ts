@@ -46,6 +46,7 @@ describe("querySongWindow", () => {
             flag: "🇦🇿",
             esc_final_place: 3,
             fire: false,
+            region: "europe",
             youtube_video_id: "abc123",
             youtube_watch_url: "https://www.youtube.com/watch?v=abc123",
           },

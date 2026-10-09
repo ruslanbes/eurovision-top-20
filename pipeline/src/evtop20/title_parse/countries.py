@@ -2,7 +2,7 @@ from __future__ import annotations
 
 VIRTUAL_WORLD_COUNTRY = "World"
 
-# Canonical country name -> flag emoji for Eurovision entrants in this corpus.
+# Canonical country name -> flag emoji for Eurovision (Europe and Asia) entrants in this corpus.
 COUNTRY_TO_FLAG: dict[str, str] = {
     "Albania": "🇦🇱",
     "Armenia": "🇦🇲",
@@ -33,6 +33,7 @@ COUNTRY_TO_FLAG: dict[str, str] = {
     "Netherlands": "🇳🇱",
     "North Macedonia": "🇲🇰",
     "Norway": "🇳🇴",
+    "Philippines": "🇵🇭",
     "Poland": "🇵🇱",
     "Portugal": "🇵🇹",
     "Romania": "🇷🇴",
@@ -55,6 +56,7 @@ COUNTRY_ALIASES: dict[str, str] = {
     "Czech Republic": "Czechia",
     "F.Y.R. Macedonia": "North Macedonia",
     "The Netherlands": "Netherlands",
+    "The Philippines": "Philippines",
     "Türkiye": "Turkey",
 }
 

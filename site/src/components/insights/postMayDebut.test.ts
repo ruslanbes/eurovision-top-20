@@ -73,6 +73,7 @@ describe("computePostMayDebutRows", () => {
       song: "Track",
       country: "Denmark",
       flag: "🇩🇰",
+      region: "europe",
       year: 2026,
       chart_points: 5,
       youtube_watch_url: "https://www.youtube.com/watch?v=nf",
@@ -88,6 +89,7 @@ describe("computePostMayDebutRows", () => {
       song: "Track",
       country: "Denmark",
       flag: "🇩🇰",
+      region: "europe",
       year: 2026,
       chart_points: 8,
       youtube_watch_url: "https://www.youtube.com/watch?v=gf",
@@ -143,6 +145,7 @@ describe("computePostMayDebutRows", () => {
           song: "Song",
           country: "Nowhere",
           flag: "🏳️",
+          region: "europe",
           year: 2017,
           chart_points: 10,
           youtube_watch_url: "https://www.youtube.com/watch?v=live",
@@ -169,6 +172,43 @@ describe("computePostMayDebutRows", () => {
     ]);
   });
 
+  it("excludes Asia entries", () => {
+    const rows = computePostMayDebutRows(
+      {
+        periods: ["2026-05", "2026-09"],
+        hits: [
+          {
+            video_title: "CARMELLE - Sobra-Sobra | Asia",
+            youtube_video_id: "asia",
+            entries: [{ period: "2026-09", rank: 5 }],
+          },
+        ],
+      },
+      [
+        {
+          video_title: "CARMELLE - Sobra-Sobra | Asia",
+          artist: "CARMELLE",
+          song: "Sobra-Sobra",
+          country: "Philippines",
+          flag: "🇵🇭",
+          region: "asia",
+          year: 2026,
+          chart_points: 6,
+          youtube_watch_url: "https://www.youtube.com/watch?v=asia",
+          top1: 0,
+          top3: 0,
+          top5: 1,
+          top10: 1,
+          top20: 1,
+        },
+      ] as VideoStatsRow[],
+      ["2026-05", "2026-09"],
+      new Map([["2026-09", "https://www.youtube.com/watch?v=ep"]]),
+    );
+
+    expect(rows).toEqual([]);
+  });
+
   it("excludes World country entries", () => {
     const rows = computePostMayDebutRows(
       {
@@ -188,6 +228,7 @@ describe("computePostMayDebutRows", () => {
           song: "Switch Song",
           country: "World",
           flag: "🌍",
+          region: "europe",
           year: 2019,
           chart_points: 10,
           youtube_watch_url: "https://www.youtube.com/watch?v=switch",

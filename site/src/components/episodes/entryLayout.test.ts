@@ -10,6 +10,7 @@ const filled = (rank: number, year: number | null): BrowserEntry => ({
   country: "Country",
   esc_final_place: 1,
   fire: false,
+  region: "europe",
   flag: "🏳️",
   performance_category: "official_video",
   rank,

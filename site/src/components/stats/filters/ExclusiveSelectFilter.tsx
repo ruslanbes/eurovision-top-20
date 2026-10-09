@@ -1,39 +1,27 @@
 import { useId } from "react";
-import {
-  ESC_DNQ,
-  ESC_NON_ENTRIES,
-  ESC_NOT_WINNERS,
-  ESC_WINNERS,
-  type EscMode,
-} from "./esc";
 import type { FilterOption, FilterValue } from "./types";
 
-type EscFilterProps = {
+type ExclusiveSelectFilterProps = {
   label: string;
   options: FilterOption[];
   selected: readonly FilterValue[];
   disabled?: boolean;
-  onChange: (value: EscMode | null) => void;
+  onChange: (value: string | null) => void;
 };
 
-const ESC_VALUES = new Set<string>([
-  ESC_WINNERS,
-  ESC_NOT_WINNERS,
-  ESC_DNQ,
-  ESC_NON_ENTRIES,
-]);
-
-export function EscFilter({
+export function ExclusiveSelectFilter({
   label,
   options,
   selected,
   disabled = false,
   onChange,
-}: EscFilterProps) {
+}: ExclusiveSelectFilterProps) {
   const selectId = useId();
+  const current = selected[0];
   const active =
-    selected[0] !== undefined && ESC_VALUES.has(String(selected[0]))
-      ? String(selected[0])
+    current !== undefined &&
+    options.some((option) => String(option.value) === String(current))
+      ? String(current)
       : "";
 
   return (
@@ -51,7 +39,7 @@ export function EscFilter({
         className="min-w-[3ch] max-w-[12rem] [field-sizing:content] w-auto rounded-md border border-border bg-surface px-3 py-2 text-sm text-text focus:outline-none focus:ring-2 focus:ring-accent disabled:cursor-not-allowed disabled:opacity-50"
         onChange={(event) => {
           const raw = event.target.value;
-          onChange(raw ? (raw as EscMode) : null);
+          onChange(raw ? raw : null);
         }}
       >
         <option value="">All</option>

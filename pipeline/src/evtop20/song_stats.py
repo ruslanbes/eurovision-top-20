@@ -4,6 +4,7 @@ from collections import defaultdict
 
 from evtop20.aggregate import TIER_COUNT_FIELDS, chart_points_from_tiers
 from evtop20.paths import ALLTIME_STATS_BASENAME, SONG_STATS_BASENAME
+from evtop20.region import REGION_EUROPE, REGIONS
 from evtop20.song_key_normalize import normalized_song_key
 from evtop20.sort_keys import song_row_sort_key
 from evtop20.title_parse.countries import VIRTUAL_WORLD_COUNTRY
@@ -16,6 +17,10 @@ SONG_METADATA_FIELDS = (
     "performance_category",
     "year",
 )
+
+
+class SongStatsError(Exception):
+    pass
 
 
 def is_eligible_song_rollup_row(row: dict) -> bool:
@@ -44,11 +49,15 @@ def validate_song_stats_payload(payload: dict, *, context: str = "") -> list[str
     if not isinstance(rows, list):
         return [f"{prefix}rows must be a list"]
 
-    by_country_year: dict[tuple[int, str], list[dict]] = defaultdict(list)
+    by_region_year_country: dict[tuple[str, int, str], list[dict]] = defaultdict(list)
     issues: list[str] = []
     for index, row in enumerate(rows):
         if not isinstance(row, dict):
             issues.append(f"{prefix}rows[{index}] must be an object")
+            continue
+        region = row.get("region", REGION_EUROPE)
+        if region not in REGIONS:
+            issues.append(f"{prefix}rows[{index}] region {region!r} is unknown")
             continue
         if not is_competing_esc_entry(row):
             continue
@@ -59,16 +68,16 @@ def validate_song_stats_payload(payload: dict, *, context: str = "") -> list[str
                 f"{prefix}rows[{index}] competing entry requires integer year and country"
             )
             continue
-        by_country_year[(year, country)].append(row)
+        by_region_year_country[(region, year, country)].append(row)
 
-    for (year, country), members in sorted(by_country_year.items()):
+    for (region, year, country), members in sorted(by_region_year_country.items()):
         if len(members) < 2:
             continue
         labels = "; ".join(
             f'{member["artist"]} — {member["song"]}' for member in members
         )
         issues.append(
-            f"{prefix}{year}/{country}: multiple competing song rows ({labels})"
+            f"{prefix}{region}/{year}/{country}: multiple competing song rows ({labels})"
         )
     return issues
 
@@ -96,6 +105,14 @@ def _merge_song_group(members: list[dict]) -> tuple[dict, list[str]]:
     artist = canonical["artist"]
     song = canonical["song"]
     warnings: list[str] = []
+
+    regions = {row.get("region", REGION_EUROPE) for row in members}
+    if len(regions) > 1:
+        msg = (
+            f'song roll-up region mismatch for "{artist} — {song}" '
+            f"({', '.join(sorted(regions))})"
+        )
+        raise SongStatsError(msg)
 
     countries = {row["country"] for row in members}
     if len(countries) > 1:
@@ -129,6 +146,7 @@ def _merge_song_group(members: list[dict]) -> tuple[dict, list[str]]:
         "country": canonical["country"],
         "year": canonical["year"],
         "esc_final_place": canonical.get("esc_final_place"),
+        "region": regions.pop(),
     }
     for field in TIER_COUNT_FIELDS:
         merged[field] = sum(row[field] for row in members)
