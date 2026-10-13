@@ -47,3 +47,9 @@ Detail lives in `dev/tasks/<task-id>.md` when needed.
 - goal: April Fools’ emoji titles on Videos/Songs tables — song-keyed manual map, click-to-reveal, Apr 1 auto or query override.
 - done_when: See `dev/tasks/april-prank.md`.
 - notes: Isolated metadata + module; no changes to packaged stats or insights.
+
+## dependabot
+- status: done
+- goal: Enable Dependabot for npm (site), Python/uv (pipeline), and GitHub Actions.
+- done_when: See `dev/tasks/dependabot.md`.
+- notes: `.github/dependabot.yml` — monthly; grouped; `uv` ecosystem for pipeline; process note in `dev/README.md`. Verify monitoring after push to main.

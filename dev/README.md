@@ -63,6 +63,10 @@ Episode format and field rules: [`data/README.md`](../data/README.md). Full CLI 
 
 Pushes to `main` run the same validate → process → package → build pipeline and deploy to GitHub Pages.
 
+## Dependency updates
+
+[Dependabot](https://docs.github.com/en/code-security/dependabot) runs **monthly** for npm (`site/`), uv (`pipeline/`), and GitHub Actions. Updates are **grouped** into at most one open PR per ecosystem (label `dependencies`). Merge by hand after CI is green — no auto-merge. Config: [`.github/dependabot.yml`](../.github/dependabot.yml).
+
 ## Ground rules
 
 - Track work here in `dev/` — flat backlog, status, optional task detail files under `tasks/`.
