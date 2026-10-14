@@ -63,6 +63,17 @@ Episode format and field rules: [`data/README.md`](../data/README.md). Full CLI 
 
 Pushes to `main` run the same validate → process → package → build pipeline and deploy to GitHub Pages.
 
+## CI
+
+[`.github/workflows/ci.yml`](../.github/workflows/ci.yml) runs on every push and pull request with two parallel jobs:
+
+| Job | What |
+|-----|------|
+| `pipeline` | `uv sync` + `pytest` |
+| `site` | `npm ci` + `npm test` (Node 22) |
+
+Deploy still runs `npm run build` on `main` only. Branch protection / required checks are optional (not set for v1).
+
 ## Dependency updates
 
 [Dependabot](https://docs.github.com/en/code-security/dependabot) runs **monthly** for npm (`site/`), uv (`pipeline/`), and GitHub Actions. Updates are **grouped** into at most one open PR per ecosystem (label `dependencies`). Merge by hand after CI is green — no auto-merge. Config: [`.github/dependabot.yml`](../.github/dependabot.yml).

@@ -61,7 +61,7 @@ Detail lives in `dev/tasks/<task-id>.md` when needed.
 - notes: Shipped — `@tailwindcss/vite` + `@theme`; Table v9 `useTable`; CHANGELOG + ADR-000/002 + site README. Verify deploy after push.
 
 ## site-ci-dependabot-guard
-- status: backlog
-- goal: Run site npm ci/test(/build) on PRs; tighten Dependabot so majors are not buried in one catch-all group.
+- status: done
+- goal: Run site npm ci + test on PRs (parallel job); keep Dependabot one-group (C); README only.
 - done_when: See `dev/tasks/site-ci-dependabot-guard.md`.
-- notes: Draft — OQs open (CI vs Dependabot vs both; grouping option A–D).
+- notes: Shipped — `ci.yml` jobs `pipeline` + `site`; Dependabot unchanged; `dev/README` CI section.
