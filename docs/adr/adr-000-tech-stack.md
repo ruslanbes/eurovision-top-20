@@ -41,7 +41,7 @@ Python package lives in `pipeline/` with a CLI entry point (`validate`, `process
 | ------------------ | ----------------------------------------------------------------------------------------------------- |
 | Site generator     | **Astro** (static)                                                                                    |
 | Interactive tables | **TanStack Table** in React islands — Alpha: per-video table; Beta: add per-song table (both on site) |
-| Styling            | **Tailwind CSS** (or plain CSS if preferred during implementation)                                    |
+| Styling            | **Tailwind CSS** |
 | Build tool         | **Vite** (via Astro)                                                                                  |
 | Hosting            | **GitHub Pages**                                                                                      |
 | CI/CD              | **GitHub Actions** — aggregate, build site, deploy `dist/`                                            |

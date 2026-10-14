@@ -1,10 +1,10 @@
 # Status
 
-Last updated: 2026-10-13
+Last updated: 2026-10-14
 
 ## Current focus
 
-_None._
+_None._ Await push/merge so Pages deploy confirms green.
 
 ## Active task
 
@@ -12,14 +12,15 @@ _None._
 
 ## Blockers
 
-_None._
+_None_ locally (`npm ci` / test / build green). Live deploy still red until this lands on `main`.
 
 ## Next action
 
-Push Dependabot config to `main` (or open a PR), then confirm GitHub → Insights → Dependency graph → Dependabot shows npm / uv / Actions. Create label `dependencies` if missing.
+Commit/push the Astro 7 + Tailwind 4 migration; confirm GitHub Pages deploy. Then lock OQs on **`site-ci-dependabot-guard`**.
 
 ## Session notes
 
-- Shipped **`dependabot`**: `.github/dependabot.yml` (monthly, grouped, label only, no auto-merge); pipeline uses `package-ecosystem: "uv"`; process note in `dev/README.md`. No CHANGELOG.
-- Backlog: **`stale-stats-cache`** (deferred), **`the-other-top-20`**, **`april-prank`**; **`dependabot`** done (task doc kept until cleanup).
-- Still pending cleanup: `esc-asia-2026` task doc + done backlog row.
+- **`astro7-tailwind4-migrate` done:** `@tailwindcss/vite`, CSS `@theme inline`, deleted `tailwind.config.mjs`; TanStack Table v9 (`useTable` + sorting features); Vitest 5 / TS 7 OK as-is; CHANGELOG + ADR-000/002 + `site/README.md`.
+- **Style fix:** first `@theme` used v3 `<alpha-value>` → 49 invalid colours in CSS (white page, black text, no accent links). Channel vars renamed (`--surface`, …); map with `rgb(var(--surface))` only.
+- **`site-ci-dependabot-guard`** still draft (OQs open).
+- Backlog: guard, **`stale-stats-cache`** (deferred), **`the-other-top-20`**, **`april-prank`**; done docs kept: migrate, `dependabot`, `esc-asia-2026`.

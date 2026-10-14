@@ -1,8 +1,27 @@
 @import "./theme.css";
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Match previous darkMode: "class" (html.dark), not prefers-color-scheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Map channel variables from theme.css to Tailwind --color-* tokens.
+  Do NOT use <alpha-value> here — Tailwind v4 leaves it literal and breaks all colors.
+  Opacity modifiers (e.g. bg-surface/60) use color-mix() against these values.
+*/
+@theme inline {
+  --color-surface: rgb(var(--surface));
+  --color-surface-elevated: rgb(var(--surface-elevated));
+  --color-text: rgb(var(--text));
+  --color-text-muted: rgb(var(--text-muted));
+  --color-border: rgb(var(--border));
+  --color-accent: rgb(var(--accent));
+  --color-danger-border: rgb(var(--danger-border));
+  --color-danger-surface: rgb(var(--danger-surface));
+  --color-danger-text: rgb(var(--danger-text));
+  --color-chart-missing: rgb(var(--chart-missing));
+  --color-chart-other: rgb(var(--chart-other));
+}
 
 @layer base {
   body {

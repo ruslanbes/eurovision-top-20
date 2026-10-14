@@ -21,15 +21,15 @@ npm run preview  # preview production build
 ## Stack
 
 - Astro + React islands (`StatsExplorer`)
-- Tailwind CSS + CSS theme tokens (light / dark / system)
-- TanStack Table v8
+- Tailwind CSS via `@tailwindcss/vite` + CSS theme tokens (light / dark / system)
+- TanStack Table (React `useTable`)
 - Radix Slider (dual-thumb episode range)
 
 Videos (`/`) and songs (`/songs/`) load the sparse query index and aggregate for `[begin, end]`. The **default** full-corpus table is rendered into the HTML at build time; the island still fetches query JSON so range and filters stay interactive. Default sort matches [chart_points](../docs/faq/chart_points.md#default-sort).
 
 Theme: **light**, **dark**, or **system** via the toggle (top-right). **Source on GitHub** (octocat icon, left of theme toggle) shows version + release date on hover. Choice persists in `localStorage`. Inline script in the layout avoids a flash of wrong theme on load.
 
-**Chart tokens:** semantic colors live in [`src/styles/theme.css`](src/styles/theme.css) as RGB triplets (`--color-surface`, `--color-text`, `--color-border`, `--color-accent`, `--color-danger-*`, …). [`tailwind.config.mjs`](tailwind.config.mjs) maps them to Tailwind utilities (`bg-surface`, `text-text-muted`, `border-danger-border`, etc.). Chart-specific tokens use the `--chart-*` prefix — see [`src/components/episodes/README.md`](src/components/episodes/README.md) for scheme wiring.
+**Chart tokens:** semantic colors live in [`src/styles/theme.css`](src/styles/theme.css) as RGB channel triplets (`--surface`, `--text`, `--border`, `--accent`, `--danger-*`, …). [`src/styles/global.css`](src/styles/global.css) maps them to Tailwind utilities via `@theme inline` (`bg-surface`, `text-text-muted`, `border-danger-border`, etc.) and sets class-based `dark` with `@custom-variant`. Chart-specific tokens use the `--chart-*` prefix — see [`src/components/episodes/README.md`](src/components/episodes/README.md) for scheme wiring.
 
 **About these stats:** site-wide explainer in `BaseLayout` (`src/components/explainer/`). First visits see a dismissible banner (in the HTML for first paint and crawlers); the header `i` icon reopens the same copy in a dialog. Dismiss persists in `localStorage` (`site-stats-explainer-dismissed`); an inline layout script hides the banner before paint for returning visitors. Separate from the Chart Points `?` popover.
 

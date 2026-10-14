@@ -25,7 +25,7 @@ Use a **layered** front-end stack inside Astro **React islands**. One library pe
 |---------|--------|
 | Site shell | **Astro** (static) — already in ADR-000 |
 | Island hydration | **`@astrojs/react`** + `client:visible` (or `client:load` if above the fold) |
-| Sortable tables | **TanStack Table v8** — already in ADR-000 |
+| Sortable tables | **TanStack Table** — already in ADR-000 |
 | Tabs, slider, switch, and other accessible controls | **Radix UI** — add `@radix-ui/react-*` packages as needed (e.g. `@radix-ui/react-slider`, `@radix-ui/react-switch`); style with Tailwind |
 | Styling | **Tailwind CSS** — already in ADR-000 |
 | Table rank motion between snapshots | **Motion** (`motion` package) |

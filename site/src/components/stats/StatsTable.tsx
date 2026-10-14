@@ -1,8 +1,10 @@
 import {
+  createSortedRowModel,
   flexRender,
-  getCoreRowModel,
-  getSortedRowModel,
-  useReactTable,
+  rowSortingFeature,
+  sortFns,
+  tableFeatures,
+  useTable,
   type ColumnDef,
   type OnChangeFn,
   type SortingState,
@@ -24,12 +26,24 @@ import { statsRowKey } from "./types";
 import { HelpPopover } from "./help/HelpPopover";
 import type { HelpContentId } from "./help/helpContent";
 
+const statsTableFeatures = tableFeatures({
+  rowSortingFeature,
+  sortedRowModel: createSortedRowModel(),
+  sortFns,
+});
+
+type StatsTableFeatures = typeof statsTableFeatures;
+type StatsColumnDef<TData extends StatsRow> = ColumnDef<
+  StatsTableFeatures,
+  TData
+>;
+
 type ColumnMeta = {
   help?: HelpContentId;
   title?: string;
 };
 
-function columnMeta(columnDef: ColumnDef<StatsRow>): ColumnMeta {
+function columnMeta(columnDef: StatsColumnDef<StatsRow>): ColumnMeta {
   const meta = columnDef.meta;
   if (typeof meta === "object" && meta !== null) {
     return meta as ColumnMeta;
@@ -62,7 +76,7 @@ function SortLabel({
   );
 }
 
-function sharedStatColumns<T extends StatsRow>(): ColumnDef<T>[] {
+function sharedStatColumns<T extends StatsRow>(): StatsColumnDef<T>[] {
   return [
     {
       accessorKey: "chart_points",
@@ -126,8 +140,8 @@ export function StatsTable({
   onSortingChange,
   originalRanks,
 }: StatsTableProps) {
-  const columns = useMemo<ColumnDef<StatsRow>[]>(() => {
-    const rankColumn: ColumnDef<StatsRow> = {
+  const columns = useMemo<StatsColumnDef<StatsRow>[]>(() => {
+    const rankColumn: StatsColumnDef<StatsRow> = {
       id: "rank",
       header: "#",
       enableSorting: false,
@@ -138,7 +152,7 @@ export function StatsTable({
     };
 
     if (grain === "video") {
-      const videoColumns: ColumnDef<VideoStatsRow>[] = [
+      const videoColumns: StatsColumnDef<VideoStatsRow>[] = [
         {
           id: "title",
           accessorFn: (row) => row.video_title,
@@ -163,10 +177,10 @@ export function StatsTable({
         },
         ...sharedStatColumns<VideoStatsRow>(),
       ];
-      return [rankColumn, ...(videoColumns as ColumnDef<StatsRow>[])];
+      return [rankColumn, ...(videoColumns as StatsColumnDef<StatsRow>[])];
     }
 
-    const songColumns: ColumnDef<SongStatsRow>[] = [
+    const songColumns: StatsColumnDef<SongStatsRow>[] = [
       {
         id: "title",
         header: "Song",
@@ -198,16 +212,15 @@ export function StatsTable({
       },
       ...sharedStatColumns<SongStatsRow>(),
     ];
-    return [rankColumn, ...(songColumns as ColumnDef<StatsRow>[])];
+    return [rankColumn, ...(songColumns as StatsColumnDef<StatsRow>[])];
   }, [grain, originalRanks]);
 
-  const table = useReactTable({
+  const table = useTable({
+    features: statsTableFeatures,
     data: rows,
     columns,
     state: { sorting },
     onSortingChange,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
     enableMultiSort: true,
   });
 
@@ -261,7 +274,7 @@ export function StatsTable({
               key={statsRowKey(row.original, grain)}
               className="hover:bg-surface-elevated"
             >
-              {row.getVisibleCells().map((cell) => (
+              {row.getAllCells().map((cell) => (
                 <td
                   key={cell.id}
                   className={[

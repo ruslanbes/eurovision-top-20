@@ -4,6 +4,10 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+### Changed
+
+- **Site stack** — Astro 7, Tailwind 4 via `@tailwindcss/vite` (replaced `@astrojs/tailwind`), TanStack Table 9.
+
 ## [0.8.0] - 2026-10-09
 
 ### Added

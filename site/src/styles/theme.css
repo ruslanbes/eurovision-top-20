@@ -1,13 +1,18 @@
+/*
+  Space-separated RGB channels (no rgb() wrapper).
+  Tailwind maps these in global.css via @theme inline → utilities like bg-surface.
+  Episodes schemes also use rgb(var(--chart-*)) directly.
+*/
 :root {
-  --color-surface: 255 255 255;
-  --color-surface-elevated: 250 250 250;
-  --color-text: 24 24 27;
-  --color-text-muted: 82 82 91;
-  --color-border: 228 228 231;
-  --color-accent: 37 99 235;
-  --color-danger-border: 254 202 202;
-  --color-danger-surface: 254 242 242;
-  --color-danger-text: 153 27 27;
+  --surface: 255 255 255;
+  --surface-elevated: 250 250 250;
+  --text: 24 24 27;
+  --text-muted: 82 82 91;
+  --border: 228 228 231;
+  --accent: 37 99 235;
+  --danger-border: 254 202 202;
+  --danger-surface: 254 242 242;
+  --danger-text: 153 27 27;
 
   --chart-missing: 212 212 216;
   --chart-other: 161 161 170;
@@ -15,15 +20,15 @@
 }
 
 .dark {
-  --color-surface: 9 9 11;
-  --color-surface-elevated: 24 24 27;
-  --color-text: 250 250 250;
-  --color-text-muted: 161 161 170;
-  --color-border: 39 39 42;
-  --color-accent: 96 165 250;
-  --color-danger-border: 127 29 29;
-  --color-danger-surface: 69 10 10;
-  --color-danger-text: 254 202 202;
+  --surface: 9 9 11;
+  --surface-elevated: 24 24 27;
+  --text: 250 250 250;
+  --text-muted: 161 161 170;
+  --border: 39 39 42;
+  --accent: 96 165 250;
+  --danger-border: 127 29 29;
+  --danger-surface: 69 10 10;
+  --danger-text: 254 202 202;
 
   --chart-missing: 63 63 70;
   --chart-other: 161 161 170;

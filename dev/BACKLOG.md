@@ -52,4 +52,16 @@ Detail lives in `dev/tasks/<task-id>.md` when needed.
 - status: done
 - goal: Enable Dependabot for npm (site), Python/uv (pipeline), and GitHub Actions.
 - done_when: See `dev/tasks/dependabot.md`.
-- notes: `.github/dependabot.yml` — monthly; grouped; `uv` ecosystem for pipeline; process note in `dev/README.md`. Verify monitoring after push to main.
+- notes: `.github/dependabot.yml` — monthly; grouped; `uv` ecosystem for pipeline; process note in `dev/README.md`. Site npm group majors broke deploy — see migrate + guard tasks.
+
+## astro7-tailwind4-migrate
+- status: done
+- goal: Finish Astro 7 + Tailwind 4 the supported way (`@tailwindcss/vite`); restore `npm ci` / build / deploy.
+- done_when: See `dev/tasks/astro7-tailwind4-migrate.md`.
+- notes: Shipped — `@tailwindcss/vite` + `@theme`; Table v9 `useTable`; CHANGELOG + ADR-000/002 + site README. Verify deploy after push.
+
+## site-ci-dependabot-guard
+- status: backlog
+- goal: Run site npm ci/test(/build) on PRs; tighten Dependabot so majors are not buried in one catch-all group.
+- done_when: See `dev/tasks/site-ci-dependabot-guard.md`.
+- notes: Draft — OQs open (CI vs Dependabot vs both; grouping option A–D).
