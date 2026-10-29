@@ -15,6 +15,10 @@ import {
   escFinalPlaceSortKey,
   formatEscFinalPlace,
 } from "./escFinalPlace";
+import {
+  eurovisionworldCountryHref,
+  eurovisionworldYearHref,
+} from "./eurovisionworld";
 import { formatRegion, type Region } from "./region";
 import type {
   SongStatsRow,
@@ -25,6 +29,8 @@ import type {
 import { statsRowKey } from "./types";
 import { HelpPopover } from "./help/HelpPopover";
 import type { HelpContentId } from "./help/helpContent";
+
+const EXTERNAL_LINK_CLASS = "text-accent hover:underline";
 
 const statsTableFeatures = tableFeatures({
   rowSortingFeature,
@@ -104,11 +110,6 @@ function sharedStatColumns<T extends StatsRow>(): StatsColumnDef<T>[] {
       header: "Top 20",
     },
     {
-      accessorKey: "region",
-      header: "Region",
-      cell: ({ getValue }) => formatRegion(getValue() as Region),
-    },
-    {
       accessorKey: "esc_final_place",
       header: "Contest Place",
       meta: { title: ESC_FINAL_PLACE_COLUMN_TITLE },
@@ -125,10 +126,51 @@ function sharedStatColumns<T extends StatsRow>(): StatsColumnDef<T>[] {
     {
       accessorKey: "country",
       header: "Country",
+      cell: ({ row, getValue }) => {
+        const country = getValue() as string | null;
+        if (!country) {
+          return null;
+        }
+        const href = eurovisionworldCountryHref(country, row.original.region);
+        if (!href) {
+          return country;
+        }
+        return (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={EXTERNAL_LINK_CLASS}
+          >
+            {country}
+          </a>
+        );
+      },
     },
     {
       accessorKey: "year",
       header: "Year",
+      cell: ({ row, getValue }) => {
+        const year = getValue() as number | null;
+        if (typeof year !== "number") {
+          return null;
+        }
+        return (
+          <a
+            href={eurovisionworldYearHref(year, row.original.region)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={EXTERNAL_LINK_CLASS}
+          >
+            {year}
+          </a>
+        );
+      },
+    },
+    {
+      accessorKey: "region",
+      header: "Region",
+      cell: ({ getValue }) => formatRegion(getValue() as Region),
     },
   ];
 }

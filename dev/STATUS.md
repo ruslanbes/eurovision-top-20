@@ -1,10 +1,10 @@
 # Status
 
-Last updated: 2026-10-14
+Last updated: 2026-10-29
 
 ## Current focus
 
-_None._
+Release **0.8.1** prepared (not committed / tagged).
 
 ## Active task
 
@@ -16,10 +16,10 @@ _None._
 
 ## Next action
 
-Push pending work (Astro migrate + style fix + site CI) and confirm Pages + CI green on GitHub.
+Commit, tag `v0.8.1`, push (see `dev/RELEASE.md` → Execute the release).
 
 ## Session notes
 
-- **`site-ci-dependabot-guard` done:** parallel `site` job (`npm ci` + `npm test`); Dependabot left as option C; `dev/README` CI section; no CHANGELOG.
-- Earlier: Astro 7 / Tailwind 4 migrate + `<alpha-value>` style fix; Dependabot enabled.
-- Backlog: **`stale-stats-cache`** (deferred), **`the-other-top-20`**, **`april-prank`**; done docs kept until cleanup.
+- **0.8.1:** Eurovisionworld Country/Year links; Astro 7 / Tailwind 4 / TanStack Table 9; Region last on tables/filters/insights. `make data` / `make test` / `make build` green.
+- Cleanup: removed done task docs (`esc-asia-2026`, `dependabot`, `astro7-tailwind4-migrate`, `site-ci-dependabot-guard`, `eurovisionworld-links`) and their backlog rows.
+- Backlog left: **`stale-stats-cache`** (deferred), **`the-other-top-20`**, **`april-prank`**.

@@ -4,9 +4,16 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.8.1] - 2026-10-29
+
+### Added
+
+- **Eurovisionworld links** — Country and Year on Videos / Songs open [Eurovisionworld](https://eurovisionworld.com/) (Asia uses `eurovision-asia`).
+
 ### Changed
 
 - **Site stack** — Astro 7, Tailwind 4 via `@tailwindcss/vite` (replaced `@astrojs/tailwind`), TanStack Table 9.
+- **Region** column and filter sit last on Videos / Songs; Region is last on Insights winner tables too.
 
 ## [0.8.0] - 2026-10-09
 

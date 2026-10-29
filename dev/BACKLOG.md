@@ -24,12 +24,6 @@ Detail lives in `dev/tasks/<task-id>.md` when needed.
 
 ---
 
-## esc-asia-2026
-- status: done
-- goal: Map breakage from Eurovision Asia 2026 chart entries and lock how to integrate them into pipeline/site.
-- done_when: See `dev/tasks/esc-asia-2026.md`.
-- notes: Shipped in [Unreleased] — `region` (europe/asia) from title markers, Asia title extractor, Philippines, Asia = `PENDING`, Region column + filter, “Contest Place”, insights by (region, year). Task file kept until cleanup.
-
 ## stale-stats-cache
 - status: backlog
 - goal: Fix Firefox (and similar) showing stale Videos stats after a new episode deploy.
@@ -47,21 +41,3 @@ Detail lives in `dev/tasks/<task-id>.md` when needed.
 - goal: April Fools’ emoji titles on Videos/Songs tables — song-keyed manual map, click-to-reveal, Apr 1 auto or query override.
 - done_when: See `dev/tasks/april-prank.md`.
 - notes: Isolated metadata + module; no changes to packaged stats or insights.
-
-## dependabot
-- status: done
-- goal: Enable Dependabot for npm (site), Python/uv (pipeline), and GitHub Actions.
-- done_when: See `dev/tasks/dependabot.md`.
-- notes: `.github/dependabot.yml` — monthly; grouped; `uv` ecosystem for pipeline; process note in `dev/README.md`. Site npm group majors broke deploy — see migrate + guard tasks.
-
-## astro7-tailwind4-migrate
-- status: done
-- goal: Finish Astro 7 + Tailwind 4 the supported way (`@tailwindcss/vite`); restore `npm ci` / build / deploy.
-- done_when: See `dev/tasks/astro7-tailwind4-migrate.md`.
-- notes: Shipped — `@tailwindcss/vite` + `@theme`; Table v9 `useTable`; CHANGELOG + ADR-000/002 + site README. Verify deploy after push.
-
-## site-ci-dependabot-guard
-- status: done
-- goal: Run site npm ci + test on PRs (parallel job); keep Dependabot one-group (C); README only.
-- done_when: See `dev/tasks/site-ci-dependabot-guard.md`.
-- notes: Shipped — `ci.yml` jobs `pipeline` + `site`; Dependabot unchanged; `dev/README` CI section.

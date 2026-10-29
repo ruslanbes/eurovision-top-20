@@ -105,15 +105,6 @@ function searchFilterDef(grain: StatsGrain): FilterDefinition<FilterableRow> {
 
 const SHARED_FILTER_DEFS: FilterDefinition<FilterableRow>[] = [
   {
-    id: "region",
-    type: "enum-exclusive",
-    label: "Region",
-    showChips: false,
-    getOptions: () =>
-      REGION_ORDER.map((value) => ({ value, label: formatRegion(value) })),
-    match: (row, selected) => row.region === selected[0],
-  },
-  {
     id: "esc",
     type: "enum-exclusive",
     label: "Contest Place",
@@ -143,6 +134,15 @@ const SHARED_FILTER_DEFS: FilterDefinition<FilterableRow>[] = [
     match: (row, selected) =>
       typeof row.year === "number" && (selected as number[]).includes(row.year),
   },
+  {
+    id: "region",
+    type: "enum-exclusive",
+    label: "Region",
+    showChips: false,
+    getOptions: () =>
+      REGION_ORDER.map((value) => ({ value, label: formatRegion(value) })),
+    match: (row, selected) => row.region === selected[0],
+  },
 ];
 
 const PERFORMANCE_CATEGORY_DEF: FilterDefinition<VideoFilterableRow> = {
@@ -156,11 +156,14 @@ const PERFORMANCE_CATEGORY_DEF: FilterDefinition<VideoFilterableRow> = {
     (selected as string[]).includes(row.performance_category),
 };
 
+/** Country, year, and region stay after video-only Performance. */
+const TRAILING_SHARED_COUNT = 3;
+
 export function filterDefsForGrain(
   grain: StatsGrain,
 ): FilterDefinition<FilterableRow>[] {
-  const trailing = SHARED_FILTER_DEFS.slice(-2);
-  const mid = SHARED_FILTER_DEFS.slice(0, -2);
+  const trailing = SHARED_FILTER_DEFS.slice(-TRAILING_SHARED_COUNT);
+  const mid = SHARED_FILTER_DEFS.slice(0, -TRAILING_SHARED_COUNT);
   const defs = [searchFilterDef(grain), ...mid];
   if (grain === "video") {
     defs.push(PERFORMANCE_CATEGORY_DEF);

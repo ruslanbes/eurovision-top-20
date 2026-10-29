@@ -208,9 +208,10 @@ describe("applyFilters", () => {
     );
   });
 
-  it("orders the region filter before the place filter", () => {
+  it("orders the region filter last among shared filters", () => {
     const ids = filterDefsForGrain("video").map((def) => def.id);
-    expect(ids.indexOf("region")).toBe(ids.indexOf("esc") - 1);
+    expect(ids.at(-1)).toBe("region");
+    expect(ids.indexOf("region")).toBeGreaterThan(ids.indexOf("year"));
     expect(filterDefsForGrain("song").find((def) => def.id === "esc")?.label).toBe(
       "Contest Place",
     );
