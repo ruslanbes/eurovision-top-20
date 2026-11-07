@@ -2457,8 +2457,8 @@
       "region": "europe",
       "song": "Espresso Macchiato",
       "year": 2025,
-      "youtube_video_id": "5MS_Fczs_98",
-      "youtube_watch_url": "https://www.youtube.com/watch?v=5MS_Fczs_98"
+      "youtube_video_id": "9b9Z5HSCXOI",
+      "youtube_watch_url": "https://www.youtube.com/watch?v=9b9Z5HSCXOI"
     },
     {
       "artist": "TVORCHI",
@@ -2471,6 +2471,18 @@
       "year": 2023,
       "youtube_video_id": "q6QFVqWX2gM",
       "youtube_watch_url": "https://www.youtube.com/watch?v=q6QFVqWX2gM"
+    },
+    {
+      "artist": "Tóc Tiên",
+      "country": "Vietnam",
+      "esc_final_place": "PENDING",
+      "fire": false,
+      "flag": "🇻🇳",
+      "region": "asia",
+      "song": "EM TIÊN",
+      "year": 2026,
+      "youtube_video_id": "ZoLr_2xDK7s",
+      "youtube_watch_url": "https://www.youtube.com/watch?v=ZoLr_2xDK7s"
     },
     {
       "artist": "Ulrikke",

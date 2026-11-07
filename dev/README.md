@@ -33,8 +33,10 @@ Typical monthly workflow:
 ```sh
 cd pipeline
 
-# 1. New month
-uv run evtop20 new-episode 2026-06
+# 1. New month (omit YYYY-MM / use make to take the month after the latest raw episode)
+make new-episode
+# or: cd pipeline && uv run evtop20 new-episode
+# or: cd pipeline && uv run evtop20 new-episode 2026-06
 
 # 2. Fill ranks — copy from previous month or search the stats corpus
 uv run evtop20 add 2026-06 1 +1                     # rank 1 ← previous month rank 2

@@ -4816,6 +4816,21 @@
       "youtube_watch_url": "https://www.youtube.com/watch?v=q6QFVqWX2gM"
     },
     {
+      "artist": "Tóc Tiên",
+      "country": "Vietnam",
+      "esc_final_place": "PENDING",
+      "fire": false,
+      "flag": "🇻🇳",
+      "metadata_extractor": "pipe_four_segment_asia_v1",
+      "performance_category": "national_final",
+      "region": "asia",
+      "song": "EM TIÊN",
+      "video_title": "Tóc Tiên - EM TIÊN | Vietnam 🇻🇳 | Eurovision Song Contest Asia 2026 | #EurovisionAsia",
+      "year": 2026,
+      "youtube_video_id": "ZoLr_2xDK7s",
+      "youtube_watch_url": "https://www.youtube.com/watch?v=ZoLr_2xDK7s"
+    },
+    {
       "artist": "Ulrikke",
       "country": "Norway",
       "esc_final_place": "CANCELLED",

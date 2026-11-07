@@ -10,7 +10,7 @@ Repo root is auto-detected via `data/schemas/episode.schema.json`.
 |--------|---------|
 | Install | `uv sync --all-groups` |
 | Validate raw data | `uv run evtop20 validate` (strips string whitespace in episode files, then checks) |
-| New empty episode template | `uv run evtop20 new-episode <YYYY-MM>` (e.g. `2022-05`) |
+| New empty episode template | `make new-episode` or `uv run evtop20 new-episode [YYYY-MM]` — omit month to create the one after the latest raw episode |
 | Fill episode rank | `uv run evtop20 add <episode> <rank> <delta \| search…>` — see [`add`](#add) below |
 | Process (validate + **video** stats + episode index) | `uv run evtop20 process` → `alltime/eurovision-top-20-alltime-latest.json` + `episode-index/YYYY-MM.json` per episode month |
 | Package (UI-ready JSON) | `uv run evtop20 package` → `data/packaged/` (`per-{video,song}/alltime/*-latest.json` + `query/` sparse window index) |

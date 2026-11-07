@@ -102,7 +102,7 @@ describe("dominantLeaders insight integration", () => {
 
     const match = computeDominantLeaders(snapshot.rows, DEFAULT_PARAMS);
     expect(match?.cutRank).toBe(2);
-    expect(match?.gapToNext).toBe(199);
+    expect(match?.gapToNext).toBe(207);
   });
 
   it("links song-grain items via canonical member watch URLs", () => {

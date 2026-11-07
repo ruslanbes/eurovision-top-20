@@ -4,6 +4,16 @@ All notable changes to this project. Format based on [Keep a Changelog](https://
 
 ## [Unreleased]
 
+## [0.8.2] - 2026-11-07
+
+### Added
+
+- [2026-10](https://www.youtube.com/watch?v=jRDTeS5WExA) episode
+
+### Changed
+
+- **`new-episode`** — omit `YYYY-MM` to create the month after the latest raw episode (`make new-episode`).
+
 ## [0.8.1] - 2026-10-29
 
 ### Added

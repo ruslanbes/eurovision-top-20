@@ -1,24 +1,24 @@
 {
   "rows": [
     {
+      "video_title": "Alexander Rybak - Fairytale (LIVE) | Norway 🇳🇴 | Grand Final | Winner of Eurovision 2009",
+      "top1": 12,
+      "top3": 38,
+      "top5": 58,
+      "top10": 75,
+      "top20": 80,
+      "chart_points": 616,
+      "youtube_video_id": "WXwgZL4zx9o"
+    },
+    {
       "video_title": "Little Big - Uno - Russia 🇷🇺 - Official Music Video - Eurovision 2020",
       "top1": 29,
       "top3": 37,
-      "top5": 42,
-      "top10": 58,
-      "top20": 68,
-      "chart_points": 603,
+      "top5": 43,
+      "top10": 59,
+      "top20": 69,
+      "chart_points": 609,
       "youtube_video_id": "L_dWvTCdDQ4"
-    },
-    {
-      "video_title": "Alexander Rybak - Fairytale (LIVE) | Norway 🇳🇴 | Grand Final | Winner of Eurovision 2009",
-      "top1": 11,
-      "top3": 37,
-      "top5": 57,
-      "top10": 74,
-      "top20": 79,
-      "chart_points": 601,
-      "youtube_video_id": "WXwgZL4zx9o"
     },
     {
       "video_title": "Netta - Toy (LIVE) | Israel 🇮🇱 | Grand Final | Winner of Eurovision 2018",
@@ -56,8 +56,8 @@
       "top3": 9,
       "top5": 13,
       "top10": 26,
-      "top20": 44,
-      "chart_points": 191,
+      "top20": 45,
+      "chart_points": 192,
       "youtube_video_id": "RVH5dn1cxAQ"
     },
     {
@@ -81,33 +81,33 @@
       "youtube_video_id": "vyDTbJ4wenY"
     },
     {
+      "video_title": "Tommy Cash - Espresso Macchiato (LIVE) | Estonia 🇪🇪 | Grand Final | Eurovision 2025",
+      "top1": 4,
+      "top3": 13,
+      "top5": 15,
+      "top10": 17,
+      "top20": 18,
+      "chart_points": 169,
+      "youtube_video_id": "9b9Z5HSCXOI"
+    },
+    {
       "video_title": "Tommy Cash - Espresso Macchiato | Estonia 🇪🇪 | Official Music Video | #Eurovision2025",
       "top1": 3,
       "top3": 12,
-      "top5": 15,
-      "top10": 18,
-      "top20": 18,
-      "chart_points": 162,
+      "top5": 16,
+      "top10": 19,
+      "top20": 19,
+      "chart_points": 168,
       "youtube_video_id": "5MS_Fczs_98"
-    },
-    {
-      "video_title": "Tommy Cash - Espresso Macchiato (LIVE) | Estonia 🇪🇪 | Grand Final | Eurovision 2025",
-      "top1": 4,
-      "top3": 12,
-      "top5": 14,
-      "top10": 16,
-      "top20": 17,
-      "chart_points": 159,
-      "youtube_video_id": "9b9Z5HSCXOI"
     },
     {
       "video_title": "Baby Lasagna - Rim Tim Tagi Dim (LIVE) | Croatia 🇭🇷 | Grand Final | Eurovision 2024",
       "top1": 3,
       "top3": 10,
       "top5": 11,
-      "top10": 19,
-      "top20": 27,
-      "chart_points": 153,
+      "top10": 20,
+      "top20": 28,
+      "chart_points": 156,
       "youtube_video_id": "YIBjarAiAVc"
     },
     {
@@ -155,9 +155,9 @@
       "top1": 2,
       "top3": 2,
       "top5": 7,
-      "top10": 18,
-      "top20": 28,
-      "chart_points": 103,
+      "top10": 19,
+      "top20": 29,
+      "chart_points": 106,
       "youtube_video_id": "pHXDMe6QV-U"
     },
     {
@@ -185,9 +185,9 @@
       "top1": 0,
       "top3": 3,
       "top5": 7,
-      "top10": 16,
-      "top20": 27,
-      "chart_points": 92,
+      "top10": 17,
+      "top20": 28,
+      "chart_points": 95,
       "youtube_video_id": "IiHFnmI8pxg"
     },
     {
@@ -199,6 +199,16 @@
       "top20": 27,
       "chart_points": 84,
       "youtube_video_id": "gAh9NRGNhUU"
+    },
+    {
+      "video_title": "DARA - Bangaranga (LIVE) | Bulgaria 🇧🇬 | Grand Final | Winner of Eurovision 2026",
+      "top1": 4,
+      "top3": 6,
+      "top5": 6,
+      "top10": 6,
+      "top20": 6,
+      "chart_points": 80,
+      "youtube_video_id": "EltgrumKJfk"
     },
     {
       "video_title": "Sunstroke Project - Hey Mamma (LIVE feat. Epic Sax Guy) | Moldova 🇲🇩 | Grand Final | Eurovision 2017",
@@ -221,6 +231,16 @@
       "youtube_video_id": "CziHrYYSyPc"
     },
     {
+      "video_title": "Verka Serduchka - Dancing Lasha Tumbai (LIVE) | Ukraine 🇺🇦 | Grand Final | Eurovision 2007",
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 14,
+      "top20": 46,
+      "chart_points": 74,
+      "youtube_video_id": "hfjHJneVonE"
+    },
+    {
       "video_title": "Mikolas Josef - Lie To Me (LIVE) | Czechia 🇨🇿 | Grand Final | Eurovision 2018",
       "top1": 0,
       "top3": 4,
@@ -229,26 +249,6 @@
       "top20": 10,
       "chart_points": 73,
       "youtube_video_id": "w0ZUuQe0shk"
-    },
-    {
-      "video_title": "Verka Serduchka - Dancing Lasha Tumbai (LIVE) | Ukraine 🇺🇦 | Grand Final | Eurovision 2007",
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 14,
-      "top20": 45,
-      "chart_points": 73,
-      "youtube_video_id": "hfjHJneVonE"
-    },
-    {
-      "video_title": "DARA - Bangaranga (LIVE) | Bulgaria 🇧🇬 | Grand Final | Winner of Eurovision 2026",
-      "top1": 4,
-      "top3": 5,
-      "top5": 5,
-      "top10": 5,
-      "top20": 5,
-      "chart_points": 70,
-      "youtube_video_id": "EltgrumKJfk"
     },
     {
       "video_title": "Loreen - Tattoo (LIVE) | Sweden 🇸🇪 | Grand Final | Winner of Eurovision 2023",
@@ -276,8 +276,8 @@
       "top3": 1,
       "top5": 5,
       "top10": 13,
-      "top20": 20,
-      "chart_points": 65,
+      "top20": 21,
+      "chart_points": 66,
       "youtube_video_id": "-XyLecY2JyE"
     },
     {
@@ -296,8 +296,8 @@
       "top3": 3,
       "top5": 7,
       "top10": 9,
-      "top20": 11,
-      "chart_points": 62,
+      "top20": 12,
+      "chart_points": 63,
       "youtube_video_id": "WSh7U3m9KgA"
     },
     {
@@ -306,8 +306,8 @@
       "top3": 0,
       "top5": 9,
       "top10": 10,
-      "top20": 14,
-      "chart_points": 61,
+      "top20": 15,
+      "chart_points": 62,
       "youtube_video_id": "DGsL8hA-1rE"
     },
     {
@@ -481,6 +481,16 @@
       "youtube_video_id": "xbomdE81_mA"
     },
     {
+      "video_title": "Akylas - Ferto (LIVE) | Greece 🇬🇷 | Grand Final | Eurovision 2026",
+      "top1": 0,
+      "top3": 2,
+      "top5": 3,
+      "top10": 6,
+      "top20": 6,
+      "chart_points": 35,
+      "youtube_video_id": "Rfd-6uAG4Rc"
+    },
+    {
       "video_title": "Salvador Sobral - Amar Pelos Dois (LIVE) | Portugal 🇵🇹 | Grand Final | Winner of Eurovision 2017",
       "top1": 0,
       "top3": 2,
@@ -521,16 +531,6 @@
       "youtube_video_id": "FxPm-Wz8qpY"
     },
     {
-      "video_title": "Akylas - Ferto (LIVE) | Greece 🇬🇷 | Grand Final | Eurovision 2026",
-      "top1": 0,
-      "top3": 2,
-      "top5": 3,
-      "top10": 5,
-      "top20": 5,
-      "chart_points": 32,
-      "youtube_video_id": "Rfd-6uAG4Rc"
-    },
-    {
       "video_title": "Jamala - 1944 (LIVE) | Ukraine 🇺🇦 | Grand Final | Winner of Eurovision 2016",
       "top1": 0,
       "top3": 1,
@@ -561,6 +561,16 @@
       "youtube_video_id": "Co8ZJIejXBA"
     },
     {
+      "video_title": "Noam Bettan - Michelle (LIVE) | Israel 🇮🇱 | Grand Final | Eurovision 2026",
+      "top1": 0,
+      "top3": 1,
+      "top5": 3,
+      "top10": 5,
+      "top20": 6,
+      "chart_points": 29,
+      "youtube_video_id": "E2aL4xRzNXI"
+    },
+    {
       "video_title": "Alessandra - Queen of Kings (LIVE) | Norway 🇳🇴 | Grand Final | Eurovision 2023",
       "top1": 0,
       "top3": 0,
@@ -569,16 +579,6 @@
       "top20": 9,
       "chart_points": 29,
       "youtube_video_id": "PUHSM_vTqTI"
-    },
-    {
-      "video_title": "Noam Bettan - Michelle (LIVE) | Israel 🇮🇱 | Grand Final | Eurovision 2026",
-      "top1": 0,
-      "top3": 1,
-      "top5": 3,
-      "top10": 5,
-      "top20": 5,
-      "chart_points": 28,
-      "youtube_video_id": "E2aL4xRzNXI"
     },
     {
       "video_title": "Alessandra - Queen Of Kings | Norway 🇳🇴 | National Final Performance | Eurovision 2023",
@@ -871,6 +871,16 @@
       "youtube_video_id": "YXHHDjiclxA"
     },
     {
+      "video_title": "Alexandra Căpitănescu - Choke Me (LIVE) | Romania 🇷🇴 | Grand Final | Eurovision 2026",
+      "top1": 0,
+      "top3": 0,
+      "top5": 1,
+      "top10": 4,
+      "top20": 6,
+      "chart_points": 17,
+      "youtube_video_id": "TpMQ6dhcvvE"
+    },
+    {
       "video_title": "Eden Golan - Hurricane | Israel 🇮🇱 | Official Music Video | Eurovision 2024",
       "top1": 0,
       "top3": 1,
@@ -909,16 +919,6 @@
       "top20": 3,
       "chart_points": 16,
       "youtube_video_id": "I0VzBCvO1Wk"
-    },
-    {
-      "video_title": "Alexandra Căpitănescu - Choke Me (LIVE) | Romania 🇷🇴 | Grand Final | Eurovision 2026",
-      "top1": 0,
-      "top3": 0,
-      "top5": 1,
-      "top10": 4,
-      "top20": 5,
-      "chart_points": 16,
-      "youtube_video_id": "TpMQ6dhcvvE"
     },
     {
       "video_title": "Antigoni - JALLA (LIVE) | Cyprus 🇨🇾 | Grand Final | Eurovision 2026",
@@ -971,6 +971,16 @@
       "youtube_video_id": "QRUIava4WRM"
     },
     {
+      "video_title": "DARA - Bangaranga | Bulgaria 🇧🇬 | Official Music Video | #Eurovision2026",
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 4,
+      "top20": 7,
+      "chart_points": 15,
+      "youtube_video_id": "J3oGYo_mekw"
+    },
+    {
       "video_title": "Bambie Thug - Doomsday Blue (LIVE) | Ireland 🇮🇪 | Grand Final | Eurovision 2024",
       "top1": 0,
       "top3": 0,
@@ -1019,16 +1029,6 @@
       "top20": 7,
       "chart_points": 14,
       "youtube_video_id": "gQOGxx6Fk9k"
-    },
-    {
-      "video_title": "DARA - Bangaranga | Bulgaria 🇧🇬 | Official Music Video | #Eurovision2026",
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 4,
-      "top20": 6,
-      "chart_points": 14,
-      "youtube_video_id": "J3oGYo_mekw"
     },
     {
       "video_title": "Subwoolfer - Give That Wolf A Banana (LIVE) (LIVE) | Norway 🇳🇴 | Grand Final | Eurovision 2022",
@@ -1269,6 +1269,16 @@
       "top20": 3,
       "chart_points": 10,
       "youtube_video_id": "EBsgTJQFl9k"
+    },
+    {
+      "video_title": "Azúcar Moreno - Bandido | Spain 🇪🇸 | Grand Final | Eurovision 1990",
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 2,
+      "top20": 6,
+      "chart_points": 10,
+      "youtube_video_id": "7dGysPC_q9k"
     },
     {
       "video_title": "Abor & Tynna - Baller | Germany 🇩🇪 | Official Music Video | #Eurovision2025",
@@ -1529,16 +1539,6 @@
       "top20": 2,
       "chart_points": 7,
       "youtube_video_id": "nBtQj1MfNYA"
-    },
-    {
-      "video_title": "Azúcar Moreno - Bandido | Spain 🇪🇸 | Grand Final | Eurovision 1990",
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 5,
-      "chart_points": 7,
-      "youtube_video_id": "7dGysPC_q9k"
     },
     {
       "video_title": "Klavdia – Asteromáta (LIVE) | Greece 🇬🇷 | Grand Final | Eurovision 2025",
@@ -1881,6 +1881,16 @@
       "youtube_video_id": "SABOfYgGk8M"
     },
     {
+      "video_title": "Sertab Erener - Everyway That I Can | Türkiye 🇹🇷 | Winner of Eurovision 2003",
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 1,
+      "top20": 3,
+      "chart_points": 5,
+      "youtube_video_id": "j0_QrKnqd5E"
+    },
+    {
       "video_title": "Shkodra Elektronike - Zjerm | Albania 🇦🇱 | National Final Performance #Eurovision2025",
       "top1": 0,
       "top3": 0,
@@ -2019,16 +2029,6 @@
       "top20": 2,
       "chart_points": 4,
       "youtube_video_id": "_jWXmo0-ZjI"
-    },
-    {
-      "video_title": "Sertab Erener - Everyway That I Can | Türkiye 🇹🇷 | Winner of Eurovision 2003",
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 2,
-      "chart_points": 4,
-      "youtube_video_id": "j0_QrKnqd5E"
     },
     {
       "video_title": "Teya & Salena - Who The Hell Is Edgar? | Austria 🇦🇹 | Official Music Video | Eurovision 2023",
@@ -3349,6 +3349,16 @@
       "top20": 1,
       "chart_points": 1,
       "youtube_video_id": "I2oqDpefJ1s"
+    },
+    {
+      "video_title": "Tóc Tiên - EM TIÊN | Vietnam 🇻🇳 | Eurovision Song Contest Asia 2026 | #EurovisionAsia",
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 0,
+      "top20": 1,
+      "chart_points": 1,
+      "youtube_video_id": "ZoLr_2xDK7s"
     },
     {
       "video_title": "Yuval Raphael – New Day Will Rise (LIVE) | Israel 🇮🇱 | Grand Final | Eurovision 2025",

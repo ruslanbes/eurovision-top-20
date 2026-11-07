@@ -2,6 +2,21 @@
   "source": "packaged/per-video/alltime",
   "rows": [
     {
+      "artist": "Alexander Rybak",
+      "song": "Fairytale",
+      "flag": "🇳🇴",
+      "country": "Norway",
+      "year": 2009,
+      "esc_final_place": 1,
+      "region": "europe",
+      "top1": 12,
+      "top3": 38,
+      "top5": 58,
+      "top10": 75,
+      "top20": 80,
+      "chart_points": 616
+    },
+    {
       "artist": "Little Big",
       "song": "Uno",
       "flag": "🇷🇺",
@@ -11,25 +26,10 @@
       "region": "europe",
       "top1": 29,
       "top3": 37,
-      "top5": 42,
-      "top10": 58,
-      "top20": 68,
-      "chart_points": 603
-    },
-    {
-      "artist": "Alexander Rybak",
-      "song": "Fairytale",
-      "flag": "🇳🇴",
-      "country": "Norway",
-      "year": 2009,
-      "esc_final_place": 1,
-      "region": "europe",
-      "top1": 11,
-      "top3": 37,
-      "top5": 57,
-      "top10": 74,
-      "top20": 79,
-      "chart_points": 601
+      "top5": 43,
+      "top10": 59,
+      "top20": 69,
+      "chart_points": 609
     },
     {
       "artist": "Netta",
@@ -55,11 +55,11 @@
       "esc_final_place": 3,
       "region": "europe",
       "top1": 7,
-      "top3": 24,
-      "top5": 29,
-      "top10": 34,
-      "top20": 35,
-      "chart_points": 321
+      "top3": 25,
+      "top5": 31,
+      "top10": 36,
+      "top20": 37,
+      "chart_points": 337
     },
     {
       "artist": "Hadise",
@@ -102,9 +102,9 @@
       "top1": 2,
       "top3": 12,
       "top5": 18,
-      "top10": 28,
-      "top20": 48,
-      "chart_points": 216
+      "top10": 29,
+      "top20": 49,
+      "chart_points": 219
     },
     {
       "artist": "Måneskin",
@@ -118,8 +118,8 @@
       "top3": 9,
       "top5": 13,
       "top10": 26,
-      "top20": 44,
-      "chart_points": 191
+      "top20": 45,
+      "chart_points": 192
     },
     {
       "artist": "Duncan Laurence",
@@ -162,9 +162,9 @@
       "top1": 3,
       "top3": 10,
       "top5": 12,
-      "top10": 21,
-      "top20": 32,
-      "chart_points": 165
+      "top10": 22,
+      "top20": 33,
+      "chart_points": 168
     },
     {
       "artist": "Chanel",
@@ -227,6 +227,21 @@
       "chart_points": 110
     },
     {
+      "artist": "Sunstroke Project & Olia Tira",
+      "song": "Run Away",
+      "flag": "🇲🇩",
+      "country": "Moldova",
+      "year": 2010,
+      "esc_final_place": 22,
+      "region": "europe",
+      "top1": 2,
+      "top3": 2,
+      "top5": 7,
+      "top10": 20,
+      "top20": 30,
+      "chart_points": 109
+    },
+    {
       "artist": "Jessy Matador",
       "song": "Allez Ola Olé",
       "flag": "🇫🇷",
@@ -242,19 +257,19 @@
       "chart_points": 106
     },
     {
-      "artist": "Sunstroke Project & Olia Tira",
-      "song": "Run Away",
-      "flag": "🇲🇩",
-      "country": "Moldova",
-      "year": 2010,
-      "esc_final_place": 22,
+      "artist": "DARA",
+      "song": "Bangaranga",
+      "flag": "🇧🇬",
+      "country": "Bulgaria",
+      "year": 2026,
+      "esc_final_place": 1,
       "region": "europe",
-      "top1": 2,
-      "top3": 2,
+      "top1": 4,
+      "top3": 6,
       "top5": 7,
-      "top10": 19,
-      "top20": 29,
-      "chart_points": 106
+      "top10": 11,
+      "top20": 16,
+      "chart_points": 103
     },
     {
       "artist": "KAJ",
@@ -268,8 +283,8 @@
       "top3": 5,
       "top5": 9,
       "top10": 12,
-      "top20": 21,
-      "chart_points": 102
+      "top20": 22,
+      "chart_points": 103
     },
     {
       "artist": "Mahmood",
@@ -330,21 +345,6 @@
       "top10": 12,
       "top20": 16,
       "chart_points": 95
-    },
-    {
-      "artist": "DARA",
-      "song": "Bangaranga",
-      "flag": "🇧🇬",
-      "country": "Bulgaria",
-      "year": 2026,
-      "esc_final_place": 1,
-      "region": "europe",
-      "top1": 4,
-      "top3": 5,
-      "top5": 6,
-      "top10": 10,
-      "top20": 14,
-      "chart_points": 92
     },
     {
       "artist": "Lordi",
@@ -418,8 +418,8 @@
       "top3": 0,
       "top5": 0,
       "top10": 14,
-      "top20": 45,
-      "chart_points": 73
+      "top20": 46,
+      "chart_points": 74
     },
     {
       "artist": "Noa Kirel",
@@ -437,6 +437,21 @@
       "chart_points": 68
     },
     {
+      "artist": "Slimane",
+      "song": "Mon Amour",
+      "flag": "🇫🇷",
+      "country": "France",
+      "year": 2024,
+      "esc_final_place": 4,
+      "region": "europe",
+      "top1": 0,
+      "top3": 1,
+      "top5": 5,
+      "top10": 13,
+      "top20": 23,
+      "chart_points": 68
+    },
+    {
       "artist": "Loreen",
       "song": "Euphoria",
       "flag": "🇸🇪",
@@ -450,21 +465,6 @@
       "top10": 18,
       "top20": 32,
       "chart_points": 68
-    },
-    {
-      "artist": "Slimane",
-      "song": "Mon Amour",
-      "flag": "🇫🇷",
-      "country": "France",
-      "year": 2024,
-      "esc_final_place": 4,
-      "region": "europe",
-      "top1": 0,
-      "top3": 1,
-      "top5": 5,
-      "top10": 13,
-      "top20": 22,
-      "chart_points": 67
     },
     {
       "artist": "alyona alyona & Jerry Heil",
@@ -493,8 +493,8 @@
       "top3": 0,
       "top5": 9,
       "top10": 10,
-      "top20": 14,
-      "chart_points": 61
+      "top20": 15,
+      "chart_points": 62
     },
     {
       "artist": "Aysel and Arash",
@@ -662,6 +662,21 @@
       "chart_points": 48
     },
     {
+      "artist": "Akylas",
+      "song": "Ferto",
+      "flag": "🇬🇷",
+      "country": "Greece",
+      "year": 2026,
+      "esc_final_place": 10,
+      "region": "europe",
+      "top1": 0,
+      "top3": 2,
+      "top5": 4,
+      "top10": 9,
+      "top20": 10,
+      "chart_points": 48
+    },
+    {
       "artist": "Robin Bengtsson",
       "song": "I Can't Go On",
       "flag": "🇸🇪",
@@ -675,21 +690,6 @@
       "top10": 9,
       "top20": 9,
       "chart_points": 47
-    },
-    {
-      "artist": "Akylas",
-      "song": "Ferto",
-      "flag": "🇬🇷",
-      "country": "Greece",
-      "year": 2026,
-      "esc_final_place": 10,
-      "region": "europe",
-      "top1": 0,
-      "top3": 2,
-      "top5": 4,
-      "top10": 8,
-      "top20": 9,
-      "chart_points": 45
     },
     {
       "artist": "Manizha",
@@ -718,8 +718,8 @@
       "top3": 2,
       "top5": 4,
       "top10": 7,
-      "top20": 7,
-      "chart_points": 41
+      "top20": 8,
+      "chart_points": 42
     },
     {
       "artist": "Antigoni",
@@ -1067,6 +1067,21 @@
       "chart_points": 19
     },
     {
+      "artist": "Alexandra Căpitănescu",
+      "song": "Choke Me",
+      "flag": "🇷🇴",
+      "country": "Romania",
+      "year": 2026,
+      "esc_final_place": 3,
+      "region": "europe",
+      "top1": 0,
+      "top3": 0,
+      "top5": 1,
+      "top10": 4,
+      "top20": 7,
+      "chart_points": 18
+    },
+    {
       "artist": "Eden Golan",
       "song": "Hurricane",
       "flag": "🇮🇱",
@@ -1094,21 +1109,6 @@
       "top5": 2,
       "top10": 3,
       "top20": 5,
-      "chart_points": 17
-    },
-    {
-      "artist": "Alexandra Căpitănescu",
-      "song": "Choke Me",
-      "flag": "🇷🇴",
-      "country": "Romania",
-      "year": 2026,
-      "esc_final_place": 3,
-      "region": "europe",
-      "top1": 0,
-      "top3": 0,
-      "top5": 1,
-      "top10": 4,
-      "top20": 6,
       "chart_points": 17
     },
     {
@@ -1577,6 +1577,21 @@
       "chart_points": 10
     },
     {
+      "artist": "Azúcar Moreno",
+      "song": "Bandido",
+      "flag": "🇪🇸",
+      "country": "Spain",
+      "year": 1990,
+      "esc_final_place": 5,
+      "region": "europe",
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 2,
+      "top20": 6,
+      "chart_points": 10
+    },
+    {
       "artist": "Klavdia",
       "song": "Asteromáta",
       "flag": "🇬🇷",
@@ -1799,21 +1814,6 @@
       "top5": 1,
       "top10": 1,
       "top20": 2,
-      "chart_points": 7
-    },
-    {
-      "artist": "Azúcar Moreno",
-      "song": "Bandido",
-      "flag": "🇪🇸",
-      "country": "Spain",
-      "year": 1990,
-      "esc_final_place": 5,
-      "region": "europe",
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 5,
       "chart_points": 7
     },
     {
@@ -2162,6 +2162,21 @@
       "chart_points": 6
     },
     {
+      "artist": "Sertab Erener",
+      "song": "Everyway That I Can",
+      "flag": "🇹🇷",
+      "country": "Turkey",
+      "year": 2003,
+      "esc_final_place": 1,
+      "region": "europe",
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 1,
+      "top20": 3,
+      "chart_points": 5
+    },
+    {
       "artist": "Pasha Parfeni",
       "song": "Soarele şi Luna",
       "flag": "🇲🇩",
@@ -2250,21 +2265,6 @@
       "top10": 0,
       "top20": 5,
       "chart_points": 5
-    },
-    {
-      "artist": "Sertab Erener",
-      "song": "Everyway That I Can",
-      "flag": "🇹🇷",
-      "country": "Turkey",
-      "year": 2003,
-      "esc_final_place": 1,
-      "region": "europe",
-      "top1": 0,
-      "top3": 0,
-      "top5": 0,
-      "top10": 1,
-      "top20": 2,
-      "chart_points": 4
     },
     {
       "artist": "Lucio Corsi",
@@ -3279,6 +3279,21 @@
       "year": 2022,
       "esc_final_place": "DNQ",
       "region": "europe",
+      "top1": 0,
+      "top3": 0,
+      "top5": 0,
+      "top10": 0,
+      "top20": 1,
+      "chart_points": 1
+    },
+    {
+      "artist": "Tóc Tiên",
+      "song": "EM TIÊN",
+      "flag": "🇻🇳",
+      "country": "Vietnam",
+      "year": 2026,
+      "esc_final_place": "PENDING",
+      "region": "asia",
       "top1": 0,
       "top3": 0,
       "top5": 0,

@@ -195,7 +195,13 @@ def add_entry(
 
 @app.command("new-episode")
 def new_episode(
-    episode: str = typer.Argument(help="Episode filename stem (e.g. 2026-01)."),
+    episode: str | None = typer.Argument(
+        None,
+        help=(
+            "Episode filename stem (e.g. 2026-01). "
+            "Omit to create the month after the latest raw episode."
+        ),
+    ),
     repo_root: Path | None = typer.Option(
         None,
         "--repo-root",

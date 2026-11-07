@@ -32,6 +32,56 @@ def parse_episode_stem(stem: str) -> tuple[int, int]:
     return year, month
 
 
+def format_episode_stem(year: int, month: int) -> str:
+    return f"{year:04d}-{month:02d}"
+
+
+def next_episode_stem(year: int, month: int) -> str:
+    if month == 12:
+        return format_episode_stem(year + 1, 1)
+    return format_episode_stem(year, month + 1)
+
+
+def latest_raw_episode_stem(repo_root: Path) -> str:
+    """Return the latest YYYY-MM stem among `data/raw/episodes/*.json`."""
+    raw_dir = raw_episodes_dir(repo_root)
+    if not raw_dir.is_dir():
+        msg = (
+            f"raw episodes directory not found: {raw_dir} "
+            "(pass YYYY-MM explicitly for the first episode)"
+        )
+        raise NewEpisodeError(msg)
+
+    stems: list[str] = []
+    for path in raw_dir.glob("*.json"):
+        try:
+            parse_episode_stem(path.stem)
+        except NewEpisodeError:
+            continue
+        stems.append(path.stem)
+
+    if not stems:
+        msg = (
+            "no raw episode files found "
+            "(pass YYYY-MM explicitly for the first episode)"
+        )
+        raise NewEpisodeError(msg)
+
+    return max(stems)
+
+
+def resolve_episode_stem(repo_root: Path, episode_stem: str | None) -> str:
+    """Use the given stem, or the month after the latest raw episode."""
+    if episode_stem is not None and episode_stem.strip():
+        stem = episode_stem.strip()
+        parse_episode_stem(stem)
+        return stem
+
+    latest = latest_raw_episode_stem(repo_root)
+    year, month = parse_episode_stem(latest)
+    return next_episode_stem(year, month)
+
+
 def empty_episode_data(year: int, month: int) -> dict:
     return {
         "episode_title": (
@@ -48,12 +98,13 @@ def empty_episode_data(year: int, month: int) -> dict:
 
 def run_new_episode(
     repo_root: Path,
-    episode_stem: str,
+    episode_stem: str | None = None,
     *,
     force: bool = False,
 ) -> Path:
-    year, month = parse_episode_stem(episode_stem)
-    path = raw_episodes_dir(repo_root) / f"{episode_stem.strip()}.json"
+    stem = resolve_episode_stem(repo_root, episode_stem)
+    year, month = parse_episode_stem(stem)
+    path = raw_episodes_dir(repo_root) / f"{stem}.json"
     if path.is_file() and not force:
         msg = f"episode file already exists: {path.name}"
         raise NewEpisodeError(msg)

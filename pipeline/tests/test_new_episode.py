@@ -5,7 +5,13 @@ from pathlib import Path
 
 import pytest
 
-from evtop20.new_episode import NewEpisodeError, parse_episode_stem, run_new_episode
+from evtop20.new_episode import (
+    NewEpisodeError,
+    next_episode_stem,
+    parse_episode_stem,
+    resolve_episode_stem,
+    run_new_episode,
+)
 from evtop20.validate import validate_episode_file, load_schema
 
 
@@ -62,3 +68,33 @@ def test_run_new_episode_force_overwrites(repo_root: Path) -> None:
     run_new_episode(repo_root, "2022-05", force=True)
     data = json.loads(path.read_text(encoding="utf-8"))
     assert data["period"]["month"] == 5
+
+
+def test_next_episode_stem_rolls_year() -> None:
+    assert next_episode_stem(2022, 5) == "2022-06"
+    assert next_episode_stem(2025, 12) == "2026-01"
+
+
+def test_resolve_episode_stem_defaults_to_month_after_latest(repo_root: Path) -> None:
+    run_new_episode(repo_root, "2025-11")
+    run_new_episode(repo_root, "2025-12")
+    assert resolve_episode_stem(repo_root, None) == "2026-01"
+    assert resolve_episode_stem(repo_root, "") == "2026-01"
+
+
+def test_run_new_episode_without_stem_uses_next_month(repo_root: Path) -> None:
+    run_new_episode(repo_root, "2026-09")
+    path = run_new_episode(repo_root)
+    assert path.name == "2026-10.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    assert data["period"] == {"year": 2026, "month": 10}
+
+
+def test_resolve_episode_stem_errors_when_no_raw_episodes(repo_root: Path) -> None:
+    with pytest.raises(NewEpisodeError, match="pass YYYY-MM explicitly"):
+        resolve_episode_stem(repo_root, None)
+
+    raw = repo_root / "data" / "raw" / "episodes"
+    raw.mkdir(parents=True)
+    with pytest.raises(NewEpisodeError, match="no raw episode files"):
+        resolve_episode_stem(repo_root, None)
